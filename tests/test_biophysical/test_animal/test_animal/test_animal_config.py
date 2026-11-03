@@ -1,0 +1,554 @@
+from collections.abc import Generator
+import types
+from typing import Any
+import pytest
+import pytest_mock
+
+from RUFAS.biophysical.animal.animal_config import AnimalConfig
+from RUFAS.biophysical.animal.data_types.animal_enums import RemovalRiskParityGroup
+from RUFAS.biophysical.animal.data_types.repro_protocol_enums import (
+    HeiferReproductionProtocol,
+    HeiferTAISubProtocol,
+    HeiferSynchEDSubProtocol,
+    CowReproductionProtocol,
+    CowPreSynchSubProtocol,
+    CowTAISubProtocol,
+    CowReSynchSubProtocol,
+)
+
+
+@pytest.fixture(autouse=True)
+def reset_animal_config_state() -> Generator[None, None, None]:
+    """
+    Snapshot AnimalConfig's non-callable class attributes before each test
+    and restore them afterwards, so tests that call initialize_animal_config()
+    don't leak global state into the rest of the suite.
+    """
+    original_attrs = {
+        name: value
+        for name, value in AnimalConfig.__dict__.items()
+        if not name.startswith("__") and not isinstance(value, (types.FunctionType, classmethod, staticmethod))
+    }
+    original_names = set(original_attrs.keys())
+
+    yield
+
+    for name, value in list(AnimalConfig.__dict__.items()):
+        if name.startswith("__"):
+            continue
+        if isinstance(value, (types.FunctionType, classmethod, staticmethod)):
+            continue
+        if name not in original_names:
+            delattr(AnimalConfig, name)
+
+    for name, value in original_attrs.items():
+        setattr(AnimalConfig, name, value)
+
+
+def _make_genetics() -> dict[str, Any]:
+    """Builds the ``genetics`` blob that ``AnimalConfig.initialize_animal_config()`` reads."""
+    return {
+        "tbv_fat_variance": 25.8,
+        "tbv_protein_variance": 13.4,
+        "tbv_correlation": 0.59,
+        "permanent_environment_fat_variance": 38.8,
+        "permanent_environment_protein_variance": 20.1,
+        "permanent_environment_correlation": 0.95,
+        "temporary_environment_fat_variance": 64.5,
+        "temporary_environment_protein_variance": 33.4,
+        "temporary_environment_correlation": 0.78,
+    }
+
+
+def _make_base_animal_config(repro_sub_protocol: str, heifer_repro_method: str) -> dict[str, Any]:
+    """Builds the ``animal_config`` blob that ``AnimalConfig.initialize_animal_config()`` reads."""
+    return {
+        "management_decisions": {
+            "breeding_start_day_h": 380,
+            "heifer_repro_method": heifer_repro_method,
+            "cow_repro_method": "TAI",
+            "semen_type": "conventional",
+            "days_in_preg_when_dry": 218,
+            "heifer_repro_cull_time": 500,
+            "calf_mortality_rate": 0,
+            "heifer_mortality_rate": 0,
+            "do_not_breed_time": 185,
+            "cull_milk_production": 30,
+            "cow_times_milked_per_day": 3,
+            "milk_fat_percent": 4,
+            "milk_protein_percent": 3.2,
+        },
+        "farm_level": {
+            "calf": {
+                "user_defined_male_calf_rate": 0.1,
+                "keep_dairy_female_rate": 1,
+                "calf_retention_method": "rate",
+                "annual_keep_female_calf_num": 0,
+                "wean_day": 60,
+                "wean_length": 7,
+                "milk_type": "whole",
+            },
+            "repro": {
+                "voluntary_waiting_period": 50,
+                "conception_rate_decrease": 0.026,
+                "decrease_conception_rate_in_rebreeding": False,
+                "decrease_conception_rate_by_parity": False,
+                "avg_gestation_len": 276,
+                "std_gestation_len": 6,
+                "prefresh_day": 21,
+                "calving_interval": 400,
+                "selective_repro_strategy": True,
+                "ranking_method": "genetic",
+                "genetic_selection_index_weights": {
+                    "fat": 0.318,
+                    "protein": 0.13,
+                },
+                "heifers": {
+                    "estrus_detection_rate": 0.9,
+                    "estrus_conception_rate": 0.6,
+                    "repro_sub_protocol": repro_sub_protocol,
+                    "repro_sub_properties": {
+                        "conception_rate": 0.6,
+                        "estrus_detection_rate": 0.9,
+                    },
+                    "semen_allocation_proportions": {
+                        "sexed_dairy": 0.5,
+                        "conventional_dairy": 0.5,
+                        "beef": 0.0,
+                    },
+                },
+                "cows": {
+                    "estrus_detection_rate": 0.6,
+                    "ED_conception_rate": 0.5,
+                    "presynch_program": "Double OvSynch",
+                    "presynch_program_start_day": 50,
+                    "ovsynch_program": "OvSynch 56",
+                    "ovsynch_program_start_day": 64,
+                    "ovsynch_program_conception_rate": 0.6,
+                    "resynch_program": "TAIafterPD",
+                    "semen_allocation_proportions": {
+                        "sexed_dairy": 0.2,
+                        "conventional_dairy": 0.5,
+                        "beef": 0.3,
+                    },
+                },
+            },
+            "bodyweight": {
+                "birth_weight_avg_ho": 43.9,
+                "birth_weight_std_ho": 1,
+                "birth_weight_avg_je": 27.2,
+                "birth_weight_std_je": 1,
+                "target_heifer_preg_day": 399,
+                "mature_body_weight_avg": 740.1,
+                "mature_body_weight_std": 73.5,
+            },
+        },
+        "from_literature": {
+            "repro": {
+                "preg_check_day_1": 32,
+                "preg_loss_rate_1": 0.02,
+                "preg_check_day_2": 60,
+                "preg_loss_rate_2": 0.096,
+                "preg_check_day_3": 200,
+                "preg_loss_rate_3": 0.017,
+                "avg_estrus_cycle_return": 23,
+                "std_estrus_cycle_return": 6,
+                "avg_estrus_cycle_heifer": 21,
+                "std_estrus_cycle_heifer": 2.5,
+                "avg_estrus_cycle_cow": 21,
+                "std_estrus_cycle_cow": 4,
+                "avg_estrus_cycle_after_pgf": 5,
+                "std_estrus_cycle_after_pgf": 2,
+            },
+            "culling": {
+                "annual_death_prob": 0.05,
+                "parity_death_dist": [0.2, 0.3, 0.5],
+                "annual_sale_prob": 0.32,
+                "parity_sale_dist": [0.2, 0.3, 0.5],
+            },
+            "life_cycle": {"still_birth_rate": 0.065},
+        },
+    }
+
+
+@pytest.mark.parametrize(
+    "heifer_method, repro_sub_protocol, expected_subprogram_type",
+    [
+        ("TAI", "5dCG2P", HeiferTAISubProtocol),  # if branch
+        ("SynchED", "2P", HeiferSynchEDSubProtocol),  # elif branch
+        ("ED", "5dCG2P", HeiferTAISubProtocol),  # else fallback to default TAI subprogram
+    ],
+    ids=["heifer_tai", "heifer_synched", "heifer_other_fallback"],
+)
+def test_initialize_animal_config_heifer_subprogram_and_core_fields(
+    mocker: pytest_mock.MockerFixture,
+    heifer_method: str,
+    repro_sub_protocol: str,
+    expected_subprogram_type: type,
+) -> None:
+    mock_im_cls = mocker.patch("RUFAS.biophysical.animal.animal_config.InputManager")
+    mock_om_cls = mocker.patch("RUFAS.biophysical.animal.animal_config.OutputManager")
+
+    mock_im = mock_im_cls.return_value
+    mock_om = mock_om_cls.return_value
+
+    base_animal_config = _make_base_animal_config(repro_sub_protocol, heifer_method)
+
+    animal_data = {
+        "animal_config": base_animal_config,
+        "methane_model": {"dummy": "model"},
+        "methane_mitigation": {
+            "methane_mitigation_method": "None",
+        },
+        "herd_information": {"simulate_genetics": False},
+        "genetics": _make_genetics(),
+    }
+
+    def get_data_side_effect(key: str) -> Any:
+        if key == "animal":
+            return animal_data
+        if key == "feed.ration_formulation_parameters.milk_reduction_maximum":
+            return 1.23
+        if key == "animal_mean_phenotype":
+            return {}
+        if key == "animal_top_listing_semen":
+            return {}
+        raise KeyError(key)
+
+    mock_im.get_data.side_effect = get_data_side_effect
+
+    AnimalConfig.initialize_animal_config()
+
+    assert AnimalConfig.wean_day == 60
+    assert AnimalConfig.wean_length == 7
+    assert AnimalConfig.milk_fat_percent == 4
+    assert AnimalConfig.milk_reduction_maximum == 1.23
+
+    assert AnimalConfig.selective_repro_strategy is True
+    assert AnimalConfig.ranking_method == "genetic"
+    assert AnimalConfig.genetic_selection_index_weights == {"fat": 0.318, "protein": 0.13}
+    assert AnimalConfig.heiferII_semen_allocation_proportions == {
+        "sexed_dairy": 0.5,
+        "conventional_dairy": 0.5,
+        "beef": 0.0,
+    }
+    assert AnimalConfig.cow_semen_allocation_proportions == {
+        "sexed_dairy": 0.2,
+        "conventional_dairy": 0.5,
+        "beef": 0.3,
+    }
+
+    assert AnimalConfig.heifer_reproduction_program == HeiferReproductionProtocol(heifer_method)
+    assert isinstance(AnimalConfig.heifer_reproduction_sub_program, expected_subprogram_type)
+
+    assert AnimalConfig.cow_reproduction_program == CowReproductionProtocol("TAI")
+    assert AnimalConfig.cow_presynch_method == CowPreSynchSubProtocol("Double OvSynch")
+    assert AnimalConfig.cow_tai_method == CowTAISubProtocol("OvSynch 56")
+    assert AnimalConfig.cow_ovsynch_method == CowTAISubProtocol("OvSynch 56")
+    assert AnimalConfig.cow_resynch_method == CowReSynchSubProtocol("TAIafterPD")
+
+    assert AnimalConfig.annual_death_probability == 0.05
+    assert AnimalConfig.parity_death_distribution == {
+        RemovalRiskParityGroup.ONE: 0.2,
+        RemovalRiskParityGroup.TWO: 0.3,
+        RemovalRiskParityGroup.THREE_PLUS: 0.5,
+    }
+    assert AnimalConfig.annual_sale_probability == 0.32
+    assert AnimalConfig.parity_sale_distribution == {
+        RemovalRiskParityGroup.ONE: 0.2,
+        RemovalRiskParityGroup.TWO: 0.3,
+        RemovalRiskParityGroup.THREE_PLUS: 0.5,
+    }
+
+    mock_om.add_warning.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    "methane_mitigation_method, expected_additive_amount",
+    [
+        ("None", 0.0),
+        ("3-NOP", 90),
+        ("Monensin", 30),
+        ("Essential Oils", 50),
+        ("Seaweed", 55),
+        ("Unrecognized Additive", 0.0),
+    ],
+    ids=["none", "3nop", "monensin", "essential_oils", "seaweed", "unrecognized"],
+)
+def test_initialize_animal_config_selects_dose_of_chosen_mitigation_method(
+    mocker: pytest_mock.MockerFixture,
+    methane_mitigation_method: str,
+    expected_additive_amount: float,
+) -> None:
+    """The dose fed to the mitigation equations comes from the selected method's own field."""
+    mock_im_cls = mocker.patch("RUFAS.biophysical.animal.animal_config.InputManager")
+    mocker.patch("RUFAS.biophysical.animal.animal_config.OutputManager")
+
+    mock_im = mock_im_cls.return_value
+
+    animal_data = {
+        "animal_config": _make_base_animal_config("5dCG2P", "TAI"),
+        "methane_model": {"dummy": "model"},
+        "methane_mitigation": {
+            "methane_mitigation_method": methane_mitigation_method,
+            "3-NOP_additive_amount": 90,
+            "monensin_additive_amount": 30,
+            "essential_oils_additive_amount": 50,
+            "seaweed_additive_amount": 55,
+        },
+        "herd_information": {"simulate_genetics": False},
+        "genetics": _make_genetics(),
+    }
+
+    def get_data_side_effect(key: str) -> Any:
+        if key == "animal":
+            return animal_data
+        if key == "feed.ration_formulation_parameters.milk_reduction_maximum":
+            return 1.23
+        if key in ("animal_mean_phenotype", "animal_top_listing_semen"):
+            return {}
+        raise KeyError(key)
+
+    mock_im.get_data.side_effect = get_data_side_effect
+
+    AnimalConfig.initialize_animal_config()
+
+    assert AnimalConfig.methane_mitigation_method == methane_mitigation_method
+    assert AnimalConfig.methane_mitigation_additive_amount == expected_additive_amount
+
+
+def test_initialize_animal_config_warns_when_selected_mitigation_dose_field_is_missing(
+    mocker: pytest_mock.MockerFixture,
+) -> None:
+    """A recognized method whose dose field is absent falls back to 0 and warns rather than raising."""
+    mock_im_cls = mocker.patch("RUFAS.biophysical.animal.animal_config.InputManager")
+    mock_om_cls = mocker.patch("RUFAS.biophysical.animal.animal_config.OutputManager")
+
+    mock_im = mock_im_cls.return_value
+    mock_om = mock_om_cls.return_value
+
+    animal_data = {
+        "animal_config": _make_base_animal_config("5dCG2P", "TAI"),
+        "methane_model": {"dummy": "model"},
+        # "3-NOP" is selected, but "3-NOP_additive_amount" is absent from the blob.
+        "methane_mitigation": {"methane_mitigation_method": "3-NOP"},
+        "herd_information": {"simulate_genetics": False},
+        "genetics": _make_genetics(),
+    }
+
+    def get_data_side_effect(key: str) -> Any:
+        if key == "animal":
+            return animal_data
+        if key == "feed.ration_formulation_parameters.milk_reduction_maximum":
+            return 1.23
+        if key in ("animal_mean_phenotype", "animal_top_listing_semen"):
+            return {}
+        raise KeyError(key)
+
+    mock_im.get_data.side_effect = get_data_side_effect
+
+    AnimalConfig.initialize_animal_config()
+
+    assert AnimalConfig.methane_mitigation_additive_amount == 0.0
+
+    mock_om.add_warning.assert_called_once()
+    warning_args, _ = mock_om.add_warning.call_args
+    assert "Missing methane mitigation additive dose" in warning_args[0]
+    assert "3-NOP_additive_amount" in warning_args[1]
+
+
+def test_initialize_animal_config_adds_warning_when_third_check_after_or_on_dryoff(
+    mocker: pytest_mock.MockerFixture,
+) -> None:
+    mock_im_cls = mocker.patch("RUFAS.biophysical.animal.animal_config.InputManager")
+    mock_om_cls = mocker.patch("RUFAS.biophysical.animal.animal_config.OutputManager")
+
+    mock_im = mock_im_cls.return_value
+    mock_om = mock_om_cls.return_value
+
+    animal_config = {
+        "management_decisions": {
+            "breeding_start_day_h": 380,
+            "heifer_repro_method": "SynchED",
+            "cow_repro_method": "TAI",
+            "semen_type": "conventional",
+            "days_in_preg_when_dry": 218,
+            "heifer_repro_cull_time": 500,
+            "calf_mortality_rate": 0,
+            "heifer_mortality_rate": 0,
+            "do_not_breed_time": 185,
+            "cull_milk_production": 30,
+            "cow_times_milked_per_day": 3,
+            "milk_fat_percent": 4,
+            "milk_protein_percent": 3.2,
+        },
+        "farm_level": {
+            "calf": {
+                "user_defined_male_calf_rate": 0.1,
+                "keep_dairy_female_rate": 1,
+                "calf_retention_method": "rate",
+                "annual_keep_female_calf_num": 0,
+                "wean_day": 60,
+                "wean_length": 7,
+                "milk_type": "whole",
+            },
+            "repro": {
+                "voluntary_waiting_period": 50,
+                "conception_rate_decrease": 0.026,
+                "decrease_conception_rate_in_rebreeding": False,
+                "decrease_conception_rate_by_parity": False,
+                "avg_gestation_len": 276,
+                "std_gestation_len": 6,
+                "prefresh_day": 21,
+                "calving_interval": 400,
+                "selective_repro_strategy": True,
+                "ranking_method": "genetic",
+                "genetic_selection_index_weights": {
+                    "fat": 0.318,
+                    "protein": 0.13,
+                },
+                "heifers": {
+                    "estrus_detection_rate": 0.9,
+                    "estrus_conception_rate": 0.6,
+                    "repro_sub_protocol": "2P",
+                    "repro_sub_properties": {"conception_rate": 0.6, "estrus_detection_rate": 0.9},
+                    "semen_allocation_proportions": {
+                        "sexed_dairy": 0.5,
+                        "conventional_dairy": 0.5,
+                        "beef": 0.0,
+                    },
+                },
+                "cows": {
+                    "estrus_detection_rate": 0.6,
+                    "ED_conception_rate": 0.5,
+                    "presynch_program": "Double OvSynch",
+                    "presynch_program_start_day": 50,
+                    "ovsynch_program": "OvSynch 56",
+                    "ovsynch_program_start_day": 64,
+                    "ovsynch_program_conception_rate": 0.6,
+                    "resynch_program": "TAIafterPD",
+                    "semen_allocation_proportions": {
+                        "sexed_dairy": 0.2,
+                        "conventional_dairy": 0.5,
+                        "beef": 0.3,
+                    },
+                },
+            },
+            "bodyweight": {
+                "birth_weight_avg_ho": 43.9,
+                "birth_weight_std_ho": 1,
+                "birth_weight_avg_je": 27.2,
+                "birth_weight_std_je": 1,
+                "target_heifer_preg_day": 399,
+                "mature_body_weight_avg": 740.1,
+                "mature_body_weight_std": 73.5,
+            },
+        },
+        "from_literature": {
+            "repro": {
+                "preg_check_day_1": 32,
+                "preg_loss_rate_1": 0.02,
+                "preg_check_day_2": 60,
+                "preg_loss_rate_2": 0.096,
+                "preg_check_day_3": 250,
+                "preg_loss_rate_3": 0.017,
+                "avg_estrus_cycle_return": 23,
+                "std_estrus_cycle_return": 6,
+                "avg_estrus_cycle_heifer": 21,
+                "std_estrus_cycle_heifer": 2.5,
+                "avg_estrus_cycle_cow": 21,
+                "std_estrus_cycle_cow": 4,
+                "avg_estrus_cycle_after_pgf": 5,
+                "std_estrus_cycle_after_pgf": 2,
+            },
+            "culling": {
+                "annual_death_prob": 0.05,
+                "parity_death_dist": [0.2, 0.3, 0.5],
+                "annual_sale_prob": 0.32,
+                "parity_sale_dist": [0.2, 0.3, 0.5],
+            },
+            "life_cycle": {"still_birth_rate": 0.065},
+        },
+    }
+
+    animal_data = {
+        "animal_config": animal_config,
+        "methane_model": {"cow": {"lactating": "IPCC"}},
+        "methane_mitigation": {
+            "methane_mitigation_method": "None",
+        },
+        "herd_information": {"simulate_genetics": False},
+        "genetics": _make_genetics(),
+    }
+
+    def get_data_side_effect(key: str) -> Any:
+        if key == "animal":
+            return animal_data
+        elif key == "feed.ration_formulation_parameters.milk_reduction_maximum":
+            return 2.5
+        if key == "animal_mean_phenotype":
+            return {}
+        if key == "animal_top_listing_semen":
+            return {}
+        raise KeyError(key)
+
+    mock_im.get_data.side_effect = get_data_side_effect
+
+    AnimalConfig.initialize_animal_config()
+
+    assert AnimalConfig.milk_reduction_maximum == 2.5
+
+    mock_om.add_warning.assert_called_once()
+    warning_args, warning_kwargs = mock_om.add_warning.call_args
+
+    assert "3rd pregnancy check day >=" in warning_args[0]
+
+
+def test_initialize_animal_config_reads_genetics_inputs(mocker: pytest_mock.MockerFixture) -> None:
+    """The farm-specific genetic distribution inputs in the ``genetics`` section are read into ``AnimalConfig``."""
+    mock_im_cls = mocker.patch("RUFAS.biophysical.animal.animal_config.InputManager")
+    mocker.patch("RUFAS.biophysical.animal.animal_config.OutputManager")
+
+    mock_im = mock_im_cls.return_value
+
+    animal_data = {
+        "animal_config": _make_base_animal_config("5dCG2P", "TAI"),
+        "methane_model": {"dummy": "model"},
+        "methane_mitigation": {"methane_mitigation_method": "None"},
+        "herd_information": {"simulate_genetics": True},
+        "genetics": {
+            "tbv_fat_variance": 1.1,
+            "tbv_protein_variance": 2.2,
+            "tbv_correlation": 0.3,
+            "permanent_environment_fat_variance": 4.4,
+            "permanent_environment_protein_variance": 5.5,
+            "permanent_environment_correlation": 0.6,
+            "temporary_environment_fat_variance": 7.7,
+            "temporary_environment_protein_variance": 8.8,
+            "temporary_environment_correlation": 0.9,
+        },
+    }
+
+    def get_data_side_effect(key: str) -> Any:
+        if key == "animal":
+            return animal_data
+        if key == "feed.ration_formulation_parameters.milk_reduction_maximum":
+            return 1.23
+        if key in ("animal_mean_phenotype", "animal_top_listing_semen"):
+            return {}
+        raise KeyError(key)
+
+    mock_im.get_data.side_effect = get_data_side_effect
+
+    AnimalConfig.initialize_animal_config()
+
+    assert AnimalConfig.simulate_genetics is True
+    assert AnimalConfig.tbv_fat_variance == 1.1
+    assert AnimalConfig.tbv_protein_variance == 2.2
+    assert AnimalConfig.tbv_correlation == 0.3
+    assert AnimalConfig.permanent_environment_fat_variance == 4.4
+    assert AnimalConfig.permanent_environment_protein_variance == 5.5
+    assert AnimalConfig.permanent_environment_correlation == 0.6
+    assert AnimalConfig.temporary_environment_fat_variance == 7.7
+    assert AnimalConfig.temporary_environment_protein_variance == 8.8
+    assert AnimalConfig.temporary_environment_correlation == 0.9
