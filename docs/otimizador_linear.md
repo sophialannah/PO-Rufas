@@ -1,5 +1,10 @@
 # Otimização linear de dietas integrada ao RuFaS
 
+[Guia de instalação e execução](../README.md) · [Roteiro para apresentação](apresentacao_projeto.md)
+
+Este documento detalha a formulação matemática, a integração, as fontes e os limites
+dos exemplos. Para executar pela primeira vez, comece pelo README.
+
 ## Busca no catálogo completo (extensão)
 
 O comando abaixo analisa os **300 registros** de `user_feeds.csv`, cruza os IDs com
