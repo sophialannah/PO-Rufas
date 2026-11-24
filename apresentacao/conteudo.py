@@ -7,38 +7,53 @@ STAGES = [
     (
         "Slide 1 — projeto",
         SOPHIA,
-        30,
+        45,
         "Nosso projeto aplica Pesquisa Operacional à formulação de dietas para bovinos leiteiros. "
         "Buscamos as quantidades de ingredientes que atendem às restrições com o menor custo diário. "
         "Desenvolvemos um módulo linear integrado às estruturas do RuFaS. Vamos mostrar o modelo e uma execução real, "
-        "com dados demonstrativos claramente identificados.",
+        "com dados demonstrativos claramente identificados. A alimentação envolve uma decisão recorrente: "
+        "um ingrediente barato pode fornecer poucos nutrientes e exigir uma quantidade maior. Por isso, "
+        "avaliamos a combinação completa, respeitando disponibilidade e limites nutricionais. "
+        "O objetivo desta entrega é demonstrar uma decisão reproduzível e verificável. Anderson vai explicar "
+        "como os dados chegam ao modelo.",
     ),
     (
         "Slide 2 — arquitetura",
         ANDERSON,
-        35,
+        60,
         "O programa recebe o perfil da vaca, a composição dos alimentos, os preços, estoques e metas nutricionais. "
         "Reutilizamos a biblioteca de alimentos e o calculador NRC do RuFaS para estimar o consumo de matéria seca. "
         "Os adaptadores convertem as unidades e entregam os dados ao otimizador. A saída contém a dieta "
         "e sua verificação. "
-        "A aplicação automática ao ciclo diário da fazenda ainda não foi implementada.",
+        "A aplicação automática ao ciclo diário da fazenda ainda não foi implementada. "
+        "Essa separação permite conferir cada entrada antes de resolver: o perfil descreve o animal; "
+        "a composição informa o que cada alimento fornece; preços e estoques definem o cenário econômico. "
+        "O adaptador compatibiliza matéria natural e matéria seca, evitando misturar bases de cálculo. "
+        "Neste exemplo, proteína, energia e limites de fibra são metas ilustrativas explícitas. "
+        "Agora Sophia apresenta como esses dados se tornam variáveis e restrições.",
     ),
     (
         "Slide 3 — modelo",
         SOPHIA,
-        45,
+        75,
         "Cada variável representa os quilos diários de um ingrediente em matéria natural. "
         "Multiplicamos essas quantidades pelos preços e minimizamos a soma. "
         "As restrições controlam matéria seca, proteína, energia, fibra, estoques e limites de inclusão. "
         "A composição é convertida para a mesma base de unidades. "
         "Os coeficientes permanecem fixos durante a otimização, tornando o problema linear. "
         "As proporções de fibra são reescritas sem divisão por variável. "
-        "Usamos a função linprog do SciPy com HiGHS. Agora vamos executar.",
+        "Por exemplo, o total de proteína é a soma da quantidade de cada alimento multiplicada "
+        "por sua fração de matéria seca e seu teor proteico. Esse total precisa atingir a meta. "
+        "Para o estoque, multiplicamos a quantidade diária pelo período e limitamos ao disponível. "
+        "Não multiplicamos variáveis de decisão entre si. O perfil da vaca e suas metas ficam fixos "
+        "durante essa resolução; não linearizamos todo o sistema nutricional NRC ou NASEM. "
+        "Usamos a função linprog do SciPy com HiGHS para procurar o mínimo sujeito a essas condições. "
+        "Depois, o programa confere a solução retornada. Agora vamos executar.",
     ),
     (
         "Demonstração — entradas",
         SOPHIA,
-        30,
+        35,
         "Esta vaca tem 650 quilos, 100 dias em lactação e produz 30 quilos de leite por dia. "
         "Aqui estão alfafa, milho e soja, com seus preços e estoques. "
         "A matéria seca vem do calculador do RuFaS; preços e metas suplementares são ilustrativos. "
@@ -47,22 +62,28 @@ STAGES = [
     (
         "Demonstração — resultado",
         ANDERSON,
-        35,
+        50,
         "O solver retornou status ótimo. A dieta contém aproximadamente 15,91 quilos de alfafa, "
         "9,10 de milho e 0,18 de soja, em matéria natural por dia. "
         "O custo é aproximadamente 35 reais por dia. "
         "As onze verificações foram satisfeitas, incluindo nutrientes, estoques e inclusão. "
+        "Conferimos também o custo multiplicando cada quantidade pelo respectivo preço. "
+        "A solução fornece aproximadamente 22,55 quilos de matéria seca, 3,6 quilos de proteína bruta "
+        "e 35 megacalorias de energia líquida. As onze verificações incluem cinco nutricionais "
+        "e seis de estoque e inclusão. A tabela arredonda os números apenas para exibição. "
         "Esse é o mínimo para as opções e hipóteses informadas, não uma recomendação nutricional pronta.",
     ),
     (
         "Slide 4 — conclusão",
         ANDERSON,
-        25,
+        35,
         "Entregamos um núcleo executável, com conversões de unidades e verificação das restrições. "
         "A validação executou 433 testes dos componentes relacionados, todos aprovados. "
         "A contribuição é uma alternativa linear integrada aos dados do RuFaS. "
         "O próximo passo é substituir as hipóteses demonstrativas e ampliar a validação nutricional. "
-        "Estamos disponíveis para perguntas.",
+        "Ainda precisamos incorporar o resultado ao ciclo diário da simulação e investigar cenários "
+        "com dados econômicos documentados. Não demonstramos um percentual de economia em fazenda. "
+        "Encerramos os cinco minutos de apresentação e iniciamos os cinco minutos de perguntas.",
     ),
 ]
 

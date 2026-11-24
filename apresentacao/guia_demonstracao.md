@@ -1,4 +1,4 @@
-# Demonstração ao vivo — 65 segundos
+# Demonstração ao vivo — 85 segundos
 
 **Integrantes:** Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.
 
@@ -35,9 +35,9 @@ Preparar as entradas antes da contagem não pré-calcula a solução: `optimize_
 
 | Relógio geral | Ação |
 |---|---|
-| 01:50–02:20 | Sophia mostra o perfil, os três ingredientes, preços, estoques e metas. Pressiona Enter. |
-| 02:20–02:55 | Anderson explica as quantidades, custo e 11/11 verificações. |
-| 02:55 | Alt+Tab para os slides; avançar ao slide 4. |
+| 03:00–03:35 | Sophia mostra o perfil, os três ingredientes, preços, estoques e metas. Pressiona Enter. |
+| 03:35–04:25 | Anderson explica as quantidades, custo e 11/11 verificações. |
+| 04:25 | Alt+Tab para os slides; avançar ao slide 4. |
 
 Transição: “Vou executar o solver agora. Anderson, explique o resultado.”
 Resultado esperado: `optimal`, custo aproximado de R$ 34,9978/dia; todos os checks verdadeiros.

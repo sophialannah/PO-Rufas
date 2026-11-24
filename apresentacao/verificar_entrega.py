@@ -26,6 +26,7 @@ def main() -> None:
         "resultados_validados.md",
         "checklist_apresentacao.md",
         "cartoes_consulta.md",
+        "simulacao_arguicao.md",
     ]
     for name in required:
         assert (HERE / name).is_file(), name
@@ -37,8 +38,9 @@ def main() -> None:
         for link in re.findall(r"\]\(([^)]+)\)", content):
             if "://" not in link and not link.startswith("#"):
                 assert (path.parent / link.split("#")[0]).exists(), (path, link)
-    assert sum(stage[2] for stage in STAGES) + 100 == 300
-    assert len(QA) >= 15
+    assert sum(stage[2] for stage in STAGES) == 300
+    assert [stage[2] for stage in STAGES] == [45, 60, 75, 35, 50, 35]
+    assert len(QA) >= 25
     prs = Presentation(HERE / "apresentacao_rufas_5min.pptx")
     assert len(prs.slides) == 4
     assert abs(prs.slide_width / prs.slide_height - 16 / 9) < 1e-5
@@ -66,7 +68,9 @@ def main() -> None:
         editable_pptx=True,
         pdf_pages=4,
         powerpoint_open_verified=True,
-        planned_seconds=300,
+        planned_seconds=600,
+        presentation_seconds=300,
+        questions_seconds=300,
         oral_rehearsal_performed=False,
         projector_checked=False,
         qa_count=len(QA),
