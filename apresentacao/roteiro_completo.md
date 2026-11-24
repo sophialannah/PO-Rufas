@@ -16,7 +16,7 @@ São cinco minutos exclusivos de apresentação, seguidos de cinco minutos de ar
 
 Use um cronômetro visível. As durações são metas de ensaio, não uma medição das vozes dos integrantes. Ensaie as falas com pausas para respiração, troca de janela e execução. Ajuste o ritmo sem omitir as limitações. Às 05:00, encerre a exposição; às 10:00, encerre as perguntas.
 
-Sequência: slides 1 → 2 → 3 → Alt+Tab para o terminal → Enter para resolver → Alt+Tab de volta → slide 4. Não há quinto slide. O terminal deve estar preparado antes da contagem. Sophia: 155 s (2min35s); Anderson: 145 s (2min25s).
+Passe pelos slides 1 a 3 e mude para o navegador. Faça a demonstração seguindo o [guia web](guia_demonstracao_web.md) e volte ao PowerPoint para o slide 4. Deixe o terminal preparado como alternativa. Sophia fala por 155 s (2min35s) e Anderson por 145 s (2min25s).
 
 ## 00:00–00:45 — Slide 1 — projeto
 
@@ -46,17 +46,17 @@ Sequência: slides 1 → 2 → 3 → Alt+Tab para o terminal → Enter para reso
 
 **Sophia Lannah Beatriz Ferreira de Sousa — 35 segundos**
 
-> Esta vaca tem 627,56 quilos, 100 dias em lactação e produz 30 quilos de leite por dia. Aqui estão alfafa, milho e soja, com seus preços e estoques. A matéria seca vem do calculador do RuFaS; preços e metas suplementares são ilustrativos. Vou executar o solver agora. Anderson, explique o resultado.
+> O arquivo do RuFaS traz a vaca 98605 com 627,56 quilos, 100 dias em lactação e paridade quatro. Assumimos 30 quilos de leite por dia. Na aba Ingredientes, vemos alfafa, milho e farelo de soja com composição NRC e preços ilustrativos. Na aba Otimização, o consumo de matéria seca vem do cálculo NRC. O período é de sete dias. Vou clicar em Executar otimização.
 
-**Cartão:** 627,56 kg / DEL 100 / leite 30 → tabela de entradas → sintéticos identificados → ENTER → passar a Anderson.
+**Cartão:** Animal 98605 → Ingredientes → Otimização → Executar otimização → passar a Anderson.
 
 ## 03:35–04:25 — Demonstração — resultado
 
 **Anderson Alberto da Costa Silva — 50 segundos**
 
-> O solver retornou status ótimo. A dieta contém aproximadamente 14,83 quilos de alfafa, 9,53 de milho e 0,50 de soja, em matéria natural por dia. O custo é aproximadamente 35 reais por dia. As onze verificações foram satisfeitas, incluindo nutrientes, estoques e inclusão. Conferimos também o custo multiplicando cada quantidade pelo respectivo preço. A solução fornece aproximadamente 22,23 quilos de matéria seca, 3,6 quilos de proteína bruta e 35 megacalorias de energia líquida. As onze verificações incluem cinco nutricionais e seis de estoque e inclusão. A tabela arredonda os números apenas para exibição. Esse é o mínimo para as opções e hipóteses informadas, não uma recomendação nutricional pronta.
+> Em Resultados, o HiGHS retornou a solução ótima para os parâmetros deste cenário. O custo diário é de cerca de 35 reais e as onze verificações do modelo linear passaram. A tabela mostra as quantidades de alfafa, milho e farelo de soja em matéria natural e seca. O RationManager recebeu a dieta em percentuais de matéria seca e recuperou as quantidades para calcular a oferta de nutrientes. O NutritionEvaluator apontou um déficit de 6,68 gramas diárias de fósforo absorvível. Por isso, o parecer do RuFaS é Não aprovada. O fósforo absorvível está entre os critérios da avaliação nativa e fica fora das metas configuradas no modelo linear desta execução.
 
-**Cartão:** optimal → 14,83 / 9,53 / 0,50 kg MN → R$ 35,1059 → 11/11 OK → mínimo do cenário.
+**Cartão:** Resultados → R$ 35,1059/dia → 11/11 no LP → RationManager → déficit de P → parecer Não aprovada.
 
 ## 04:25–05:00 — Slide 4 — conclusão
 

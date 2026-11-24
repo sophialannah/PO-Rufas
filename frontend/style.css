@@ -1,0 +1,15 @@
+.stApp [data-testid="stMainBlockContainer"] {max-width: 78rem; padding-top: 3.5rem;}
+.stApp h1 {
+  font-size: clamp(1.8rem, 3.3vw, 3.1rem);
+  letter-spacing: -.045em;
+  border-bottom: 3px solid #168675;
+  padding-bottom: .65rem;
+}
+.stApp [data-testid="stMetric"] {
+  border: 1px solid #16867555;
+  border-radius: .65rem;
+  padding: .8rem 1rem;
+}
+.stApp [data-testid="stMetricValue"] {font-size: clamp(1.15rem, 2.3vw, 1.85rem);}
+.stApp [role="tablist"] {overflow-x: auto; width: 100%;}
+.stApp [data-testid="stAppDeployButton"] {display: none;}

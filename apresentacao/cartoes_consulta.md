@@ -16,11 +16,11 @@ x = kg MN/dia; p = R$/kg MN; min Σpx; MS/PB/NEL/FDN; estoque/inclusão; coefici
 
 **Demonstração — entradas — 35s — Sophia**
 
-627,56 kg / DEL 100 / leite 30 → tabela de entradas → sintéticos identificados → ENTER → passar a Anderson.
+Animal 98605 → Ingredientes → Otimização → Executar otimização → passar a Anderson.
 
 **Demonstração — resultado — 50s — Anderson**
 
-optimal → 14,83 / 9,53 / 0,50 kg MN → R$ 35,1059 → 11/11 OK → mínimo do cenário.
+Resultados → R$ 35,1059/dia → 11/11 no LP → RationManager → déficit de P → parecer Não aprovada.
 
 **Slide 4 — conclusão — 35s — Anderson**
 

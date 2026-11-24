@@ -1,0 +1,17 @@
+# Demonstração web em 85 segundos
+
+Prepare o PowerPoint no slide 1 e o navegador no frontend. Use `.\frontend\iniciar_frontend.bat` na raiz do projeto. Confira a aplicação uma vez antes da aula. Recarregue a sessão e confirme o animal 98605, três alimentos da demonstração e sete dias de estoque. Para começar, deixe a aba **Animal** visível.
+
+| Tempo | Pessoa | Ação na tela |
+|---|---|---|
+| 03:00–03:12 | Sophia | Passe para o navegador. Mostre ID 98605, 627,56 kg, 100 dias em lactação e paridade 4. Identifique 30 kg/dia de leite como hipótese. |
+| 03:12–03:24 | Sophia | Abra **Ingredientes**. Mostre alfafa, milho e farelo de soja. Aponte a fonte NRC e os valores ilustrativos de preço, estoque e NEL. |
+| 03:24–03:35 | Sophia | Abra **Otimização**. Aponte o consumo de MS calculado, as metas externas e o período de sete dias. Clique **Executar otimização**. |
+| 03:35–04:00 | Anderson | Abra **Resultados**. Mostre o custo diário e as verificações do LP. Aponte quantidades em MN e MS na tabela da dieta. |
+| 04:00–04:25 | Anderson | Destaque **Não aprovada** e o déficit de fósforo absorvível de 6,68 g/dia. Explique a passagem pelo RationManager e o parecer do NutritionEvaluator. Volte ao PowerPoint para o slide 4. |
+
+A apresentação termina às 05:00. A arguição vai das 05:00 às 10:00.
+
+## Alternativa pelo terminal
+
+Deixe o terminal pronto antes da aula, com `.\apresentacao\demonstracao_integrada.bat` aguardando Enter. Em caso de falha no navegador, use o [guia do terminal](guia_demonstracao.md), pressione Enter e mostre o mesmo cálculo e diagnóstico. Para validar essa alternativa antes da aula, use `.\apresentacao\demonstracao_integrada.bat --auto`.

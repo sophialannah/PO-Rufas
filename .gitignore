@@ -2,6 +2,7 @@
 
 # ignore text files
 *.txt
+!/frontend/requirements.txt
 *.txt#
 *.doc
 *.docx
