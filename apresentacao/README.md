@@ -2,11 +2,13 @@
 
 **Integrantes:** Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.
 
-**Exatamente quatro slides, 3min20s de exposição e demonstração + 1min40s de perguntas.**
+**Exatamente quatro slides, 5 minutos de exposição e demonstração + 5 minutos adicionais de perguntas.**
+**Total: 10 minutos.**
 
 Abra [apresentacao_rufas_5min.pptx](apresentacao_rufas_5min.pptx).
 Leia o [roteiro completo](roteiro_completo.md) e o [guia da demonstração](guia_demonstracao.md).
 Use os [cartões](cartoes_consulta.md) para ensaiar e o [banco de perguntas](perguntas_e_respostas.md) para estudar.
+Arguição: [simulação de cinco minutos](simulacao_arguicao.md).
 Falas individuais: [Sophia](roteiro_sophia.md) e [Anderson](roteiro_anderson.md).
 
 ```powershell
@@ -38,4 +40,5 @@ Na raiz do repositório, com o ambiente preparado e `python-pptx==1.0.2` instala
 
 A regeneração substitui os arquivos gerados e atualiza a base de resultados dos slides.
 `conteudo.py` centraliza as falas e perguntas; `gerar_materiais.py` cria o PowerPoint e os guias.
-O solver e as equações continuam nos módulos originais do projeto. Não houve commit ou push.
+O solver e as equações continuam nos módulos originais do projeto.
+A entrega é acompanhada no [PR #6](https://github.com/sophialannah/PO-Rufas/pull/6).

@@ -1,38 +1,38 @@
 {
-  "speaking_and_demo_seconds": 200,
-  "questions_seconds": 100,
-  "total_seconds": 300,
+  "speaking_and_demo_seconds": 300,
+  "questions_seconds": 300,
+  "total_seconds": 600,
   "note": "Planned schedule; not a measured oral rehearsal",
   "stages": [
     {
       "stage": "Slide 1 \u2014 projeto",
-      "seconds": 30,
-      "words": 48
+      "seconds": 45,
+      "words": 97
     },
     {
       "stage": "Slide 2 \u2014 arquitetura",
-      "seconds": 35,
-      "words": 66
+      "seconds": 60,
+      "words": 131
     },
     {
       "stage": "Slide 3 \u2014 modelo",
-      "seconds": 45,
-      "words": 76
+      "seconds": 75,
+      "words": 163
     },
     {
       "stage": "Demonstra\u00e7\u00e3o \u2014 entradas",
-      "seconds": 30,
+      "seconds": 35,
       "words": 51
     },
     {
       "stage": "Demonstra\u00e7\u00e3o \u2014 resultado",
-      "seconds": 35,
-      "words": 58
+      "seconds": 50,
+      "words": 108
     },
     {
       "stage": "Slide 4 \u2014 conclus\u00e3o",
-      "seconds": 25,
-      "words": 50
+      "seconds": 35,
+      "words": 84
     }
   ]
 }

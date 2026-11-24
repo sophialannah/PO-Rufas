@@ -52,27 +52,28 @@ def guides(demo: dict, validation: dict) -> None:
             f"> {speech}\n\n**Cartão:** {CARDS[index]}\n"
         )
         clock += seconds
-    assert clock == 200
-    timing.append("| 03:20–05:00 | Perguntas | Ambos | 100 s |")
+    assert clock == 300
+    timing.append("| 05:00–10:00 | Perguntas | Ambos | 300 s |")
     table = "\n".join(timing)
     instructions = (
-        "O cronograma obrigatório prevalece sobre a sugestão inicial de 45–60 segundos para a demo: "
-        "a demonstração tem **65 segundos**, divididos em 30 + 35. São **200 segundos de exposição "
-        "+ 100 segundos de perguntas = 300 segundos**.\n\n"
+        "São cinco minutos exclusivos de apresentação, seguidos de cinco minutos de arguição: "
+        "a demonstração tem **85 segundos**, divididos em 35 + 50. São **300 segundos de exposição "
+        "+ 300 segundos adicionais de perguntas = 600 segundos**.\n\n"
         "Use um cronômetro visível. As durações são metas de ensaio, não uma medição das vozes dos integrantes. "
-        "As falas são curtas para comportar respiração, troca de janela e execução. Não preencha o tempo restante "
-        "com explicações extras. Ao chegar a 03:20, encerre a exposição; às 05:00, encerre as perguntas.\n\n"
+        "Ensaie as falas com pausas para respiração, troca de janela e execução. Ajuste o ritmo "
+        "sem omitir as limitações. Às 05:00, encerre a exposição; às 10:00, encerre as perguntas.\n\n"
         "Sequência: slides 1 → 2 → 3 → Alt+Tab para o terminal → Enter para resolver → "
-        "Alt+Tab de volta → slide 4. Não há quinto slide. O terminal deve estar preparado antes da contagem."
+        "Alt+Tab de volta → slide 4. Não há quinto slide. O terminal deve estar preparado antes da contagem. "
+        "Sophia: 155 s (2min35s); Anderson: 145 s (2min25s)."
     )
     write(
         "roteiro_completo.md",
-        f"# Roteiro completo — 5 minutos\n\n{names}\n\n{table}\n\n{instructions}\n\n"
+        f"# Roteiro completo — 5 minutos de apresentação + 5 de arguição\n\n{names}\n\n{table}\n\n{instructions}\n\n"
         + "\n".join(sections)
-        + "\n## 03:20–05:00 — perguntas\n\n"
+        + "\n## 05:00–10:00 — perguntas\n\n"
         "Sophia inicia respostas de modelagem; Anderson, de integração e validação. "
-        "Cada resposta deve durar 10–20 segundos. O banco de perguntas serve para estudo; "
-        "não se pretende responder todas as perguntas em 100 segundos.\n",
+        "Cada resposta deve durar 15–35 segundos. O banco de perguntas serve para estudo; "
+        "não se pretende responder todas as perguntas nos cinco minutos adicionais.\n",
     )
     for person, filename in [(SOPHIA, "roteiro_sophia.md"), (ANDERSON, "roteiro_anderson.md")]:
         selected = [section for section, stage in zip(sections, STAGES) if stage[1] == person]
@@ -95,23 +96,78 @@ def guides(demo: dict, validation: dict) -> None:
             f"**{title} — {seconds}s — {speaker.split()[0]}**\n\n{card}"
             for (title, speaker, seconds, _), card in zip(STAGES, CARDS)
         )
-        + "\n\n**03:20: parar a exposição. 05:00: encerrar.**\n"
+        + "\n\n**05:00: encerrar a apresentação e iniciar perguntas. 10:00: encerrar a arguição.**\n"
         "\nNúmeros-chave: 650 kg; DEL 100; leite 30 kg/dia; MS 22,5453; PB mínima 3,6; "
         "NEL mínima 35; FDN 28–40%; R$ 34,9978/dia; 11 verificações; 433 testes.\n",
     )
+    groups = [
+        ("Básicas", [1, 2, 3, 4, 5, 9]),
+        ("Intermediárias", [6, 7, 10, 13, 14, 17, 23]),
+        ("Avançadas", [8, 11, 15, 16, 22, 25, 26]),
+        ("Críticas sobre limitações", [12, 18, 19, 20, 21, 24, 27]),
+    ]
+    questions = []
+    for group, indices in groups:
+        questions.append(f"## {group}")
+        for index in indices:
+            question, person, answer = QA[index - 1]
+            questions.append(f"### {index}. {question}\n\n**Resposta sugerida: {person}**\n\n{answer}")
     write(
         "perguntas_e_respostas.md",
-        f"# Banco de perguntas — respostas de 10 a 20 segundos\n\n{names}\n\n"
-        "Priorize as perguntas 3, 5, 10, 11, 12, 15, 16 e 24. Ambos devem compreender todas as respostas. "
-        "Em 100 segundos haverá tempo apenas para algumas perguntas, incluindo o tempo de fala do professor.\n\n"
-        + "\n\n".join(
-            f"## {index}. {question}\n\n**Resposta sugerida: {person}**\n\n{answer}"
-            for index, (question, person, answer) in enumerate(QA, 1)
-        ),
+        f"# Banco de 27 perguntas — arguição separada de cinco minutos\n\n{names}\n\n"
+        "As perguntas ocupam 05:00–10:00, após a apresentação. Ambos devem dominar todas as respostas. "
+        "Respostas iniciais de 15–35 segundos; o professor pode aprofundar qualquer tópico. "
+        "Não é necessário responder às 27 perguntas em uma sessão.\n\n"
+        "Base verificável: [resultados e fontes](resultados_validados.md), "
+        "[solver](../RUFAS/biophysical/animal/ration/linear_diet.py), "
+        "[adaptador](../RUFAS/biophysical/animal/ration/linear_diet_adapter.py), "
+        "[exemplo](../RUFAS/biophysical/animal/ration/linear_diet_example.py) e "
+        "[validação](evidencias/testes.md). Veja a [simulação oral](simulacao_arguicao.md).\n\n"
+        + "\n\n".join(questions),
+    )
+    extensions = [
+        " No exemplo, somamos as parcelas de alfafa, milho e soja com precisão completa. "
+        "O resultado é 34,9978 reais por dia. Esse mínimo depende dos preços, ingredientes e "
+        "restrições informados; mudar o cenário pode mudar a solução.",
+        " A contribuição está na ligação entre os dados existentes e um núcleo linear verificável. "
+        "A conversão entre matéria natural e seca mantém as unidades consistentes. "
+        "A baixa automática de estoque e o uso no ciclo diário ainda são trabalhos futuros.",
+        " A mesma transformação vale para o limite superior, invertendo a desigualdade. "
+        "Isso funciona porque a proporção exigida é constante e a matéria seca é positiva. "
+        "Não significa linearizar todas as relações biológicas do animal.",
+        " A composição dos três ingredientes vem da biblioteca NRC utilizada pelo projeto. "
+        "Preços, estoques e energia suplementar estão identificados como didáticos. "
+        "Para uma aplicação prática, precisaríamos documentar esses parâmetros e ampliar a avaliação nutricional.",
+        " Também recalculamos o custo fora do resultado retornado pelo solver. "
+        "Essas verificações apoiam a correção computacional do cenário. "
+        "Os 433 casos são dos componentes relacionados, não de toda a suíte, e não substituem validação em animais.",
+        " Um ótimo matemático satisfaz o modelo fornecido; a qualidade da decisão depende também "
+        "da qualidade desse modelo. Portanto, a evolução exige dados documentados e avaliação especializada, "
+        "antes de transformar esta demonstração em uma recomendação para a fazenda.",
+    ]
+    simulation = []
+    for round_index, question_index in enumerate([3, 11, 7, 12, 15, 24]):
+        question, _, answer = QA[question_index - 1]
+        person = SOPHIA if round_index % 2 == 0 else ANDERSON
+        start = round_index * 50
+        simulation.append(
+            f"## {stamp(start)}–{stamp(start + 50)} — {person}\n\n"
+            f"- Professor, 10 s: {question}\n"
+            f"- Resposta, cerca de 35 s: {answer}{extensions[round_index]}\n"
+            "- Pausa e troca de interlocutor, 5 s.\n"
+        )
+    write(
+        "simulacao_arguicao.md",
+        f"# Simulação de arguição — cinco minutos adicionais\n\n{names}\n\n"
+        "Inicie um novo cronômetro ao terminar a apresentação: 00:00 aqui corresponde a 05:00 "
+        "da atividade. Seis rodadas de 50 segundos somam 300 segundos; a atividade termina às 10:00. "
+        "Os tempos incluem a pergunta, a resposta e a transição. São metas de ensaio, não uma gravação medida. "
+        "Cada integrante conduz três rodadas; depois invertam os papéis para estudar todo o projeto.\n\n"
+        + "\n".join(simulation),
     )
     write(
         "guia_demonstracao.md",
-        rf"""# Demonstração ao vivo — 65 segundos
+        rf"""# Demonstração ao vivo — 85 segundos
 
 {names}
 
@@ -148,9 +204,9 @@ Preparar as entradas antes da contagem não pré-calcula a solução: `optimize_
 
 | Relógio geral | Ação |
 |---|---|
-| 01:50–02:20 | Sophia mostra o perfil, os três ingredientes, preços, estoques e metas. Pressiona Enter. |
-| 02:20–02:55 | Anderson explica as quantidades, custo e 11/11 verificações. |
-| 02:55 | Alt+Tab para os slides; avançar ao slide 4. |
+| 03:00–03:35 | Sophia mostra o perfil, os três ingredientes, preços, estoques e metas. Pressiona Enter. |
+| 03:35–04:25 | Anderson explica as quantidades, custo e 11/11 verificações. |
+| 04:25 | Alt+Tab para os slides; avançar ao slide 4. |
 
 Transição: “Vou executar o solver agora. Anderson, explique o resultado.”
 Resultado esperado: `optimal`, custo aproximado de R$ 34,9978/dia; todos os checks verdadeiros.
@@ -327,7 +383,7 @@ Não há comparação válida de economia ou percentual de ganho nesta entrega.
 - [x] 433 testes relacionados aprovados, incluindo 33 específicos.
 - [x] Dados ilustrativos identificados em slides, terminal e roteiro.
 - [x] Quatro slides gerados, com nomes completos e notas de fala.
-- [x] Cronograma de 200 segundos + 100 segundos = 300 segundos.
+- [x] Cronograma de 300 segundos de apresentação + 300 segundos de arguição = 600 segundos.
 - [x] BAT e modo automático preparados para o Windows.
 - [x] Integração descrita como adaptador; sem alegação de ciclo diário completo.
 - [x] Sem percentual de economia inventado e sem comparação de cenários incompatíveis.
@@ -336,8 +392,8 @@ Não há comparação válida de economia ou percentual de ganho nesta entrega.
 
 - [ ] Abrir o PPTX no computador e projetor que serão usados; conferir fontes e proporção 16:9.
 - [ ] Consultar `evidencias/verificacao_powerpoint.json` para conferir abertura e exportação automáticas.
-- [ ] Ensaiar a dupla com cronômetro: slide 1 até 00:30; slide 2 até 01:05; slide 3 até 01:50.
-- [ ] Ensaiar demo até 02:55, conclusão até 03:20, perguntas até 05:00.
+- [ ] Ensaiar a dupla com cronômetro: slide 1 até 00:45; slide 2 até 01:45; slide 3 até 03:00.
+- [ ] Ensaiar demo até 04:25, conclusão até 05:00, perguntas separadas até 10:00.
 - [ ] Executar o BAT com `--auto` antes da aula; depois deixá-lo aguardando Enter nas entradas.
 - [ ] Deixar somente PowerPoint e terminal necessários à apresentação; testar Alt+Tab.
 - [ ] Usar fonte de terminal legível e largura suficiente para as tabelas.
@@ -355,11 +411,13 @@ Se ocorrer falha ao vivo, identificar a saída de contingência como execução 
 
 {names}
 
-**Exatamente quatro slides, 3min20s de exposição e demonstração + 1min40s de perguntas.**
+**Exatamente quatro slides, 5 minutos de exposição e demonstração + 5 minutos adicionais de perguntas.**
+**Total: 10 minutos.**
 
 Abra [apresentacao_rufas_5min.pptx](apresentacao_rufas_5min.pptx).
 Leia o [roteiro completo](roteiro_completo.md) e o [guia da demonstração](guia_demonstracao.md).
 Use os [cartões](cartoes_consulta.md) para ensaiar e o [banco de perguntas](perguntas_e_respostas.md) para estudar.
+Arguição: [simulação de cinco minutos](simulacao_arguicao.md).
 Falas individuais: [Sophia](roteiro_sophia.md) e [Anderson](roteiro_anderson.md).
 
 ```powershell
@@ -391,7 +449,8 @@ Na raiz do repositório, com o ambiente preparado e `python-pptx==1.0.2` instala
 
 A regeneração substitui os arquivos gerados e atualiza a base de resultados dos slides.
 `conteudo.py` centraliza as falas e perguntas; `gerar_materiais.py` cria o PowerPoint e os guias.
-O solver e as equações continuam nos módulos originais do projeto. Não houve commit ou push.
+O solver e as equações continuam nos módulos originais do projeto.
+A entrega é acompanhada no [PR #6](https://github.com/sophialannah/PO-Rufas/pull/6).
 """,
     )
 
@@ -444,10 +503,10 @@ def deck(demo: dict, validation: dict) -> None:
     prs = Presentation()
     prs.slide_width, prs.slide_height = Inches(13.333333), Inches(7.5)
     prs.core_properties.title = "Otimização de Dietas para Bovinos Leiteiros com Python e RuFaS"
-    prs.core_properties.subject = "Apresentação acadêmica de cinco minutos — quatro slides"
+    prs.core_properties.subject = "Apresentação de cinco minutos + cinco de arguição — quatro slides"
     prs.core_properties.author = f"{SOPHIA}; {ANDERSON}"
     prs.core_properties.keywords = "PO-Rufas, programação linear, SciPy, HiGHS, dados demonstrativos"
-    s = base(prs, 1, "", "Sophia", "00:00–00:30")
+    s = base(prs, 1, "", "Sophia", "00:00–00:45")
     text(s, 0.62, 1.02, 9.0, 2.15, "Otimização de Dietas para\nBovinos Leiteiros\ncom Python e RuFaS", 37, NAVY, True)
     text(
         s, 0.66, 3.30, 8.5, 0.95, "Aplicação de Programação Linear à Formulação\nNutricional de Menor Custo.", 21, GREEN
@@ -472,10 +531,10 @@ def deck(demo: dict, validation: dict) -> None:
         text(s, 10.0, y + 0.37, 2.4, 0.40, label, 17, WHITE, True)
         text(s, 10.0, y + 0.83, 2.35, 0.42, sub, 16, "CBDFD8")
     notes(
-        s, f"{SOPHIA} — 30 segundos\n{STAGES[0][3]}\nDados do exemplo são demonstrativos; objetivo é validar o núcleo."
+        s, f"{SOPHIA} — 45 segundos\n{STAGES[0][3]}\nDados do exemplo são demonstrativos; objetivo é validar o núcleo."
     )
 
-    s = base(prs, 2, "Arquitetura e integração com o RuFaS", "Anderson", "00:30–01:05")
+    s = base(prs, 2, "Arquitetura e integração com o RuFaS", "Anderson", "00:45–01:45")
     columns = [
         (0.65, 3.83, "ENTRADAS", "Perfil do animal\nLista de ingredientes\nPreços e estoques\nMetas nutricionais"),
         (5.05, 3.30, "OTIMIZADOR", "Adaptadores RuFaS\nConversão MN ↔ MS\nSciPy • linprog / HiGHS"),
@@ -514,13 +573,13 @@ def deck(demo: dict, validation: dict) -> None:
     )
     notes(
         s,
-        f"{ANDERSON} — 35 segundos\n{STAGES[1][3]}\n"
+        f"{ANDERSON} — 60 segundos\n{STAGES[1][3]}\n"
         "Fontes locais: linear_diet_adapter.py, linear_diet_example.py e NRC_comp.csv. "
         "Só MS é importada diretamente como exigência; PB/NEL/FDN são ilustrativas. "
         "Feed, NutritionRequirements e Animal são estruturas reais. Não é execução completa da fazenda.",
     )
 
-    s = base(prs, 3, "Modelo matemático: custo mínimo", "Sophia", "01:05–01:50")
+    s = base(prs, 3, "Modelo matemático: custo mínimo", "Sophia", "01:45–03:00")
     box(s, 0.65, 1.98, 4.16, 3.97, NAVY, True)
     text(s, 0.90, 2.22, 3.67, 0.40, "FUNÇÃO OBJETIVO", 15, "6AC8AE", True)
     text(s, 0.90, 2.94, 3.70, 0.75, "Min C = Σ pᵢ xᵢ", 30, WHITE, True)
@@ -567,13 +626,13 @@ def deck(demo: dict, validation: dict) -> None:
     )
     notes(
         s,
-        f"{SOPHIA} — 45 segundos\n{STAGES[2][3]}\n"
-        "Após este slide, Alt+Tab para o terminal já aguardando Enter. Demo: Sophia 30 s, Anderson 35 s. "
-        "Retornar ao slide 4 às 02:55. A restrição de FDN é equivalente à proporção para MS total positiva. "
+        f"{SOPHIA} — 75 segundos\n{STAGES[2][3]}\n"
+        "Após este slide, Alt+Tab para o terminal já aguardando Enter. Demo: Sophia 35 s, Anderson 50 s. "
+        "Retornar ao slide 4 às 04:25. A restrição de FDN é equivalente à proporção para MS total positiva. "
         "O calculador NRC roda previamente; não houve linearização arbitrária de suas equações.",
     )
 
-    s = base(prs, 4, "Resultados verificados e contribuição", "Anderson", "02:55–03:20; depois, perguntas")
+    s = base(prs, 4, "Resultados verificados e contribuição", "Anderson", "04:25–05:00; perguntas: 05:00–10:00")
     result = demo["result"]
     text(
         s,
@@ -641,11 +700,11 @@ def deck(demo: dict, validation: dict) -> None:
     )
     notes(
         s,
-        f"{ANDERSON} — 25 segundos\n{STAGES[5][3]}\n"
+        f"{ANDERSON} — 35 segundos\n{STAGES[5][3]}\n"
         f"Fonte: execução real em {demo['executed_at']}; base_slides.json. "
         "As 11 verificações são linhas de nutrientes e limites, não 11 nutrientes. "
         "433 testes relacionados, não suíte integral. Não há economia percentual comprovada. "
-        "Parar às 03:20 e reservar 100 s para perguntas. Nomes: " + SOPHIA + "; " + ANDERSON,
+        "Encerrar a apresentação às 05:00; arguição adicional até 10:00 (300 s). Nomes: " + SOPHIA + "; " + ANDERSON,
     )
     target = HERE / "apresentacao_rufas_5min.pptx"
     prs.save(target)
@@ -682,9 +741,9 @@ def main() -> None:
     (HERE / "evidencias/roteiro_tempos.json").write_text(
         json.dumps(
             {
-                "speaking_and_demo_seconds": 200,
-                "questions_seconds": 100,
-                "total_seconds": 300,
+                "speaking_and_demo_seconds": 300,
+                "questions_seconds": 300,
+                "total_seconds": 600,
                 "note": "Planned schedule; not a measured oral rehearsal",
                 "stages": word_counts,
             },
@@ -692,7 +751,7 @@ def main() -> None:
         ),
         encoding="utf-8",
     )
-    print("Guides generated; timing plan: 200 + 100 = 300 seconds.")
+    print("Guides generated; timing plan: 300 + 300 = 600 seconds.")
 
 
 if __name__ == "__main__":

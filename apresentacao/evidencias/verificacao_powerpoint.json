@@ -1,10 +1,12 @@
 ﻿{
+    "height_points":  540,
+    "exported_pdf":  "apresentacao_rufas_5min.pdf",
+    "slides":  4,
     "text_overflow_candidates":  [
 
                                  ],
-    "width_points":  960,
-    "application":  "Microsoft PowerPoint",
-    "height_points":  540,
+    "exported_previews":  "previas",
     "opened":  true,
-    "slides":  4
+    "width_points":  960,
+    "application":  "Microsoft PowerPoint"
 }
