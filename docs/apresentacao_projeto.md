@@ -1,5 +1,8 @@
 # Roteiro de apresentação do PO-Rufas
 
+**Material final de cinco minutos:** [PowerPoint, roteiros de Sophia e Anderson, demonstração e perguntas](../apresentacao/README.md).
+O roteiro abaixo permanece como orientação geral; a divisão cronometrada está na pasta `apresentacao/`.
+
 [Voltar ao README](../README.md) · [Documentação técnica](otimizador_linear.md)
 
 ## 1. Explique a contribuição
