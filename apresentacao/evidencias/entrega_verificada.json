@@ -1,0 +1,58 @@
+{
+  "checks_passed": true,
+  "slides": 4,
+  "editable_pptx": true,
+  "pdf_pages": 4,
+  "powerpoint_open_verified": true,
+  "planned_seconds": 300,
+  "oral_rehearsal_performed": false,
+  "projector_checked": false,
+  "qa_count": 27,
+  "cost": 34.997773642175794,
+  "artifacts": {
+    "apresentacao_rufas_5min.pptx": {
+      "bytes": 46400,
+      "sha256": "2d8f4349387dd23b2469170624e46440ba5dae92f6013cf6821f2d5defb7f2ca"
+    },
+    "apresentacao_rufas_5min.pdf": {
+      "bytes": 280522,
+      "sha256": "140991f38168a459038b935e0593d3715f61445c85a8da05e4b2a97e322cefd8"
+    },
+    "roteiro_sophia.md": {
+      "bytes": 2973,
+      "sha256": "feb79e2116c1796e138d4c21323a32cbb8bfc5b59f13a3a9386734345673e9ed"
+    },
+    "roteiro_anderson.md": {
+      "bytes": 2938,
+      "sha256": "9856b5b1ec7792e9240fdba149adcec506bb21f73bf9a8bbd39f4e25ce4c73eb"
+    },
+    "roteiro_completo.md": {
+      "bytes": 5557,
+      "sha256": "9155c9d568b92e105cf07f3e6a24e4b36f5861113075bb1c5abf9632faee9fa8"
+    },
+    "perguntas_e_respostas.md": {
+      "bytes": 8542,
+      "sha256": "c0fb67637da754c5af961a7646f23455ea792c26bc263dc3be3e1ff91179b710"
+    },
+    "guia_demonstracao.md": {
+      "bytes": 3442,
+      "sha256": "36cf18d6728a1d6a9573b51d3053408be381a96c64fee922ce4405a2bd7bca9f"
+    },
+    "demonstracao_solver.bat": {
+      "bytes": 338,
+      "sha256": "e029b124314a560ddafce7ba3566a6cfea44ac976ee9a25a1e973b9187651de3"
+    },
+    "resultados_validados.md": {
+      "bytes": 7381,
+      "sha256": "7833c2e55b91519fb00be83e01825a8f97704e53b8ef71544447a13ad1add1ea"
+    },
+    "checklist_apresentacao.md": {
+      "bytes": 1946,
+      "sha256": "e3ad566141a1b61fb1adffb1245734e6044fc284c06cfa847b6fd5d095eb5d68"
+    },
+    "cartoes_consulta.md": {
+      "bytes": 1256,
+      "sha256": "805898b4f354546d09e4f681fad54a8525fea369faae93c6e5999ba116d38767"
+    }
+  }
+}

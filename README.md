@@ -8,6 +8,7 @@ O módulo encontra uma dieta de **custo mínimo para um animal por execução**,
 
 ## Documentação
 
+- [Apresentação de 5 minutos: PowerPoint, falas da dupla e demonstração](apresentacao/README.md)
 - [Modelo matemático, unidades, fontes e limitações](docs/otimizador_linear.md)
 - [Roteiro de apresentação ao professor](docs/apresentacao_projeto.md)
 - [Apresentação original do RuFaS](docs/README_RuFaS_original.md)

@@ -1,0 +1,73 @@
+{
+  "executed_at": "2026-11-24T00:29:02.994750-03:00",
+  "python": "3.12.16 (main, Oct 26 2026, 14:10:56) [MSC v.1944 64 bit (AMD64)]",
+  "versions": {
+    "numpy": "2.2.0",
+    "scipy": "1.18.1",
+    "pytest": "9.2.0",
+    "python-pptx": "1.0.2"
+  },
+  "commands": [
+    {
+      "name": "demo_terminal",
+      "command": [
+        ".\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "apresentacao.demo_solver",
+        "--auto"
+      ],
+      "exit_code": 0,
+      "seconds": 1.6378967000055127
+    },
+    {
+      "name": "testes",
+      "command": [
+        ".\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "tests/test_biophysical/test_animal/test_ration",
+        "tests/test_biophysical/test_animal/test_nutrients",
+        "tests/test_biophysical/test_animal/test_data_types/test_nutrition_data_structures.py",
+        "-q",
+        "--junitxml=apresentacao/evidencias/testes.xml"
+      ],
+      "exit_code": 0,
+      "seconds": 4.712449300001026
+    },
+    {
+      "name": "catalogo",
+      "command": [
+        ".\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "RUFAS.biophysical.animal.ration.linear_diet_catalog",
+        "--demo",
+        "--seed",
+        "42",
+        "--output-dir",
+        "apresentacao/evidencias/catalogo"
+      ],
+      "exit_code": 0,
+      "seconds": 1.6705874999897787
+    }
+  ],
+  "test_counts": {
+    "tests": 433,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "sha256": {
+    "RUFAS\\biophysical\\animal\\ration\\linear_diet.py": "16474e3cd177e677fb2b019149359661547312c73fb887f2e9f62bfdd08e3946",
+    "RUFAS\\biophysical\\animal\\ration\\linear_diet_adapter.py": "f9ff4504b0bdb526b039a02b51eb7596023bd6c29ad657a66f6d9a415503ff1e",
+    "RUFAS\\biophysical\\animal\\ration\\linear_diet_catalog.py": "73af5fbf41e368a6f0ee7602489d1d4b5ef357cb2c01954afbec9e4b1cc04a9c",
+    "RUFAS\\biophysical\\animal\\ration\\linear_diet_example.py": "dd8e8024b8a1ef60d9c9019ed8b26326ccfd3d97cc92828265bd1756aa9f1f35",
+    "input\\data\\feed\\NRC_comp.csv": "2b37817f9469113959d14bb7f1de8cc36a13b51d6541195a65cb0f41a74150db",
+    "apresentacao\\demo_solver.py": "5b369e0508fb674b55af2eb0cbf63993190538eb67114c528184bce54159f45a"
+  }
+}
