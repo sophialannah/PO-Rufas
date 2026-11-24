@@ -22,6 +22,8 @@ NUTRIENTS = {
 }
 
 CHECKS = {
+    "absorbed_phosphorus_g": "Fósforo absorvível (g/dia)",
+    "absorbed_calcium_g": "Cálcio absorvível (g/dia)",
     "DM_kg": "Matéria seca (kg MS/dia)",
     "CP_kg": "Proteína bruta (kg/dia)",
     "NEL_Mcal": "Energia líquida (Mcal/dia)",
@@ -86,6 +88,9 @@ def evaluation(report: dict) -> None:
     else:
         st.error(status)
     ev = native["native_evaluation"]
+    criteria = ev.get("criteria", {})
+    if criteria.get("fat_percent", ev["deltas"]["fat_percent"] >= 0) is False:
+        st.warning(f"Gordura acima do limite em **{abs(ev['deltas']['fat_percent']):.3g} p.p. de MS**.")
     for key, value in ev["deltas"].items():
         if value is None or abs(value) < 1e-8:
             continue
@@ -93,11 +98,8 @@ def evaluation(report: dict) -> None:
         if key in {"ndf_percent", "dry_matter", "metabolizable_protein"}:
             condition = "acima" if value > 0 else "abaixo"
             st.warning(f"{name} {condition} da faixa nativa em {decimal(abs(value), 2)} {unit}.")
-        elif value < 0:
-            description = "Excesso acima do limite" if key == "fat_percent" else "Déficit"
-            st.warning(
-                f"{description} de {name.lower()} de **{decimal(abs(value), 2)} {unit}** pelo critério do RuFaS."
-            )
+        elif value < 0 and key != "fat_percent":
+            st.warning(f"Déficit de {name.lower()} de **{decimal(abs(value), 2)} {unit}** pelo critério do RuFaS.")
     st.caption(
         "O RationManager recuperou as quantidades em kg MS/dia. A oferta foi calculada com FeedInRation e NutritionSupplyCalculator."
     )
@@ -105,7 +107,12 @@ def evaluation(report: dict) -> None:
         st.dataframe(
             pd.DataFrame(
                 [
-                    {"Critério avaliado": NUTRIENTS[key][0], "Delta nativo": value, "Unidade": NUTRIENTS[key][1]}
+                    {
+                        "Critério avaliado": NUTRIENTS[key][0],
+                        "Delta nativo": value,
+                        "Unidade": NUTRIENTS[key][1],
+                        "Atendido": criteria.get(key),
+                    }
                     for key, value in ev["deltas"].items()
                 ]
             ),
@@ -114,13 +121,51 @@ def evaluation(report: dict) -> None:
         st.json(native, expanded=1)
 
 
+def show_minerals(report: dict) -> None:
+    minerals = report["nrc_minerals"]
+    native = report["native_return"]
+    evaluation = native["native_evaluation"] if native else None
+    st.subheader("Balanço mineral · NRC 2001")
+    st.caption(
+        "Mínimos de fósforo e cálcio absorvíveis "
+        + ("ativos no LP." if minerals["enabled"] else "desativados no LP.")
+        + " O NutritionSupplyCalculator estima a oferta por categoria de ingrediente."
+    )
+    st.markdown("[Referência da exigência NRC 2001, capítulo 6 — Minerals](https://doi.org/10.17226/9825)")
+    st.dataframe(
+        pd.DataFrame(
+            [
+                {
+                    "Mineral": name,
+                    "Exigência absorvida (g/dia)": minerals["requirement_g_day"][key],
+                    "Oferta absorvível (g/dia)": evaluation["supply_summary"][key + "_g"] if evaluation else None,
+                    "Diferença (g/dia)": evaluation["deltas"][key] if evaluation else None,
+                }
+                for key, name in (("phosphorus", "Fósforo"), ("calcium", "Cálcio"))
+            ]
+        ),
+        hide_index=True,
+    )
+    if native:
+        st.caption(f"Fósforo total ingerido · {decimal(minerals['phosphorus_total_g_day'], 2)} g/dia")
+    if diagnostic := report.get("nasem_phosphorus_diagnostic"):
+        st.markdown(
+            f"**Diagnóstico NASEM 2021** · Exigência de P absorvido **{decimal(diagnostic['requirement_g_day'], 2)} g/dia** "
+            f"com consumo estimado de **{decimal(diagnostic['dmi_kg_day'], 2)} kg MS/dia**. "
+            f"[NASEM 2021, capítulo 7 — Minerals]({diagnostic['source']})"
+        )
+        st.caption("Diagnóstico restrito à exigência. O balanço de oferta e o parecer acima usam o padrão NRC.")
+
+
 def show_results(report: dict | None) -> None:
     st.header("Resultados")
     if report is None:
         st.info("Execute uma otimização para gerar a dieta e o parecer nutricional.")
         return
     result, days = report["result"], report["period_days"]
-    st.caption(f"Cenário {report['scenario_id']} · Animal {report['animal_id']} · {days} dias")
+    st.caption(
+        f"Cenário {report['scenario_id']} · Animal {report['animal_id']} · {days} dias · {report['nutrient_standard']}"
+    )
     cost = result["cost_per_day"]
     st.download_button(
         "Baixar resultado completo (JSON)",
@@ -131,9 +176,17 @@ def show_results(report: dict | None) -> None:
     if result["status"] != "optimal":
         if result["status"] == "infeasible":
             st.error("Cenário inviável. Confira estoque para o período, limites de inclusão e metas nutricionais.")
+            diagnostic = {
+                "phosphorus_conflict": "O cenário voltou a ser viável ao retirar somente o mínimo de fósforo absorvível.",
+                "calcium_conflict": "O mínimo de cálcio absorvível já torna o cenário inviável mesmo sem o mínimo de fósforo.",
+                "mineral_conflict": "O cenário ficou viável sem os mínimos minerais, mas o conflito individual não pôde ser isolado.",
+            }.get(report["nrc_minerals"]["infeasibility"])
+            if diagnostic:
+                st.warning(diagnostic)
         else:
             st.error("O solver não entregou uma solução ótima.")
         st.caption(f"HiGHS · {result['status']} · {result['message']}")
+        show_minerals(report)
         return
 
     checks = result["checks"]
@@ -143,6 +196,7 @@ def show_results(report: dict | None) -> None:
     b.metric(f"Custo estimado · {days} dias", money(cost * days, 2))
     c.metric("Restrições do LP", f"{passed}/{len(checks)} · {result['status']}")
     evaluation(report)
+    show_minerals(report)
     st.subheader("Dieta otimizada")
     diet = diet_table(report)
     st.dataframe(diet, hide_index=True)

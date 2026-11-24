@@ -229,6 +229,18 @@ def test_evaluation_report(valid_heifer_cow_ration: NutritionEvaluationResults) 
     assert report["is_valid_cow_ration"] is True
 
 
+def test_evaluation_report_matches_lactation_and_ndf_checks(
+    valid_heifer_cow_ration: NutritionEvaluationResults,
+) -> None:
+    evaluation = valid_heifer_cow_ration
+    evaluation.lactation_energy = -1.0
+    evaluation.ndf_percent = 1.0
+    assert evaluation.report["total_energy_acceptable"] is True
+    assert evaluation.report["lactation_energy_acceptable"] is False
+    assert evaluation.report["ndf_percent_acceptable"] is False
+    assert evaluation.is_valid_cow_ration is False
+
+
 def test_evaluation_addition(evaluation: NutritionEvaluationResults) -> None:
     """Test adding two NutritionEvaluationResults instances."""
     new_eval = evaluation + evaluation

@@ -202,20 +202,35 @@ def _inequalities(rows: list[_Row]) -> tuple[NDArray[np.float64], NDArray[np.flo
 
 
 def optimize_diet(
-    animal: AnimalProfile, ingredients: list[Ingredient], *, period_days: float = 1.0, tolerance: float = 1e-7
+    animal: AnimalProfile,
+    ingredients: list[Ingredient],
+    *,
+    period_days: float = 1.0,
+    tolerance: float = 1e-7,
+    absorbed_minerals: dict[str, tuple[float, dict[int, float]]] | None = None,
 ) -> DietResult:
     """Minimize daily cost for a constant daily ration over period_days.
 
     All nutrient rows and variable/stock bounds are independently checked after
     HiGHS returns. Failed or infeasible solves never expose a usable ration.
+    Absorbed mineral rows use (minimum g/day, coefficient in g/kg DM by feed ID).
     """
     if not isfinite(period_days) or period_days <= 0:
         raise ValueError("period_days must be finite and positive")
     if not isfinite(tolerance) or not 0 < tolerance <= 1e-4:
         raise ValueError("tolerance must be in (0, 1e-4]")
-    if not ingredients or len({i.identifier for i in ingredients}) != len(ingredients):
+    ids = {ingredient.identifier for ingredient in ingredients}
+    if not ingredients or len(ids) != len(ingredients):
         raise ValueError("Provide a nonempty list of ingredients with unique IDs")
     rows = _nutrient_rows(ingredients, animal.requirements)
+    for mineral, (minimum_g, by_id) in (absorbed_minerals or {}).items():
+        _nonnegative(f"Absorbed {mineral} minimum (g/day)", minimum_g)
+        if by_id.keys() != ids:
+            raise ValueError(f"Absorbed {mineral} composition must cover every ingredient ID")
+        for value in by_id.values():
+            _nonnegative(f"Absorbed {mineral} coefficient (g/kg DM)", value)
+        coefficients = np.array([by_id[i.identifier] * i.dm_fraction for i in ingredients], dtype=np.float64)
+        rows.append(_Row(f"absorbed_{mineral}_g", coefficients, lower=minimum_g))
     bounds = []
     bound_rows = []
     for index, ingredient in enumerate(ingredients):

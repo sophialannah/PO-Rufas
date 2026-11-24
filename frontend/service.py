@@ -1,6 +1,7 @@
 """Adaptador da aplicação local para o fluxo integrado do RuFaS."""
 
 from dataclasses import asdict
+from copy import copy
 import json
 from math import isfinite
 from pathlib import Path
@@ -13,12 +14,18 @@ from RUFAS.biophysical.animal.ration.linear_diet_catalog import catalog_candidat
 from RUFAS.biophysical.animal.ration.linear_diet_example import example_feeds
 from RUFAS.biophysical.animal.ration.linear_diet_integrated_example import demo_inputs
 from RUFAS.biophysical.animal.ration.linear_diet_integration import optimize_animal_ration
-from RUFAS.data_structures.feed_storage_to_animal_connection import FeedCategorization, FeedComponentType, NRCFeed
+from RUFAS.data_structures.feed_storage_to_animal_connection import (
+    FeedCategorization,
+    FeedComponentType,
+    NRCFeed,
+    NutrientStandard,
+)
 from RUFAS.units import MeasurementUnits
 
 ROOT = Path(__file__).resolve().parents[1]
 POPULATION = "input/data/animal/animal_population.json"
 COMPOSITION = "input/data/feed/NRC_comp.csv"
+NASEM_SOURCE = "https://www.ncbi.nlm.nih.gov/books/NBK600600/"
 DEMO_ID = 98605
 DEMO_FEEDS = {1: ("Alfafa", 1.3), 44: ("Milho", 2.0), 167: ("Farelo de soja", 1.8)}
 INPUTS = {
@@ -146,6 +153,21 @@ def animal_requirements(animal_id: int, milk: float) -> dict:
         return asdict(animal.calculate_nutrition_requirements("Barn", 0.0, 20.0, feeds))
 
 
+def nasem_phosphorus_diagnostic(animal) -> dict:
+    """Use the native NASEM requirements dispatch on an isolated adult animal snapshot."""
+    snapshot = copy(animal)
+    snapshot.nutrient_standard = NutrientStandard.NASEM
+    # Adult requirements use physiological state and the previous intake snapshot.
+    # The feeds argument is consumed by the calf branch only.
+    requirements = snapshot.calculate_nutrition_requirements("Barn", 0.0, 20.0, [])
+    return dict(
+        standard="NASEM 2021",
+        requirement_g_day=float(requirements.phosphorus),
+        dmi_kg_day=float(requirements.dry_matter),
+        source=NASEM_SOURCE,
+    )
+
+
 def run_scenario(
     animals: dict[int, dict],
     catalog: dict[int, dict],
@@ -157,6 +179,8 @@ def run_scenario(
     nel: float,
     ndf_min: float,
     ndf_max: float,
+    constrain_absorbed_minerals: bool = False,
+    show_nasem_diagnostic: bool = False,
 ) -> dict:
     if animal_id not in animals:
         raise ValueError("Selecione uma vaca Holandesa em lactação disponível no arquivo RuFaS.")
@@ -176,7 +200,15 @@ def run_scenario(
         supplemental_source="Metas externas do cenário web",
     )
     with _NATIVE_LOCK, demo_inputs(animal_id=animal_id, milk_kg_day=milk) as (animal, _, _, _):
-        report = optimize_animal_ration(animal, feeds, metadata, thresholds, period_days=days)
+        report = optimize_animal_ration(
+            animal,
+            feeds,
+            metadata,
+            thresholds,
+            period_days=days,
+            constrain_absorbed_minerals=constrain_absorbed_minerals,
+        )
+        nasem = nasem_phosphorus_diagnostic(animal) if show_nasem_diagnostic else None
     for ingredient in report["ingredients"]:
         for param in ("price_per_kg", "stock_kg", "minimum_kg_day", "maximum_kg_day"):
             ingredient["sources"][param] = "Parâmetros da demonstração ou valores informados no cenário web"
@@ -185,6 +217,8 @@ def run_scenario(
         scenario_id=uuid4().hex[:12],
         animal=animals[animal_id],
         period_days=days,
+        nutrient_standard="NRC 2001",
+        nasem_phosphorus_diagnostic=nasem,
         assumptions={**ASSUMPTIONS, "leite_kg_dia": milk, "origem_animal": POPULATION},
         limitations=LIMITATIONS,
     )

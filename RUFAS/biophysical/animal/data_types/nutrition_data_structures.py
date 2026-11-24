@@ -410,8 +410,7 @@ class NutritionEvaluationResults:
     forage_ndf_percent : float
         Surplus or deficit of neutral detergent fiber (NDF) percentage supplied by forages in a ration.
     fat_percent : float
-        Surplus or deficit of fat percentage in a ration. If fat percentage is within acceptable bounds, this value will
-        be 0.0.
+        Maximum fat percentage minus supplied fat percentage, in percentage points of dry matter.
     is_valid_heifer_ration : bool
         True if evaluated nutrient supply meets requirements for heifers, else false.
     is_valid_cow_ration : bool
@@ -462,9 +461,14 @@ class NutritionEvaluationResults:
     }
 
     @property
+    def _is_fat_acceptable(self) -> bool:
+        """Accept the upper bound with an absolute tolerance for floating-point round-off."""
+        return self.fat_percent >= -1e-9
+
+    @property
     def _are_clamped_values_acceptable(self) -> bool:
         """Checks that values which must be in a certain range are in that range."""
-        clamped_values = [self.metabolizable_protein, self.ndf_percent, self.fat_percent, self.dry_matter]
+        clamped_values = [self.metabolizable_protein, self.ndf_percent, self.dry_matter]
         return all([value == 0.0 for value in clamped_values])
 
     @property
@@ -479,7 +483,7 @@ class NutritionEvaluationResults:
         }
         valid_non_negative_fields = all([field >= 0.0 for field in non_negative_fields])
 
-        return valid_non_negative_fields and self._are_clamped_values_acceptable
+        return valid_non_negative_fields and self._are_clamped_values_acceptable and self._is_fat_acceptable
 
     @property
     def is_valid_cow_ration(self) -> bool:
@@ -489,7 +493,7 @@ class NutritionEvaluationResults:
 
         valid_non_negative_fields = all([field >= 0.0 for field in {self.total_energy, self.lactation_energy}])
 
-        return valid_non_negative_fields and self._are_clamped_values_acceptable and self.is_valid_heifer_ration
+        return valid_non_negative_fields and self.is_valid_heifer_ration
 
     @property
     def report(self) -> dict[str, bool | None]:
@@ -499,15 +503,15 @@ class NutritionEvaluationResults:
             "is_valid_cow_ration": self.is_valid_cow_ration,
             "total_energy_acceptable": None if self.total_energy is None else self.total_energy >= 0.0,
             "maintenance_energy_acceptable": self.maintenance_energy >= 0.0,
-            "lactation_energy_acceptable": None if self.total_energy is None else self.total_energy >= 0.0,
+            "lactation_energy_acceptable": None if self.lactation_energy is None else self.lactation_energy >= 0.0,
             "growth_energy_acceptable": self.growth_energy >= 0.0,
             "metabolizable_protein_acceptable": self.metabolizable_protein == 0.0,
             "calcium_acceptable": self.calcium >= 0.0,
             "phosphorus_acceptable": self.phosphorus >= 0.0,
             "dry_matter_acceptable": self.dry_matter == 0.0,
-            "ndf_percent_acceptable": self.ndf_percent >= 0.0,
+            "ndf_percent_acceptable": self.ndf_percent == 0.0,
             "forage_ndf_percent_acceptable": self.forage_ndf_percent >= 0.0,
-            "fat_percent_acceptable": self.fat_percent == 0.0,
+            "fat_percent_acceptable": self._is_fat_acceptable,
         }
 
     def __add__(self, other: "NutritionEvaluationResults") -> "NutritionEvaluationResults":

@@ -304,7 +304,7 @@ class NutritionEvaluator:
         Returns
         -------
         float
-            Percentage by which supplied fat under- or overshoots the required fat range (percent).
+            Maximum minus supplied fat in percentage points of dry matter. A negative value indicates excess.
 
         """
         if supply.dry_matter == 0.0:

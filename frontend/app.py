@@ -26,7 +26,17 @@ from frontend.service import (
 )
 
 LOGGER = logging.getLogger(__name__)
-CATALOG_COLUMNS = ["id", "Ingrediente", "Tipo NRC", "MS (% MN)", "PB (% MS)", "FDN (% MS)", "Composição"]
+CATALOG_COLUMNS = [
+    "id",
+    "Ingrediente",
+    "Tipo NRC",
+    "MS (% MN)",
+    "PB (% MS)",
+    "FDN (% MS)",
+    "P total (% MS)",
+    "Ca total (% MS)",
+    "Composição",
+]
 
 
 def animal_panel(record: dict, milk: float) -> None:
@@ -73,6 +83,8 @@ def ingredient_record(item: dict) -> dict:
                 float(row["DM"]),
                 float(row["CP"]) if row["CP"] else None,
                 float(row["NDF"]) if row["NDF"] else None,
+                float(row["phosphorus"]) if row["phosphorus"] else None,
+                float(row["calcium"]) if row["calcium"] else None,
                 item["composition_source"],
             ],
         )
@@ -107,6 +119,9 @@ def ingredient_panel(catalog: dict, defaults: dict) -> list[dict]:
     st.caption(
         "Preços, estoques, limites e NEL pré-preenchidos são hipóteses da demonstração. "
         "Para os demais ingredientes, preencha os campos antes de executar."
+    )
+    st.caption(
+        "O filtro Mineral inclui os fosfatos 231 e 232. Informe os dados econômicos, a inclusão máxima e a NEL de cada fonte selecionada."
     )
     edits = st.session_state.setdefault("ingredient_values", {})
     # A base fica fixa para cada seleção. Os deltas do editor sobrevivem a reruns.
@@ -250,9 +265,7 @@ def main() -> None:
         ids = [DEMO_ID, *sorted(animals.keys() - {DEMO_ID})]
         animal_id = st.selectbox("ID RuFaS", ids, format_func=lambda i: f"{i} · Holandesa em lactação")
         milk = st.number_input("Produção de leite assumida (kg/dia)", min_value=0.0, value=30.0, step=0.5)
-        st.caption(
-            "Fluxo NRC para vacas Holandesas em lactação. Outras categorias e NASEM são incompatíveis com a integração atual."
-        )
+        st.caption("Padrão da formulação e da avaliação nativa · NRC 2001 · vacas Holandesas em lactação")
 
     home, animal, ingredients, optimization, results, scenarios = st.tabs(
         ["Visão geral", "Animal", "Ingredientes", "Otimização", "Resultados", "Cenários"]
@@ -281,7 +294,15 @@ def main() -> None:
         a, b = st.columns(2)
         ndf_min = a.number_input("FDN mínima (% MS)", min_value=0.0, max_value=100.0, value=28.0)
         ndf_max = b.number_input("FDN máxima (% MS)", min_value=0.0, max_value=100.0, value=40.0)
-        inputs = (days, cp, nel, ndf_min, ndf_max)
+        minerals = st.checkbox(
+            "Exigir fósforo e cálcio absorvíveis no LP (NRC 2001)",
+            help="Usa as exigências NRC e a oferta por categoria calculada pelo RuFaS.",
+        )
+        nasem = st.checkbox(
+            "Calcular exigência de fósforo NASEM 2021 para diagnóstico",
+            help="Calcula a exigência em separado, sem alterar a formulação nem emitir parecer NASEM.",
+        )
+        inputs = (days, cp, nel, ndf_min, ndf_max, minerals, nasem)
         if st.button("Executar otimização", type="primary"):
             st.session_state["report"] = run(animals, catalog, animal_id, rows, milk, inputs)
             if st.session_state["report"]:

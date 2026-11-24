@@ -32,6 +32,8 @@ Abra **Animal** para conferir o perfil 98605 e a prévia NRC. Em **Ingredientes*
 
 No cenário padrão, a regressão esperada é `optimal`, R$ 35,1059/dia, 11/11 verificações e parecer nativo **Não aprovada**, com déficit de fósforo absorvível de 6,68 g/dia. A aplicação recalcula esses valores. O [roteiro acadêmico](../apresentacao/roteiro_completo.md) inclui a alternativa por terminal.
 
+Para reotimizar com minerais, adicione uma fonte do catálogo em **Ingredientes**, informe seus parâmetros e marque **Exigir fósforo e cálcio absorvíveis no LP (NRC 2001)**. A opção de diagnóstico NASEM calcula a exigência de fósforo em separado. [Parâmetros para reproduzir os cenários e documentação científica](../docs/fosforo_nasem_2021.md)
+
 ## Dados, unidades e execução
 
 A aplicação oferece vacas Holandesas em lactação da população do repositório e ingredientes elegíveis com composição NRC. Peso, dias em lactação e paridade vêm do arquivo de população. Produção de leite, composição do leite, ambiente e metas suplementares são hipóteses identificadas na interface. A prévia NRC usa os alimentos da demonstração. A execução registra os requisitos do conjunto efetivamente selecionado. Valores de NEL, preços, estoques e limites de inclusão devem ser preenchidos para ingredientes adicionais.
