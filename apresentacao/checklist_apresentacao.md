@@ -20,9 +20,9 @@
 - [ ] Consultar `evidencias/verificacao_powerpoint.json` para conferir abertura e exportação automáticas.
 - [ ] Ensaiar a dupla com cronômetro: slide 1 até 00:45; slide 2 até 01:45; slide 3 até 03:00.
 - [ ] Ensaiar demo até 04:25, conclusão até 05:00, perguntas separadas até 10:00.
-- [ ] Executar o BAT com `--auto` antes da aula; depois deixá-lo aguardando Enter nas entradas.
-- [ ] Deixar somente PowerPoint e terminal necessários à apresentação; testar Alt+Tab.
-- [ ] Usar fonte de terminal legível e largura suficiente para as tabelas.
+- [ ] Abrir o frontend e ensaiar a sequência do [guia web](guia_demonstracao_web.md).
+- [ ] Testar Alt+Tab entre PowerPoint e navegador, com a aba Animal pronta para começar.
+- [ ] Testar o terminal com `--auto` e deixá-lo aguardando Enter como alternativa.
 - [ ] Fechar notificações e conectar o carregador.
 - [ ] Guardar PPTX, PDF/prévias e cópia das evidências localmente para uso sem internet.
 - [ ] Estudar os cartões e pelo menos as perguntas prioritárias.

@@ -6,16 +6,14 @@
 **Total: 10 minutos.**
 
 Abra [apresentacao_rufas_5min.pptx](apresentacao_rufas_5min.pptx).
-Leia o [roteiro completo](roteiro_completo.md) e o [guia da demonstração](guia_demonstracao.md).
+Leia o [roteiro completo](roteiro_completo.md) e o [guia da demonstração no navegador](guia_demonstracao_web.md).
 Use os [cartões](cartoes_consulta.md) para ensaiar e o [banco de perguntas](perguntas_e_respostas.md) para estudar.
 Arguição: [simulação de cinco minutos](simulacao_arguicao.md).
 Falas individuais: [Sophia](roteiro_sophia.md) e [Anderson](roteiro_anderson.md).
 
-```powershell
-.\apresentacao\demonstracao_integrada.bat
-```
+Na raiz do projeto, execute `.\frontend\iniciar_frontend.bat`. Consulte o [guia de instalação do frontend](../frontend/README.md).
 
-O terminal mostra as 7 etapas da integração; Enter executa o solver e devolve a dieta ao `RationManager`.
+Como alternativa, execute `.\apresentacao\demonstracao_integrada.bat`. Pressione Enter para executar o solver e devolver a dieta ao `RationManager`. [Guia do terminal](guia_demonstracao.md).
 A demonstração anterior (sem retorno ao `RationManager`) permanece em `demonstracao_solver.bat`.
 A busca no catálogo permanece disponível como apoio (`linear_diet_catalog`).
 

@@ -6,7 +6,7 @@ São cinco minutos exclusivos de apresentação, seguidos de cinco minutos de ar
 
 Use um cronômetro visível. As durações são metas de ensaio, não uma medição das vozes dos integrantes. Ensaie as falas com pausas para respiração, troca de janela e execução. Ajuste o ritmo sem omitir as limitações. Às 05:00, encerre a exposição; às 10:00, encerre as perguntas.
 
-Sequência: slides 1 → 2 → 3 → Alt+Tab para o terminal → Enter para resolver → Alt+Tab de volta → slide 4. Não há quinto slide. O terminal deve estar preparado antes da contagem. Sophia: 155 s (2min35s); Anderson: 145 s (2min25s).
+Passe pelos slides 1 a 3 e mude para o navegador. Faça a demonstração seguindo o [guia web](guia_demonstracao_web.md) e volte ao PowerPoint para o slide 4. Deixe o terminal preparado como alternativa. Sophia fala por 155 s (2min35s) e Anderson por 145 s (2min25s).
 
 ## 00:00–00:45 — Slide 1 — projeto
 
@@ -28,9 +28,9 @@ Sequência: slides 1 → 2 → 3 → Alt+Tab para o terminal → Enter para reso
 
 **Sophia Lannah Beatriz Ferreira de Sousa — 35 segundos**
 
-> Esta vaca tem 627,56 quilos, 100 dias em lactação e produz 30 quilos de leite por dia. Aqui estão alfafa, milho e soja, com seus preços e estoques. A matéria seca vem do calculador do RuFaS; preços e metas suplementares são ilustrativos. Vou executar o solver agora. Anderson, explique o resultado.
+> O arquivo do RuFaS traz a vaca 98605 com 627,56 quilos, 100 dias em lactação e paridade quatro. Assumimos 30 quilos de leite por dia. Na aba Ingredientes, vemos alfafa, milho e farelo de soja com composição NRC e preços ilustrativos. Na aba Otimização, o consumo de matéria seca vem do cálculo NRC. O período é de sete dias. Vou clicar em Executar otimização.
 
-**Cartão:** 627,56 kg / DEL 100 / leite 30 → tabela de entradas → sintéticos identificados → ENTER → passar a Anderson.
+**Cartão:** Animal 98605 → Ingredientes → Otimização → Executar otimização → passar a Anderson.
 
 ## Perguntas
 

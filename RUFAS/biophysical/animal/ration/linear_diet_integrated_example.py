@@ -21,18 +21,21 @@ ROOT = Path(__file__).resolve().parents[4]
 
 
 @contextmanager
-def demo_inputs():
+def demo_inputs(*, animal_id: int | None = None, milk_kg_day: float = 30.0):
     """Controlled standalone setup; restore native class settings and RNG on exit.
 
-    Population provides physiological state; fixed milk 30 kg/day is an explicit
-    scenario assumption, not predicted production. Wood means initialize the
+    Population provides physiological state; milk_kg_day is an explicit scenario
+    assumption with a 30 kg/day default. Wood means initialize the
     actual constructor but the curve is not used to predict milk in this demo.
     """
     population = json.loads((ROOT / "input/data/animal/animal_population.json").read_text())
-    record = min(
-        (a for a in population["cows"] if a["animal_type"] == "LacCow" and a["breed"] == "HO"),
-        key=lambda a: (abs(a["days_in_milk"] - 100), a["id"]),
-    )
+    candidates = [a for a in population["cows"] if a["animal_type"] == "LacCow" and a["breed"] == "HO"]
+    if animal_id is None:
+        record = min(candidates, key=lambda a: (abs(a["days_in_milk"] - 100), a["id"]))
+    else:
+        record = next((a for a in candidates if a["id"] == animal_id), None)
+    if record is None:
+        raise ValueError("Animal indisponível: selecione uma vaca Holandesa em lactação (NRC).")
     curves = json.loads((ROOT / "input/data/animal/lactation_curve_adjustment_inputs.json").read_text())
     attrs = [
         (LactationCurve, "_parity_to_parameter_mapping"),
@@ -59,7 +62,7 @@ def demo_inputs():
         animal = Animal(record.copy(), RufasTime(datetime(2026, 1, 1), datetime(2026, 1, 2)))
         animal.nutrient_standard = NutrientStandard.NRC
         animal.milk_production._milk_production_variance = 0.0
-        animal.milk_production.daily_milk_produced = 30.0
+        animal.milk_production.daily_milk_produced = milk_kg_day
         feeds = example_feeds()
         settings = {1: ("Alfafa", 1.3), 44: ("Milho", 2.0), 167: ("Farelo de soja", 1.8)}
         metadata = {
