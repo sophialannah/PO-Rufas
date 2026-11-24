@@ -100,13 +100,13 @@ Não. O consumo de MS é calculado antes do LP para um perfil fixo, usando o cal
 
 **Resposta sugerida: Anderson**
 
-Usamos objetos Feed e NutritionRequirements, biblioteca de composição e calculador NRC existentes. Há um adaptador de Animal e saída em kg de MS compatível com rações. Ainda não aplicamos a dieta automaticamente à simulação diária.
+Construímos o Animal 98605 real a partir de animal_population.json, calculamos exigências NRC, convertemos NRCFeed em Ingredient, otimizamos no HiGHS, convertemos a dieta para % de MS e a enviamos ao RationManager, conferindo a oferta via NutritionSupplyCalculator e NutritionEvaluator. Ainda não aplicamos a dieta automaticamente ao ciclo diário da fazenda.
 
 ### 15. Como vocês validaram o programa?
 
 **Resposta sugerida: Anderson**
 
-Executamos 433 testes dos componentes relacionados, incluindo 33 testes específicos do novo trabalho. Há casos com solução conhecida, conversões, limites, inviabilidade e integração. O exemplo também confere as onze restrições após o solver.
+Executamos 442 testes dos componentes relacionados, incluindo 42 testes específicos do novo trabalho. Há casos com solução conhecida, conversões, limites, inviabilidade e integração ponta a ponta sem mocks com Animal, NRCFeed, RationManager e NutritionSupplyCalculator. O exemplo também confere as onze restrições após o solver.
 
 ### 16. Qual é a principal contribuição?
 
@@ -118,7 +118,7 @@ Uma alternativa linear modular, reproduzível e verificável dentro do RuFaS, co
 
 **Resposta sugerida: Sophia**
 
-O cálculo utiliza valores completos, sem arredondar a decisão. As tabelas arredondam apenas para exibição. O custo interno é 34,9977736422 reais por dia; pequenas diferenças na soma visual vêm do arredondamento.
+O cálculo utiliza valores completos, sem arredondar a decisão. As tabelas arredondam apenas para exibição. O custo interno é 35,1059017708 reais por dia; pequenas diferenças na soma visual vêm do arredondamento.
 
 ### 25. Como vocês tratam a tolerância numérica?
 
@@ -175,3 +175,10 @@ A execução valida o modelo matemático demonstrativo. Ainda faltam parâmetros
 **Resposta sugerida: Anderson**
 
 A evidência desta entrega cobre a execução do LP, adaptadores e testes dos componentes relacionados. Não é uma execução completa da fazenda, nem prova de integração automática ao ciclo diário.
+
+
+## Integração comprovada nesta versão
+
+Integração comprovada: Animal 98605 construído de animal_population.json → cálculo NRC → lista NRCFeed/Ingredient → HiGHS → percentuais MS → RationManager → FeedInRation → NutritionSupplyCalculator e NutritionEvaluator. DEL 100, leite 30 kg/dia assumido. DMI calculada; PB/NEL/FDN externas; déficit diagnóstico de P absorvível (-6,68 g/dia) sem suplemento mineral no LP. O ciclo diário da fazenda não foi executado. Demo: demonstracao_integrada.bat. 5 minutos de apresentação + 5 minutos adicionais de perguntas.
+
+Resultado: R$ 35,1059/dia. Relatório: [integração real](../docs/integracao_real_rufas.md).

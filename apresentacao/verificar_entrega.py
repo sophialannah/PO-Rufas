@@ -22,6 +22,7 @@ def main() -> None:
         "roteiro_completo.md",
         "perguntas_e_respostas.md",
         "guia_demonstracao.md",
+        "demonstracao_integrada.bat",
         "demonstracao_solver.bat",
         "resultados_validados.md",
         "checklist_apresentacao.md",
@@ -46,7 +47,7 @@ def main() -> None:
     assert abs(prs.slide_width / prs.slide_height - 16 / 9) < 1e-5
     text = "\n".join(s.text for slide in prs.slides for s in slide.shapes if s.has_text_frame)
     assert SOPHIA in text and ANDERSON in text
-    assert "34,9978" in text and "433" in text
+    assert "35,1059" in text and "442" in text
     for slide in prs.slides:
         assert slide.has_notes_slide
         assert slide.notes_slide.notes_text_frame.text.strip()
@@ -54,14 +55,24 @@ def main() -> None:
     assert len(pdf.pages) == 4
     pdf_text = "\n".join(page.extract_text() or "" for page in pdf.pages)
     assert SOPHIA in pdf_text and ANDERSON in pdf_text
-    assert "34,9978" in pdf_text
+    assert "35,1059" in pdf_text and "442" in pdf_text
     native = json.loads((HERE / "evidencias/verificacao_powerpoint.json").read_text(encoding="utf-8-sig"))
     assert native["opened"] and native["slides"] == 4 and not native["text_overflow_candidates"]
-    demo = json.loads((HERE / "evidencias/base_slides.json").read_text(encoding="utf-8"))
+    demo = json.loads((HERE / "evidencias/integracao_real.json").read_text(encoding="utf-8"))
     assert demo["result"]["status"] == "optimal"
+    assert demo["native_return"] is not None and "native_evaluation" in demo["native_return"]
     assert len(demo["result"]["checks"]) == 11
     assert all(c["satisfied"] for c in demo["result"]["checks"])
-    assert abs(demo["result"]["cost_per_day"] - demo["independent_cost"]) < 1e-9
+    assert (
+        abs(
+            demo["result"]["cost_per_day"]
+            - sum(
+                i["price_per_kg"] * demo["result"]["quantities_kg_day"][str(i["identifier"])]
+                for i in demo["ingredients"]
+            )
+        )
+        < 1e-9
+    )
     manifest = dict(
         checks_passed=True,
         slides=4,

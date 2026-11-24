@@ -55,9 +55,9 @@ def example_feeds() -> list[NRCFeed]:
     return feeds
 
 
-def example_inputs() -> tuple[AnimalProfile, list[Ingredient]]:
-    """Use the real RuFaS NRC calculator for DMI; other LP thresholds are illustrative."""
-    rufas_requirements = NRCRequirementsCalculator.calculate_requirements(
+def example_calculator_inputs() -> dict[str, Any]:
+    """Explicit synthetic animal and prior-diet inputs; TDN uses a fraction."""
+    return dict(
         body_weight=650.0,
         mature_body_weight=700.0,
         day_of_pregnancy=None,
@@ -76,9 +76,14 @@ def example_inputs() -> tuple[AnimalProfile, list[Ingredient]]:
         previous_temperature=20.0,
         net_energy_diet_concentration=1.6,
         days_born=1500,
-        TDN_percentage=65.0,
+        TDN_percentage=0.65,  # Native implementation consumes a fraction despite the argument name.
         process_based_phosphorus_requirement=0.0,
     )
+
+
+def example_inputs() -> tuple[AnimalProfile, list[Ingredient]]:
+    """Use the real RuFaS NRC calculator for DMI; other LP thresholds are illustrative."""
+    rufas_requirements = NRCRequirementsCalculator.calculate_requirements(**example_calculator_inputs())
     req = requirements_from_rufas(
         rufas_requirements,
         cp_min_kg=3.6,

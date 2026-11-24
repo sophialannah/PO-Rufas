@@ -20,18 +20,25 @@ Sequência: slides 1 → 2 → 3 → Alt+Tab para o terminal → Enter para reso
 
 **Anderson Alberto da Costa Silva — 50 segundos**
 
-> O solver retornou status ótimo. A dieta contém aproximadamente 15,91 quilos de alfafa, 9,10 de milho e 0,18 de soja, em matéria natural por dia. O custo é aproximadamente 35 reais por dia. As onze verificações foram satisfeitas, incluindo nutrientes, estoques e inclusão. Conferimos também o custo multiplicando cada quantidade pelo respectivo preço. A solução fornece aproximadamente 22,55 quilos de matéria seca, 3,6 quilos de proteína bruta e 35 megacalorias de energia líquida. As onze verificações incluem cinco nutricionais e seis de estoque e inclusão. A tabela arredonda os números apenas para exibição. Esse é o mínimo para as opções e hipóteses informadas, não uma recomendação nutricional pronta.
+> O solver retornou status ótimo. A dieta contém aproximadamente 14,83 quilos de alfafa, 9,53 de milho e 0,50 de soja, em matéria natural por dia. O custo é aproximadamente 35 reais por dia. As onze verificações foram satisfeitas, incluindo nutrientes, estoques e inclusão. Conferimos também o custo multiplicando cada quantidade pelo respectivo preço. A solução fornece aproximadamente 22,23 quilos de matéria seca, 3,6 quilos de proteína bruta e 35 megacalorias de energia líquida. As onze verificações incluem cinco nutricionais e seis de estoque e inclusão. A tabela arredonda os números apenas para exibição. Esse é o mínimo para as opções e hipóteses informadas, não uma recomendação nutricional pronta.
 
-**Cartão:** optimal → 15,91 / 9,10 / 0,18 kg MN → R$ 34,9978 → 11/11 OK → mínimo do cenário.
+**Cartão:** optimal → 14,83 / 9,53 / 0,50 kg MN → R$ 35,1059 → 11/11 OK → mínimo do cenário.
 
 ## 04:25–05:00 — Slide 4 — conclusão
 
 **Anderson Alberto da Costa Silva — 35 segundos**
 
-> Entregamos um núcleo executável, com conversões de unidades e verificação das restrições. A validação executou 433 testes dos componentes relacionados, todos aprovados. A contribuição é uma alternativa linear integrada aos dados do RuFaS. O próximo passo é substituir as hipóteses demonstrativas e ampliar a validação nutricional. Ainda precisamos incorporar o resultado ao ciclo diário da simulação e investigar cenários com dados econômicos documentados. Não demonstramos um percentual de economia em fazenda. Encerramos os cinco minutos de apresentação e iniciamos os cinco minutos de perguntas.
+> Entregamos um núcleo executável, com conversões de unidades e verificação das restrições. A validação executou 442 testes dos componentes relacionados, todos aprovados. A contribuição é uma alternativa linear integrada aos dados do RuFaS. O próximo passo é substituir as hipóteses demonstrativas e ampliar a validação nutricional. Ainda precisamos incorporar o resultado ao ciclo diário da simulação e investigar cenários com dados econômicos documentados. Não demonstramos um percentual de economia em fazenda. Encerramos os cinco minutos de apresentação e iniciamos os cinco minutos de perguntas.
 
-**Cartão:** 433 testes → contribuição linear → parâmetros reais e validação completa → perguntas.
+**Cartão:** 442 testes → contribuição linear → parâmetros reais e validação completa → perguntas.
 
 ## Perguntas
 
 Priorize arquitetura, dados, integração, resultados, testes e limitações. Ambos devem estudar o roteiro completo e o banco de perguntas.
+
+
+## Integração comprovada nesta versão
+
+Integração comprovada: Animal 98605 construído de animal_population.json → cálculo NRC → lista NRCFeed/Ingredient → HiGHS → percentuais MS → RationManager → FeedInRation → NutritionSupplyCalculator e NutritionEvaluator. DEL 100, leite 30 kg/dia assumido. DMI calculada; PB/NEL/FDN externas; déficit diagnóstico de P absorvível (-6,68 g/dia) sem suplemento mineral no LP. O ciclo diário da fazenda não foi executado. Demo: demonstracao_integrada.bat. 5 minutos de apresentação + 5 minutos adicionais de perguntas.
+
+Resultado: R$ 35,1059/dia. Relatório: [integração real](../docs/integracao_real_rufas.md).

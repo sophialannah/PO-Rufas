@@ -94,6 +94,8 @@ class DietRequirements:
             and self.ndf_min_fraction > self.ndf_max_fraction
         ):
             raise ValueError("Invalid NDF interval")
+        if self.dm_min_kg == 0 and (self.ndf_min_fraction is not None or self.ndf_max_fraction is not None):
+            raise ValueError("NDF proportions require a strictly positive dry matter minimum")
         for name, value in self.mineral_min_kg.items():
             _nonnegative(name, value)
 

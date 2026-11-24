@@ -10,55 +10,59 @@
   "oral_rehearsal_performed": false,
   "projector_checked": false,
   "qa_count": 27,
-  "cost": 34.997773642175794,
+  "cost": 35.105901770752126,
   "artifacts": {
     "apresentacao_rufas_5min.pptx": {
-      "bytes": 47158,
-      "sha256": "7c3f7e29c39f4fd59f15882b884decf791f939de2c6ceb78b4b4cc8c08f858bf"
+      "bytes": 48480,
+      "sha256": "149fe7a0f86526349c97e238dd7e2207fa56625605fa8e401ca6c0b17c5ca6b4"
     },
     "apresentacao_rufas_5min.pdf": {
-      "bytes": 285639,
-      "sha256": "a793803707393238563819454235dc07f6659ca4a513fd7e7e1c035ba6e7f037"
+      "bytes": 281719,
+      "sha256": "d99fa04f52a4490b6d29cccc5c2760af0c8778b911ab5aa36f96b14ecf2da6db"
     },
     "roteiro_sophia.md": {
-      "bytes": 3924,
-      "sha256": "dc9679aab6a3de3937988f91a693db3cf43c02a2102a67d53017d80356e268c8"
+      "bytes": 4614,
+      "sha256": "9b715cb3b3cee83891801fad27bd294688c078e33585bd07613957538973f708"
     },
     "roteiro_anderson.md": {
-      "bytes": 4022,
-      "sha256": "8588999d381dab000cf8c3e6878a962263a729c7334757f004edb6f4474ea1b2"
+      "bytes": 4706,
+      "sha256": "0efbe5eef6f8adebcc0f4d9c87db579f51fcabd4667010d54774020746a33910"
     },
     "roteiro_completo.md": {
-      "bytes": 7609,
-      "sha256": "a22d06d261993cd9a9ac282e13749b1a35b9f8f00134738eb97350a69e4001f7"
+      "bytes": 8299,
+      "sha256": "e43cd73d6fa038ea13400d284ff5e0b727dab5dfd9432abec8cc0ae0dd27644f"
     },
     "perguntas_e_respostas.md": {
-      "bytes": 9079,
-      "sha256": "b071ad2a97b02cdd6ab825d853ebf3613c24ff245b465b7f083b4c93448c7b48"
+      "bytes": 9969,
+      "sha256": "f45505029768c429471a26b7b59799be7e596cca591d56cbbfa810c5cf1d5d94"
     },
     "guia_demonstracao.md": {
-      "bytes": 3442,
-      "sha256": "c53b89a6abe1702066753b36d2351d4284b6ea4c9fd2bc03419fc9952044bed4"
+      "bytes": 4262,
+      "sha256": "c3c3c5e6fb828ce9ec127af23aec40de7d333d972a64eea87c5f70dcb0ab1466"
+    },
+    "demonstracao_integrada.bat": {
+      "bytes": 198,
+      "sha256": "3a98839e5bb55754d09569a0e6412ec10ad8153affba48eb5b3b79700b2c54b2"
     },
     "demonstracao_solver.bat": {
       "bytes": 338,
       "sha256": "e029b124314a560ddafce7ba3566a6cfea44ac976ee9a25a1e973b9187651de3"
     },
     "resultados_validados.md": {
-      "bytes": 7381,
-      "sha256": "7833c2e55b91519fb00be83e01825a8f97704e53b8ef71544447a13ad1add1ea"
+      "bytes": 9478,
+      "sha256": "8197eb0cd2dc2855ceab75196ed280fd2542147380d067aa8ff74fd43334b3e4"
     },
     "checklist_apresentacao.md": {
-      "bytes": 1988,
-      "sha256": "779d92b1b642f8318144bdfceb0413c4f2f866e99351553cacf89a153ebe1d5e"
+      "bytes": 2672,
+      "sha256": "d910c024e9b44f0003482593ccdf130dac1a5009548c95a2c265ebb1a5260f26"
     },
     "cartoes_consulta.md": {
-      "bytes": 1295,
-      "sha256": "ea3a524f355dc53041f49ceded8993920780e3fa1fda28482706549a652fbd5f"
+      "bytes": 1985,
+      "sha256": "90e56a00fdfdc81a2348949ab81778e8378e12c144aa877dc7311c78a23f7814"
     },
     "simulacao_arguicao.md": {
-      "bytes": 4534,
-      "sha256": "d66e901d151bfa693aa11997fb97634370c4f53313484da2d4305d7c21dc937d"
+      "bytes": 5424,
+      "sha256": "c1709249c289dc512882569f7ace0443608f2495f5cc2a4fe3898e0295c80f47"
     }
   }
 }
