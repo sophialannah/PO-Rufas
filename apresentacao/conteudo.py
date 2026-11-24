@@ -21,15 +21,13 @@ STAGES = [
         "Slide 2 — arquitetura",
         ANDERSON,
         60,
-        "O programa recebe o perfil da vaca, a composição dos alimentos, os preços, estoques e metas nutricionais. "
-        "Reutilizamos a biblioteca de alimentos e o calculador NRC do RuFaS para estimar o consumo de matéria seca. "
-        "Os adaptadores convertem as unidades e entregam os dados ao otimizador. A saída contém a dieta "
-        "e sua verificação. "
+        "O programa recebe o animal real construído da população do RuFaS, a lista Python de ingredientes, "
+        "os preços, estoques e metas nutricionais. Reutilizamos o calculador NRC do RuFaS para estimar o consumo "
+        "de matéria seca e os objetos NRCFeed para a composição. Os adaptadores convertem as unidades e entregam "
+        "os dados ao otimizador. A saída é convertida em percentuais de matéria seca e recebida pelo RationManager, "
+        "que devolve os quilos por alimento conferidos pelo NutritionSupplyCalculator. "
         "A aplicação automática ao ciclo diário da fazenda ainda não foi implementada. "
-        "Essa separação permite conferir cada entrada antes de resolver: o perfil descreve o animal; "
-        "a composição informa o que cada alimento fornece; preços e estoques definem o cenário econômico. "
-        "O adaptador compatibiliza matéria natural e matéria seca, evitando misturar bases de cálculo. "
-        "Neste exemplo, proteína, energia e limites de fibra são metas ilustrativas explícitas. "
+        "Neste exemplo, proteína bruta, energia líquida e limites de fibra são metas ilustrativas explícitas. "
         "Agora Sophia apresenta como esses dados se tornam variáveis e restrições.",
     ),
     (
@@ -54,46 +52,43 @@ STAGES = [
         "Demonstração — entradas",
         SOPHIA,
         35,
-        "Esta vaca tem 650 quilos, 100 dias em lactação e produz 30 quilos de leite por dia. "
-        "Aqui estão alfafa, milho e soja, com seus preços e estoques. "
+        "Esta é a vaca 98605 da população do RuFaS, com 627,56 quilos, 100 dias em lactação e 30 quilos "
+        "de leite assumidos por dia. Aqui estão alfafa, milho e soja em NRCFeed, com seus preços e estoques. "
         "A matéria seca vem do calculador do RuFaS; preços e metas suplementares são ilustrativos. "
-        "Vou executar o solver agora. Anderson, explique o resultado.",
+        "Vou executar o solver e enviar a dieta ao RationManager. Anderson, explique o resultado.",
     ),
     (
         "Demonstração — resultado",
         ANDERSON,
         50,
-        "O solver retornou status ótimo. A dieta contém aproximadamente 15,91 quilos de alfafa, "
-        "9,10 de milho e 0,18 de soja, em matéria natural por dia. "
-        "O custo é aproximadamente 35 reais por dia. "
-        "As onze verificações foram satisfeitas, incluindo nutrientes, estoques e inclusão. "
-        "Conferimos também o custo multiplicando cada quantidade pelo respectivo preço. "
-        "A solução fornece aproximadamente 22,55 quilos de matéria seca, 3,6 quilos de proteína bruta "
-        "e 35 megacalorias de energia líquida. As onze verificações incluem cinco nutricionais "
-        "e seis de estoque e inclusão. A tabela arredonda os números apenas para exibição. "
-        "Esse é o mínimo para as opções e hipóteses informadas, não uma recomendação nutricional pronta.",
+        "O solver retornou status ótimo. A dieta contém aproximadamente 14,83 quilos de alfafa, "
+        "9,53 de milho e 0,50 de soja, em matéria natural por dia. "
+        "O custo é aproximadamente 35,11 reais por dia, com onze verificações satisfeitas. "
+        "A solução fornece 22,23 quilos de matéria seca, 3,6 quilos de proteína bruta, 35 megacalorias "
+        "e 6,41 quilos de FDN. Convertemos os quilos de matéria seca para percentuais somando 100%, "
+        "o RationManager recebeu e devolveu as quantidades exatas, e o NutritionSupplyCalculator conferiu "
+        "PB e FDN. Esse é o mínimo do cenário demonstrativo, não uma recomendação nutricional pronta.",
     ),
     (
         "Slide 4 — conclusão",
         ANDERSON,
         35,
-        "Entregamos um núcleo executável, com conversões de unidades e verificação das restrições. "
-        "A validação executou 433 testes dos componentes relacionados, todos aprovados. "
-        "A contribuição é uma alternativa linear integrada aos dados do RuFaS. "
-        "O próximo passo é substituir as hipóteses demonstrativas e ampliar a validação nutricional. "
-        "Ainda precisamos incorporar o resultado ao ciclo diário da simulação e investigar cenários "
-        "com dados econômicos documentados. Não demonstramos um percentual de economia em fazenda. "
-        "Encerramos os cinco minutos de apresentação e iniciamos os cinco minutos de perguntas.",
+        "Entregamos um núcleo linear integrado de ponta a ponta ao Animal, NRCFeed, RationManager e "
+        "calculadores de oferta do RuFaS. A validação executou 442 testes dos componentes relacionados, todos aprovados. "
+        "A contribuição é uma alternativa linear reproduzível dentro das interfaces nativas do sistema. "
+        "O próximo passo é substituir as hipóteses demonstrativas, completar minerais e incorporar a dieta "
+        "ao ciclo diário da fazenda. Encerramos os cinco minutos de apresentação e iniciamos os cinco minutos "
+        "de perguntas.",
     ),
 ]
 
 CARDS = [
     "Problema → quantidades → custo mínimo → módulo linear → demonstração identificada.",
-    "Animal + ingredientes + preços/estoques → adaptadores → SciPy/HiGHS → dieta. MS: RuFaS. Sem ciclo diário.",
+    "Animal → NRC → NRCFeed → HiGHS → % MS → RationManager → oferta conferida. Sem ciclo diário.",
     "x = kg MN/dia; p = R$/kg MN; min Σpx; MS/PB/NEL/FDN; estoque/inclusão; coeficientes fixos.",
-    "650 kg / DEL 100 / leite 30 → tabela de entradas → sintéticos identificados → ENTER → passar a Anderson.",
-    "optimal → 15,91 / 9,10 / 0,18 kg MN → R$ 34,9978 → 11/11 OK → mínimo do cenário.",
-    "433 testes → contribuição linear → parâmetros reais e validação completa → perguntas.",
+    "Animal 98605 / 627,56 kg / DEL 100 / leite 30 → NRCFeed → ENTER → passar a Anderson.",
+    "optimal → 14,83 / 9,53 / 0,50 kg MN → R$ 35,1059 → 11/11 OK → RationManager 100% MS.",
+    "442 testes → integração real até RationManager → dados reais e ciclo diário futuros → perguntas.",
 ]
 
 QA = [
@@ -165,9 +160,10 @@ QA = [
     (
         "Como foi feita a integração com o RuFaS?",
         "Anderson",
-        "Usamos objetos Feed e NutritionRequirements, biblioteca de composição e calculador NRC "
-        "existentes. Há um adaptador de Animal e saída em kg de MS compatível com rações. Ainda não "
-        "aplicamos a dieta automaticamente à simulação diária.",
+        "Construímos um Animal real a partir de animal_population.json, calculamos suas exigências NRC, "
+        "convertemos objetos NRCFeed em Ingredient, otimizamos no HiGHS, convertemos a dieta para "
+        "percentuais de MS e a enviamos ao RationManager, conferindo a oferta no NutritionSupplyCalculator e "
+        "NutritionEvaluator. Ainda não aplicamos a dieta automaticamente ao ciclo diário da fazenda.",
     ),
     (
         "Quais são as fontes das exigências nutricionais?",
@@ -180,7 +176,8 @@ QA = [
         "O que acontece se não houver solução viável?",
         "Sophia",
         "O módulo retorna infeasible e uma mensagem, sem expor uma dieta nem custo como se fossem "
-        "ótimos. Também distingue falha do solver e reprovação da solução na conferência numérica.",
+        "ótimos, e nada é enviado ao RationManager. Também distingue falha do solver e reprovação "
+        "na conferência numérica.",
     ),
     (
         "Como é calculado o custo mínimo?",
@@ -192,9 +189,9 @@ QA = [
     (
         "Como vocês validaram o programa?",
         "Anderson",
-        "Executamos 433 testes dos componentes relacionados, incluindo 33 testes específicos do novo "
-        "trabalho. Há casos com solução conhecida, conversões, limites, inviabilidade e integração. O "
-        "exemplo também confere as onze restrições após o solver.",
+        "Executamos 442 testes dos componentes relacionados, incluindo 42 testes específicos do novo "
+        "trabalho. Há casos com solução conhecida, conversões, limites, inviabilidade e integração ponta "
+        "a ponta sem mocks com Animal, NRCFeed, RationManager e NutritionSupplyCalculator.",
     ),
     (
         "Qual é a principal contribuição?",
@@ -241,7 +238,7 @@ QA = [
         "Por que o resultado tem aproximadamente 35 reais, se a tabela soma outro valor arredondado?",
         "Sophia",
         "O cálculo utiliza valores completos, sem arredondar a decisão. As tabelas arredondam apenas "
-        "para exibição. O custo interno é 34,9977736422 reais por dia; pequenas diferenças na soma "
+        "para exibição. O custo interno é 35,1059017708 reais por dia; pequenas diferenças na soma "
         "visual vêm do arredondamento.",
     ),
     (

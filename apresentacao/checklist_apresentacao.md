@@ -6,7 +6,7 @@
 
 - [x] Solver executado novamente e custo reconferido.
 - [x] 11/11 verificações satisfeitas na demonstração.
-- [x] 433 testes relacionados aprovados, incluindo 33 específicos.
+- [x] 442 testes relacionados aprovados, incluindo 42 específicos.
 - [x] Dados ilustrativos identificados em slides, terminal e roteiro.
 - [x] Quatro slides gerados, com nomes completos e notas de fala.
 - [x] Cronograma de 300 segundos de apresentação + 300 segundos de arguição = 600 segundos.
@@ -29,3 +29,10 @@
 
 Os itens manuais não foram marcados como concluídos: não houve ensaio oral da dupla nem teste do projetor.
 Se ocorrer falha ao vivo, identificar a saída de contingência como execução anterior, nunca como execução ao vivo.
+
+
+## Integração comprovada nesta versão
+
+Integração comprovada: Animal 98605 construído de animal_population.json → cálculo NRC → lista NRCFeed/Ingredient → HiGHS → percentuais MS → RationManager → FeedInRation → NutritionSupplyCalculator e NutritionEvaluator. DEL 100, leite 30 kg/dia assumido. DMI calculada; PB/NEL/FDN externas; déficit diagnóstico de P absorvível (-6,68 g/dia) sem suplemento mineral no LP. O ciclo diário da fazenda não foi executado. Demo: demonstracao_integrada.bat. 5 minutos de apresentação + 5 minutos adicionais de perguntas.
+
+Resultado: R$ 35,1059/dia. Relatório: [integração real](../docs/integracao_real_rufas.md).

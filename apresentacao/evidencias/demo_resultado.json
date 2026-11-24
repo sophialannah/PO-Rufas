@@ -1,5 +1,5 @@
 {
-  "executed_at": "2026-11-24T00:42:54.129519-03:00",
+  "executed_at": "2026-11-24T17:26:00.286675-03:00",
   "animal": {
     "body_weight_kg": 650.0,
     "days_in_milk": 100,
@@ -249,6 +249,6 @@
     ]
   },
   "independent_cost": 34.997773642175794,
-  "solver_seconds": 0.030365200000233017,
-  "elapsed_seconds_including_prompt": 0.037481699997442774
+  "solver_seconds": 0.004662999999709427,
+  "elapsed_seconds_including_prompt": 0.012062800000421703
 }

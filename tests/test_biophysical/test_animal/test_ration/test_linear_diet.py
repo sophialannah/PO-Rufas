@@ -222,3 +222,87 @@ def test_animal_snapshot_fields() -> None:
     assert snapshot.days_in_milk == 100
     assert snapshot.milk_kg_day == 30
     assert snapshot.milk_fat_percent == 3.8
+
+
+def test_example_tdn_matches_native_fraction_contract() -> None:
+    from RUFAS.biophysical.animal.nutrients.nrc_requirements_calculator import NRCRequirementsCalculator
+    from RUFAS.biophysical.animal.ration.linear_diet_catalog import random_cow
+
+    original = NRCRequirementsCalculator.calculate_requirements
+    for build in (example_inputs, lambda: random_cow(42)):
+        with patch.object(NRCRequirementsCalculator, "calculate_requirements", wraps=original) as calculate:
+            build()
+        inputs = calculate.call_args.kwargs
+        assert inputs["TDN_percentage"] == pytest.approx(0.65)
+        corrected = original(**inputs)
+        wrong = original(**{**inputs, "TDN_percentage": 65.0})
+        assert corrected.metabolizable_protein > 0
+        assert corrected.metabolizable_protein != pytest.approx(wrong.metabolizable_protein)
+        # Only DMI is imported into the demonstration LP, so its optimum is preserved.
+        assert corrected.dry_matter == pytest.approx(wrong.dry_matter)
+    animal, feeds = example_inputs()
+    result = optimize_diet(animal, feeds, period_days=7)
+    assert result.status == "optimal"
+    assert result.cost_per_day == pytest.approx(34.997773642175794)
+
+
+def test_price_scenarios_are_comparable_and_do_not_mutate_inputs() -> None:
+    from RUFAS.biophysical.animal.ration.linear_diet_sensitivity import compare_prices
+
+    feeds = ingredients()
+    result = compare_prices(profile(), feeds, {"double": {1: 2, 2: 4}})
+    assert result["scenarios"]["base"]["result"]["cost_per_day"] == pytest.approx(15)
+    assert result["scenarios"]["double"]["cost_delta_per_day"] == pytest.approx(15)
+    assert [f.price_per_kg for f in feeds] == [1, 2]
+    assert result == compare_prices(profile(), feeds, {"double": {1: 2, 2: 4}})
+    with pytest.raises(ValueError, match="Unknown"):
+        compare_prices(profile(), feeds, {"bad": {999: 2}})
+    with pytest.raises(ValueError, match="Prices"):
+        compare_prices(profile(), feeds, {"bad": {1: float("nan")}})
+    impossible = [replace(f, stock_kg=0) for f in feeds]
+    failed = compare_prices(profile(), impossible, {"double": {1: 2, 2: 4}})
+    assert failed["scenarios"]["double"]["result"]["status"] == "infeasible"
+    assert failed["scenarios"]["double"]["cost_delta_per_day"] is None
+
+
+def test_ndf_fraction_rejects_undefined_zero_dm_domain() -> None:
+    with pytest.raises(ValueError, match="strictly positive"):
+        DietRequirements(0, 10, 0, 0, ndf_min_fraction=0.28)
+
+
+def test_workflow_native_calculation_and_consumption() -> None:
+    from RUFAS.biophysical.animal.ration.linear_diet_workflow import run_nrc_workflow
+    from RUFAS.biophysical.animal.ration.linear_diet_example import example_calculator_inputs
+
+    feeds = example_feeds()
+    metadata = {
+        f.rufas_id: dict(
+            name=str(f.rufas_id),
+            nel_mcal_per_kg_dm={1: 1.3, 44: 2.0, 167: 1.8}[f.rufas_id],
+            nel_source="Test external NEL",
+            feed_source="NRC library and test prices",
+        )
+        for f in feeds
+    }
+    thresholds = dict(
+        cp_min_kg=3.6,
+        nel_min_mcal=35.0,
+        ndf_min_fraction=0.28,
+        ndf_max_fraction=0.4,
+        supplemental_source="Test external thresholds",
+    )
+    inputs = example_calculator_inputs()
+    report = run_nrc_workflow(inputs, feeds, metadata, thresholds, period_days=7)
+    assert report["result"]["status"] == "optimal"
+    assert report["native_supply_kg_day"]["CP"] == pytest.approx(report["result"]["totals"]["CP_kg"])
+    assert report["native_supply_kg_day"]["NDF"] == pytest.approx(report["result"]["totals"]["NDF_kg"])
+    assert report["native_requirements"]["dry_matter"] == report["lp_animal"]["requirements"]["dm_min_kg"]
+    assert report["result"]["cost_per_day"] == pytest.approx(34.997773642175794)
+    with pytest.raises(ValueError, match="fraction"):
+        run_nrc_workflow({**inputs, "TDN_percentage": 65.0}, feeds, metadata, thresholds)
+    changed = run_nrc_workflow({**inputs, "milk_production": 20.0}, feeds, metadata, thresholds)
+    assert changed["native_requirements"]["dry_matter"] != report["native_requirements"]["dry_matter"]
+    failed = run_nrc_workflow(inputs, feeds, metadata, {**thresholds, "cp_min_kg": 10000.0})
+    assert failed["result"]["status"] == "infeasible"
+    assert failed["native_supply_kg_day"] is None
+    assert failed["result"]["quantities_kg_day"] == {}

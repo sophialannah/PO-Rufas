@@ -165,7 +165,7 @@ def random_cow(
         previous_temperature=20.0,
         net_energy_diet_concentration=1.6,
         days_born=1500,
-        TDN_percentage=65.0,
+        TDN_percentage=0.65,  # Native implementation consumes a fraction despite the argument name.
         process_based_phosphorus_requirement=0.0,
     )
     req = NRCRequirementsCalculator.calculate_requirements(**inputs)

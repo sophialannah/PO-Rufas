@@ -2,7 +2,21 @@
 
 **Integrantes:** Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.
 
-Validação registrada em **24/11/2026 00:29:02 -0300**, horário de São Paulo. Evidência: `evidencias/validacao.json`.
+## Execução integrada principal (Animal 98605 → RationManager)
+
+Esta é a execução usada na demonstração integrada (`.\apresentacao\demonstracao_integrada.bat`), registrada em `evidencias/integracao_real.json` e detalhada em [integração real](../docs/integracao_real_rufas.md):
+
+- **Animal real**: ID `98605`, raça `HO`, construído via `Animal(record, RufasTime)` a partir de `input/data/animal/animal_population.json`, `627,5607 kg`, `DEL=100`, paridade `4`. Leite `30 kg/dia` e composição `3,8% / 3,2% / 4,8%` são hipóteses explícitas.
+- **Exigência importada**: `DMI = 22,231580 kg MS/dia` via `Animal.calculate_nutrition_requirements` (`NRCRequirementsCalculator`). PB `>= 3,6 kg/dia`, NEL `>= 35,0 Mcal/dia` e FDN `28–40% MS` permanecem metas externas explícitas.
+- **Resultado HiGHS (`optimal`, 7 dias)**: Alfafa `14,8300 kg MN` (`13,3915 kg MS`, `R$ 18,7481`), Milho `9,5283 kg MN` (`8,3945 kg MS`, `R$ 15,1100`), Farelo de soja `0,4979 kg MN` (`0,4456 kg MS`, `R$ 1,2478`). **Custo: R$ 35,1059017708/dia**; `11/11` verificações satisfeitas.
+- **Retorno ao `RationManager` e avaliação nativa**: percentuais em MS (`60,24%`, `37,76%`, `2,00%`, soma `100,00%`) validados por `RationManager.set_user_defined_rations`, quantidades recuperadas por `get_user_defined_ration`, PB (`3,6000 kg`) e FDN (`6,4120 kg`, `28,84% MS`) conferidas por `NutritionSupplyCalculator`. O diagnóstico completo de `NutritionEvaluator` aponta energia, MP (`2300,94 g` vs `2120,54 g`), Ca (`+5,45 g`) e FDN dentro do esperado, e **déficit de fósforo absorvível (`-6,68 g/dia`)** por ausência de suplemento mineral na lista demonstrativa.
+- **Testes**: **442 testes aprovados** (incluindo 42 específicos dos novos módulos), sem mocks nas operações principais da integração. O ciclo diário completo da fazenda (`Pen`/baixa de estoque) não foi executado.
+
+---
+
+## Histórico — execução anterior com perfil sintético (24/11/2026 00:29:02 -0300)
+
+Validação histórica registrada em **24/11/2026 00:29:02 -0300**, horário de São Paulo. Evidência: `evidencias/validacao.json` (animal ilustrativo de 650 kg, R$ 34,9978/dia, 433 testes; não comparar custos entre animais diferentes).
 
 ## Estado real e escopo investigado
 

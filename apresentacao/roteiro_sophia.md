@@ -28,10 +28,17 @@ Sequência: slides 1 → 2 → 3 → Alt+Tab para o terminal → Enter para reso
 
 **Sophia Lannah Beatriz Ferreira de Sousa — 35 segundos**
 
-> Esta vaca tem 650 quilos, 100 dias em lactação e produz 30 quilos de leite por dia. Aqui estão alfafa, milho e soja, com seus preços e estoques. A matéria seca vem do calculador do RuFaS; preços e metas suplementares são ilustrativos. Vou executar o solver agora. Anderson, explique o resultado.
+> Esta vaca tem 627,56 quilos, 100 dias em lactação e produz 30 quilos de leite por dia. Aqui estão alfafa, milho e soja, com seus preços e estoques. A matéria seca vem do calculador do RuFaS; preços e metas suplementares são ilustrativos. Vou executar o solver agora. Anderson, explique o resultado.
 
-**Cartão:** 650 kg / DEL 100 / leite 30 → tabela de entradas → sintéticos identificados → ENTER → passar a Anderson.
+**Cartão:** 627,56 kg / DEL 100 / leite 30 → tabela de entradas → sintéticos identificados → ENTER → passar a Anderson.
 
 ## Perguntas
 
 Priorize função objetivo, unidades, variáveis, restrições, linearidade e solver. Ambos devem estudar o roteiro completo e o banco de perguntas.
+
+
+## Integração comprovada nesta versão
+
+Integração comprovada: Animal 98605 construído de animal_population.json → cálculo NRC → lista NRCFeed/Ingredient → HiGHS → percentuais MS → RationManager → FeedInRation → NutritionSupplyCalculator e NutritionEvaluator. DEL 100, leite 30 kg/dia assumido. DMI calculada; PB/NEL/FDN externas; déficit diagnóstico de P absorvível (-6,68 g/dia) sem suplemento mineral no LP. O ciclo diário da fazenda não foi executado. Demo: demonstracao_integrada.bat. 5 minutos de apresentação + 5 minutos adicionais de perguntas.
+
+Resultado: R$ 35,1059/dia. Relatório: [integração real](../docs/integracao_real_rufas.md).
