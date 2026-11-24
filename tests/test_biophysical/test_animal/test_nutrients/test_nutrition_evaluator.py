@@ -1,4 +1,5 @@
-from dataclasses import asdict
+from dataclasses import asdict, replace
+from math import inf, nextafter
 import pytest
 from pytest_lazy_fixtures import lf as lazy_fixture
 from RUFAS.biophysical.animal.data_types.nutrition_data_structures import NutritionRequirements, NutritionSupply
@@ -574,6 +575,37 @@ def test_calculate_fat_supplied(
 ) -> None:
     fat_difference = NutritionEvaluator._calculate_fat_supplied(nutrition_requirements_base, supply)
     assert fat_difference == pytest.approx(expected_difference, rel=1e-5)
+
+
+@pytest.mark.parametrize(
+    "fat_percentage, expected_valid",
+    [(3.0, True), (7.0, True), (nextafter(7.0, inf), True), (7.0 + 1e-8, False), (7.1, False)],
+)
+def test_fat_upper_limit(
+    nutrition_requirements_base: NutritionRequirements,
+    nutrition_supply_base: NutritionSupply,
+    fat_percentage: float,
+    expected_valid: bool,
+) -> None:
+    supply = replace(
+        nutrition_supply_base,
+        maintenance_energy=30.0,
+        dry_matter=10.0,
+        forage_ndf_supply=2.0,
+        fat_supply=fat_percentage / 10,
+    )
+    valid, evaluation = NutritionEvaluator.evaluate_nutrition_supply(nutrition_requirements_base, supply, is_cow=True)
+    assert evaluation.fat_percent == pytest.approx(7.0 - fat_percentage, abs=1e-14)
+    if fat_percentage > 7.0:
+        assert evaluation.fat_percent < 0.0
+    assert valid is expected_valid
+    assert evaluation.is_valid_heifer_ration is expected_valid
+    assert evaluation.report["fat_percent_acceptable"] is expected_valid
+    assert all(
+        value
+        for key, value in evaluation.report.items()
+        if key.endswith("_acceptable") and key != "fat_percent_acceptable"
+    )
 
 
 @pytest.mark.parametrize(

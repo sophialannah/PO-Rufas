@@ -14,7 +14,11 @@ from RUFAS.biophysical.animal.ration.linear_diet_adapter import (
     requirements_from_rufas,
 )
 from RUFAS.biophysical.animal.ration.ration_manager import RationManager
-from RUFAS.data_structures.feed_storage_to_animal_connection import NRCFeed, NutrientStandard
+from RUFAS.data_structures.feed_storage_to_animal_connection import FeedComponentType, NRCFeed, NutrientStandard
+
+# Keep an active mineral bound above both the LP verification tolerance and round-off
+# in the native round-trip. NutritionEvaluator compares against zero exactly.
+MINERAL_ROUNDING_MARGIN_G = 1e-6
 
 
 def ration_config_from_result(result: DietResult, feeds: list[NRCFeed]) -> dict:
@@ -54,21 +58,55 @@ def optimize_animal_ration(
     housing: str = "Barn",
     walking_distance: float = 0.0,
     previous_temperature: float = 20.0,
+    constrain_absorbed_minerals: bool = False,
 ) -> dict:
     """Use Animal's actual NRC dispatch, then round-trip through native RationManager.
 
-    Only DMI is imported into the LP. No MP/CP or absorbed/total conversion.
+    DMI and optionally the native absorbed P and Ca minima are imported into the LP.
     A per-call subclass isolates user-ration settings; no change to Pen or farm defaults.
     """
     if animal.animal_type is not AnimalType.LAC_COW or animal.nutrient_standard is not NutrientStandard.NRC:
         raise ValueError("This bridge supports NRC lactating cows only")
     if not feeds or any(not isinstance(f, NRCFeed) for f in feeds):
         raise ValueError("A nonempty list of native NRCFeed objects is required")
+    if constrain_absorbed_minerals:
+        supported = {FeedComponentType.FORAGE, FeedComponentType.CONC, FeedComponentType.MINERAL}
+        missing = [f.rufas_id for f in feeds if f.feed_type not in supported]
+        if missing:
+            raise ValueError(f"Absorção de fósforo e cálcio indisponível para os ingredientes {missing}.")
     native = animal.calculate_nutrition_requirements(housing, walking_distance, previous_temperature, feeds)
     req = requirements_from_rufas(native, **external_thresholds)
     profile = profile_from_animal(animal, req)
     ingredients = [ingredient_from_feed(f, **metadata[f.rufas_id]) for f in feeds]
-    result = optimize_diet(profile, ingredients, period_days=period_days)
+    targets = {"phosphorus": max(native.phosphorus, native.process_based_phosphorus), "calcium": native.calcium}
+    coefficients = {
+        mineral: {f.rufas_id: calculator([FeedInRation(1.0, f)]) for f in feeds}
+        for mineral, calculator in (
+            ("phosphorus", NutritionSupplyCalculator.calculate_phosphorus_supply),
+            ("calcium", NutritionSupplyCalculator.calculate_calcium_supply),
+        )
+    }
+    mineral_rows = (
+        {
+            mineral: (target + MINERAL_ROUNDING_MARGIN_G if target > 0 else target, coefficients[mineral])
+            for mineral, target in targets.items()
+        }
+        if constrain_absorbed_minerals
+        else {}
+    )
+    result = optimize_diet(profile, ingredients, period_days=period_days, absorbed_minerals=mineral_rows)
+    diagnosis = None
+    if mineral_rows and result.status == "infeasible":
+        baseline = optimize_diet(profile, ingredients, period_days=period_days)
+        if baseline.status == "optimal":
+            calcium_only = optimize_diet(
+                profile, ingredients, period_days=period_days, absorbed_minerals={"calcium": mineral_rows["calcium"]}
+            )
+            diagnosis = (
+                "phosphorus_conflict"
+                if calcium_only.status == "optimal"
+                else ("calcium_conflict" if calcium_only.status == "infeasible" else "mineral_conflict")
+            )
     report = dict(
         animal_id=animal.id,
         profile=asdict(profile),
@@ -76,6 +114,15 @@ def optimize_animal_ration(
         ingredients=[asdict(i) for i in ingredients],
         result=asdict(result),
         native_return=None,
+        nrc_minerals=dict(
+            enabled=constrain_absorbed_minerals,
+            requirement_g_day=targets,
+            lp_minimum_g_day={name: row[0] for name, row in mineral_rows.items()},
+            coefficients_g_per_kg_dm=coefficients,
+            source="RuFaS NRC: NutritionSupplyCalculator.calculate_phosphorus_supply/calculate_calcium_supply",
+            infeasibility=diagnosis,
+            phosphorus_total_g_day=None,
+        ),
     )
     if result.status != "optimal":
         return report
@@ -112,6 +159,12 @@ def optimize_animal_ration(
         enteric_methane=0.0,
         urinary_nitrogen=0.0,
     )
+    report["nrc_minerals"]["phosphorus_total_g_day"] = sum(recovered[f.rufas_id] * f.phosphorus * 10.0 for f in feeds)
+    for check in result.checks:
+        if check.name in {"absorbed_phosphorus_g", "absorbed_calcium_g"}:
+            mineral = check.name.removeprefix("absorbed_").removesuffix("_g")
+            if not isclose(check.supplied, getattr(full_supply, mineral), rel_tol=0.0, abs_tol=1e-7):
+                raise RuntimeError(f"Native absorbed {mineral} supply does not match the LP")
     is_valid_cow_ration, evaluation = NutritionEvaluator.evaluate_nutrition_supply(native, full_supply, is_cow=True)
     report["native_return"] = dict(
         config=config,
@@ -122,6 +175,11 @@ def optimize_animal_ration(
         native_evaluation=dict(
             is_valid_cow_ration=bool(is_valid_cow_ration),
             deltas={k: float(v) if v is not None else None for k, v in asdict(evaluation).items()},
+            criteria={
+                key.removesuffix("_acceptable"): bool(value) if value is not None else None
+                for key, value in evaluation.report.items()
+                if key.endswith("_acceptable")
+            },
             supply_summary=dict(
                 metabolizable_protein_g=float(full_supply.metabolizable_protein),
                 maintenance_energy_mcal=float(full_supply.maintenance_energy),

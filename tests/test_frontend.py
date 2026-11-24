@@ -7,10 +7,22 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from frontend.service import DEMO_ID, build_feeds, default_inputs, export_json, load_animals, load_catalog, run_scenario
+from frontend.service import (
+    DEMO_ID,
+    build_feeds,
+    default_inputs,
+    export_json,
+    load_animals,
+    load_catalog,
+    nasem_phosphorus_diagnostic,
+    run_scenario,
+)
 from RUFAS.biophysical.animal.animal_config import AnimalConfig
+from RUFAS.biophysical.animal.data_types.animal_types import AnimalType
 from RUFAS.biophysical.animal.milk.milk_production import MilkProduction
 from RUFAS.biophysical.animal.ration.linear_diet_adapter import ingredient_from_feed
+from RUFAS.biophysical.animal.ration.linear_diet_integrated_example import demo_inputs
+from RUFAS.biophysical.animal.nutrients.nasem_requirements_calculator import NASEMRequirementsCalculator
 from RUFAS.biophysical.animal.ration.ration_manager import RationManager
 
 
@@ -96,6 +108,83 @@ def test_parallel_requests_and_state_restored(inputs):
     assert (after[0], *after[2:]) == (rng[0], *rng[2:])
 
 
+def test_nasem_phosphorus_native_dispatch():
+    with demo_inputs(animal_id=DEMO_ID) as (animal, _, _, _):
+        standard = animal.nutrient_standard
+        diagnostic = nasem_phosphorus_diagnostic(animal)
+        assert animal.nutrient_standard is standard
+        native = NASEMRequirementsCalculator._calculate_phosphorus_requirement(
+            animal.body_weight,
+            animal.mature_body_weight,
+            animal.animal_type,
+            animal.days_in_pregnancy if animal.is_pregnant else None,
+            0,
+            diagnostic["dmi_kg_day"],
+            3.2,
+            30,
+            animal.calves,
+        )
+        expected = diagnostic["dmi_kg_day"] + 0.0006 * animal.body_weight + 30 * (0.49 + 0.13 * 3.2)
+        assert diagnostic["requirement_g_day"] == pytest.approx(native)
+        assert native == pytest.approx(expected)
+
+
+def test_nasem_phosphorus_growth_gestation_and_floor():
+    requirement = NASEMRequirementsCalculator._calculate_phosphorus_requirement
+    physiology = (600.0, 700.0, AnimalType.LAC_COW)
+    mature = requirement(*physiology, None, 0.5, 22.0, 3.2, 30.0, 3)
+    young = requirement(*physiology, None, 0.5, 22.0, 3.2, 30.0, 2)
+    assert young - mature == pytest.approx(0.5 * (1.2 + 4.635 * (700 / 600) ** 0.22))
+    assert requirement(*physiology, 189, 0.5, 22.0, 3.2, 30.0, 3) == mature
+    assert requirement(*physiology, 250, 0.5, 22.0, 3.2, 30.0, 3) > mature
+    assert requirement(*physiology, None, 0.0, 0.0, 0.0, 0.0, 3) == pytest.approx(0.36)
+    assert requirement(60.0, 700.0, AnimalType.CALF, None, 0.0, 0.0, 0.0, 0.0, 0) == 0
+
+
+@pytest.mark.parametrize(
+    ("animal_id", "milk", "baseline_cost", "deficit", "without_mineral"),
+    [
+        (98605, 30, 35.1059017708, -6.6771465432, "infeasible"),
+        (93785, 31, 34.9440111041, -8.6107786857, "optimal"),
+    ],
+)
+def test_nrc_absorbed_minerals_and_native_evaluation(inputs, animal_id, milk, baseline_cost, deficit, without_mineral):
+    animals, catalog, rows = inputs
+    baseline = solve(inputs, animal_id, milk)
+    assert baseline["result"]["cost_per_day"] == pytest.approx(baseline_cost)
+    assert baseline["native_return"]["native_evaluation"]["deltas"]["phosphorus"] == pytest.approx(deficit)
+    constrained = run_scenario(animals, catalog, animal_id, rows, milk, 7, 3.6, 35, 28, 40, True)
+    assert constrained["result"]["status"] == without_mineral
+    if without_mineral == "infeasible":
+        assert constrained["nrc_minerals"]["infeasibility"] == "phosphorus_conflict"
+        assert constrained["native_return"] is None
+
+    supplement = dict(id=231, price=5.0, stock=1.0, minimum=0.0, maximum=0.10, nel=0.0)
+    report = run_scenario(animals, catalog, animal_id, rows + [supplement], milk, 7, 3.6, 35, 28, 40, True, True)
+    result = report["result"]
+    assert result["status"] == "optimal"
+    assert len(result["checks"]) == 15 and all(check["satisfied"] for check in result["checks"])
+    assert 0 < result["quantities_kg_day"][231] <= 0.10
+    native = report["native_return"]
+    assert native["ration_kg_dm_day"] == pytest.approx(result["ration_kg_dm_day"])
+    minerals, evaluation = report["nrc_minerals"], native["native_evaluation"]
+    phos = minerals["coefficients_g_per_kg_dm"]["phosphorus"]
+    assert float(catalog[231]["composition"]["phosphorus"]) == 19.3
+    assert phos[1] == pytest.approx(2.8 * 0.64)
+    assert phos[44] == pytest.approx(float(catalog[44]["composition"]["phosphorus"]) * 10 * 0.70)
+    assert phos[231] == pytest.approx(193 * 0.80)
+    for mineral in ("phosphorus", "calcium"):
+        row = next(c for c in result["checks"] if c["name"] == f"absorbed_{mineral}_g")
+        assert row["supplied"] == pytest.approx(evaluation["supply_summary"][mineral + "_g"])
+        assert evaluation["deltas"][mineral] >= 0
+    assert minerals["phosphorus_total_g_day"] > evaluation["supply_summary"]["phosphorus_g"]
+    assert evaluation["is_valid_cow_ration"]
+    assert evaluation["criteria"] == dict.fromkeys(evaluation["deltas"], True)
+    assert evaluation["deltas"]["fat_percent"] > 0
+    assert report["nutrient_standard"] == "NRC 2001"
+    assert json.loads(export_json(report))["nasem_phosphorus_diagnostic"]["standard"] == "NASEM 2021"
+
+
 def test_streamlit_runs_real_solver_and_displays_native_alert():
     pytest.importorskip("streamlit")
     from streamlit.testing.v1 import AppTest
@@ -119,3 +208,26 @@ def test_streamlit_runs_real_solver_and_displays_native_alert():
     assert not app.exception
     assert any("Cenário inviável" in error.value for error in app.error)
     assert app.session_state["report"]["native_return"] is None
+
+    next(field for field in app.number_input if field.label == "Período de estoque (dias)").set_value(7)
+    next(field for field in app.checkbox if "Exigir fósforo" in field.label).check()
+    next(field for field in app.checkbox if "NASEM 2021" in field.label).check()
+    next(button for button in app.button if button.label == "Executar otimização").click().run()
+    assert not app.exception
+    assert any("retirar somente o mínimo de fósforo" in warning.value for warning in app.warning)
+    assert any("Diagnóstico NASEM 2021" in component.value for component in app.markdown)
+    assert app.session_state["report"]["nutrient_standard"] == "NRC 2001"
+
+    app.multiselect[0].select(231).run()
+    editor = "editor-" + ",".join(map(str, app.multiselect[0].value))
+    app.session_state[editor] = {
+        "edited_rows": {3: dict(price=5.0, stock=1.0, minimum=0.0, maximum=0.1, nel=0.0)},
+        "added_rows": [],
+        "deleted_rows": [],
+    }
+    next(button for button in app.button if button.label == "Executar otimização").click().run()
+    assert not app.exception
+    report = app.session_state["report"]
+    assert report["result"]["quantities_kg_day"][231] == pytest.approx(0.04418934)
+    assert any("Balanço mineral" in component.value for component in app.subheader)
+    assert any("Aprovada pelo NutritionEvaluator" in success.value for success in app.success)
