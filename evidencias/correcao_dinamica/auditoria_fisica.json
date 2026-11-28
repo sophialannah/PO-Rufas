@@ -1,0 +1,146 @@
+{
+  "SLSQP_MTL": {
+    "minimum_recorded_stock": 0.0,
+    "maximum_ration_vs_fulfilled_difference_kg": 0.000788,
+    "differences": [
+      {
+        "day": 18,
+        "feed": "95",
+        "requested": 0.000788,
+        "fed": 0.0,
+        "delta": -0.000788
+      },
+      {
+        "day": 29,
+        "feed": "95",
+        "requested": 0.000778,
+        "fed": 0.0,
+        "delta": -0.000778
+      },
+      {
+        "day": 182,
+        "feed": "167",
+        "requested": 0.000376,
+        "fed": 0.0,
+        "delta": -0.000376
+      },
+      {
+        "day": 273,
+        "feed": "95",
+        "requested": 0.000139,
+        "fed": 0.0,
+        "delta": -0.000139
+      },
+      {
+        "day": 346,
+        "feed": "231",
+        "requested": 0.003936,
+        "fed": 0.003624518323933401,
+        "delta": -0.00031148167606659914
+      },
+      {
+        "day": 363,
+        "feed": "95",
+        "requested": 9.6e-05,
+        "fed": 0.0,
+        "delta": -9.6e-05
+      }
+    ]
+  },
+  "HiGHS_hibrido": {
+    "minimum_recorded_stock": 0.0,
+    "maximum_ration_vs_fulfilled_difference_kg": 0.00082,
+    "differences": [
+      {
+        "day": 117,
+        "feed": "104",
+        "requested": 3.8e-05,
+        "fed": 0.0,
+        "delta": -3.8e-05
+      },
+      {
+        "day": 123,
+        "feed": "95",
+        "requested": 0.00082,
+        "fed": 0.0,
+        "delta": -0.00082
+      },
+      {
+        "day": 123,
+        "feed": "104",
+        "requested": 0.001984,
+        "fed": 0.001346567500000001,
+        "delta": -0.0006374324999999991
+      },
+      {
+        "day": 124,
+        "feed": "104",
+        "requested": 0.004234,
+        "fed": 0.004032650518750001,
+        "delta": -0.00020134948124999903
+      },
+      {
+        "day": 133,
+        "feed": "104",
+        "requested": 0.011139,
+        "fed": 0.010641664747787289,
+        "delta": -0.0004973352522127106
+      },
+      {
+        "day": 346,
+        "feed": "231",
+        "requested": 0.003972,
+        "fed": 0.0036275603382663335,
+        "delta": -0.00034443966173366633
+      }
+    ]
+  },
+  "HiGHS_exclusivo": {
+    "minimum_recorded_stock": 0.0,
+    "maximum_ration_vs_fulfilled_difference_kg": 0.00082,
+    "differences": [
+      {
+        "day": 117,
+        "feed": "104",
+        "requested": 3.8e-05,
+        "fed": 0.0,
+        "delta": -3.8e-05
+      },
+      {
+        "day": 123,
+        "feed": "95",
+        "requested": 0.00082,
+        "fed": 0.0,
+        "delta": -0.00082
+      },
+      {
+        "day": 123,
+        "feed": "104",
+        "requested": 0.001984,
+        "fed": 0.001346567500000001,
+        "delta": -0.0006374324999999991
+      },
+      {
+        "day": 124,
+        "feed": "104",
+        "requested": 0.004234,
+        "fed": 0.004032650518750001,
+        "delta": -0.00020134948124999903
+      },
+      {
+        "day": 133,
+        "feed": "104",
+        "requested": 0.011139,
+        "fed": 0.010641664747787289,
+        "delta": -0.0004973352522127106
+      },
+      {
+        "day": 346,
+        "feed": "231",
+        "requested": 0.003972,
+        "fed": 0.0036275603382663335,
+        "delta": -0.00034443966173366633
+      }
+    ]
+  }
+}

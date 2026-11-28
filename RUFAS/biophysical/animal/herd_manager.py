@@ -244,6 +244,20 @@ class HerdManager:
         NutritionSupplyCalculator.nutrient_standard = nutrient_standard
 
         self.initialize_pens(animal_config_data["pen_information"])
+        optimizer_settings = animal_config_data["ration"]
+        if (
+            optimizer_settings.get("optimizer_strategy", "native_slsqp") != "native_slsqp"
+            or optimizer_settings.get("optimizer_record_events", False)
+            or optimizer_settings.get("optimizer_mineral_policy", "native") != "native"
+        ):
+            from RUFAS.biophysical.animal.ration.dynamic_linear_optimizer import DynamicRationOptimizer
+
+            for pen in self.all_pens:
+                pen.ration_optimizer = DynamicRationOptimizer(
+                    optimizer_settings.get("optimizer_strategy", "native_slsqp"),
+                    optimizer_settings.get("optimizer_fallback", "native_slsqp"),
+                    mineral_policy=optimizer_settings.get("optimizer_mineral_policy", "native"),
+                )
 
         herd_population = HerdFactory.post_animal_population
         if herd_population is None:
@@ -1424,7 +1438,9 @@ class HerdManager:
                 )
                 pen_available_feeds = self._find_pen_available_feeds(available_feeds, user_defined_ration_feed_ids)
             else:
-                pen_available_feeds = self._find_pen_available_feeds(available_feeds, RationManager.ration_feeds)
+                pen_available_feeds = self._find_pen_available_feeds(
+                    available_feeds, RationManager.get_ration_feeds(animal_combination)
+                )
             self._reformulate_ration_single_pen(
                 pen=pen_with_min_stocking_density,
                 pen_available_feeds=pen_available_feeds,

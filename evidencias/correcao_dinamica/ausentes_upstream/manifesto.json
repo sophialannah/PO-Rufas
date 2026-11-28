@@ -1,0 +1,28 @@
+{
+  ".github/workflows/combined_format_lint_test_mypy.yml": {
+    "url": "https://raw.githubusercontent.com/RuminantFarmSystems/RuFaS/d471c742eadc2e37b76545d0d0f0d10b6c9ef763/.github/workflows/combined_format_lint_test_mypy.yml",
+    "git_blob": "7556b008348f449397b7b9cac24919a360a9fd02",
+    "audit_copy": "evidencias/correcao_dinamica/ausentes_upstream/.github__workflows__combined_format_lint_test_mypy.yml.txt",
+    "installed_in_original_path": false,
+    "publication_copy_sha256": "1a4464973641a21d26e985ecf53f95605e70377faf359d692b26165f5ab28d0c",
+    "publication_normalization": "Whitespace only; upstream git_blob identifies original content"
+  },
+  "helpful_scripts/herd_inputs_calculator/herd_inputs_calculator.py": {
+    "url": "https://raw.githubusercontent.com/RuminantFarmSystems/RuFaS/d471c742eadc2e37b76545d0d0f0d10b6c9ef763/helpful_scripts/herd_inputs_calculator/herd_inputs_calculator.py",
+    "git_blob": "b94a64e0e3a7048f993ea5b413e51d052cad8a89",
+    "audit_copy": "evidencias/correcao_dinamica/ausentes_upstream/helpful_scripts__herd_inputs_calculator__herd_inputs_calculator.py.txt",
+    "installed_in_original_path": false
+  },
+  "output/output_filters/.keep": {
+    "url": "https://raw.githubusercontent.com/RuminantFarmSystems/RuFaS/d471c742eadc2e37b76545d0d0f0d10b6c9ef763/output/output_filters/.keep",
+    "git_blob": "0698e63361681709abfd2af1f8ab26ebd8160d73",
+    "audit_copy": "evidencias/correcao_dinamica/ausentes_upstream/output__output_filters__.keep.txt",
+    "installed_in_original_path": false
+  },
+  "output/output_filters/_csv_all_variables.txt": {
+    "url": "https://raw.githubusercontent.com/RuminantFarmSystems/RuFaS/d471c742eadc2e37b76545d0d0f0d10b6c9ef763/output/output_filters/_csv_all_variables.txt",
+    "git_blob": "9abb766ceed183f85dcbdf082a4b1b6c34936e0e",
+    "audit_copy": "evidencias/correcao_dinamica/ausentes_upstream/output__output_filters___csv_all_variables.txt.txt",
+    "installed_in_original_path": false
+  }
+}

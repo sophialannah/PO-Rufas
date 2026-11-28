@@ -1,0 +1,24 @@
+{
+  "status": "incomplete_not_used_in_annual_comparison",
+  "currency": "BRL",
+  "source": "https://cepea.org.br/br/indicador/milho.aspx",
+  "quote_date": "2026-09-04",
+  "retrieved_date": "2026-11-27",
+  "source_license": "CEPEA CC BY-NC 4.0",
+  "corn_quote_brl_per_60kg_as_fed": 70.93,
+  "dm_fraction_from_native_catalog": 0.881,
+  "corn_price_brl_per_kg_dm": 1.3418463866818011,
+  "prices_brl_per_kg_dm": {
+    "1": null,
+    "23": null,
+    "44": 1.3418463866818011,
+    "50": null,
+    "104": null,
+    "110": null,
+    "167": null,
+    "231": null,
+    "202": null,
+    "216": null
+  },
+  "limitation": "Verified dated corn quote, not a current full ration market valuation. Other feeds, processing, freight and farm-grown costs not quoted. Scenario climate is 2013; quote is 2026. Do not mix missing BRL prices with illustrative UM prices."
+}

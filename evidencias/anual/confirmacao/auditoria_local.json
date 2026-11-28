@@ -1,0 +1,202 @@
+{
+  "metadata_files": {
+    "config": {
+      "path": "evidencias/anual/confirmacao/native_slsqp_365/config.json",
+      "present": true,
+      "sha256": "db82b9677176aa9274fce84f2793aff5fe750170bc0a8aeee6af26558870662f"
+    },
+    "animal": {
+      "path": "evidencias/anual/confirmacao/native_slsqp_365/animal.json",
+      "present": true,
+      "sha256": "776e21a78479fcdfdb7888be6a69bf0ce34f0849c4861ba53db6caabe9a28414"
+    },
+    "animal_population": {
+      "path": "input/data/animal/animal_population.json",
+      "present": true,
+      "sha256": "a062eb6e1c77cc20d8e28e901a7648984a75620943da77e7dcecf25d3e572d15"
+    },
+    "animal_mean_phenotype": {
+      "path": "input/data/animal_genetics/mean_phenotype.csv",
+      "present": true,
+      "sha256": "a5764f93c57ed71ff9c3821b58f3fa609f2f28977c4e606da4b030f8bf643ad2"
+    },
+    "animal_top_listing_semen": {
+      "path": "input/data/animal_genetics/TopListingSemen_HO.csv",
+      "present": true,
+      "sha256": "362e8e7f0b7781f09d40e01f84d17852fe1eea6c6a95919ba7b9243bac7dfefe"
+    },
+    "lactation": {
+      "path": "input/data/animal/lactation_curve_adjustment_inputs.json",
+      "present": true,
+      "sha256": "52e4c95d0c455ac4ac42a0e033848fe94a8e43b130f1bc159c043861d2f7e47b"
+    },
+    "economy": {
+      "path": "input/data/EEE/default_costs.csv",
+      "present": true,
+      "sha256": "629366236f1e6867c52a207bb7f14508d679402bf6aa6a5e1242d06b8823a667"
+    },
+    "emission": {
+      "path": "input/data/EEE/default_emissions.csv",
+      "present": true,
+      "sha256": "8f0af2b5397dd977b75af796526f2c49b92ade7af35111605e7926d5ef82c936"
+    },
+    "purchased_feeds_emissions": {
+      "path": "input/data/EEE/full_feeds_emissions_July2024_interpolated_regional_average.csv",
+      "present": true,
+      "sha256": "e387313e9ff26803ca1f470b70914e00ab7915fd02c7b3563bfc6b0953f608af"
+    },
+    "purchased_feed_land_use_change_emissions": {
+      "path": "input/data/EEE/full_feeds_land_use_change_emissions_July2024_interpolated_regional_average.csv",
+      "present": true,
+      "sha256": "3064b22ab366fe16f3faa8ec40d2be8508af8218a7af1528e00b9cf0fc76d094"
+    },
+    "feed": {
+      "path": "evidencias/anual/confirmacao/native_slsqp_365/feed.json",
+      "present": true,
+      "sha256": "b98f14b67a57e6edf06a5e18533946e402d526a05075d84857a6630ccbbd0047"
+    },
+    "NRC_Comp": {
+      "path": "input/data/feed/NRC_comp.csv",
+      "present": true,
+      "sha256": "2b37817f9469113959d14bb7f1de8cc36a13b51d6541195a65cb0f41a74150db"
+    },
+    "NASEM_Comp": {
+      "path": "input/data/feed/NASEM_Comp_with_TDN_urea.csv",
+      "present": true,
+      "sha256": "0da49c153d84a690099990864fb199515f266dce9025bd521a188907835af757"
+    },
+    "manure_management": {
+      "path": "input/data/manure/example_freestall_processor_configs.json",
+      "present": true,
+      "sha256": "a98372b88a953e680c93848da3c2c3aec6bd7f6f803018ce68f84d2f1157a077"
+    },
+    "manure_processor_connection": {
+      "path": "input/data/manure/example_freestall_processor_connections.json",
+      "present": true,
+      "sha256": "86d2fc6988c49a8b0e3599787b2db149726eab0033cbc48b0d6569ccc648bb8a"
+    },
+    "crop_configurations": {
+      "path": "input/data/crop_configurations/default_crop_configs.json",
+      "present": true,
+      "sha256": "67b1768442c6b74143409c6ded20bae310107650d8b12bf29b78c943ad58e5f3"
+    },
+    "field_1": {
+      "path": "input/data/field/example_small_field_corn_alf_silage.json",
+      "present": true,
+      "sha256": "6cd296e2ecd7df1002187946c282cd10854256f37a7c8f2366a505c7ff8a987b"
+    },
+    "soil_1": {
+      "path": "input/data/soil/example_soil.json",
+      "present": true,
+      "sha256": "2d8a6093ffd7fdbf7e0ad594d60cf98d160067fb72d5d43a440b22e6dcd0820e"
+    },
+    "Corn-Alf-Silage": {
+      "path": "input/data/crop/example_alf_corn_silage_rotation.json",
+      "present": true,
+      "sha256": "6086538b9cdad32425d172701e1843f3ec15b04798c1f7864e00185cffe535e8"
+    },
+    "fertilizer_schedule_1": {
+      "path": "input/data/fertilizer_schedule/example_sm_alf_corn_fertilizer.json",
+      "present": true,
+      "sha256": "50e045cb32afdd815786f5b40a5e2889372d49a7ab65cc00991f6ecec6bcc0a4"
+    },
+    "manure_schedule_1": {
+      "path": "input/data/manure_schedule/example_sm_corn_alf_manure_schedule.json",
+      "present": true,
+      "sha256": "aa3efbb9a51828c5d5fc8a6bcec8e3c2afb2638001cf02b6f122cdf4c41a4ff7"
+    },
+    "tillage_schedule_1": {
+      "path": "input/data/tillage_schedule/no_till.json",
+      "present": true,
+      "sha256": "cd5f8648dd4e85767b0351f8db18099a76bc85ae76abba1a2c58c71c31936c40"
+    },
+    "field_2": {
+      "path": "input/data/field/example_small_field_corn_grain_alf_hay.json",
+      "present": true,
+      "sha256": "c58807165522ec1d4b9cbe2c88e98fa1b1765131181280e823e164546838bb47"
+    },
+    "soil_2": {
+      "path": "input/data/soil/example_soil_2.json",
+      "present": true,
+      "sha256": "c10f320b8e95bfc655be15b824f9106e56de983ea401a30a35ccb7e31f1fe853"
+    },
+    "CornGrain-AlfHay": {
+      "path": "input/data/crop/example_alf_hay_corn_grain_rotation.json",
+      "present": true,
+      "sha256": "aa946ed1937635d48e288c19a006cfeb5a05da4a55ae3b8a0e5228e66b221ab7"
+    },
+    "fertilizer_schedule_2": {
+      "path": "input/data/fertilizer_schedule/example_sm_alf_corn_fertilizer.json",
+      "present": true,
+      "sha256": "50e045cb32afdd815786f5b40a5e2889372d49a7ab65cc00991f6ecec6bcc0a4"
+    },
+    "manure_schedule_2": {
+      "path": "input/data/manure_schedule/example_sm_corn_alf_manure_schedule.json",
+      "present": true,
+      "sha256": "aa3efbb9a51828c5d5fc8a6bcec8e3c2afb2638001cf02b6f122cdf4c41a4ff7"
+    },
+    "tillage_schedule_2": {
+      "path": "input/data/tillage_schedule/no_till.json",
+      "present": true,
+      "sha256": "cd5f8648dd4e85767b0351f8db18099a76bc85ae76abba1a2c58c71c31936c40"
+    },
+    "weather": {
+      "path": "input/data/weather/example_temperate_weather.csv",
+      "present": true,
+      "sha256": "67fe755b2fb225f1bd71e99f4902af211e7808a7062664c2b9d21607929132d6"
+    },
+    "user_feeds": {
+      "path": "input/data/feed/user_feeds.csv",
+      "present": true,
+      "sha256": "165665b2ea565292995d5ac6f6ca827c9a9bdb6e6a29c8305cf44fac977dee60"
+    },
+    "tractor_dataset": {
+      "path": "input/data/EEE/tractor_dataset.csv",
+      "present": true,
+      "sha256": "18715ceafc201f46c9083e2a30dc48170814bcbe3becbf3d5c00915818c0c05a"
+    },
+    "EEE_constants": {
+      "path": "input/data/EEE/constants.json",
+      "present": true,
+      "sha256": "2310247ba4ee89ddeb7c763e3d65c86d7142af5d86a7e61cff7ebd7dbd51ee3b"
+    },
+    "feed_storage_configurations": {
+      "path": "input/data/feed_management/example_feed_storage_configs.json",
+      "present": true,
+      "sha256": "18b4263cf1e7602fbd6773539e733b23c509ca190db8c3043499e482db842de2"
+    },
+    "feed_storage_instances": {
+      "path": "input/data/feed_management/example_freestall_feed_storages.json",
+      "present": true,
+      "sha256": "bc799ca9964a2a71af67dd8c1b227ba12e506d74c694a04ce30702930f9f60a4"
+    }
+  },
+  "git_commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96",
+  "branch": "fix/validacao-nutricional-rufas",
+  "submodules": "",
+  "modified": [
+    "README.md",
+    "RUFAS/biophysical/animal/herd_manager.py",
+    "RUFAS/biophysical/animal/ration/linear_diet.py",
+    "RUFAS/input/metadata/properties/default.json",
+    "apresentacao/README.md",
+    "apresentacao/cartoes_consulta.md",
+    "apresentacao/checklist_apresentacao.md",
+    "apresentacao/guia_demonstracao.md",
+    "apresentacao/guia_demonstracao_web.md",
+    "apresentacao/perguntas_e_respostas.md",
+    "apresentacao/resultados_validados.md",
+    "apresentacao/roteiro_anderson.md",
+    "apresentacao/roteiro_completo.md",
+    "apresentacao/roteiro_sophia.md",
+    "apresentacao/simulacao_arguicao.md",
+    "docs/apresentacao_projeto.md",
+    "docs/auditoria_comparativa_rufas.md",
+    "docs/integracao_real_rufas.md",
+    "docs/o_que_foi_corrigido.md",
+    "docs/otimizador_linear.md",
+    "docs/revisao_final_otimizador.md",
+    "frontend/app.py",
+    "tests/test_biophysical/test_animal/test_herd_manager/test_herd_manager_pen_management.py"
+  ]
+}

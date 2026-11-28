@@ -1,0 +1,7 @@
+ animal         method      cost  milk_cost  dry_matter  feasible  approved  median_seconds  iterations
+  98605        A_HiGHS 35.341621   1.178054   22.231580      True      True        0.001567           4
+  98605        A_SLSQP 35.341621   1.178054   22.231580      True      True        0.000454           4
+  98605 B_SLSQP_native 32.780122   1.092671   19.623015      True     False        0.039759           8
+  93785        A_HiGHS 35.247992   1.137032   22.701315      True      True        0.001525           4
+  93785        A_SLSQP 35.247992   1.137032   22.701315      True      True        0.000481           5
+  93785 B_SLSQP_native 33.394562   1.077244   21.828451      True     False        0.037897          12

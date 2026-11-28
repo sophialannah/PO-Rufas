@@ -1,0 +1,33 @@
+# Contextualização
+
+[Sumário](README.md)
+
+O PO-RuFaS aplica Pesquisa Operacional à escolha diária de alimentos para uma vaca leiteira. Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva desenvolveram o módulo acadêmico dentro do repositório derivado do RuFaS.
+
+O problema envolve escolher quantidades de alimentos disponíveis, com composição conhecida, respeitando custos, estoques e limites nutricionais. A decisão de produção de leite é fornecida no cenário. O sistema otimiza quantidades de alimentos.
+
+O objetivo acadêmico é demonstrar formulação linear, conversões de unidades, integração com modelos nutricionais e verificação independente da solução. O cenário operacional é uma vaca Holandesa em lactação, pelo padrão NRC 2001. O diagnóstico de fósforo NASEM 2021 é adicional.
+
+A apresentação possui quatro slides, cinco minutos de exposição e demonstração, seguidos de cinco minutos de perguntas. Consulte [materiais de apresentação](../../apresentacao/README.md) e [roteiro visual](../../apresentacao/guia_demonstracao_web.md).
+
+A base desta revisão é o commit `5bb6775a4797f7c445bcfa025c3121aa2fb3bc96`, branch `fix/validacao-nutricional-rufas`, em 26/11/2026. O [histórico conversacional](../../HISTORICO_DESENVOLVIMENTO.md) é um registro auxiliar com limites de completude declarados.
+
+
+
+## Etapa experimental de 27/11/2026
+
+A investigação distingue o efeito do algoritmo do efeito da formulação nutricional. O experimento A mantém objetivo, variáveis e restrições; B confronta o LP com o modelo nativo. A implementação está em experiments/comparison.py e as evidências em [comparacao](../../evidencias/comparacao/README.md). O commit base é 5bb6775 e o estado de alterações locais é declarado no JSON.
+
+
+## Objetivo dinâmico
+
+O objetivo principal passa a ser o uso do otimizador da dupla no ciclo real da fazenda durante um ano, preservando a biologia do RuFaS. A comparação isolada de algoritmos permanece como evidência complementar. A integração anual inicial é híbrida, com HiGHS para vacas em lactação NRC e tratamento nativo explícito das demais categorias. [Evidências anuais](../../evidencias/anual/README.md)
+
+
+
+
+## Correção dinâmica validada em 27/11/2026
+
+A rodada anterior de 365 dias é histórica e permanece em `evidencias/anual/confirmacao`. O aumento anual de custo daquela rodada resultava quase integralmente do primeiro dia: uma inicialização aleatória alta de fosfato bicálcico, combinada com raio fixo e parada na primeira candidata aprovada. Não foi necessário excluir esse dia, alterar preços ou modificar o modelo biológico para corrigir o comportamento.
+
+A rodada controlada corrigida está em `evidencias/correcao_dinamica`. Ambos os solvers recebem os mesmos tetos totais NRC 2005, separados dos requisitos NRC 2001. Há execução nativa, híbrida para todas as categorias ativas e exclusiva. Nesta configuração anual, a exclusiva completou 1.002 chamadas sem SLSQP; isso não representa validação universal de todos os padrões nutricionais e agrupamentos possíveis.

@@ -1,0 +1,45 @@
+# Fundamentação teórica
+
+[Sumário](README.md)
+
+Programação linear descreve uma função objetivo e restrições afins, com variáveis contínuas. Aqui, preços e concentrações nutricionais são fixados antes da resolução. O método procura a combinação de menor custo no conjunto viável desses parâmetros.
+
+A solução ótima do LP certifica o problema matemático informado. A avaliação nutricional exige também examinar as grandezas não representadas em suas linhas. Por isso, o fluxo executa posteriormente o modelo de oferta e o avaliador do RuFaS.
+
+Matéria natural inclui água; matéria seca exclui água. Proteína bruta (PB) descreve composição total, enquanto proteína metabolizável (MP) incorpora processos de utilização. Energia digestível (DE) e energia líquida de lactação (NEL) têm bases distintas. A implementação exige parâmetros suplementares explícitos para PB e NEL.
+
+O calculador NRC estima consumo de MS a partir do estado do animal. Fixar esse consumo durante o LP é uma decisão de modelagem. A resposta biológica completa pode depender da dieta, característica contemplada em cálculos não lineares do simulador.
+
+O HiGHS resolve o LP por meio de `scipy.optimize.linprog`. O otimizador nativo usa SLSQP com restrições não lineares. A comparação entre modelos deve explicitar as diferenças de formulação. [Referências](14-referencias.md)
+
+
+
+## Formulação matricial e região viável
+
+O LP tem forma $\min p^\top x$, sujeito a $Ax\le b$ e $L\le x\le U$. Sua região viável é a interseção convexa dos semiespaços e limites. Um ótimo de LP viável e limitado é global para essa matriz.
+
+A folga de uma linha superior é $b_j-a_j^\top x$; de uma inferior, $a_j^\top x-b_j$. Uma linha é ativa quando a folga é numericamente zero. No cenário suplementado 98605, MS, PB, NEL e P estão no limite. Os resíduos são registrados em suas unidades próprias.
+
+O HiGHS usa os algoritmos de programação linear de seu backend, com escolha automática em method='highs'. O experimento preserva as opções padrão. A análise de sensibilidade reotimiza o problema a −20%, −10%, 0%, +10% e +20% do preço do milho, mantendo os demais parâmetros. Não se inferem intervalos de estabilidade a partir das marginais. [SciPy HiGHS](https://docs.scipy.org/doc/scipy/reference/optimize.linprog-highs.html)
+
+## Programação não linear e SLSQP
+
+O SLSQP constrói aproximações quadráticas sucessivas e depende de partida, escala e tolerâncias. Seu success indica convergência segundo os critérios locais. O experimento A usa objetivo e Jacobianas lineares constantes, igualdade de MS e as mesmas desigualdades e bounds. A igualdade equivale às duas desigualdades do backend.
+
+No experimento B, o modelo nativo recalcula ofertas de energia e proteína dependentes da candidata. Seu ótimo local não certifica equivalência global ao LP. A aproximação linear fixa NEL e PB, omitindo interações fisiológicas que o avaliador posterior pode revelar. [SciPy SLSQP](https://docs.scipy.org/doc/scipy/reference/optimize.minimize-slsqp.html)
+
+
+## Aproximação sequencial na dinâmica
+
+Os requisitos são recalculados pelo RuFaS antes da formulação do curral. As restrições não lineares nativas $g_j(q)\ge0$ são aproximadas em $q^k$ por $g_j(q^k)+J_j(q^k)(q-q^k)\ge\delta$. O vetor q mede kg MS/dia e relaciona-se a x por $q_i=d_ix_i$. Cada subproblema é linear e usa o núcleo HiGHS da dupla.
+
+A aproximação é local. O código limita a mudança de cada ingrediente, resolve e verifica as funções originais. Se a dieta falha, atualiza o ponto e repete, até vinte vezes. A primeira candidata aprovada é usada. Não há certificado de ótimo global para o problema nutricional completo nem prova de convergência geral desse procedimento. O objetivo anual continua sendo medir o custo efetivamente resultante dessa estratégia.
+
+
+
+
+## Requisitos, tolerância mineral e limites de inferência
+
+Os mínimos absorvíveis continuam calculados pelo RuFaS NRC. Os tetos implementados de cálcio e fósforo são expressos em concentração TOTAL na matéria seca e vêm de NRC (2005), *Mineral Tolerance of Animals*, DOI 10.17226/11309. São limites de tolerância, não recomendações de consumo nem multiplicadores do requisito absorvível. Não se substituíram os requisitos por equações NASEM 2021.
+
+A relação Ca:P é registrada como diagnóstico. Não foi imposta uma igualdade ou faixa estreita universal: a interpretação depende das concentrações, disponibilidade, categoria e contexto fisiológico. A aprovação nativa não avalia todos os minerais, interações, DCAD, efeitos crônicos ou respostas produtivas à dieta. A seção de limitações detalha também os coeficientes de absorção simplificados da implementação local.

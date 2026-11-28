@@ -1,0 +1,56 @@
+# Integração com RuFaS
+
+[Sumário](README.md)
+
+O fluxo operacional usa AnimalType.LAC_COW e NutrientStandard.NRC com uma lista de NRCFeed. A interface filtra Holandesas em lactação e importa registros da população. Cada execução fixa produção e hipóteses documentadas.
+
+```mermaid
+flowchart TD
+    A[População RuFaS] --> B[Animal e exigências NRC]
+    C[Biblioteca NRC e parâmetros do cenário] --> D[NRCFeed]
+    B --> E[Adaptador e requisitos do LP]
+    D --> E
+    E --> F[SciPy HiGHS]
+    F --> G[Verificação das restrições]
+    G --> H[Configuração em percentuais MS]
+    H --> I[RationManager]
+    I --> J[FeedInRation em kg MS por dia]
+    J --> K[NutritionSupplyCalculator]
+    B --> L[NutritionEvaluator]
+    K --> L
+    L --> M[Resultado e critérios individuais]
+```
+
+`ration_config_from_result` exige ótimo verificado e IDs únicos correspondentes. Converte quantidades para percentuais MS somando 100%. O RationManager nativo recupera as quantidades para um consumo total informado. A integração confere as quantidades e os IDs, a PB e a FDN, e as linhas absorvíveis contra a oferta recalculada.
+
+O retorno contém `result`, `requirements`, `ingredients`, `native_return` e `nrc_minerals`. O frontend acrescenta cenário, período, hipóteses, padrão NRC e diagnóstico NASEM opcional.
+
+A execução termina na interface nutricional. Pen, baixa diária de FeedManager e simulação completa de fazenda precisam de coordenação adicional. `main.py` pertence ao simulador original; o launcher web usa Streamlit.
+
+
+
+## Avaliação uniforme das candidatas
+
+Os vetores dos três métodos são convertidos a kg MS/dia e enviados ao mesmo NutritionSupplyCalculator e NutritionEvaluator, com os requisitos NRC calculados para o animal. A oferta, os critérios e deltas completos ficam no JSON.
+
+O relatório operacional de referência mantém o retorno pelo RationManager. O experimento compara a fronteira de oferta diretamente e não aplica suas candidatas ao Pen. A cópia de NRCFeed do SLSQP limita a inclusão ao menor valor entre seu teto e o estoque dividido pelo horizonte.
+
+
+## Fluxo diário real
+
+O ciclo FULL_FARM executa operações de campo, recebimento de colheitas, planejamento de alimentação, formulação periódica, rotinas animais, atendimento do pedido de alimentação, operações de dejetos, relatórios e avanço de tempo. O intervalo foi definido em um dia nas duas experiências anuais.
+
+O ponto de substituição é Pen._attempt_formulation, por meio da instância ration_optimizer configurada pelo HerdManager. O resultado real HiGHS é adaptado às unidades e campos esperados pelo Pen. A subclasse nativa efetua SLSQP quando a estratégia é nativa ou quando a política permite fallback.
+
+Os animais mudam de grupo e novos animais podem entrar. O ano mostrou 49 transições em cada estratégia. Uma correção de seleção de alimentos foi necessária no ramo de entrada de animal em curral vazio: agora usa a lista da categoria. Consumo, disponibilidade, compra e atualização de estoques permanecem nas rotinas originais. [Auditoria e diário](../../evidencias/anual/README.md)
+
+
+
+
+## Escopo da substituição anual validada
+
+As três execuções corrigidas usam FULL_FARM, clima de 2013, semente 42, mesmos 26 animais iniciais efetivos, alimentos, preços, manejo, estoques e compras. O otimizador recebe diariamente requisitos recalculados pelo fluxo nativo. FeedManager continua responsável por compras, retiradas e inventário; o observador apenas registra resultados.
+
+A execução exclusiva de 365 dias realizou 365 chamadas growing, 272 close_up e 365 lac_cow, todas aceitas, sem SLSQP. As transições de categoria ocorreram no simulador. O agrupamento misto possui seleção de restrições testada, mas não aparece no agrupamento padrão fixado por HerdManager e não recebeu validação anual própria. O suporte exclusivo é validado para as categorias efetivamente chamadas neste cenário NRC, sem alegação de substituição geral do NASEM ou da alimentação de bezerros.
+
+Leite e pesos iguais não provam resposta biológica equivalente: a curva de Wood recebe DEL e parâmetros próprios, e as equações de crescimento usam metas e estado fisiológico. A oferta influencia cálculos digestivos e requisitos subsequentes, mas a versão local não transforma genericamente qualquer mudança de dieta em mudança de produção ou peso. Nenhum modelo biológico foi alterado para criar diferenças.

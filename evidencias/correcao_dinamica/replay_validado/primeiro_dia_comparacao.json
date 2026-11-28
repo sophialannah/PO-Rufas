@@ -1,0 +1,1304 @@
+[
+  {
+    "solver": "SLSQP_original",
+    "solver_success": true,
+    "native_approved": true,
+    "cost": 0.3453396276971442,
+    "iterations": 27,
+    "termination": "Optimization terminated successfully",
+    "ration_kg_dm": {
+      "1": 1.974746193062365e-13,
+      "23": 0.1466119368368853,
+      "44": 4.020175508987421e-12,
+      "50": 6.066023419692447,
+      "104": 0.0,
+      "110": 27.00181997864063,
+      "167": 3.768729877906701e-13,
+      "231": 5.35662776351394e-12
+    },
+    "requirements": {
+      "maintenance_energy": 10.146824329732695,
+      "growth_energy": 0.4302072075314144,
+      "pregnancy_energy": 0.2934682382715078,
+      "lactation_energy": 30.015998310953346,
+      "metabolizable_protein": 2739.5519050530193,
+      "calcium": 70.63289142418687,
+      "phosphorus": 63.72783445119539,
+      "process_based_phosphorus": 0.0,
+      "dry_matter": 25.549581027067106,
+      "activity_energy": 0.017318227813827265,
+      "essential_amino_acids": {
+        "histidine": 0.0,
+        "isoleucine": 0.0,
+        "leucine": 0.0,
+        "lysine": 0.0,
+        "methionine": 0.0,
+        "phenylalanine": 0.0,
+        "threonine": 0.0,
+        "thryptophan": 0.0,
+        "valine": 0.0
+      }
+    },
+    "supply": {
+      "metabolizable_energy": 75.4642210813,
+      "maintenance_energy": 46.58974249589177,
+      "lactation_energy": 46.74060097015389,
+      "growth_energy": 27.23932002360085,
+      "metabolizable_protein": 2739.5519131809724,
+      "calcium": 115.70876721,
+      "phosphorus": 70.10937332799999,
+      "dry_matter": 33.214455,
+      "wet_matter": 88.91671021104825,
+      "ndf_supply": 14.946504683000002,
+      "forage_ndf_supply": 14.946504683000002,
+      "fat_supply": 0.747449959,
+      "crude_protein": 6.641817270999999,
+      "adf_supply": 11.573154483,
+      "digestible_energy_supply": 89.51557013,
+      "tdn_supply": 19.3994026012,
+      "lignin_supply": 2.183443665,
+      "ash_supply": 3.2110309640000003,
+      "potassium_supply": 0.8893967185999999,
+      "starch_supply": 2.36322900908,
+      "byproduct_supply": 0.146612,
+      "nitrogen_supply": 1.0626907633599998
+    },
+    "evaluation": {
+      "total_energy": 5.836784655851105,
+      "maintenance_energy": 36.42559993834524,
+      "lactation_energy": 16.431134420929038,
+      "growth_energy": 26.809112816069437,
+      "metabolizable_protein": 0.0,
+      "calcium": 45.07587578581314,
+      "phosphorus": 6.381538876804598,
+      "dry_matter": 0.0,
+      "ndf_percent": 0.0,
+      "forage_ndf_percent": 29.999999798280605,
+      "fat_percent": 4.749624496322459
+    },
+    "minerals": {
+      "dry_matter_kg": 33.214455,
+      "calcium_total_g": 385.25605470000005,
+      "phosphorus_total_g": 109.50466119999999,
+      "calcium_percent_dm": 1.1599047905497775,
+      "phosphorus_percent_dm": 0.3296897727209433,
+      "calcium_upper_g": 498.21682500000003,
+      "phosphorus_upper_g": 232.50118500000002,
+      "calcium_to_phosphorus": 3.518170372641636,
+      "tolerable": true,
+      "source": "NRC 2005 doi:10.17226/11309; total dietary minerals, not absorbed requirements"
+    },
+    "residuals": {
+      "NE_total_constraint": 5.836784655851105,
+      "NE_maintenance_and_activity_constraint": 36.42559993834524,
+      "NE_lactation_constraint": 16.431134420929038,
+      "NE_growth_constraint": 26.809112816069437,
+      "calcium_constraint": 45.07587578581314,
+      "phosphorus_constraint": 6.381538876804598,
+      "protein_constraint_lower": 8.127953151415568e-06,
+      "protein_constraint_upper": 1369.775944398556,
+      "NDF_constraint_lower": 19.999999798280598,
+      "NDF_constraint_upper": 2.017194020709212e-07,
+      "forage_NDF_constraint": 29.999999798280605,
+      "fat_constraint": 4.749624496322459,
+      "DMI_constraint_upper": 3.351872379653287e-07,
+      "DMI_constraint_lower": 15.329748281053028
+    },
+    "active_constraints": [
+      "protein_constraint_lower",
+      "NDF_constraint_upper",
+      "DMI_constraint_upper"
+    ],
+    "events": []
+  },
+  {
+    "solver": "HiGHS_anterior",
+    "solver_success": true,
+    "native_approved": true,
+    "cost": 26.59265535187731,
+    "iterations": 1,
+    "termination": "Checked HiGHS sequential candidate",
+    "ration_kg_dm": {
+      "1": 0.0,
+      "23": 2.9953533348580033,
+      "44": 3.880294695182352,
+      "50": 8.535955404208082,
+      "104": 4.696132924355931,
+      "110": 3.971334425599951,
+      "167": 0.0,
+      "231": 4.836187688651739
+    },
+    "requirements": {
+      "maintenance_energy": 10.146824329732695,
+      "growth_energy": 0.4302072075314144,
+      "pregnancy_energy": 0.2934682382715078,
+      "lactation_energy": 30.015998310953346,
+      "metabolizable_protein": 2739.5519050530193,
+      "calcium": 70.63289142418687,
+      "phosphorus": 63.72783445119539,
+      "process_based_phosphorus": 0.0,
+      "dry_matter": 25.549581027067106,
+      "activity_energy": 0.017318227813827265,
+      "essential_amino_acids": {
+        "histidine": 0.0,
+        "isoleucine": 0.0,
+        "leucine": 0.0,
+        "lysine": 0.0,
+        "methionine": 0.0,
+        "phenylalanine": 0.0,
+        "threonine": 0.0,
+        "thryptophan": 0.0,
+        "valine": 0.0
+      }
+    },
+    "supply": {
+      "metabolizable_energy": 63.11685613969999,
+      "maintenance_energy": 40.90391515238299,
+      "lactation_energy": 39.82128383591424,
+      "growth_energy": 25.942173864127778,
+      "metabolizable_protein": 3836.5064539512887,
+      "calcium": 1056.77629663,
+      "phosphorus": 793.372088448,
+      "dry_matter": 28.915257999999998,
+      "wet_matter": 69.13694672816065,
+      "ndf_supply": 8.909378478,
+      "forage_ndf_supply": 8.540750453,
+      "fat_supply": 0.598303642,
+      "crude_protein": 5.815284896,
+      "adf_supply": 6.103031335,
+      "digestible_energy_supply": 73.19902813,
+      "tdn_supply": 15.8635139687,
+      "lignin_supply": 0.9664061709999999,
+      "ash_supply": 1.478900526,
+      "potassium_supply": 0.3915379693,
+      "starch_supply": 5.48308929228,
+      "byproduct_supply": 2.995353,
+      "nitrogen_supply": 0.9304455833599999
+    },
+    "evaluation": {
+      "total_energy": 9.883808020560991e-05,
+      "maintenance_energy": 30.73977259483647,
+      "lactation_energy": 9.511817286689382,
+      "growth_energy": 25.511966656596364,
+      "metabolizable_protein": 0.0,
+      "calcium": 986.1434052058131,
+      "phosphorus": 729.6442539968047,
+      "dry_matter": 0.0,
+      "ndf_percent": 0.0,
+      "forage_ndf_percent": 14.537175331446118,
+      "fat_percent": 4.9308376152133935
+    },
+    "minerals": {
+      "dry_matter_kg": 28.915257999999998,
+      "calcium_total_g": 1206.7998651,
+      "phosphorus_total_g": 1004.3640412,
+      "calcium_percent_dm": 4.17357460583613,
+      "phosphorus_percent_dm": 3.473474250860912,
+      "calcium_upper_g": 433.72887,
+      "phosphorus_upper_g": 202.406806,
+      "calcium_to_phosphorus": 1.2015562242333293,
+      "tolerable": false,
+      "source": "NRC 2005 doi:10.17226/11309; total dietary minerals, not absorbed requirements"
+    },
+    "residuals": {
+      "NE_total_constraint": 9.883808020560991e-05,
+      "NE_maintenance_and_activity_constraint": 30.73977259483647,
+      "NE_lactation_constraint": 9.51181728668939,
+      "NE_growth_constraint": 25.511966656596364,
+      "calcium_constraint": 986.1434052058131,
+      "phosphorus_constraint": 729.6442539968047,
+      "protein_constraint_lower": 1096.9545488982685,
+      "protein_constraint_upper": 272.82140362824066,
+      "NDF_constraint_lower": 5.812031758457767,
+      "NDF_constraint_upper": 14.187968241542233,
+      "forage_NDF_constraint": 14.537175331446118,
+      "fat_constraint": 4.9308376152133935,
+      "DMI_constraint_upper": 4.299197335187241,
+      "DMI_constraint_lower": 11.030551281053025
+    },
+    "active_constraints": [
+      "NE_total_constraint"
+    ],
+    "events": [
+      {
+        "requested": "linear_highs",
+        "used": "linear_highs",
+        "success": true,
+        "reason": null,
+        "trace": [
+          {
+            "iteration": 0,
+            "lp_status": "optimal",
+            "x_before": [
+              1.0,
+              7.995353334858003,
+              8.880294695182352,
+              3.5359554042080807,
+              9.69613292435593,
+              2.804600286538835,
+              0.31173164689186295,
+              9.836187688651739
+            ],
+            "residuals": {
+              "NE_total_constraint": 9.999901575952208e-05,
+              "NE_maintenance_and_activity_constraint": 30.739773755772024,
+              "NE_lactation_constraint": 9.511818434699254,
+              "NE_growth_constraint": 25.511967355482742,
+              "calcium_constraint": 986.1433424930209,
+              "phosphorus_constraint": 729.644207397324,
+              "protein_constraint_lower": 1096.9547973364329,
+              "protein_constraint_upper": 272.8211551900763,
+              "NDF_constraint_lower": 5.8120324236041725,
+              "NDF_constraint_upper": 14.187967576395828,
+              "forage_NDF_constraint": 14.537176117587165,
+              "fat_constraint": 4.930837617593899,
+              "DMI_constraint_upper": 4.299196862331179,
+              "DMI_constraint_lower": 11.030551753909087
+            },
+            "deltas": {
+              "total_energy": 9.883808020560991e-05,
+              "maintenance_energy": 30.73977259483647,
+              "lactation_energy": 9.511817286689382,
+              "growth_energy": 25.511966656596364,
+              "metabolizable_protein": 0.0,
+              "calcium": 986.1434052058131,
+              "phosphorus": 729.6442539968047,
+              "dry_matter": 0.0,
+              "ndf_percent": 0.0,
+              "forage_ndf_percent": 14.537175331446118,
+              "fat_percent": 4.9308376152133935
+            },
+            "approved": true,
+            "x_candidate": [
+              0.0,
+              2.9953533348580033,
+              3.880294695182352,
+              8.535955404208082,
+              4.696132924355931,
+              3.971334425599951,
+              0.0,
+              4.836187688651739
+            ],
+            "cost": 26.59265535187731
+          }
+        ],
+        "requirements": {
+          "maintenance_energy": 10.146824329732695,
+          "growth_energy": 0.4302072075314144,
+          "pregnancy_energy": 0.2934682382715078,
+          "lactation_energy": 30.015998310953346,
+          "metabolizable_protein": 2739.5519050530193,
+          "calcium": 70.63289142418687,
+          "phosphorus": 63.72783445119539,
+          "process_based_phosphorus": 0.0,
+          "dry_matter": 25.549581027067106,
+          "activity_energy": 0.017318227813827265,
+          "essential_amino_acids": {
+            "histidine": 0.0,
+            "isoleucine": 0.0,
+            "leucine": 0.0,
+            "lysine": 0.0,
+            "methionine": 0.0,
+            "phenylalanine": 0.0,
+            "threonine": 0.0,
+            "thryptophan": 0.0,
+            "valine": 0.0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "solver": "SLSQP_MTL_controlado",
+    "solver_success": true,
+    "native_approved": true,
+    "cost": 0.3453396276669607,
+    "iterations": 25,
+    "termination": "Optimization terminated successfully",
+    "ration_kg_dm": {
+      "1": 0.0,
+      "23": 0.14661193683386883,
+      "44": 0.0,
+      "50": 6.0660234196495475,
+      "104": 0.0,
+      "110": 27.001819978707832,
+      "167": 0.0,
+      "231": 0.0
+    },
+    "requirements": {
+      "maintenance_energy": 10.146824329732695,
+      "growth_energy": 0.4302072075314144,
+      "pregnancy_energy": 0.2934682382715078,
+      "lactation_energy": 30.015998310953346,
+      "metabolizable_protein": 2739.5519050530193,
+      "calcium": 70.63289142418687,
+      "phosphorus": 63.72783445119539,
+      "process_based_phosphorus": 0.0,
+      "dry_matter": 25.549581027067106,
+      "activity_energy": 0.017318227813827265,
+      "essential_amino_acids": {
+        "histidine": 0.0,
+        "isoleucine": 0.0,
+        "leucine": 0.0,
+        "lysine": 0.0,
+        "methionine": 0.0,
+        "phenylalanine": 0.0,
+        "threonine": 0.0,
+        "thryptophan": 0.0,
+        "valine": 0.0
+      }
+    },
+    "supply": {
+      "metabolizable_energy": 75.4642210813,
+      "maintenance_energy": 46.58974249589177,
+      "lactation_energy": 46.74060097015389,
+      "growth_energy": 27.23932002360085,
+      "metabolizable_protein": 2739.5519131809724,
+      "calcium": 115.70876721,
+      "phosphorus": 70.10937332799999,
+      "dry_matter": 33.214455,
+      "wet_matter": 88.91671021104825,
+      "ndf_supply": 14.946504683000002,
+      "forage_ndf_supply": 14.946504683000002,
+      "fat_supply": 0.747449959,
+      "crude_protein": 6.641817270999999,
+      "adf_supply": 11.573154483,
+      "digestible_energy_supply": 89.51557013,
+      "tdn_supply": 19.3994026012,
+      "lignin_supply": 2.183443665,
+      "ash_supply": 3.2110309640000003,
+      "potassium_supply": 0.8893967185999999,
+      "starch_supply": 2.36322900908,
+      "byproduct_supply": 0.146612,
+      "nitrogen_supply": 1.0626907633599998
+    },
+    "evaluation": {
+      "total_energy": 5.836784655851105,
+      "maintenance_energy": 36.42559993834524,
+      "lactation_energy": 16.431134420929038,
+      "growth_energy": 26.809112816069437,
+      "metabolizable_protein": 0.0,
+      "calcium": 45.07587578581314,
+      "phosphorus": 6.381538876804598,
+      "dry_matter": 0.0,
+      "ndf_percent": 0.0,
+      "forage_ndf_percent": 29.999999798280605,
+      "fat_percent": 4.749624496322459
+    },
+    "minerals": {
+      "dry_matter_kg": 33.214455,
+      "calcium_total_g": 385.25605470000005,
+      "phosphorus_total_g": 109.50466119999999,
+      "calcium_percent_dm": 1.1599047905497775,
+      "phosphorus_percent_dm": 0.3296897727209433,
+      "calcium_upper_g": 498.21682500000003,
+      "phosphorus_upper_g": 232.50118500000002,
+      "calcium_to_phosphorus": 3.518170372641636,
+      "tolerable": true,
+      "source": "NRC 2005 doi:10.17226/11309; total dietary minerals, not absorbed requirements"
+    },
+    "residuals": {
+      "NE_total_constraint": 5.836784655851105,
+      "NE_maintenance_and_activity_constraint": 36.42559993834524,
+      "NE_lactation_constraint": 16.431134420929038,
+      "NE_growth_constraint": 26.809112816069437,
+      "calcium_constraint": 45.07587578581314,
+      "phosphorus_constraint": 6.381538876804598,
+      "protein_constraint_lower": 8.127953151415568e-06,
+      "protein_constraint_upper": 1369.775944398556,
+      "NDF_constraint_lower": 19.999999798280598,
+      "NDF_constraint_upper": 2.017194020709212e-07,
+      "forage_NDF_constraint": 29.999999798280605,
+      "fat_constraint": 4.749624496322459,
+      "DMI_constraint_upper": 3.351872379653287e-07,
+      "DMI_constraint_lower": 15.329748281053028,
+      "calcium_total_upper": 112.96077029999996,
+      "phosphorus_total_upper": 122.99652379999999
+    },
+    "active_constraints": [
+      "protein_constraint_lower",
+      "NDF_constraint_upper",
+      "DMI_constraint_upper"
+    ],
+    "events": [
+      {
+        "requested": "native_slsqp",
+        "used": "native_slsqp",
+        "success": true,
+        "reason": null,
+        "trace": [],
+        "requirements": {
+          "maintenance_energy": 10.146824329732695,
+          "growth_energy": 0.4302072075314144,
+          "pregnancy_energy": 0.2934682382715078,
+          "lactation_energy": 30.015998310953346,
+          "metabolizable_protein": 2739.5519050530193,
+          "calcium": 70.63289142418687,
+          "phosphorus": 63.72783445119539,
+          "process_based_phosphorus": 0.0,
+          "dry_matter": 25.549581027067106,
+          "activity_energy": 0.017318227813827265,
+          "essential_amino_acids": {
+            "histidine": 0.0,
+            "isoleucine": 0.0,
+            "leucine": 0.0,
+            "lysine": 0.0,
+            "methionine": 0.0,
+            "phenylalanine": 0.0,
+            "threonine": 0.0,
+            "thryptophan": 0.0,
+            "valine": 0.0
+          }
+        },
+        "category": "lac_cow",
+        "mineral_policy": "nrc2005_mtl",
+        "termination": "Optimization terminated successfully"
+      }
+    ]
+  },
+  {
+    "solver": "HiGHS_aprimorado",
+    "solver_success": true,
+    "native_approved": true,
+    "cost": 0.34534026694561304,
+    "iterations": 5,
+    "termination": "objective_and_original_feasibility_converged",
+    "ration_kg_dm": {
+      "1": 0.0,
+      "23": 0.14663103993045068,
+      "44": 0.0,
+      "50": 6.065760338891172,
+      "104": 0.0,
+      "110": 27.00195595636562,
+      "167": 0.0,
+      "231": 0.0
+    },
+    "requirements": {
+      "maintenance_energy": 10.146824329732695,
+      "growth_energy": 0.4302072075314144,
+      "pregnancy_energy": 0.2934682382715078,
+      "lactation_energy": 30.015998310953346,
+      "metabolizable_protein": 2739.5519050530193,
+      "calcium": 70.63289142418687,
+      "phosphorus": 63.72783445119539,
+      "process_based_phosphorus": 0.0,
+      "dry_matter": 25.549581027067106,
+      "activity_energy": 0.017318227813827265,
+      "essential_amino_acids": {
+        "histidine": 0.0,
+        "isoleucine": 0.0,
+        "leucine": 0.0,
+        "lysine": 0.0,
+        "methionine": 0.0,
+        "phenylalanine": 0.0,
+        "threonine": 0.0,
+        "thryptophan": 0.0,
+        "valine": 0.0
+      }
+    },
+    "supply": {
+      "metabolizable_energy": 75.4639434816,
+      "maintenance_energy": 46.58956104528074,
+      "lactation_energy": 46.74042633756479,
+      "growth_energy": 27.239203967162275,
+      "metabolizable_protein": 2739.5534493708087,
+      "calcium": 115.70912748000002,
+      "phosphorus": 70.1093139,
+      "dry_matter": 33.214347,
+      "wet_matter": 88.91592914273065,
+      "ndf_supply": 14.946421152000001,
+      "forage_ndf_supply": 14.946421152000001,
+      "fat_supply": 0.747446604,
+      "crude_protein": 6.641839689,
+      "adf_supply": 11.573112672,
+      "digestible_energy_supply": 89.51524716,
+      "tdn_supply": 19.399319766599998,
+      "lignin_supply": 2.1834443880000003,
+      "ash_supply": 3.2110335030000003,
+      "potassium_supply": 0.8893974423,
+      "starch_supply": 2.36315232948,
+      "byproduct_supply": 0.146631,
+      "nitrogen_supply": 1.0626943502400001
+    },
+    "evaluation": {
+      "total_energy": 5.836610023262004,
+      "maintenance_energy": 36.42541848773422,
+      "lactation_energy": 16.430959788339937,
+      "growth_energy": 26.808996759630862,
+      "metabolizable_protein": 0.0,
+      "calcium": 45.076236055813155,
+      "phosphorus": 6.381479448804612,
+      "dry_matter": 0.0,
+      "ndf_percent": 0.0,
+      "forage_ndf_percent": 29.999894629871854,
+      "fat_percent": 4.749627280042567
+    },
+    "minerals": {
+      "dry_matter_kg": 33.214347000000004,
+      "calcium_total_g": 385.25719860000004,
+      "phosphorus_total_g": 109.50456299999999,
+      "calcium_percent_dm": 1.1599120060978467,
+      "phosphorus_percent_dm": 0.3296905490871158,
+      "calcium_upper_g": 498.2152050000001,
+      "phosphorus_upper_g": 232.50042900000003,
+      "calcium_to_phosphorus": 3.5181839737582448,
+      "tolerable": true,
+      "source": "NRC 2005 doi:10.17226/11309; total dietary minerals, not absorbed requirements"
+    },
+    "residuals": {
+      "NE_total_constraint": 5.836610023262004,
+      "NE_maintenance_and_activity_constraint": 36.425418487734206,
+      "NE_lactation_constraint": 16.430959788339937,
+      "NE_growth_constraint": 26.808996759630862,
+      "calcium_constraint": 45.076236055813155,
+      "phosphorus_constraint": 6.381479448804612,
+      "protein_constraint_lower": 0.0015443177894667315,
+      "protein_constraint_upper": 1369.7744082087197,
+      "NDF_constraint_lower": 19.99989462987184,
+      "NDF_constraint_upper": 0.00010537012816058677,
+      "forage_NDF_constraint": 29.999894629871847,
+      "fat_constraint": 4.749627280042567,
+      "DMI_constraint_upper": 0.00010833518723529778,
+      "DMI_constraint_lower": 15.329640281053031,
+      "calcium_total_upper": 112.95800639999996,
+      "phosphorus_total_upper": 122.99586599999999
+    },
+    "active_constraints": [
+      "NDF_constraint_upper",
+      "DMI_constraint_upper"
+    ],
+    "events": [
+      {
+        "requested": "linear_highs",
+        "used": "linear_highs",
+        "success": true,
+        "reason": null,
+        "trace": [
+          {
+            "iteration": 0,
+            "lp_status": "infeasible",
+            "x_before": [
+              1.0,
+              7.995353334858003,
+              8.880294695182352,
+              3.5359554042080807,
+              9.69613292435593,
+              2.804600286538835,
+              0.31173164689186295,
+              9.836187688651739
+            ],
+            "radius": 5.0,
+            "feed_ids": [
+              1,
+              23,
+              44,
+              50,
+              104,
+              110,
+              167,
+              231
+            ],
+            "physical_bounds": [
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ]
+            ],
+            "local_bounds": [
+              [
+                0,
+                6.0
+              ],
+              [
+                2.9953533348580033,
+                12.995353334858002
+              ],
+              [
+                3.880294695182352,
+                13.880294695182352
+              ],
+              [
+                0,
+                8.535955404208082
+              ],
+              [
+                4.696132924355931,
+                14.69613292435593
+              ],
+              [
+                0,
+                7.804600286538835
+              ],
+              [
+                0,
+                5.311731646891863
+              ],
+              [
+                4.836187688651739,
+                14.836187688651739
+              ]
+            ],
+            "decision": "expand_for_feasibility"
+          },
+          {
+            "iteration": 1,
+            "lp_status": "optimal",
+            "x_before": [
+              1.0,
+              7.995353334858003,
+              8.880294695182352,
+              3.5359554042080807,
+              9.69613292435593,
+              2.804600286538835,
+              0.31173164689186295,
+              9.836187688651739
+            ],
+            "radius": 10.0,
+            "feed_ids": [
+              1,
+              23,
+              44,
+              50,
+              104,
+              110,
+              167,
+              231
+            ],
+            "physical_bounds": [
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ]
+            ],
+            "local_bounds": [
+              [
+                0,
+                11.0
+              ],
+              [
+                0,
+                17.995353334858002
+              ],
+              [
+                0,
+                18.88029469518235
+              ],
+              [
+                0,
+                13.535955404208082
+              ],
+              [
+                0,
+                19.69613292435593
+              ],
+              [
+                0,
+                12.804600286538836
+              ],
+              [
+                0,
+                10.311731646891863
+              ],
+              [
+                0,
+                19.83618768865174
+              ]
+            ],
+            "residuals": {
+              "NE_total_constraint": 4.60334133877673,
+              "NE_maintenance_and_activity_constraint": 34.80330152610604,
+              "NE_lactation_constraint": 15.197691103854662,
+              "NE_growth_constraint": 25.32777966920467,
+              "calcium_constraint": 16.448403985813144,
+              "phosphorus_constraint": 0.6821386368046092,
+              "protein_constraint_lower": 17.726328530144656,
+              "protein_constraint_upper": 1352.0496239963645,
+              "NDF_constraint_lower": 23.03885084659349,
+              "NDF_constraint_upper": -3.0388508465934905,
+              "forage_NDF_constraint": 33.03885084659349,
+              "fat_constraint": 4.705897240731543,
+              "DMI_constraint_upper": 0.00010833518723529778,
+              "DMI_constraint_lower": 15.329640281053031,
+              "calcium_total_upper": 208.7703723,
+              "phosphorus_total_upper": 131.9372978
+            },
+            "deltas": {
+              "total_energy": 4.603341338776737,
+              "maintenance_energy": 34.80330152610604,
+              "lactation_energy": 15.19769110385467,
+              "growth_energy": 25.327779669204673,
+              "metabolizable_protein": 0.0,
+              "calcium": 16.44840398581313,
+              "phosphorus": 0.6821386368046092,
+              "dry_matter": 0.0,
+              "ndf_percent": 3.0388508465934905,
+              "forage_ndf_percent": 33.03885084659349,
+              "fat_percent": 4.705897240731543
+            },
+            "approved": false,
+            "x_candidate": [
+              0.0,
+              0.2753838618500908,
+              0.0,
+              13.535955404208082,
+              6.598407782939768,
+              12.804600286538836,
+              0.0,
+              0.0
+            ],
+            "cost": 0.35692802092187603,
+            "minerals": {
+              "dry_matter_kg": 33.214347000000004,
+              "calcium_total_g": 289.4448327,
+              "phosphorus_total_g": 100.56313120000002,
+              "calcium_percent_dm": 0.8714452001720822,
+              "phosphorus_percent_dm": 0.30277015893162074,
+              "calcium_upper_g": 498.2152050000001,
+              "phosphorus_upper_g": 232.50042900000003,
+              "calcium_to_phosphorus": 2.8782400592156576,
+              "tolerable": true,
+              "source": "NRC 2005 doi:10.17226/11309; total dietary minerals, not absorbed requirements"
+            },
+            "objective_improvement": 56.49690860086204,
+            "decision": "accept_step"
+          },
+          {
+            "iteration": 2,
+            "lp_status": "optimal",
+            "x_before": [
+              0.0,
+              0.2753838618500908,
+              0.0,
+              13.535955404208082,
+              6.598407782939768,
+              12.804600286538836,
+              0.0,
+              0.0
+            ],
+            "radius": 20.0,
+            "feed_ids": [
+              1,
+              23,
+              44,
+              50,
+              104,
+              110,
+              167,
+              231
+            ],
+            "physical_bounds": [
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ]
+            ],
+            "local_bounds": [
+              [
+                0,
+                20.0
+              ],
+              [
+                0,
+                20.27538386185009
+              ],
+              [
+                0,
+                20.0
+              ],
+              [
+                0,
+                33.53595540420808
+              ],
+              [
+                0,
+                26.598407782939766
+              ],
+              [
+                0,
+                32.804600286538836
+              ],
+              [
+                0,
+                20.0
+              ],
+              [
+                0,
+                20.0
+              ]
+            ],
+            "residuals": {
+              "NE_total_constraint": 4.874071876854501,
+              "NE_maintenance_and_activity_constraint": 35.19635568330334,
+              "NE_lactation_constraint": 15.468421641932434,
+              "NE_growth_constraint": 25.703430547867,
+              "calcium_constraint": 64.36677599581314,
+              "phosphorus_constraint": 10.63461168480461,
+              "protein_constraint_lower": -11.7071677836052,
+              "protein_constraint_upper": 1381.4831203101144,
+              "NDF_constraint_lower": 18.03336708681944,
+              "NDF_constraint_upper": 1.966632913180561,
+              "forage_NDF_constraint": 28.033367086819432,
+              "fat_constraint": 4.805322160932443,
+              "DMI_constraint_upper": 0.00010833518723529778,
+              "DMI_constraint_lower": 15.329640281053031,
+              "calcium_total_upper": 48.668971599999956,
+              "phosphorus_total_upper": 116.3515436
+            },
+            "deltas": {
+              "total_energy": 4.874071876854501,
+              "maintenance_energy": 35.19635568330334,
+              "lactation_energy": 15.468421641932434,
+              "growth_energy": 25.703430547867,
+              "metabolizable_protein": -11.7071677836052,
+              "calcium": 64.36677599581314,
+              "phosphorus": 10.63461168480461,
+              "dry_matter": 0.0,
+              "ndf_percent": 0.0,
+              "forage_ndf_percent": 28.033367086819432,
+              "fat_percent": 4.805322160932443
+            },
+            "approved": false,
+            "x_candidate": [
+              0.0,
+              0.15088596791885425,
+              0.0,
+              0.0,
+              0.2588610807295452,
+              32.804600286538836,
+              0.0,
+              0.0
+            ],
+            "cost": 0.3457232104645693,
+            "minerals": {
+              "dry_matter_kg": 33.214347000000004,
+              "calcium_total_g": 449.54623340000006,
+              "phosphorus_total_g": 116.14888540000001,
+              "calcium_percent_dm": 1.3534700332961536,
+              "phosphorus_percent_dm": 0.34969492370269994,
+              "calcium_upper_g": 498.2152050000001,
+              "phosphorus_upper_g": 232.50042900000003,
+              "calcium_to_phosphorus": 3.870430885770687,
+              "tolerable": true,
+              "source": "NRC 2005 doi:10.17226/11309; total dietary minerals, not absorbed requirements"
+            },
+            "objective_improvement": 0.011204810457306702,
+            "decision": "accept_step"
+          },
+          {
+            "iteration": 3,
+            "lp_status": "optimal",
+            "x_before": [
+              0.0,
+              0.15088596791885425,
+              0.0,
+              0.0,
+              0.2588610807295452,
+              32.804600286538836,
+              0.0,
+              0.0
+            ],
+            "radius": 40.0,
+            "feed_ids": [
+              1,
+              23,
+              44,
+              50,
+              104,
+              110,
+              167,
+              231
+            ],
+            "physical_bounds": [
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ]
+            ],
+            "local_bounds": [
+              [
+                0,
+                40.0
+              ],
+              [
+                0,
+                40.15088596791885
+              ],
+              [
+                0,
+                40.0
+              ],
+              [
+                0,
+                40.0
+              ],
+              [
+                0,
+                40.258861080729545
+              ],
+              [
+                0,
+                72.80460028653883
+              ],
+              [
+                0,
+                40.0
+              ],
+              [
+                0,
+                40.0
+              ]
+            ],
+            "residuals": {
+              "NE_total_constraint": 5.836612991187408,
+              "NE_maintenance_and_activity_constraint": 36.42542227502561,
+              "NE_lactation_constraint": 16.43096275626534,
+              "NE_growth_constraint": 26.809000165195933,
+              "calcium_constraint": 45.076175065813146,
+              "phosphorus_constraint": 6.3814660728046135,
+              "protein_constraint_lower": 0.001586126128131582,
+              "protein_constraint_upper": 1369.774366400381,
+              "NDF_constraint_lower": 19.999900865129156,
+              "NDF_constraint_upper": 9.913487084389772e-05,
+              "forage_NDF_constraint": 29.999900865129156,
+              "fat_constraint": 4.749627108429981,
+              "DMI_constraint_upper": 0.00010833518723529778,
+              "DMI_constraint_lower": 15.329640281053031,
+              "calcium_total_upper": 112.95820969999997,
+              "phosphorus_total_upper": 122.9958869
+            },
+            "deltas": {
+              "total_energy": 5.836612991187401,
+              "maintenance_energy": 36.42542227502561,
+              "lactation_energy": 16.430962756265334,
+              "growth_energy": 26.809000165195933,
+              "metabolizable_protein": 0.0,
+              "calcium": 45.076175065813146,
+              "phosphorus": 6.3814660728046135,
+              "dry_matter": 0.0,
+              "ndf_percent": 0.0,
+              "forage_ndf_percent": 29.999900865129156,
+              "fat_percent": 4.74962710842998
+            },
+            "approved": true,
+            "x_candidate": [
+              0.0,
+              0.14663108388686136,
+              0.0,
+              6.065779245901057,
+              0.0,
+              27.001937005399324,
+              0.0,
+              0.0
+            ],
+            "cost": 0.34534027090169,
+            "minerals": {
+              "dry_matter_kg": 33.214347000000004,
+              "calcium_total_g": 385.2569953000001,
+              "phosphorus_total_g": 109.50454210000001,
+              "calcium_percent_dm": 1.1599113940129548,
+              "phosphorus_percent_dm": 0.3296904861625008,
+              "calcium_upper_g": 498.2152050000001,
+              "phosphorus_upper_g": 232.50042900000003,
+              "calcium_to_phosphorus": 3.518182788693658,
+              "tolerable": true,
+              "source": "NRC 2005 doi:10.17226/11309; total dietary minerals, not absorbed requirements"
+            },
+            "best_cost": 0.34534027090169,
+            "objective_improvement": 0.0003829395628792698,
+            "decision": "accept_step"
+          },
+          {
+            "iteration": 4,
+            "lp_status": "optimal",
+            "x_before": [
+              0.0,
+              0.14663108388686136,
+              0.0,
+              6.065779245901057,
+              0.0,
+              27.001937005399324,
+              0.0,
+              0.0
+            ],
+            "radius": 40.0,
+            "feed_ids": [
+              1,
+              23,
+              44,
+              50,
+              104,
+              110,
+              167,
+              231
+            ],
+            "physical_bounds": [
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ],
+              [
+                0,
+                100
+              ]
+            ],
+            "local_bounds": [
+              [
+                0,
+                40.0
+              ],
+              [
+                0,
+                40.14663108388686
+              ],
+              [
+                0,
+                40.0
+              ],
+              [
+                0,
+                46.065779245901055
+              ],
+              [
+                0,
+                40.0
+              ],
+              [
+                0,
+                67.00193700539933
+              ],
+              [
+                0,
+                40.0
+              ],
+              [
+                0,
+                40.0
+              ]
+            ],
+            "residuals": {
+              "NE_total_constraint": 5.836610023262004,
+              "NE_maintenance_and_activity_constraint": 36.425418487734206,
+              "NE_lactation_constraint": 16.430959788339937,
+              "NE_growth_constraint": 26.808996759630862,
+              "calcium_constraint": 45.076236055813155,
+              "phosphorus_constraint": 6.381479448804612,
+              "protein_constraint_lower": 0.0015443177894667315,
+              "protein_constraint_upper": 1369.7744082087197,
+              "NDF_constraint_lower": 19.99989462987184,
+              "NDF_constraint_upper": 0.00010537012816058677,
+              "forage_NDF_constraint": 29.999894629871847,
+              "fat_constraint": 4.749627280042567,
+              "DMI_constraint_upper": 0.00010833518723529778,
+              "DMI_constraint_lower": 15.329640281053031,
+              "calcium_total_upper": 112.95800639999996,
+              "phosphorus_total_upper": 122.99586599999999
+            },
+            "deltas": {
+              "total_energy": 5.836610023262004,
+              "maintenance_energy": 36.42541848773422,
+              "lactation_energy": 16.430959788339937,
+              "growth_energy": 26.808996759630862,
+              "metabolizable_protein": 0.0,
+              "calcium": 45.076236055813155,
+              "phosphorus": 6.381479448804612,
+              "dry_matter": 0.0,
+              "ndf_percent": 0.0,
+              "forage_ndf_percent": 29.999894629871854,
+              "fat_percent": 4.749627280042567
+            },
+            "approved": true,
+            "x_candidate": [
+              0.0,
+              0.14663103993045068,
+              0.0,
+              6.065760338891172,
+              0.0,
+              27.00195595636562,
+              0.0,
+              0.0
+            ],
+            "cost": 0.34534026694561304,
+            "minerals": {
+              "dry_matter_kg": 33.214347000000004,
+              "calcium_total_g": 385.25719860000004,
+              "phosphorus_total_g": 109.50456299999999,
+              "calcium_percent_dm": 1.1599120060978467,
+              "phosphorus_percent_dm": 0.3296905490871158,
+              "calcium_upper_g": 498.2152050000001,
+              "phosphorus_upper_g": 232.50042900000003,
+              "calcium_to_phosphorus": 3.5181839737582448,
+              "tolerable": true,
+              "source": "NRC 2005 doi:10.17226/11309; total dietary minerals, not absorbed requirements"
+            },
+            "best_cost": 0.34534026694561304,
+            "objective_improvement": 3.956076910505146e-09,
+            "decision": "converged"
+          }
+        ],
+        "requirements": {
+          "maintenance_energy": 10.146824329732695,
+          "growth_energy": 0.4302072075314144,
+          "pregnancy_energy": 0.2934682382715078,
+          "lactation_energy": 30.015998310953346,
+          "metabolizable_protein": 2739.5519050530193,
+          "calcium": 70.63289142418687,
+          "phosphorus": 63.72783445119539,
+          "process_based_phosphorus": 0.0,
+          "dry_matter": 25.549581027067106,
+          "activity_energy": 0.017318227813827265,
+          "essential_amino_acids": {
+            "histidine": 0.0,
+            "isoleucine": 0.0,
+            "leucine": 0.0,
+            "lysine": 0.0,
+            "methionine": 0.0,
+            "phenylalanine": 0.0,
+            "threonine": 0.0,
+            "thryptophan": 0.0,
+            "valine": 0.0
+          }
+        },
+        "category": "lac_cow",
+        "mineral_policy": "nrc2005_mtl",
+        "termination": "objective_and_original_feasibility_converged",
+        "converged": true
+      }
+    ]
+  }
+]

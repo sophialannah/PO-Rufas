@@ -1,0 +1,146 @@
+[
+  {
+    "run": "native_1_nrc",
+    "summary": {
+      "days": 1,
+      "simulated_days": 1,
+      "cows_initial": 10,
+      "seed": 42,
+      "elapsed_seconds": 2.22109370000544,
+      "status": "complete",
+      "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96"
+    }
+  },
+  {
+    "run": "native_7",
+    "summary": {
+      "days": 7,
+      "simulated_days": 7,
+      "cows_initial": 10,
+      "seed": 42,
+      "elapsed_seconds": 2.0061643999943044,
+      "status": "complete",
+      "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96"
+    }
+  },
+  {
+    "run": "native_30",
+    "summary": {
+      "days": 30,
+      "simulated_days": 30,
+      "cows_initial": 10,
+      "seed": 42,
+      "elapsed_seconds": 9.77636910000001,
+      "status": "complete",
+      "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96"
+    }
+  },
+  {
+    "run": "native_365_transition_fix",
+    "summary": {
+      "days": 365,
+      "simulated_days": 365,
+      "cows_initial": 10,
+      "seed": 42,
+      "elapsed_seconds": 47.18874450000294,
+      "status": "complete",
+      "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96"
+    }
+  },
+  {
+    "run": "highs_1_schema",
+    "summary": {
+      "days": 1,
+      "simulated_days": 1,
+      "cows_initial": 10,
+      "seed": 42,
+      "elapsed_seconds": 1.1561802000069292,
+      "status": "complete",
+      "strategy": "linear_highs",
+      "estimated_diet_cost": 215.97429446,
+      "milk_kg": 322.7839357939559,
+      "animal_days": 26,
+      "cost_per_animal_day": 8.306703633076923,
+      "cost_per_kg_milk": 0.6690986462159748,
+      "purchase_expense": 248.37043862899998,
+      "highs_attempts": 1,
+      "highs_accepted": 1,
+      "native_attempts": 2,
+      "unsupported_native": 2,
+      "fallbacks": 0,
+      "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96"
+    }
+  },
+  {
+    "run": "highs_7",
+    "summary": {
+      "days": 7,
+      "simulated_days": 7,
+      "cows_initial": 10,
+      "seed": 42,
+      "elapsed_seconds": 2.861918800001149,
+      "status": "complete",
+      "strategy": "linear_highs",
+      "estimated_diet_cost": 277.60281177,
+      "milk_kg": 2447.3737159630978,
+      "animal_days": 184,
+      "cost_per_animal_day": 1.5087109335326088,
+      "cost_per_kg_milk": 0.11342886047983765,
+      "purchase_expense": 306.39481748446224,
+      "highs_attempts": 7,
+      "highs_accepted": 6,
+      "native_attempts": 15,
+      "unsupported_native": 14,
+      "fallbacks": 1,
+      "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96"
+    }
+  },
+  {
+    "run": "highs_30",
+    "summary": {
+      "days": 30,
+      "simulated_days": 30,
+      "cows_initial": 10,
+      "seed": 42,
+      "elapsed_seconds": 4.62756090000039,
+      "status": "complete",
+      "strategy": "linear_highs",
+      "estimated_diet_cost": 439.58559852,
+      "milk_kg": 11565.138055093952,
+      "animal_days": 798,
+      "cost_per_animal_day": 0.5508591460150376,
+      "cost_per_kg_milk": 0.038009541816613354,
+      "purchase_expense": 450.5818217681724,
+      "highs_attempts": 30,
+      "highs_accepted": 29,
+      "native_attempts": 61,
+      "unsupported_native": 60,
+      "fallbacks": 1,
+      "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96"
+    }
+  },
+  {
+    "run": "highs_365",
+    "summary": {
+      "days": 365,
+      "simulated_days": 365,
+      "cows_initial": 10,
+      "seed": 42,
+      "elapsed_seconds": 51.30139139998937,
+      "status": "complete",
+      "strategy": "linear_highs",
+      "estimated_diet_cost": 2529.21882951,
+      "milk_kg": 140223.66652304417,
+      "animal_days": 9173,
+      "cost_per_animal_day": 0.2757242809887714,
+      "cost_per_kg_milk": 0.01803703249404302,
+      "purchase_expense": 2533.080736616674,
+      "highs_attempts": 365,
+      "highs_accepted": 352,
+      "native_attempts": 650,
+      "unsupported_native": 637,
+      "fallbacks": 13,
+      "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96"
+    }
+  }
+]

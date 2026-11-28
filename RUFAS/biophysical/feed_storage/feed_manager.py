@@ -838,6 +838,24 @@ class FeedManager:
                     remaining_amount_needed -= purchased_deducted
 
             if remaining_amount_needed > 1e-3:
+                # Inventory queries include positive sub-gram batches. The
+                # normal FIFO pass skips these for efficiency, but together
+                # they can exceed the shortage tolerance. Consume their real
+                # mass before declaring a shortage; never fabricate supply.
+                for storages, add in (
+                    (farmgrown_by_id.get(feed_id, ()), deduction_results.add_farmgrown),
+                    (purchased_by_id.get(feed_id, ()), deduction_results.add_purchased),
+                ):
+                    recovered = self._deduct_from_storage(
+                        feed_id, remaining_amount_needed, storages, include_small=True
+                    )
+                    if recovered:
+                        add(feed_id, recovered)
+                        remaining_amount_needed -= recovered
+                    if remaining_amount_needed <= 1e-3:
+                        break
+
+            if remaining_amount_needed > 1e-3:
                 self._om.add_error(
                     "Feed Deduction Error",
                     f"Not adequate feed to deduct remaining {remaining_amount_needed:.3f} kg DM of feed {feed_id}.",
@@ -903,6 +921,7 @@ class FeedManager:
         feed_id: RUFAS_ID,
         remaining: float,
         feed_storages: Sequence[HarvestedCrop | PurchasedFeed],
+        include_small: bool = False,
     ) -> float:
         """
         Removes feeds from specified storages.
@@ -924,10 +943,10 @@ class FeedManager:
         """
         deducted = 0.0
         for storage in feed_storages:
-            if remaining <= 1e-3:
+            if remaining <= (1e-9 if include_small else 1e-3):
                 break
             available = float(storage.dry_matter_mass)
-            if available <= 1e-3:
+            if available <= 0.0 or (not include_small and available <= 1e-3):
                 available = 0.0
                 continue
             amount_to_remove = min(remaining, available)

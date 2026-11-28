@@ -1,17 +1,12 @@
-# Demonstração web em 85 segundos
+# Demonstração web final
 
-Prepare o PowerPoint no slide 1 e o navegador no frontend. Use `.\frontend\iniciar_frontend.bat` na raiz do projeto. Confira a aplicação uma vez antes da aula. Recarregue a sessão e confirme o animal 98605, três alimentos da demonstração e sete dias de estoque. Para começar, deixe a aba **Animal** visível.
+1. Instale/execute conforme [frontend](../frontend/README.md); deixe o servidor e o navegador preparados.
+2. Mostre brevemente as áreas estáticas existentes e explique a diferença entre coeficientes fixos e programação linear sequencial.
+3. Abra Simulação anual → Simulação dinâmica integrada.
+4. Mostre as cinco opções. Selecione **Comparação SLSQP versus HiGHS exclusivo**; leia o aviso **sem fallback para SLSQP**.
+5. Confira NRC, semente, ingredientes e preços demonstrativos. Para demonstração curta, escolha um dia e diga explicitamente que não é o ano oficial.
+6. Inicie e acompanhe os dias efetivos. Após conclusão, mostre os summaries reais, custos, chamadas, categorias, convergência e registros separados de bezerros.
+7. Apresente o [resultado oficial de 365 dias](resultados_validados.md), com suas pastas e XML, sem atribuí-lo a uma execução curta.
+8. Conclua com 959 convergentes/43 viáveis sem convergência, preços demonstrativos e ausência de ótimo global.
 
-| Tempo | Pessoa | Ação na tela |
-|---|---|---|
-| 03:00–03:12 | Sophia | Passe para o navegador. Mostre ID 98605, 627,56 kg, 100 dias em lactação e paridade 4. Identifique 30 kg/dia de leite como hipótese. |
-| 03:12–03:24 | Sophia | Abra **Ingredientes**. Mostre alfafa, milho e farelo de soja. Aponte a fonte NRC e os valores ilustrativos de preço, estoque e NEL. |
-| 03:24–03:35 | Sophia | Abra **Otimização**. Aponte o consumo de MS calculado, as metas externas e o período de sete dias. Clique **Executar otimização**. |
-| 03:35–04:00 | Anderson | Abra **Resultados**. Mostre o custo diário e as verificações do LP. Aponte quantidades em MN e MS na tabela da dieta. |
-| 04:00–04:25 | Anderson | Destaque **Não aprovada** e o déficit de fósforo absorvível de 6,68 g/dia. Explique a passagem pelo RationManager e o parecer do NutritionEvaluator. Volte ao PowerPoint para o slide 4. |
-
-A apresentação termina às 05:00. A arguição vai das 05:00 às 10:00.
-
-## Alternativa pelo terminal
-
-Deixe o terminal pronto antes da aula, com `.\apresentacao\demonstracao_integrada.bat` aguardando Enter. Em caso de falha no navegador, use o [guia do terminal](guia_demonstracao.md), pressione Enter e mostre o mesmo cálculo e diagnóstico. Para validar essa alternativa antes da aula, use `.\apresentacao\demonstracao_integrada.bat --auto`.
+As [capturas finais do manual](../docs/po_rufas/12-manual.md) vêm de execução real na cópia isolada. Se houver erro, mostre o motivo; não esconda alertas nem substitua o backend por números fixos.

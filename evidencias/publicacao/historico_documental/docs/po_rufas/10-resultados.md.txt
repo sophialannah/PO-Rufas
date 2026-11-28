@@ -1,0 +1,72 @@
+# Resultados experimentais
+
+[Sumário](README.md)
+
+Os valores abaixo pertencem ao cenário de sete dias, PB mínima 3,6 kg/dia, NEL 35 Mcal/dia e FDN 28–40% MS. O suplemento usa os parâmetros da [tabela de dados](03-dados.md). A referência anterior aos minerais continua preservada.
+
+| Animal / leite | P/Ca no LP | Alimentos | LP | R$/dia | MS kg/d | PB kg/d | FDN kg/d | P oferta g/d | P requerido g/d | Parecer |
+|---|---|---:|---|---:|---:|---:|---:|---:|---:|---|
+|98605 / 30|Desligados|3|optimal|35,1059|22,2316|3,6000|6,4120|43,8096|50,4867|Reprovada|
+|98605 / 30|Ativos|3|infeasible|—|—|—|—|—|50,4867|Sem avaliação|
+|98605 / 30|Ativos|4|optimal|35,3416|22,2316|3,6000|6,3652|50,4867|50,4867|Aprovada|
+|93785 / 31|Desligados|3|optimal|34,9440|22,7013|3,6000|6,9249|43,1630|51,7738|Reprovada|
+|93785 / 31|Ativos|3|optimal|38,2663|22,7013|4,8403|6,6604|51,7738|51,7738|Aprovada|
+|93785 / 31|Ativos|4|optimal|35,2480|22,7013|3,6000|6,8645|51,7738|51,7738|Aprovada|
+
+As linhas suplementadas têm 15/15 checks LP e 11/11 critérios nativos. As linhas basais possuem 11 checks LP e déficit de P de 6,68 e 8,61 g/dia. O cenário 98605 com mínimos ativos volta a ser viável ao retirar apenas o mínimo P.
+
+A NEL fornecida é 35 Mcal/dia nos cenários viáveis listados. Ca absorvível suplementado é 70,4702 e 78,3480 g/dia; os mínimos fisiológicos são 56,5564 e 56,4622. Os deltas P positivos de aproximadamente 1e-6 g/dia decorrem da margem numérica explícita.
+
+A dieta suplementada em kg MN/dia:
+| Animal | Alfafa | Milho | Soja | Fosfato 231 |
+|---|---:|---:|---:|---:|
+|98605|14,682166|9,587444|0,540986|0,044189|
+|93785|16,259247|8,956760|0,081601|0,056986|
+
+Os demais valores nativos e a história da correção de gordura estão no [relatório mineral](../fosforo_nasem_2021.md). Os resultados antigos R$34,9978 para perfil didático de 650 kg e R$23,5276 do catálogo são experimentos distintos; seus arquivos anteriores foram preservados.
+
+
+
+## Evidências experimentais adicionais
+
+Os dados completos estão em [evidencias/comparacao](../../evidencias/comparacao/README.md). O caso A reproduz as referências suplementadas. O caso B pode convergir sem aprovação nativa por resíduos pequenos. A sensibilidade altera somente o preço do milho e resolve novamente.
+
+![Custos calculados](../../evidencias/comparacao/cost.png)
+
+![Tempo mediano](../../evidencias/comparacao/median_seconds.png)
+
+![Participação em MS](../../evidencias/comparacao/ingredientes_98605.png)
+
+![Oferta versus exigência](../../evidencias/comparacao/nutricao_98605.png)
+
+![Sensibilidade de preços](../../evidencias/comparacao/sensibilidade.png)
+
+O gráfico de MP mostra a exigência mínima; o limite superior e o parecer de faixa constam nas restrições e deltas. Os custos dos cenários híbridos permanecem em arquivo separado dos demonstrativos.
+
+
+## Resultados anuais
+
+A rodada de 365 dias completou o motor FULL_FARM nas duas estratégias. O custo estimado foi 2.319,219171 UM no nativo e 2.529,218830 UM no híbrido. As despesas de compra foram 2.323,081042 e 2.533,080737 UM. O leite total observado foi 140.223,666523 kg em ambos, e o total foi 9.173 animal-dias.
+
+A economia percentual foi −9,054757%; houve aumento de custo. Os preços são demonstrativos e o resultado é condicionado ao pequeno rebanho experimental. As séries biológicas iguais foram observadas, sem fixar trajetórias; as dietas e ofertas diferem e o ciclo original utiliza seus resultados.
+
+![Custo diário anual](../../evidencias/anual/confirmacao/diet_cost.png)
+
+![Custo acumulado](../../evidencias/anual/confirmacao/accumulated_cost.png)
+
+![Leite diário](../../evidencias/anual/confirmacao/milk.png)
+
+![Estoques](../../evidencias/anual/confirmacao/inventory.png)
+
+Consulte as tabelas e os diários para requisitos, ofertas, deficiências, currais reprovados e motivos de fallback. Os cenários estáticos anteriores foram preservados.
+
+
+
+
+## Resultados corrigidos, distintos dos históricos
+
+Os três cenários controlados completaram 365 dias, produziram 140.223,666523 kg de leite e mantiveram estados biológicos registrados iguais. O custo HiGHS caiu de 26,59265535 para 0,34534027 UM por vaca no primeiro dia reproduzido, com cinco iterações em vez de uma. O valor próximo ao SLSQP foi observado, não imposto.
+
+No ano corrigido, SLSQP teve 362 curral-dias adultos aprovados e 636 reprovados; HiGHS híbrido ampliado e exclusivo tiveram 998 aprovados e zero reprovados. Todos os 998 curral-dias adultos respeitaram os tetos totais de Ca/P nos três cenários. As 751 ocorrências de critérios reprovados do SLSQP controlado ficaram abaixo de 10⁻³ na unidade própria do indicador; foram mantidas como reprovações nativas. Esse limiar classifica a auditoria numérica e não modifica a aceitação.
+
+HiGHS aceitou 1.002 chamadas: 959 atingiram o critério de convergência; 42 encerraram por estagnação e uma por orçamento de iterações, conservando candidatas viáveis. Essas 43 chamadas não são declaradas convergentes ou globalmente ótimas. Gráficos, diários, CSVs por nutriente/categoria e resumos estão no diretório da correção.

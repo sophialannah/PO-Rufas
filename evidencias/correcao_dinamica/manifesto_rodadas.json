@@ -1,0 +1,23 @@
+{
+  "reference_commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96",
+  "uncommitted_changes": true,
+  "date": "2026-11-27",
+  "strategies": {
+    "native_slsqp": "nativo_final_365",
+    "linear_highs_all": "hibrido_final_365",
+    "linear_highs_exclusive": "exclusivo_estoque_365"
+  },
+  "mineral_policy": "nrc2005_mtl",
+  "seed": 42,
+  "python": "3.12.16 (main, Oct 26 2026, 14:10:56) [MSC v.1944 64 bit (AMD64)]",
+  "packages": {
+    "numpy": "2.2.0",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "streamlit": "1.67.0",
+    "pytest": "9.2.0"
+  },
+  "history": "Earlier evidence in evidencias/anual/confirmacao preserved",
+  "source_hash_scope": "Current review state. Final changes after annual numeric runs: unsupported-category event logging and explicit mineral policy dispatch when record-events flag is false. Full annual regression rerun with review state.",
+  "scientific_scope": "Native NRC requirements plus distinct NRC 2005 total mineral ceilings; no general NASEM replacement or global nonlinear optimality certificate"
+}

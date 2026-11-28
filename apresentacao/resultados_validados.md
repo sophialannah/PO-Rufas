@@ -1,136 +1,25 @@
-# Resultados validados e auditoria técnica
+# Resultados vigentes para apresentação
 
-**Integrantes:** Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.
+| Indicador | SLSQP controlado | HiGHS exclusivo |
+|---|---:|---:|
+| Dias | 365 | 365 |
+| Consumo valorizado, UM | 2.319,34875854 | 2.316,45106770 |
+| Leite, kg | 140.223,666523 | 140.223,666523 |
+| Formulações HiGHS | 0 | 1.002 |
+| Chamadas SLSQP | 1.002 | 0 |
+| Curral-dias adultos aprovados | 362 | 998 |
+| Registros de bezerros não aprovados | 252 | 252 |
 
-## Execução integrada principal (Animal 98605 → RationManager)
+Redução de 0,1249355%, com preços demonstrativos. Não equivale a superioridade econômica universal. Das chamadas HiGHS, 959 convergiram e 43 conservaram soluções viáveis sem convergência, sem certificado de ótimo global não linear. Referência computacional: **954 testes aprovados**.
 
-Esta é a execução usada na demonstração integrada (`.\apresentacao\demonstracao_integrada.bat`), registrada em `evidencias/integracao_real.json` e detalhada em [integração real](../docs/integracao_real_rufas.md):
+A biologia original foi preservada. Leite/pesos iguais são observações sob suas limitações, não um resultado forçado. O modo exclusivo passou no cenário NRC das três categorias ativas, sem validar todos os agrupamentos, NASEM ou o fluxo de bezerros.
 
-- **Animal real**: ID `98605`, raça `HO`, construído via `Animal(record, RufasTime)` a partir de `input/data/animal/animal_population.json`, `627,5607 kg`, `DEL=100`, paridade `4`. Leite `30 kg/dia` e composição `3,8% / 3,2% / 4,8%` são hipóteses explícitas.
-- **Exigência importada**: `DMI = 22,231580 kg MS/dia` via `Animal.calculate_nutrition_requirements` (`NRCRequirementsCalculator`). PB `>= 3,6 kg/dia`, NEL `>= 35,0 Mcal/dia` e FDN `28–40% MS` permanecem metas externas explícitas.
-- **Resultado HiGHS (`optimal`, 7 dias)**: Alfafa `14,8300 kg MN` (`13,3915 kg MS`, `R$ 18,7481`), Milho `9,5283 kg MN` (`8,3945 kg MS`, `R$ 15,1100`), Farelo de soja `0,4979 kg MN` (`0,4456 kg MS`, `R$ 1,2478`). **Custo: R$ 35,1059017708/dia**; `11/11` verificações satisfeitas.
-- **Retorno ao `RationManager` e avaliação nativa**: percentuais em MS (`60,24%`, `37,76%`, `2,00%`, soma `100,00%`) validados por `RationManager.set_user_defined_rations`, quantidades recuperadas por `get_user_defined_ration`, PB (`3,6000 kg`) e FDN (`6,4120 kg`, `28,84% MS`) conferidas por `NutritionSupplyCalculator`. O diagnóstico completo de `NutritionEvaluator` aponta energia, MP (`2300,94 g` vs `2120,54 g`), Ca (`+5,45 g`) e FDN dentro do esperado, e **déficit de fósforo absorvível (`-6,68 g/dia`)** por ausência de suplemento mineral na lista demonstrativa.
-- **Testes**: **442 testes aprovados** (incluindo 42 específicos dos novos módulos), sem mocks nas operações principais da integração. O ciclo diário completo da fazenda (`Pen`/baixa de estoque) não foi executado.
+[Diários e resumos oficiais](../evidencias/correcao_dinamica/README.md) · [Auditoria dos bezerros](../evidencias/publicacao/bezerros_auditoria.json) · [Reprodução isolada](../evidencias/publicacao/README.md).
 
----
+## Contexto do LP estático
 
-## Histórico — execução anterior com perfil sintético (24/11/2026 00:29:02 -0300)
+O exemplo individual 98605 sem minerais retorna aproximadamente R$35,1059/dia e déficit de P; a suplementada retorna R$35,3416 com os critérios nativos atendidos. Esse LP tem coeficientes fixos e suas grandezas/preços diferem do experimento anual.
 
-Validação histórica registrada em **24/11/2026 00:29:02 -0300**, horário de São Paulo. Evidência: `evidencias/validacao.json` (animal ilustrativo de 650 kg, R$ 34,9978/dia, 433 testes; não comparar custos entre animais diferentes).
+## Histórico
 
-## Estado real e escopo investigado
-
-Foram examinados os módulos `linear_diet`, adaptadores, exemplos, catálogo, testes de rações/nutrição,
-`pyproject.toml`, documentação em `docs/`, entradas em `input/data/feed/` e saídas dos exemplos.
-O repositório possui módulos de animais, alimentação, solo/culturas e demais subsistemas.
-A validação se concentrou nos componentes ligados a este trabalho; não afirma auditoria de todo o simulador.
-
-O otimizador original `ration_optimizer.py` usa `minimize` com SLSQP. O módulo novo usa
-`scipy.optimize.linprog(method="highs")`, com escolha automática entre os métodos LP suportados pelo HiGHS.
-Não afirmamos ter fixado simplex ou pontos interiores. O núcleo original não foi modificado para a apresentação.
-
-## Entradas da demonstração escolhida
-
-Animal: 650 kg, DEL 100, leite 30 kg/dia, gordura 3,8%, proteína verdadeira 3,2%.
-No calculador: peso adulto 700 kg; 2ª lactação; sem gestação informada; ECC 3/5;
-lactose 4,8%; alojamento Barn; demais parâmetros em `linear_diet_example.example_inputs`.
-Período: dieta diária constante por sete dias, com estoque alocado a um animal.
-
-| Ingrediente | R$/kg MN | Estoque kg MN | Máximo kg MN/dia | MS % | PB % MS | FDN % MS | NEL Mcal/kg MS |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| Alfafa (farinha) | 1,2642 | 166,1130 | 17,7187 | 90,3 | 19,2 | 41,6 | 1,3 |
-| Milho (moagem media) | 1,5858 | 113,5074 | 11,3507 | 88,1 | 9,4 | 9,5 | 2,0 |
-| Farelo de soja | 2,5060 | 67,0391 | 6,7039 | 89,5 | 53,8 | 9,8 | 1,8 |
-
-Preços, estoques, limites operacionais e NEL são ilustrativos. Composição: `input/data/feed/NRC_comp.csv`,
-IDs 1, 44 e 167. PB e FDN são teores em base MS; o preço exibido é por kg MN.
-MS exigida: 22,5453 kg/dia, calculada pelo RuFaS/NRC.
-Metas ilustrativas: PB ≥ 3,6 kg/dia; NEL ≥ 35 Mcal/dia; FDN entre 28% e 40% da MS.
-
-## Saída obtida de execução real
-
-| Ingrediente | kg MN/dia | kg MS/dia | R$/dia |
-|---|---:|---:|---:|
-| Alfafa (farinha) | 15,9119 | 14,3685 | 20,1158 |
-| Milho (moagem media) | 9,0957 | 8,0133 | 14,4239 |
-| Farelo de soja | 0,1828 | 0,1636 | 0,4580 |
-
-**Status:** `optimal`. **Custo:** R$ 34,9978/dia.
-Custo independente recomputado: `34.997773642176`.
-MS: 22,5453 kg; PB: 3,6000 kg;
-NEL: 35,0000 Mcal; FDN: 6,7546 kg
-(29,96% da MS).
-
-| Verificação | Fornecido | Mínimo | Máximo | Folga | Status |
-|---|---:|---:|---:|---:|---|
-| DM_kg | 22.54532000 | 22.545320001976965 | 22.545320001976965 | -3.5527137e-15 | OK |
-| CP_kg | 3.60000000 | 3.6 | None | 0 | OK |
-| NEL_Mcal | 35.00000000 | 35.0 | None | 0 | OK |
-| NDF_min_kg_residual | 0.44188290 | 0.0 | None | 0.4418829 | OK |
-| NDF_max_kg_residual | -2.26355550 | None | 0.0 | 2.2635555 | OK |
-| inclusion_1_kg_day | 15.91191822 | 0.0 | 17.718715393133998 | 1.8067972 | OK |
-| stock_1_kg | 111.38342751 | 0.0 | 166.11295681063123 | 54.729529 | OK |
-| inclusion_44_kg_day | 9.09565875 | 0.0 | 11.350737797956869 | 2.2550791 | OK |
-| stock_44_kg | 63.66961122 | 0.0 | 113.50737797956869 | 49.837767 | OK |
-| inclusion_167_kg_day | 0.18277374 | 0.0 | 6.70391061452514 | 0.18277374 | OK |
-| stock_167_kg | 1.27941619 | 0.0 | 67.0391061452514 | 1.2794162 | OK |
-
-`None` indica ausência daquele lado do limite. As linhas de FDN verificam resíduos lineares em kg,
-não percentuais diretamente. Folgas numericamente próximas de zero são avaliadas com tolerância absoluta de 1e-7.
-As 11 linhas incluem cinco verificações nutricionais e seis de inclusão/estoques.
-Não são onze nutrientes. Valores exibidos são arredondados; o solver usa precisão completa.
-
-## Modelo auditado
-
-```text
-x_i = kg MN/dia; d_i = kg MS/kg MN; p_i = R$/kg MN.
-c_i = kg PB/kg MS; e_i = Mcal NEL/kg MS; f_i = kg FDN/kg MS.
-Min C = soma(p_i x_i)
-MS_min <= soma(d_i x_i) <= MS_max
-soma(d_i c_i x_i) >= PB_min
-soma(d_i e_i x_i) >= NEL_min
-soma(d_i (f_i-r_min) x_i) >= 0
-soma(d_i (f_i-r_max) x_i) <= 0
-L_i <= x_i <= U_i; T x_i <= S_i; x_i >= 0
-```
-
-Todas as expressões são lineares em x. A igualdade de MS usa os mesmos limites inferior/superior.
-Para MS total positiva, a reformulação da proporção de FDN preserva equivalência algébrica.
-O núcleo aceita mínimos minerais totais opcionais quando a composição é conhecida para todos os ingredientes;
-não há minerais ativos nesta demo. Não há máximos minerais, máximo de PB ou modelo completo de aminoácidos.
-
-No adaptador, preço por kg MS é multiplicado por d_i para virar preço por kg MN.
-Estoque e limites em kg MS são divididos por d_i para virar kg MN. Percentuais são divididos por 100.
-R$/tonelada é dividido por 1000 sem trocar a base. O período multiplica quantidades diárias, não o preço unitário.
-
-## Integração comprovada e limites
-
-Os testes usam Feed/NRCFeed, NutritionRequirements, calculador NRC, FeedInRation e cálculo de PB/FDN do RuFaS.
-Há teste de snapshot mínimo de Animal/MilkProduction. Isso comprova os adaptadores; não uma simulação de fazenda.
-O resultado fornece um dicionário em kg MS/dia compatível com rações. Não há aplicação automática nem baixa de estoque.
-
-A única exigência importada diretamente para o LP nos exemplos é a MS. NRC (2001), capítulo 1, p. 4,
-equação 1-2, é a referência do calculador reutilizado. NASEM (2021) integra as fontes do RuFaS e a biblioteca
-alternativa do catálogo, mas não foi usado para calcular todas as metas da demo. DE não foi convertida em NEL;
-proteína metabolizável não foi confundida com PB; minerais absorvidos não foram confundidos com totais.
-
-## Testes e evidência de execução
-
-**433 testes executados: zero falhas, zero erros e zero skips.**
-Incluem 33 testes específicos dos módulos novos e testes preexistentes de rações, nutrição e estruturas relacionadas.
-A suíte completa da fazenda não foi executada. Comandos e saída integral estão em `evidencias/testes.md`;
-o relatório JUnit está em `evidencias/testes.xml`. Versões e hashes de fontes estão em `evidencias/validacao.json`.
-
-Versões: {"numpy": "2.2.0", "scipy": "1.18.1", "pytest": "9.2.0", "python-pptx": "1.0.2"}.
-Tempo de chamada do solver na demo registrada: 0.0039 s.
-O tempo total do processo, com imports, foi 1.638 s nesta execução.
-Não é benchmark. Pré-aqueça o ambiente antes da apresentação; a duração da fala precisa ser ensaiada.
-
-## Outros resultados disponíveis
-
-`output/linear_diet_example.json` e `output/linear_diet_cow_2.json` foram inspecionados, mas os slides usam
-uma nova execução registrada em `evidencias/base_slides.json`. O cenário da segunda vaca é histórico.
-O catálogo foi executado novamente com semente 42: ver `evidencias/catalogo.md` e `evidencias/catalogo/result.json`.
-Ele avalia 300 registros, utiliza 185 candidatos e registra 115 exclusões. Essa execução é material de apoio,
-não uma segunda demonstração durante os cinco minutos. Seus parâmetros diferem do exemplo de três alimentos.
-Não há comparação válida de economia ou percentual de ganho nesta entrega.
+462/466/937 testes e o aumento anual de 9,05% são marcos anteriores, preservados nas evidências e cópias documentais históricas. Não os apresentar como resultados vigentes.

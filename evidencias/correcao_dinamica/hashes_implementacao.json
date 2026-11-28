@@ -1,0 +1,16 @@
+{
+  "RUFAS/biophysical/animal/ration/dynamic_linear_optimizer.py": "0a3d000563415d6935de161587a764c1f56f9c9c688c2fb77070d960cf5558fb",
+  "RUFAS/biophysical/animal/ration/mineral_limits.py": "c1a0d292154ba67e45e255a9f5892cba6dd89bdc4272501b8150dfad67fa9549",
+  "RUFAS/biophysical/feed_storage/feed_manager.py": "c4dc0b738f676a366810de03904d4c812371b949a61a1bb390338110e8bad1d4",
+  "experiments/annual.py": "94ce8628b4c2e53afe980153d2cbfa6e018a3cb8166e0d3cfecba4aa85244ea0",
+  "tests/test_dynamic_convergence.py": "6fdf00833b2a5c395d35b24e224378068f6bddfcef0614e60bda975b1791c00b",
+  "frontend/annual.py": "136e230e886f1ba31ddf3508643d3d658f131f16ea5a7fe413ba6292ceac2903",
+  "RUFAS/biophysical/animal/herd_manager.py": "8b84b00e5983437dd525ccf1f1b48d66e1f183b8aedd3a1d8eaad51b0353338a",
+  "RUFAS/input/metadata/properties/default.json": "a70332e7cb8bc5a1ca3a9c0af9f06e46ce419432f3fe13c64e9e51790267c6b7",
+  "experiments/first_day_regression.py": "bb12f28514bbc83356c9d952627532fbbe63def8930a33a12d974b6db046f5c9",
+  "experiments/recover_licenses.py": "9852a2ef2ee09c04aa1728cf4e7e8bc84967ba642688429933ce7a3e39c7ffb3",
+  "experiments/convergence_report.py": "3b7094014b16f8f02eb8982a564544880c288727501fff4f5f0a45624b421de7",
+  "tests/fixtures/dynamic_first_day.json": "808689f13a74841bb91aa3eb0504ae704dccce8b42599eeffd5de9ce5f3569ff",
+  "COPYING.txt": "2e8578f16b6ea265412166e8b4b1da045fcc11f28db03d664908410124a2f01e",
+  "COPYING.LESSER.txt": "cfb70a2be6b545997020a3b024d0adcb1a4f06cd4bf1029e5a24ee7825a1785a"
+}

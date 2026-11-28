@@ -211,6 +211,60 @@ def compare(animals: dict, catalog: dict, animal_id: int, rows: list[dict], milk
     if comparison := st.session_state.get("comparison_result"):
         st.caption("Última comparação executada")
         st.dataframe(pd.DataFrame(comparison), hide_index=True)
+    st.subheader("Comparação dos otimizadores")
+    experiment = st.selectbox(
+        "Experimento",
+        ["A · Mesmo LP", "B · Formulações diferentes"],
+        help="A usa a matriz do LP nos dois algoritmos. B inclui a formulação nutricional nativa do RuFaS.",
+    )
+    repetitions = st.number_input("Repetições de medição", min_value=2, max_value=20, value=5, step=1)
+    if st.button("Executar comparação dos otimizadores"):
+        from experiments.comparison import compare_models
+
+        try:
+            with st.spinner("Resolvendo modelos e avaliando candidatas…"):
+                st.session_state["optimizer_comparison"] = compare_models(
+                    animal_id,
+                    rows,
+                    milk,
+                    *inputs,
+                    repeats=repetitions,
+                )
+        except (ValueError, RuntimeError, KeyError, ArithmeticError) as error:
+            st.error(str(error))
+    if report := st.session_state.get("optimizer_comparison"):
+        from experiments.comparison import json_text
+
+        selected_methods = ["A_HiGHS", "A_SLSQP"] if experiment.startswith("A") else ["A_HiGHS", "B_SLSQP_native"]
+        st.caption(f"Última execução · animal {report['animal_id']} · NRC 2001 · {report['days']} dias")
+        if experiment.startswith("B"):
+            st.warning("Formulações diferentes. Consumo e restrições nutricionais variam entre os modelos.")
+        st.dataframe(
+            pd.DataFrame(
+                [
+                    {
+                        "Método": name,
+                        "Convergiu": method["success"],
+                        "Viável na tolerância": method["feasible"],
+                        "R$/dia": method["cost_per_day"],
+                        "R$/kg leite assumido": method["cost_per_kg_milk"],
+                        "MS (kg/dia)": sum(method["quantities_kg_dm_day"].values()),
+                        "Tempo mediano (s)": method["timing"]["median_seconds"],
+                        "Iterações": method["iterations"],
+                        "Parecer RuFaS": method["native"]["approved"],
+                    }
+                    for name in selected_methods
+                    for method in [report["methods"][name]]
+                ]
+            ),
+            hide_index=True,
+        )
+        st.caption("Parecer da última candidata de cada método. O JSON contém as candidatas de todas as repetições.")
+        st.download_button(
+            "Baixar comparação completa (JSON)", json_text(report), "comparacao.json", "application/json"
+        )
+        with st.expander("Conferir restrições, folgas, ofertas e pareceres"):
+            st.json({name: report["methods"][name] for name in selected_methods}, expanded=1)
 
 
 def overview(report: dict | None, animal_id: int, available: int, selected: int) -> None:
@@ -267,8 +321,8 @@ def main() -> None:
         milk = st.number_input("Produção de leite assumida (kg/dia)", min_value=0.0, value=30.0, step=0.5)
         st.caption("Padrão da formulação e da avaliação nativa · NRC 2001 · vacas Holandesas em lactação")
 
-    home, animal, ingredients, optimization, results, scenarios = st.tabs(
-        ["Visão geral", "Animal", "Ingredientes", "Otimização", "Resultados", "Cenários"]
+    home, animal, ingredients, optimization, results, scenarios, annual = st.tabs(
+        ["Visão geral", "Animal", "Ingredientes", "Otimização", "Resultados", "Cenários", "Simulação anual"]
     )
     with animal:
         st.header(f"Animal {animal_id}")
@@ -315,6 +369,10 @@ def main() -> None:
         show_results(report)
     with scenarios:
         compare(animals, catalog, animal_id, rows, milk, inputs)
+    with annual:
+        from frontend.annual import annual_panel
+
+        annual_panel()
 
 
 main()

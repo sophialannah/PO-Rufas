@@ -1,0 +1,610 @@
+{
+  "initial_states_equal": true,
+  "initial_animals": 26,
+  "strategies": {
+    "native_slsqp": {
+      "days": 365,
+      "transitions": [
+        {
+          "day": 1,
+          "id": 12350,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 2,
+          "id": 12339,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 5,
+          "id": 12345,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 5,
+          "id": 12351,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 6,
+          "id": 12354,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 7,
+          "id": 12347,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 12,
+          "id": 12353,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 13,
+          "id": 17358,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 14,
+          "id": 12341,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 14,
+          "id": 12352,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 16,
+          "id": 12340,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 30,
+          "id": 17363,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 36,
+          "id": 12338,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 37,
+          "id": 12343,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 40,
+          "id": 12342,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 52,
+          "id": 12344,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 65,
+          "id": 17365,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 71,
+          "id": 17358,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 74,
+          "id": 17368,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 117,
+          "id": 12348,
+          "previous": "HEIFER_II",
+          "category": "HEIFER_III"
+        },
+        {
+          "day": 131,
+          "id": 17370,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 137,
+          "id": 12348,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 166,
+          "id": 12346,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 182,
+          "id": 12349,
+          "previous": "HEIFER_II",
+          "category": "HEIFER_III"
+        },
+        {
+          "day": 202,
+          "id": 12349,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 206,
+          "id": 17357,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 243,
+          "id": 17356,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 262,
+          "id": 17372,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 264,
+          "id": 17357,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 284,
+          "id": 12347,
+          "previous": "HEIFER_II",
+          "category": "HEIFER_III"
+        },
+        {
+          "day": 298,
+          "id": 12351,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 299,
+          "id": 12354,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 304,
+          "id": 12347,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 305,
+          "id": 12353,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 306,
+          "id": 17356,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 307,
+          "id": 12352,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 322,
+          "id": 12339,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 325,
+          "id": 12345,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 334,
+          "id": 12341,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 336,
+          "id": 12340,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 337,
+          "id": 12350,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 350,
+          "id": 12354,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 356,
+          "id": 12338,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 356,
+          "id": 12353,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 357,
+          "id": 12343,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 360,
+          "id": 12342,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 361,
+          "id": 12351,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 363,
+          "id": 12352,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 364,
+          "id": 17374,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        }
+      ],
+      "approved_adult_pen_days": 344,
+      "rejected_adult_pen_days": 654,
+      "dry_matter_fed": 162375.0403325183
+    },
+    "linear_highs": {
+      "days": 365,
+      "transitions": [
+        {
+          "day": 1,
+          "id": 12350,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 2,
+          "id": 12339,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 5,
+          "id": 12345,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 5,
+          "id": 12351,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 6,
+          "id": 12354,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 7,
+          "id": 12347,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 12,
+          "id": 12353,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 13,
+          "id": 17358,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 14,
+          "id": 12341,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 14,
+          "id": 12352,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 16,
+          "id": 12340,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 30,
+          "id": 17363,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 36,
+          "id": 12338,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 37,
+          "id": 12343,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 40,
+          "id": 12342,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 52,
+          "id": 12344,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 65,
+          "id": 17365,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 71,
+          "id": 17358,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 74,
+          "id": 17368,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 117,
+          "id": 12348,
+          "previous": "HEIFER_II",
+          "category": "HEIFER_III"
+        },
+        {
+          "day": 131,
+          "id": 17370,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 137,
+          "id": 12348,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 166,
+          "id": 12346,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 182,
+          "id": 12349,
+          "previous": "HEIFER_II",
+          "category": "HEIFER_III"
+        },
+        {
+          "day": 202,
+          "id": 12349,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 206,
+          "id": 17357,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 243,
+          "id": 17356,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 262,
+          "id": 17372,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        },
+        {
+          "day": 264,
+          "id": 17357,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 284,
+          "id": 12347,
+          "previous": "HEIFER_II",
+          "category": "HEIFER_III"
+        },
+        {
+          "day": 298,
+          "id": 12351,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 299,
+          "id": 12354,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 304,
+          "id": 12347,
+          "previous": "HEIFER_III",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 305,
+          "id": 12353,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 306,
+          "id": 17356,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 307,
+          "id": 12352,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 322,
+          "id": 12339,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 325,
+          "id": 12345,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 334,
+          "id": 12341,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 336,
+          "id": 12340,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 337,
+          "id": 12350,
+          "previous": "LAC_COW",
+          "category": "DRY_COW"
+        },
+        {
+          "day": 350,
+          "id": 12354,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 356,
+          "id": 12338,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 356,
+          "id": 12353,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 357,
+          "id": 12343,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 360,
+          "id": 12342,
+          "previous": "HEIFER_I",
+          "category": "HEIFER_II"
+        },
+        {
+          "day": 361,
+          "id": 12351,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 363,
+          "id": 12352,
+          "previous": "DRY_COW",
+          "category": "LAC_COW"
+        },
+        {
+          "day": 364,
+          "id": 17374,
+          "previous": "CALF",
+          "category": "HEIFER_I"
+        }
+      ],
+      "approved_adult_pen_days": 517,
+      "rejected_adult_pen_days": 481,
+      "dry_matter_fed": 162331.609585
+    }
+  }
+}

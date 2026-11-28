@@ -1,0 +1,86 @@
+# Manual do usuário
+
+[Sumário](README.md)
+
+## Preparação no Windows
+
+Python 3.12 ou 3.13 atende ao pyproject.toml. Em ambiente novo, execute na raiz:
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -e ".[dev]"
+.\.venv\Scripts\python.exe -m pip install -r frontend/requirements.txt
+.\frontend\iniciar_frontend.bat
+```
+
+Em ambiente já preparado, basta o BAT. Para venv criada com uv sem pip, use o procedimento do [README do frontend](../../frontend/README.md). O acesso local é http://127.0.0.1:8501. Ctrl+C encerra o servidor.
+
+Comando equivalente:
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 -m streamlit run frontend/app.py --server.address 127.0.0.1 --browser.gatherUsageStats false
+```
+
+## Fluxo pelas seis áreas
+
+1. **Visão geral** mostra animal atual, catálogo, método e última execução.
+2. **Animal** exibe perfil do arquivo e hipóteses do leite. A prévia usa alimentos demonstrativos.
+3. **Ingredientes** permite buscar, filtrar, selecionar e editar preço, estoque, limites e NEL. A composição é de leitura.
+4. **Otimização** configura horizonte e metas; permite mínimos P/Ca NRC e diagnóstico NASEM.
+5. **Resultados** mostra status, custo diário/período, dieta, composição, restrições, balanço e critérios nativos. Baixe JSON completo, CSV ou resumo Markdown.
+6. **Cenários** recalcula base e variação de preço, estoque ou limite de um ingrediente. A comparação mantém o perfil informado.
+
+Para reproduzir suplemento, selecione ID 231 em Ingredientes e informe os [valores de cenário](03-dados.md). Marque os mínimos P/Ca e execute novamente. Confira simultaneamente status LP e parecer.
+
+## Terminal e falhas comuns
+
+```powershell
+.\apresentacao\demonstracao_integrada.bat --auto
+.\.venv\Scripts\python.exe -m RUFAS.biophysical.animal.ration.linear_diet_example
+.\.venv\Scripts\python.exe -m RUFAS.biophysical.animal.ration.linear_diet_catalog --demo --seed 42
+.\.venv\Scripts\python.exe -m RUFAS.biophysical.animal.ration.linear_diet_sensitivity
+```
+
+A demonstração integrada padrão usa três alimentos e mínimos minerais desativados, portanto mantém o déficit de P como referência histórica. Os exemplos por terminal podem escrever em output; use diretórios próprios quando a CLI oferecer essa opção.
+
+Se houver módulo ausente, confira o interpretador e as dependências. Se o cenário for inviável, revise estoque/período, limites e metas. Falha de convergência do solver nativo e inviabilidade do LP têm significados distintos. Para portas ocupadas, forneça `--server.port 8502` ao BAT.
+
+
+
+## Comparação na aba Cenários
+
+Selecione **A · Mesmo LP** ou **B · Formulações diferentes**. Informe de duas a vinte repetições e clique **Executar comparação dos otimizadores**. O seletor controla a exibição, e o JSON contém ambos os experimentos. A comparação exige referência ótima e usa os ingredientes e parâmetros atuais.
+
+No experimento B, a interface avisa a diferença de formulações. Consulte convergência, viabilidade, custo, MS e parecer nativo juntos. O JSON e a seção de detalhes permitem examinar todas as candidatas.
+
+![Visão geral real](../../evidencias/comparacao/telas/visao_geral.png)
+
+![Resultado real de referência](../../evidencias/comparacao/telas/resultado_referencia.png)
+
+![Comparação real](../../evidencias/comparacao/telas/comparacao.png)
+
+As capturas foram feitas em 27/11/2026 no navegador local, com os três ingredientes iniciais e mínimos minerais desativados. Por isso o resultado mostra déficit de P e custo R$35,1059, preservando a origem do cenário. Para comparar com suplemento, selecione 231, preencha os parâmetros e ative P/Ca.
+
+
+## Simulação anual
+
+A nova área Simulação anual permite escolher análise estática ou dinâmica. No modo dinâmico, configure duração (1–365), meta de vacas, semente, intervalo, estratégia nativa/linear/ambas, política de fallback, ingredientes adultos, preços e limite de compra diária. Os bezerros preservam a configuração nativa.
+
+Ao iniciar, cada estratégia recebe processo e pasta próprios. O progresso avança pelos dias efetivamente registrados. As séries mostram custo diário/acumulado, leite, MS, estoque, composição e pareceres adultos. Um seletor permite examinar o JSON completo de um dia, com índice inicial zero, e exportar a série CSV.
+
+A estratégia linear é explicitamente híbrida. A política fail interrompe casos incompatíveis; a política native_slsqp identifica uso nativo no relatório. As execuções anteriores ficam preservadas nas pastas UUID de output/annual_ui. O cenário é experimental, sem cotações reais.
+
+
+
+
+## Executar as estratégias corrigidas
+
+Na aba Simulação anual, o comparador padrão executa `native_slsqp` e `linear_highs_all`, ambos com tetos NRC 2005. A seleção `linear_highs_exclusive` desabilita qualquer fallback SLSQP e interrompe em inviabilidade. A seleção histórica `linear_highs` permanece disponível para cobertura apenas de lactação. O modo estático e as demais áreas do frontend foram preservados.
+
+Exemplo CLI, sempre usando um diretório novo:
+
+```powershell
+.venv/Scripts/python.exe -X utf8 -m experiments.annual --days 365 --strategy linear_highs_exclusive --output output/minha_execucao_exclusiva
+```
+
+Use `--mineral-policy native` apenas para reprodução histórica sem os tetos adicionados, identificando explicitamente esse escopo. A política padrão do runner é `nrc2005_mtl`. O frontend mostra custos, estoques, leite, requisitos/ofertas minerais, totais/tetos, avaliações e eventos de convergência por categoria. O JSON do dia contém cada iteração, razões de falha e fallback.

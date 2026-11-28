@@ -1,0 +1,23 @@
+{
+  "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96",
+  "python": "3.12.16",
+  "dependencies": {
+    "numpy": "2.2.0",
+    "scipy": "1.18.1",
+    "pandas": "3.1.1",
+    "streamlit": "1.67.0",
+    "pytest": "9.2.0",
+    "numba": "0.68.1"
+  },
+  "hashes": {
+    "experiments/annual.py": "29884b349993a4c3831c0b501ae3e4d12fe858e48c0b936dbcc9f7b5016d6f5d",
+    "experiments/annual_report.py": "8464065bc9ca044ec01701b2bdecdd33c6633bba567e5af58cfb40567c5cd19f",
+    "frontend/annual.py": "20a30a72ce5043506bf5eec6a81e4056d5ef9abfb500b0610e871a208c7ce84e",
+    "frontend/app.py": "6eb2563c632abe565a07652d8d3c335254d1316b910769c4d66285c6f0ccadda",
+    "RUFAS/biophysical/animal/ration/dynamic_linear_optimizer.py": "30a60ef69c4ee9165bdc14058c7f4eaa53525129c79016c18f7cf6f6c75cd3a5",
+    "RUFAS/biophysical/animal/ration/linear_diet.py": "ebf0afc9ea9e8d123fcb9a855038eace054a80e7384caafdc8e1352e46c5c7a5",
+    "RUFAS/biophysical/animal/herd_manager.py": "87f628a8915d8ae85f36914d1696005f3a0a9356dd9a0bf3359002e0564efbcb",
+    "RUFAS/input/metadata/properties/default.json": "802c952d3488d1242dcf6e38145106a1277eef63cb9f27c0a55fa87de40f03ca",
+    "tests/test_annual.py": "35b147e6057810a13693e57e7ad96049f87e938af769a806920ccb38bacdc2f3"
+  }
+}

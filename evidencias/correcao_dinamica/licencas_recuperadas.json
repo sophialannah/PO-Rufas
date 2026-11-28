@@ -1,0 +1,14 @@
+[
+  {
+    "path": "COPYING.txt",
+    "url": "https://raw.githubusercontent.com/RuminantFarmSystems/RuFaS/d471c742eadc2e37b76545d0d0f0d10b6c9ef763/COPYING.txt",
+    "git_blob": "80e659dc2b79f955f8b70b5fbc60e4fba75ec658",
+    "sha256": "2e8578f16b6ea265412166e8b4b1da045fcc11f28db03d664908410124a2f01e"
+  },
+  {
+    "path": "COPYING.LESSER.txt",
+    "url": "https://raw.githubusercontent.com/RuminantFarmSystems/RuFaS/d471c742eadc2e37b76545d0d0f0d10b6c9ef763/COPYING.LESSER.txt",
+    "git_blob": "6a48746f84040c3f43bead8f6ae7b34af7a6bfe7",
+    "sha256": "cfb70a2be6b545997020a3b024d0adcb1a4f06cd4bf1029e5a24ee7825a1785a"
+  }
+]

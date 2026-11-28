@@ -1,0 +1,21 @@
+{
+  "days": 365,
+  "simulated_days": 365,
+  "cows_initial": 10,
+  "seed": 42,
+  "elapsed_seconds": 85.46447469999839,
+  "status": "complete",
+  "strategy": "linear_highs",
+  "estimated_diet_cost": 2529.21882951,
+  "milk_kg": 140223.66652304417,
+  "animal_days": 9173,
+  "cost_per_animal_day": 0.2757242809887714,
+  "cost_per_kg_milk": 0.01803703249404302,
+  "purchase_expense": 2533.080736616674,
+  "highs_attempts": 365,
+  "highs_accepted": 352,
+  "native_attempts": 650,
+  "unsupported_native": 637,
+  "fallbacks": 13,
+  "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96"
+}

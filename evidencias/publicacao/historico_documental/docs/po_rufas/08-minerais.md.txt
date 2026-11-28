@@ -1,0 +1,60 @@
+# Fósforo e cálcio, NRC e diagnóstico NASEM
+
+[Sumário](README.md)
+
+O mínimo de P usa o maior valor entre a exigência NRC e a exigência processual já registrada no animal. O Ca usa a exigência NRC. As ofertas absorvíveis são calculadas pelo método nativo.
+
+| Categoria local | Coeficiente P | Coeficiente Ca |
+|---|---:|---:|
+| Forragem | 0,64 | 0,30 |
+| Concentrado | 0,70 | 0,60 |
+| Mineral | 0,80 | 0,95 |
+
+São coeficientes por categoria da implementação atual do RuFaS. A biblioteca contém teores totais em % MS. Para 1 kg MS, teor ×10 dá g totais; multiplicar pelo coeficiente gera g absorvíveis. A restrição linear usa a saída da função nativa.
+
+A biblioteca oferece fosfato bicálcico 231 e monocálcico 232. O usuário seleciona a fonte e informa preços, estoque, NEL e limites. A composição disponível não constitui certificação de qualidade comercial de um produto.
+
+O diagnóstico NASEM faz cópia do animal, muda apenas o padrão dessa cópia e chama o despacho de requisitos. Isso inclui consumo estimado pelo NASEM e componentes fisiológicos próprios. O resultado registra exigência de P em g/dia e DMI em kg MS/dia.
+
+No livro NASEM 2021, capítulo 7, as equações 7-5b, 7-6, 7-7 e 7-8b descrevem manutenção, crescimento, gestação e lactação. A documentação científica existente detalha fórmulas, unidades, diferenças locais e fontes. A oferta nativa consultada ignora o fracionamento de P NASEM e aplica os coeficientes de categoria acima em ambos os padrões. A referência científica distingue formas de P e fontes minerais. Esse limite impede anunciar formulação NASEM completa.
+
+[Análise científica e resultados minerais](../fosforo_nasem_2021.md) · [NASEM 2021, Minerals](https://www.ncbi.nlm.nih.gov/books/NBK600600/)
+
+
+
+## Fundamentos nutricionais do experimento
+
+| Grandeza | Equação ou regra | Unidade e hipótese | Método / aplicação |
+|---|---|---|---|
+| Consumo NRC | $DMI=(0.372FCM+0.0968BW^{0.75})(1-e^{-0.192(DEL/7+3.67)})$; $FCM=0.4Y+15Yg/100$ | kg MS/d; gordura leite g em % | NRCRequirementsCalculator._calculate_dry_matter_intake; fixado no LP |
+| PB | $\sum d_ic_ix_i$ | kg/d; composição fixa | _nutrient_rows; LP |
+| NEL | $\sum d_ie_ix_i$ | Mcal/d; coeficientes externos | _nutrient_rows; LP |
+| MP | Oferta microbiana e digestível dependente da candidata | g/d; passagem e desconto TDN | calculate_metabolizable_protein_supply; avaliação posterior |
+| FDN | $\sum d_if_ix_i/\sum d_ix_i$ | Fração MS positiva | LP reformulado e avaliação nativa |
+| P absorvível | $\sum q_iP_i\alpha_i10$ | g/d; q kg MS, P %MS | calculate_phosphorus_supply; LP opcional e avaliação |
+| Ca absorvível | $\sum q_iCa_i\alpha_i10$ | Mesmas bases | calculate_calcium_supply; LP opcional e avaliação |
+| Gordura | $7-100EE/MS$ | p.p.; EE kg | _calculate_fat_supplied; avaliação posterior |
+
+Consumo é fundamentado no NRC 2001, capítulo 1, equação 1-2, p.4, conforme consulta registrada anteriormente. Energia é tratada no capítulo 2, proteína no capítulo 5 e minerais no capítulo 6. Outras páginas não foram verificadas nesta etapa. A composição e as metas pertencem ao cenário documentado. [NRC 2001](https://doi.org/10.17226/9825)
+
+O motor energético calcula DE, ME e ofertas líquidas específicas. Não se soma indiscriminadamente seus componentes para produzir a meta NEL externa. O motor proteico usa passagem, proteína degradável, não degradável e digestibilidade; sua fórmula completa é executada pelo código nativo. MP não é derivada de PB por coeficiente arbitrário.
+
+A exigência NASEM de P inclui manutenção, crescimento, gestação e lactação no despacho nativo separado. Suas equações e referências verificadas permanecem no [relatório científico](../fosforo_nasem_2021.md). O NASEM distingue frações e fontes minerais que a oferta local por categoria não utiliza. O máximo local de gordura usa EE; o livro discute ácidos graxos em base própria.
+
+
+## Minerais no ano
+
+A estratégia anual usa as funções nativas de Ca/P com os requisitos atualizados do curral. Não congela os mínimos dos animais 98605/93785. Os gradientes afins são reavaliados e as ofertas não lineares são conferidas antes de aceitar a candidata. O padrão operacional permanece NRC.
+
+O diagnóstico NASEM estático continua separado e não é aplicado a currais anuais. Permanecem as limitações científicas dos coeficientes minerais por categoria no código local, e a simulação não acrescenta limites de toxicidade ou um sistema completo NASEM.
+
+
+
+
+## Auditoria do excesso do primeiro dia
+
+A reprodução exata confirmou 4,8361876887 kg MS de fosfato bicálcico na candidata antiga. Com inicialização de 9,8361876887 e raio fixo de 5, a primeira candidata não podia reduzir mais. O avaliador aceitava os mínimos absorvíveis, sem detectar que a dieta tinha aproximadamente 4,174% Ca e 3,473% P totais na MS.
+
+A correção separa a política de tolerância NRC 2005 dos requisitos NRC 2001 e exige continuidade da minimização. A candidata nova usa zero do suplemento nesse primeiro dia; isso foi resultado do problema, não uma exclusão ou imposição de uso zero. Todas as quantidades, ofertas e exigências dos quatro comparadores — original SLSQP, HiGHS antigo, SLSQP com tetos e HiGHS corrigido — estão em `replay_final/primeiro_dia_comparacao.json`.
+
+A implementação local ainda usa coeficientes genéricos por tipo de alimento para absorção: Ca 0,30/0,60/0,95 e P 0,64/0,70/0,80, respectivamente para forragem/concentrado/mineral. NRC 2001 apresenta coeficientes específicos para diferentes fontes minerais; portanto, manter compatibilidade com o RuFaS não demonstra reprodução integral de cada coeficiente da referência científica. Esses dados não foram alterados nesta correção de formulação/convergência.

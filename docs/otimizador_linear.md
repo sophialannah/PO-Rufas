@@ -1,3 +1,5 @@
+> Registro de uma etapa anterior. Para o estado operacional e resultados reconferidos, consulte a [documentacao consolidada](po_rufas/README.md). Os numeros historicos deste arquivo foram preservados.
+
 # Otimização linear de dietas integrada ao RuFaS
 
 [Guia de instalação e execução](../README.md) · [Roteiro para apresentação](apresentacao_projeto.md)

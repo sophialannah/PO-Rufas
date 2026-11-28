@@ -1,0 +1,36 @@
+{
+  "native_slsqp_365": {
+    "approved_adult_pen_days": 344,
+    "rejected_adult_pen_days": 654,
+    "failure_classification": {
+      "numerical_deviation": 759
+    },
+    "failure_nutrients": {
+      "maintenance_energy": 1,
+      "ndf_percent": 58,
+      "calcium": 1,
+      "dry_matter": 370,
+      "phosphorus": 308,
+      "metabolizable_protein": 20,
+      "total_energy": 1
+    }
+  },
+  "linear_highs_365": {
+    "approved_adult_pen_days": 517,
+    "rejected_adult_pen_days": 481,
+    "failure_classification": {
+      "numerical_deviation": 578,
+      "total_mineral_excess_not_native_evaluator": 2
+    },
+    "failure_nutrients": {
+      "maintenance_energy": 1,
+      "ndf_percent": 30,
+      "calcium_total_upper": 1,
+      "phosphorus_total_upper": 1,
+      "calcium": 1,
+      "dry_matter": 204,
+      "phosphorus": 323,
+      "metabolizable_protein": 19
+    }
+  }
+}

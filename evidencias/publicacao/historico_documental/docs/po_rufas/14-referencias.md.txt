@@ -1,0 +1,67 @@
+# Referências científicas, autoria e glossário
+
+[Sumário](README.md)
+
+## Referências
+
+- National Research Council. **Nutrient Requirements of Dairy Cattle**, 7th revised edition, 2001. Consumo no capítulo 1, energia no capítulo 2, minerais no capítulo 6. A discussão de gordura total e seus limites gerais está na p. 32. [Edição e DOI](https://doi.org/10.17226/9825)
+- National Academies of Sciences, Engineering, and Medicine. **Nutrient Requirements of Dairy Cattle**, 8th revised edition, 2021. Capítulo 7, seção Phosphorus, equações 7-5 a 7-8 e discussão de absorção, pp. 112–114 verificadas no estudo mineral anterior. [Capítulo Minerals](https://www.ncbi.nlm.nih.gov/books/NBK600600/) · [Livro](https://doi.org/10.17226/25806)
+- NASEM 2021, capítulo 4, **Fat**. O limite geral de ácidos graxos é discutido em uma base distinta do extrato etéreo usado localmente. [Capítulo](https://www.ncbi.nlm.nih.gov/books/NBK600599/)
+- SciPy. Documentação oficial de `linprog` e `minimize(method='SLSQP')`. [HiGHS](https://docs.scipy.org/doc/scipy/reference/optimize.linprog-highs.html) · [SLSQP](https://docs.scipy.org/doc/scipy/reference/optimize.minimize-slsqp.html)
+- RuFaS, Ruminant Farm Systems. Código, dados e documentação do simulador. [Repositório oficial](https://github.com/RuminantFarmSystems/RuFaS) · [Documentação](https://ruminantfarmsystems.github.io/RuFaS/)
+
+A consulta de referências não constitui conferência integral de todas as equações do simulador. Divergências já identificadas em energia e unidades continuam documentadas nos relatórios históricos.
+
+## Organização externa consultada
+
+Foram lidos os READMEs da raiz, dos módulos NRC, NASEM e interface do fork gmdsouza, em 26/11/2026. A análise orientou a profundidade e navegação da documentação. Não foi incorporado texto nem código externo. [Fork de referência](https://github.com/gmdsouza/RuFaS/tree/feat/planejamento-nasem-local)
+
+## Autoria e licença
+
+A contribuição acadêmica PO-RuFaS pertence a Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva. A autoria original do RuFaS, de suas bibliotecas e modelos permanece com seus autores. O pyproject.toml declara GPL-3.0-only. [FORKING.md](../../FORKING.md) · [Documentação original preservada](../README_RuFaS_original.md)
+
+## Glossário
+
+| Sigla | Significado |
+|---|---|
+| PO / LP / PL | Pesquisa Operacional / programação linear |
+| NRC | National Research Council |
+| NASEM | National Academies of Sciences, Engineering, and Medicine |
+| MN / MS / DMI | Matéria natural / matéria seca / consumo de MS |
+| PB / CP / MP | Proteína bruta / crude protein / proteína metabolizável |
+| FDN / NDF | Fibra em detergente neutro |
+| NEL / DE | Energia líquida de lactação / energia digestível |
+| EE / FA | Extrato etéreo / ácidos graxos |
+| DEL | Dias em lactação |
+| Ca / P | Cálcio / fósforo |
+| p.p. | Pontos percentuais |
+| SLSQP | Sequential Least Squares Programming |
+| CLI / JSON / CSV | Interface de linha de comando / formatos de intercâmbio de dados |
+
+
+
+## Fontes da etapa experimental
+
+- SciPy. Documentação oficial de linprog/HiGHS e minimize/SLSQP, consultada em 27/11/2026. [HiGHS](https://docs.scipy.org/doc/scipy/reference/optimize.linprog-highs.html) · [SLSQP](https://docs.scipy.org/doc/scipy/reference/optimize.minimize-slsqp.html)
+- IFAG. Boletim Milho 09–13/11/2026, publicado em 17/11/2026. [Fonte primária](https://apoiar.sistemafaeg.org.br/milho/%F0%9F%8C%BD-destaques-semanal-do-mercado-do-milho-em-goias-09-11-a-13-11-ifag/)
+- IFAG. Índice de Insumos ILC, maio/2024, metodologia de saca de milho de 60 kg. A cotação desse documento não foi transferida ao cenário. [Fonte](https://sistemafaeg.com.br/storage/arquivos/%C3%8Dndice-de-Insumos-ILC-Maio-2024.pdf)
+
+A consulta atual ao livro NASEM encontrou reCAPTCHA. As equações e páginas verificadas no relatório mineral anterior conservam sua procedência. Não se declarou nova conferência integral do livro.
+
+
+## Proveniência do motor dinâmico
+
+A auditoria consultou o inventário Git da revisão upstream candidata d471c742eadc2e37b76545d0d0f0d10b6c9ef763, anterior ao primeiro commit local de 03/11/2026. As fontes RUFAS compartilhadas coincidem com a importação inicial. A comparação usa hashes, sem copiar a revisão atual sobre o projeto. [Upstream correspondente](https://github.com/RuminantFarmSystems/RuFaS/tree/d471c742eadc2e37b76545d0d0f0d10b6c9ef763)
+
+A ordem diária, disponibilidade, agrupamentos e contratos foram verificados nos módulos locais SimulationEngine, HerdManager, Pen, FeedManager e RationOptimizer. A aproximação afim é uma extensão experimental própria. Os livros NRC/NASEM fundamentam o motor reutilizado; esta integração não declara conferência integral de todas as equações científicas.
+
+
+
+
+## Referências da correção e distinção de padrões
+
+- National Research Council. 2001. *Nutrient Requirements of Dairy Cattle*, 7th revised edition. DOI [10.17226/9825](https://doi.org/10.17226/9825). Base dos requisitos e da implementação NRC local; não confundir com o modelo NASEM 2021.
+- National Research Council. 2005. *Mineral Tolerance of Animals*, 2nd revised edition. DOI [10.17226/11309](https://www.nationalacademies.org/publications/11309). Fonte dos tetos totais Ca/P; não fornece metas de formulação de mínimo custo.
+- NASEM. 2021. [Minerals, capítulo 7](https://www.ncbi.nlm.nih.gov/books/NBK600600/). Consultado para conferir a atribuição dos tetos a NRC 2005 e discutir limites da interpretação mineral. Suas equações de requisitos não foram importadas para o modo NRC.
+- CEPEA/ESALQ-USP. [Indicador do milho](https://cepea.org.br/br/indicador/milho.aspx), valor verificável de 04/09/2026, 70,93 R$/saca de 60 kg; licença CC BY-NC 4.0. Consulta em 27/11/2026. Cotação datada, sem alegação de preço atual ou cobertura de todos os ingredientes.
+- RuFaS, revisão candidata [d471c742](https://github.com/RuminantFarmSystems/RuFaS/tree/d471c742eadc2e37b76545d0d0f0d10b6c9ef763). `COPYING.txt` e `COPYING.LESSER.txt` recuperados com identidade de blobs verificada. As cópias dos quatro outros arquivos ausentes ficam apenas no diretório de auditoria, sem importação indiscriminada de código ou CI.

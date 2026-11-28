@@ -1,0 +1,52 @@
+# Testes e validação
+
+[Sumário](README.md)
+
+O comando relevante inclui frontend, rações, nutrientes e estruturas nutricionais. A suíte geral da fazenda é maior e tem outro escopo.
+
+```powershell
+.\.venv\Scripts\python.exe -X utf8 -m pytest tests/test_frontend.py tests/test_biophysical/test_animal/test_ration tests/test_biophysical/test_animal/test_nutrients tests/test_biophysical/test_animal/test_data_types/test_nutrition_data_structures.py -q
+```
+
+| Etapa histórica | Total registrado | Alcance |
+|---|---:|---|
+| Primeiro modelo | 427 | Núcleo e componentes relacionados |
+| Auditorias anteriores | 433 / 435 / 437 | Evolução anterior ao frontend |
+| Integração real | 442 | Inclui retorno nativo |
+| Frontend | 452 | Inclui Streamlit AppTest |
+| Minerais | 456 | P/Ca e diagnóstico NASEM |
+| Gordura e indicadores | 462 | Limites, arredondamento e coerência do parecer |
+
+As evidências em `apresentacao/evidencias/` registram execuções de suas respectivas datas. A contagem 442 em um arquivo antigo não representa a última suíte.
+
+A cobertura exercita composição real, seleção de animal, conversões MS/MN, parâmetros inválidos, duplicados, estoque, inviabilidade, solver, verificação independente, RationManager, oferta, avaliação, exportação e isolamento. Os testes minerais verificam valores de P e Ca e os cenários 98605/93785. As regressões de gordura testam abaixo, no máximo, arredondamento imediatamente acima, excesso acima da tolerância e excesso material. AppTest seleciona suplemento e executa o backend.
+
+A correção esperada modifica a aprovação das dietas que respeitam gordura máxima. As regressões basais continuam exigindo reprovação por P.
+
+Consulte [registro da revisão documental](VALIDACAO.md) para o resultado efetivamente reexecutado em 26/11/2026. Os testes não atestam validade clínica, produtiva ou econômica para uma fazenda real.
+
+
+
+## Cobertura experimental adicional
+
+Os novos testes em tests/test_comparison.py verificam equivalência do objetivo com a integração operacional, igualdade de custo entre algoritmos A, satisfação das restrições, conversão MS, preservação de entradas, avaliação nativa, exportação JSON e execução real pelo Streamlit. Também rejeitam repetições insuficientes.
+
+O comando completo e o JUnit estão nas [evidências](../../evidencias/comparacao/README.md). Todos os 462 testes anteriores estão incluídos. Um teste novo inicialmente utilizou caminho relativo resolvido como tests/frontend/app.py; foi corrigido para caminho absoluto do entrypoint sem remover a verificação funcional.
+
+
+## Validação dinâmica
+
+Foram concluídas simulações progressivas de 1, 7, 30 e 365 dias. O primeiro ano nativo revelou o defeito de seleção de alimentos durante transição. O teste correspondente agora exige a lista da categoria correta, em vez do mapa inteiro.
+
+Novos testes verificam seleção de estratégia, preservação numérica do caminho SLSQP com a mesma semente, fallback identificado, chamada efetiva HiGHS, mudança diária de estado, consumo, estoque não negativo, soma de custos, processos isolados, reprodução de configuração e execução pela interface anual. A suíte ampliada inclui os 466 casos anteriores, Pen, HerdManager, SimulationEngine e FeedManager. [Evidências finais](../../evidencias/anual/README.md)
+
+
+
+
+## Regressões da correção dinâmica
+
+A suíte combinada preservou os 937 testes anteriores e acrescentou 17 casos, totalizando **954 aprovados em 128,87 s**. O JUnit e a saída sanitizada estão em `evidencias/correcao_dinamica/testes_finais.xml` e `correcao_suite_final.log.txt`.
+
+As regressões adicionais cobrem inicialização anormal do suplemento, expansão da região local, queda continuada do custo, viabilidade após arredondamento, Ca/P abaixo/no/acima dos tetos, limite real de inclusão, conservação da melhor candidata quando um LP posterior falha, seleção de restrições de cada categoria, exclusivo sem SLSQP, lotes pequenos sem criação de massa e falta física real. Uma regressão executa efetivamente os 365 dias exclusivos em subprocesso, verifica transições, estoques, tetos minerais e ausência de chamadas nativas. A interface também inicia processos reais e consulta resultados.
+
+As tentativas intermediárias que falharam não foram apagadas: incluem falha por arredondamento, inicialização de growing, falta falsa de estoque e um erro de chave no frontend já corrigido. Nenhum teste anterior foi relaxado para ocultar esses defeitos.
