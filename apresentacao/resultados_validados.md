@@ -10,7 +10,7 @@
 | Curral-dias adultos aprovados | 362 | 998 |
 | Registros de bezerros não aprovados | 252 | 252 |
 
-Redução de 0,1249355%, com preços demonstrativos. Não equivale a superioridade econômica universal. Das chamadas HiGHS, 959 convergiram e 43 conservaram soluções viáveis sem convergência, sem certificado de ótimo global não linear. Referência computacional: **954 testes aprovados**.
+Redução de 0,1249355%, com preços demonstrativos. Não equivale a superioridade econômica universal. Das chamadas HiGHS, 959 convergiram e 43 conservaram soluções viáveis sem convergência, sem certificado de ótimo global não linear. Referência computacional: **969 testes aprovados**.
 
 A biologia original foi preservada. Leite/pesos iguais são observações sob suas limitações, não um resultado forçado. O modo exclusivo passou no cenário NRC das três categorias ativas, sem validar todos os agrupamentos, NASEM ou o fluxo de bezerros.
 

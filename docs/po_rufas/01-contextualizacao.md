@@ -3,7 +3,7 @@
 
 O PO-RuFaS aplica Pesquisa Operacional à formulação de dietas dentro do RuFaS. Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva desenvolveram o módulo acadêmico preservando a autoria e a biologia do simulador original.
 
-O objetivo principal foi atingido no cenário NRC validado: **365 dias FULL_FARM**, **1.002 formulações HiGHS sem chamadas SLSQP no exclusivo**, requisitos recalculados, evolução animal, consumo, compras e baixa real de estoque. A referência computacional possui **954 testes aprovados**.
+O objetivo principal foi atingido no cenário NRC validado: **365 dias FULL_FARM**, **1.002 formulações HiGHS sem chamadas SLSQP no exclusivo**, requisitos recalculados, evolução animal, consumo, compras e baixa real de estoque. A referência computacional possui **969 testes aprovados**.
 
 ## Dois escopos
 

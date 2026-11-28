@@ -11,5 +11,5 @@
 - Separar 998 curral-dias adultos aprovados dos 252 registros de bezerros não aprovados.
 - Não declarar ótimo global não linear, superioridade universal ou aprovação de todo o rebanho.
 - Manter os logs e alertas acessíveis se ocorrer uma falha.
-- Apresentar a reprodução em cópia isolada e os 954 testes de referência.
+- Apresentar a reprodução em cópia isolada e os 969 testes de referência.
 - Não fazer commit/push/merge como parte da demonstração.

@@ -4,6 +4,7 @@ import pandas as pd
 import streamlit as st
 
 from frontend.service import export_json
+from frontend.usability import label as display_label
 
 NUTRIENTS = {
     "total_energy": ("Energia total", "Mcal/dia"),
@@ -176,6 +177,11 @@ def show_results(report: dict | None) -> None:
     if result["status"] != "optimal":
         if result["status"] == "infeasible":
             st.error("Cenário inviável. Confira estoque para o período, limites de inclusão e metas nutricionais.")
+            st.info(
+                "Os ingredientes selecionados não atendem simultaneamente às restrições. "
+                "Revise os dados ou selecione explicitamente uma fonte adequada no catálogo. "
+                "Nenhum ingrediente foi acrescentado automaticamente; os mínimos NRC permanecem obrigatórios na interface."
+            )
             diagnostic = {
                 "phosphorus_conflict": "O cenário voltou a ser viável ao retirar somente o mínimo de fósforo absorvível.",
                 "calcium_conflict": "O mínimo de cálcio absorvível já torna o cenário inviável mesmo sem o mínimo de fósforo.",
@@ -185,7 +191,7 @@ def show_results(report: dict | None) -> None:
                 st.warning(diagnostic)
         else:
             st.error("O solver não entregou uma solução ótima.")
-        st.caption(f"HiGHS · {result['status']} · {result['message']}")
+        st.caption(f"HiGHS · {display_label(result['status'])} · {result['message']}")
         show_minerals(report)
         return
 
@@ -194,7 +200,7 @@ def show_results(report: dict | None) -> None:
     a, b, c = st.columns(3)
     a.metric("Custo mínimo diário", money(cost))
     b.metric(f"Custo estimado · {days} dias", money(cost * days, 2))
-    c.metric("Restrições do LP", f"{passed}/{len(checks)} · {result['status']}")
+    c.metric("Restrições do LP", f"{passed}/{len(checks)} · {display_label(result['status'])}")
     evaluation(report)
     show_minerals(report)
     st.subheader("Dieta otimizada")

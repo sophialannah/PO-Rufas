@@ -1,0 +1,221 @@
+{
+  "base": "d13ef5d910fffa168456d056b78746d7cbbbe257",
+  "branch": "fix/validacao-nutricional-rufas",
+  "date": "2026-11-28",
+  "scope": "Frontend, documentation, presentation and test evidence only; prior scientific evidence preserved",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6907,
+      "sha256": "fd31b0347d95ec4d4bf5448892e7d747f7f17be4c5c6e4358d7734b7cf47a527"
+    },
+    {
+      "path": "apresentacao/README.md",
+      "bytes": 3140,
+      "sha256": "d5466e4f5cb948f4069de990906011583d8eb1ae97c79d1355f86e781669a1a3"
+    },
+    {
+      "path": "apresentacao/apresentacao_po_rufas_frontend_final.pptx",
+      "bytes": 32968,
+      "sha256": "0b042a565dec0ab08e4fc937b3edf80022e7b92f89bbb96197ad6a3cc29714bf"
+    },
+    {
+      "path": "apresentacao/cartoes_consulta.md",
+      "bytes": 860,
+      "sha256": "448419ca774d796b1b1ce1fc60fb71ce4276ae1e20e742dfdd74d3b3f77626a1"
+    },
+    {
+      "path": "apresentacao/checklist_apresentacao.md",
+      "bytes": 1030,
+      "sha256": "5c235c73e1fd89b610bf3f7c85348c157bed68153879165965a41b3453103187"
+    },
+    {
+      "path": "apresentacao/gerar_versao_final.py",
+      "bytes": 3947,
+      "sha256": "31e16fbd4068731d53dc0cfe774205fd5b04a476f5dbdddbd1fc7c5ea4176a54"
+    },
+    {
+      "path": "apresentacao/guia_demonstracao_web.md",
+      "bytes": 1407,
+      "sha256": "12efbc8c06137099ea913ec4a193baf212ca20c84d6ce09962320168b3d727ba"
+    },
+    {
+      "path": "apresentacao/perguntas_e_respostas.md",
+      "bytes": 3707,
+      "sha256": "d77adea7c6a2737efbab6a07ff2ed832f6ec02fa9439b586fecd97aa9974f33a"
+    },
+    {
+      "path": "apresentacao/resultados_validados.md",
+      "bytes": 1653,
+      "sha256": "c8ef1a0187f9791fea686fb13fb82e759197c1963a0ef701166023a4434f8422"
+    },
+    {
+      "path": "apresentacao/roteiro_anderson.md",
+      "bytes": 1872,
+      "sha256": "998de7a0d08579342660e7f0055d9f406b170ff6677cb621adc0b7c7736ce5f9"
+    },
+    {
+      "path": "apresentacao/roteiro_completo.md",
+      "bytes": 4520,
+      "sha256": "b9c2caf11f927177d6ce9a4e07cbb79f8cd94a320a917f192b36a217056379e3"
+    },
+    {
+      "path": "apresentacao/roteiro_sophia.md",
+      "bytes": 1949,
+      "sha256": "4eca39277a25f8412a842b4377e0ef8fcc88d2e51fa1d8cda5c9207dbc6ea0f2"
+    },
+    {
+      "path": "apresentacao/simulacao_arguicao.md",
+      "bytes": 1454,
+      "sha256": "dfe684c9510329eae7d8df2939485aced68418ed3e885e7f0fe86cd9fcdd3a1a"
+    },
+    {
+      "path": "docs/apresentacao_projeto.md",
+      "bytes": 1550,
+      "sha256": "43eefc6e3bebc816aa1098f89b695017859b1699d9bf4232d9e56d8685759288"
+    },
+    {
+      "path": "docs/po_rufas/01-contextualizacao.md",
+      "bytes": 2164,
+      "sha256": "7739c9bae4c71103cb87e3cfa8a4d8f58a751bbbcf262c1ebf86f2c95a1cf458"
+    },
+    {
+      "path": "docs/po_rufas/11-testes.md",
+      "bytes": 2880,
+      "sha256": "d006d664bb3392c88945ba1ca539375c9f3cd26c9036e69574c94f97b5d8d311"
+    },
+    {
+      "path": "docs/po_rufas/12-manual.md",
+      "bytes": 7635,
+      "sha256": "be6d43d3a73e3b92cd912c77eec3a058f20dd47da15772e6caebba89a6a68e6a"
+    },
+    {
+      "path": "docs/po_rufas/README.md",
+      "bytes": 2615,
+      "sha256": "a6f6243f0ae6e04051cf9adcd904e8b531412f8874e719ced17f01b878fe8d58"
+    },
+    {
+      "path": "docs/po_rufas/VALIDACAO.md",
+      "bytes": 3555,
+      "sha256": "db7493c9ff3af56ae41775b3497f30ce1d7a5ed9cccf12c5422eac081e3ad8e4"
+    },
+    {
+      "path": "evidencias/frontend_final/README.md",
+      "bytes": 3143,
+      "sha256": "d44b0068eb5c82d98c7e2487528751e54b1e2523e3da58288fc3677bf16fefab"
+    },
+    {
+      "path": "evidencias/frontend_final/publication_frontend_recheck.log",
+      "bytes": 102,
+      "sha256": "b35ae428c35d3a7ff7fdbd41e33b426c98c1ea0ab8adc0a131bc7139d82c33a2"
+    },
+    {
+      "path": "evidencias/frontend_final/telas/cenario_validado.png",
+      "bytes": 121234,
+      "sha256": "8684981752244c97f58d44645a7776433b98ac3d9241be06a9561f06dcb3eb02"
+    },
+    {
+      "path": "evidencias/frontend_final/telas/comparacao_economica.png",
+      "bytes": 133979,
+      "sha256": "eb8b0ae478be696de8a57004d8be54a0aa036918cbc656662f9322ecf79fd493"
+    },
+    {
+      "path": "evidencias/frontend_final/telas/ingredientes.png",
+      "bytes": 116360,
+      "sha256": "d4c02e815db9e284a4f7dbe2273a86dbf7713072d2ca49b02099e241d315f259"
+    },
+    {
+      "path": "evidencias/frontend_final/telas/manifesto.json",
+      "bytes": 316,
+      "sha256": "0261bf69526b5261eeaaff1ba614dc8a691dc4d367fbec78e167fe180f4f74fc"
+    },
+    {
+      "path": "evidencias/frontend_final/telas/nasem_avancado.png",
+      "bytes": 108594,
+      "sha256": "d542f7601f0697fc52c6d49c822708c98bb5d66c17d29e0bfb78dcbd03f093dd"
+    },
+    {
+      "path": "evidencias/frontend_final/telas/otimizacao_nrc.png",
+      "bytes": 96176,
+      "sha256": "4bfc9a259a75d5d0d6837b9dc78236048d98c7ca6c7876dfac91976a3a715614"
+    },
+    {
+      "path": "evidencias/frontend_final/telas/resultados_arquivados.png",
+      "bytes": 137835,
+      "sha256": "b2e046ea8e1b4e926031ad0083ebdf4796201fa2619021a96db6f9deea1b9671"
+    },
+    {
+      "path": "evidencias/frontend_final/usability_final_ui_tests.log",
+      "bytes": 102,
+      "sha256": "56db86686ca7bb128c7f99091e5db1088f10d81167e63f95ef6b3074faf4201b"
+    },
+    {
+      "path": "evidencias/frontend_final/usability_full_suite.log",
+      "bytes": 1167,
+      "sha256": "feca5ef6836f93178f8ee44185c67be7c36391048bbddb7aacf17ef13c097214"
+    },
+    {
+      "path": "evidencias/frontend_final/usability_full_suite.xml",
+      "bytes": 164157,
+      "sha256": "01bb89c5d0375ea7415f2a3d41c07e31051703c7436a2048d149ae4322c42966"
+    },
+    {
+      "path": "evidencias/frontend_final/usability_performance.json",
+      "bytes": 353,
+      "sha256": "807803826cf3a490c421e1d441cbfc84f9cec975697968fdc2ac667bea2d6658"
+    },
+    {
+      "path": "frontend/README.md",
+      "bytes": 8180,
+      "sha256": "533102b38b31185f546621c9f6d4e582490f52b4d811e24d8669097574e18bac"
+    },
+    {
+      "path": "frontend/annual.py",
+      "bytes": 13950,
+      "sha256": "6d033f9415356343c23ecd292c1a3d18763a10e7c6f6067a983ae3915ce46a76"
+    },
+    {
+      "path": "frontend/annual_history.py",
+      "bytes": 3640,
+      "sha256": "13351dcc14dbc076ae50232eba4feb7bd5cde1309fb1b0b6e8f43bfef88b4006"
+    },
+    {
+      "path": "frontend/app.py",
+      "bytes": 19721,
+      "sha256": "2d5125b1b419c4daed0ce6e445039c5b361e31a900ae79ed7e329c4492a1ce08"
+    },
+    {
+      "path": "frontend/results.py",
+      "bytes": 11925,
+      "sha256": "334d204db4c5417a1bb20908a4050150c0b5d39874639f490ea69fac67bac45e"
+    },
+    {
+      "path": "frontend/usability.py",
+      "bytes": 6693,
+      "sha256": "3b49c89555a6acee7fb4f424122e4d8356995cf65aad54083d61be7ad3d4ee75"
+    },
+    {
+      "path": "tests/test_comparison.py",
+      "bytes": 2645,
+      "sha256": "5827fbbae312097342f50fef983af2daacd26468c01df590a610f77cd0897761"
+    },
+    {
+      "path": "tests/test_frontend.py",
+      "bytes": 12105,
+      "sha256": "6cfa7a389dbedd836a2e20fd7180ff6d907fe13425a76e9b6c1bc711f057a6eb"
+    },
+    {
+      "path": "tests/test_usability.py",
+      "bytes": 7723,
+      "sha256": "06ad464688537fb5f15bda51f6581aa1fdf8e878d0242eb9060856a841c588a4"
+    }
+  ],
+  "inventory_self": "evidencias/frontend_final/inventario.json",
+  "inventory_self_hash": "not included to avoid circular hash",
+  "checks": {
+    "personal_paths_or_credential_patterns": 0,
+    "broken_relative_links": 0,
+    "new_files_at_or_above_100_MiB": 0
+  },
+  "total_bytes": 1055913
+}

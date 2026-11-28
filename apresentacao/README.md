@@ -6,7 +6,7 @@ O tema central é a integração dinâmica de 365 dias, com programação linear
 
 ## Material vigente
 
-- [PowerPoint final](apresentacao_po_rufas_final.pptx).
+- [PowerPoint vigente — interface final e 969 testes](apresentacao_po_rufas_frontend_final.pptx). O [deck anterior](apresentacao_po_rufas_final.pptx) permanece histórico, com 954 testes.
 - [Roteiro completo e cronograma](roteiro_completo.md).
 - [Fala de Sophia](roteiro_sophia.md) e [fala de Anderson](roteiro_anderson.md).
 - [Guia da demonstração web](guia_demonstracao_web.md) e [alternativa terminal](guia_demonstracao.md).
@@ -14,13 +14,13 @@ O tema central é a integração dinâmica de 365 dias, com programação linear
 
 ## Números para apresentar
 
-365 dias; SLSQP controlado 2.319,34875854 UM; HiGHS exclusivo 2.316,45106770 UM; redução demonstrativa 0,1249355%; leite 140.223,666523 kg em ambos; 1.002 formulações HiGHS e zero SLSQP no exclusivo; 959 convergentes e 43 viáveis sem convergência; 998 curral-dias adultos aprovados; 954 testes.
+365 dias; SLSQP controlado 2.319,34875854 UM; HiGHS exclusivo 2.316,45106770 UM; redução demonstrativa 0,1249355%; leite 140.223,666523 kg em ambos; 1.002 formulações HiGHS e zero SLSQP no exclusivo; 959 convergentes e 43 viáveis sem convergência; 998 curral-dias adultos aprovados; 969 testes.
 
 Sempre informar os **252 curral-dias de bezerros não aprovados em cada estratégia** e as limitações dos indicadores comuns. Não dizer que todo o rebanho foi aprovado, que o ótimo não linear é global ou que há vantagem econômica universal.
 
 ## Executar e gerar
 
-Na raiz: `frontend/iniciar_frontend.bat`. Na área anual, escolher Comparação SLSQP versus HiGHS exclusivo. Uma execução curta ao vivo deve ser identificada como curta; o resultado oficial de 365 dias vem das evidências já registradas.
+Na raiz: `frontend/iniciar_frontend.bat`. Na demonstração de 35 segundos, carregue o cenário de quatro ingredientes e os resultados anuais já calculados. Mostre a identificação de evidência arquivada e os cartões econômicos. Novas simulações mantêm cinco opções, incluindo a comparação exclusiva sem fallback. Preserve cinco minutos de exposição/demonstração e cinco de arguição. A base de 954 foi reproduzida em cópia isolada; os 15 casos adicionais foram verificados na revisão de usabilidade, totalizando 969.
 
 Para gerar novamente o deck final, instale as dependências opcionais e escolha um nome novo:
 

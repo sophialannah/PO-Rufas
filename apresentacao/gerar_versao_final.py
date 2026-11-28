@@ -13,7 +13,7 @@ SLIDES = [
         [
             "Pesquisa Operacional aplicada à formulação de dietas no RuFaS NRC",
             "365 dias FULL_FARM: requisitos, animais, consumo, compras e estoque reais",
-            "LP estático preservado; programação linear sequencial no ciclo diário",
+            "Interface: multisseleção, cenário validado e resultados anuais arquivados",
             "Sophia Lannah Beatriz Ferreira de Sousa",
             "Anderson Alberto da Costa Silva",
         ],
@@ -41,7 +41,7 @@ SLIDES = [
     (
         "Validação e limites",
         [
-            "954 testes aprovados; reprodução em cópia isolada e venv nova",
+            "969 testes aprovados; reprodução em cópia isolada e venv nova",
             "998 curral-dias ADULTOS aprovados no HiGHS",
             "252 curral-dias de BEZERROS não aprovados em cada estratégia",
             "Sem certificado de ótimo global não linear ou superioridade econômica universal",
@@ -76,7 +76,7 @@ def main():
             p.font.size, p.space_after = Pt(23), Pt(24)
             p.font.color.rgb = RGBColor(240, 245, 248)
         footer = slide.shapes.add_textbox(Inches(0.8), Inches(7), Inches(11), Inches(0.3)).text_frame
-        footer.text = f"PO-RuFaS · versão acadêmica 27/11/2026 · {number}/4 · evidências no repositório"
+        footer.text = f"PO-RuFaS · versão acadêmica 28/11/2026 · {number}/4 · evidências no repositório"
         footer.paragraphs[0].font.size = Pt(12)
         footer.paragraphs[0].font.color.rgb = RGBColor(180, 200, 210)
     target.parent.mkdir(parents=True, exist_ok=True)

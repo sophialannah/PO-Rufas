@@ -13,6 +13,8 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from frontend.results import money, native_status, requirements_table, show_results
+from frontend.usability import label as display_label
+from frontend.usability import original_parameters, validated_demo, preserve_editor_values, missing_parameters
 from frontend.service import (
     COMPOSITION,
     DEMO_ID,
@@ -35,6 +37,8 @@ CATALOG_COLUMNS = [
     "FDN (% MS)",
     "P total (% MS)",
     "Ca total (% MS)",
+    "Energia digestível (Mcal/kg MS)",
+    "NDT (% MS)",
     "Composição",
 ]
 
@@ -79,12 +83,14 @@ def ingredient_record(item: dict) -> dict:
             [
                 item["identifier"],
                 item["name"],
-                row["feed_type"],
+                display_label(row["feed_type"]),
                 float(row["DM"]),
                 float(row["CP"]) if row["CP"] else None,
                 float(row["NDF"]) if row["NDF"] else None,
                 float(row["phosphorus"]) if row["phosphorus"] else None,
                 float(row["calcium"]) if row["calcium"] else None,
+                float(row["DE"]) if row["DE"] else None,
+                float(row["TDN"]) if row["TDN"] else None,
                 item["composition_source"],
             ],
         )
@@ -107,29 +113,46 @@ def ingredient_panel(catalog: dict, defaults: dict) -> list[dict]:
         if (kind == "Todos" or item["composition"]["feed_type"] == kind)
         and (query in item["name"].casefold() or query in str(identifier))
     ]
-    st.dataframe(pd.DataFrame(visible), hide_index=True)
+    with st.expander("Consultar composição e fontes do catálogo NRC"):
+        st.dataframe(pd.DataFrame(visible).rename(columns={"id": "ID RuFaS"}), hide_index=True)
     if not visible:
         st.info("Nenhum ingrediente corresponde aos filtros.")
+    if st.button("Carregar cenário demonstrativo validado (4 ingredientes)"):
+        demo = validated_demo(ROOT)
+        st.session_state["ingredient_values"] = demo
+        st.session_state["static_ingredient_selection"] = list(demo)
+        st.session_state.pop("ingredient_editor_base", None)
+        for key in list(st.session_state):
+            if key.startswith("editor-"):
+                del st.session_state[key]
+        st.success("Parâmetros demonstrativos publicados carregados: 1, 44, 167 e fosfato bicálcico 231.")
     selected = st.multiselect(
         "Ingredientes disponíveis para a otimização",
         list(catalog),
         default=[identifier for identifier in defaults if identifier in catalog],
         format_func=lambda identifier: f"{identifier} · {catalog[identifier]['name']}",
+        key="static_ingredient_selection",
     )
     st.caption(
         "Preços, estoques, limites e NEL pré-preenchidos são hipóteses da demonstração. "
-        "Para os demais ingredientes, preencha os campos antes de executar."
+        "Para novos ingredientes, limites disponíveis são importados do NRC (MS → MN); "
+        "preço, estoque e NEL ficam em branco quando não há fonte. DE não é convertida em NEL."
     )
     st.caption(
-        "O filtro Mineral inclui os fosfatos 231 e 232. Informe os dados econômicos, a inclusão máxima e a NEL de cada fonte selecionada."
+        "O cenário demonstrativo usa hipóteses identificadas em evidencias/comparacao/configuracao.json. "
+        "O botão carrega os ingredientes, preservando os controles de animal e metas. "
+        "Limites amplos do catálogo não são recomendações de inclusão. Confirme todos os parâmetros."
     )
     edits = st.session_state.setdefault("ingredient_values", {})
     # A base fica fixa para cada seleção. Os deltas do editor sobrevivem a reruns.
     base = st.session_state.get("ingredient_editor_base")
     if not base or base[0] != selected:
+        preserve_editor_values(st.session_state)
+        # An old widget with this selection must not reapply stale row edits.
+        st.session_state.pop("editor-" + ",".join(map(str, selected)), None)
         st.session_state["ingredient_editor_base"] = (
             selected.copy(),
-            {i: edits.get(i, defaults.get(i, {})).copy() for i in selected},
+            {i: edits.get(i, defaults.get(i, original_parameters(catalog[i]))).copy() for i in selected},
         )
     _, saved = st.session_state["ingredient_editor_base"]
     rows = [ingredient_record(catalog[i]) | {k: saved[i].get(k) for k in INPUTS} for i in selected]
@@ -139,11 +162,12 @@ def ingredient_panel(catalog: dict, defaults: dict) -> list[dict]:
             frame.astype({k: float for k in INPUTS}),
             hide_index=True,
             disabled=CATALOG_COLUMNS,
+            column_order=["id", "Ingrediente", *INPUTS, *CATALOG_COLUMNS[2:]],
             key="editor-" + ",".join(map(str, selected)),
             column_config={
                 "id": "ID RuFaS",
                 **{
-                    key: st.column_config.NumberColumn(label, min_value=0.0, format="%.4f")
+                    key: st.column_config.NumberColumn(label, min_value=0.0, format="%.4f", required=True)
                     for key, label in INPUTS.items()
                 },
             },
@@ -157,6 +181,9 @@ def ingredient_panel(catalog: dict, defaults: dict) -> list[dict]:
     )
     records = frame.to_dict("records")
     edits.update({row["id"]: {k: row[k] for k in INPUTS} for row in records})
+    if missing := missing_parameters(records):
+        st.error("Campos obrigatórios não preenchidos. Informe os valores abaixo antes de otimizar.")
+        st.dataframe(pd.DataFrame(missing), hide_index=True)
     return records
 
 
@@ -210,7 +237,7 @@ def compare(animals: dict, catalog: dict, animal_id: int, rows: list[dict], milk
             ]
     if comparison := st.session_state.get("comparison_result"):
         st.caption("Última comparação executada")
-        st.dataframe(pd.DataFrame(comparison), hide_index=True)
+        st.dataframe(pd.DataFrame(comparison).assign(LP=lambda frame: frame["LP"].map(display_label)), hide_index=True)
     st.subheader("Comparação dos otimizadores")
     experiment = st.selectbox(
         "Experimento",
@@ -243,7 +270,7 @@ def compare(animals: dict, catalog: dict, animal_id: int, rows: list[dict], milk
             pd.DataFrame(
                 [
                     {
-                        "Método": name,
+                        "Método": display_label(name),
                         "Convergiu": method["success"],
                         "Viável na tolerância": method["feasible"],
                         "R$/dia": method["cost_per_day"],
@@ -260,6 +287,16 @@ def compare(animals: dict, catalog: dict, animal_id: int, rows: list[dict], milk
             hide_index=True,
         )
         st.caption("Parecer da última candidata de cada método. O JSON contém as candidatas de todas as repetições.")
+        if experiment.startswith("B"):
+            from frontend.annual_history import economic_cards
+
+            st.caption("Custos diários de formulações diferentes: o menor valor não comprova vantagem do algoritmo.")
+            economic_cards(
+                report["methods"]["B_SLSQP_native"]["cost_per_day"],
+                report["methods"]["A_HiGHS"]["cost_per_day"],
+                "static_highs",
+                currency="R$",
+            )
         st.download_button(
             "Baixar comparação completa (JSON)", json_text(report), "comparacao.json", "application/json"
         )
@@ -279,7 +316,7 @@ def overview(report: dict | None, animal_id: int, available: int, selected: int)
     first[1].metric("Ingredientes no catálogo", available)
     first[2].metric("Método de otimização", "HiGHS")
     second = st.columns(3)
-    second[0].metric("Última execução do LP", result.get("status", "Pendente"))
+    second[0].metric("Última execução do LP", display_label(result.get("status", "Pendente")))
     second[1].metric("Último custo diário", money(result.get("cost_per_day")))
     second[2].metric("Avaliação RuFaS", native_status(report) if report else "Pendente")
     if report:
@@ -348,20 +385,23 @@ def main() -> None:
         a, b = st.columns(2)
         ndf_min = a.number_input("FDN mínima (% MS)", min_value=0.0, max_value=100.0, value=28.0)
         ndf_max = b.number_input("FDN máxima (% MS)", min_value=0.0, max_value=100.0, value=40.0)
-        minerals = st.checkbox(
-            "Exigir fósforo e cálcio absorvíveis no LP (NRC 2001)",
-            help="Usa as exigências NRC e a oferta por categoria calculada pelo RuFaS.",
+        st.caption(
+            "Fósforo e cálcio absorvíveis são obrigatórios na otimização NRC 2001, "
+            "com exigências e oferta calculadas pelo RuFaS."
         )
-        nasem = st.checkbox(
-            "Calcular exigência de fósforo NASEM 2021 para diagnóstico",
-            help="Calcula a exigência em separado, sem alterar a formulação nem emitir parecer NASEM.",
-        )
-        inputs = (days, cp, nel, ndf_min, ndf_max, minerals, nasem)
+        with st.expander("Configurações avançadas", expanded=False):
+            nasem = st.checkbox(
+                "Calcular exigência de fósforo NASEM 2021 para diagnóstico",
+                value=False,
+                help="Calcula a exigência em separado, sem alterar a formulação nem emitir parecer NASEM.",
+            )
+            st.caption("O diagnóstico NASEM 2021 é complementar e não interfere na otimização NRC 2001.")
+        inputs = (days, cp, nel, ndf_min, ndf_max, True, nasem)
         if st.button("Executar otimização", type="primary"):
             st.session_state["report"] = run(animals, catalog, animal_id, rows, milk, inputs)
             if st.session_state["report"]:
                 result = st.session_state["report"]["result"]
-                st.info(f"HiGHS · {result['status']}. Abra Resultados para consultar a execução.")
+                st.info(f"HiGHS · {display_label(result['status'])}. Abra Resultados para consultar a execução.")
     report = st.session_state.get("report")
     with home:
         overview(report, animal_id, len(catalog), len(rows))

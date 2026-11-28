@@ -8,6 +8,8 @@ from uuid import uuid4
 
 import pandas as pd
 import streamlit as st
+from frontend.annual_history import history_panel, read_json, read_daily, economic_cards
+from frontend.usability import display_table, label, COLUMNS
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -68,8 +70,10 @@ def launch_runs(strategies, days, cows, seed, interval, fallback, overrides, adu
 def annual_panel():
     st.header("Simulação anual")
     mode = st.radio("Tipo de análise", ["Otimização estática de um dia", "Simulação dinâmica integrada"])
+    history_panel(ROOT)
     if mode.startswith("Otimização"):
         st.info("Selecione o animal e configure a dieta nas áreas Animal, Ingredientes e Otimização.")
+        show_jobs()
         return
     st.caption("Cenário Freestall NRC experimental, clima de 2013 e rebanho inicial amostrado da população RuFaS.")
     st.warning(
@@ -87,7 +91,9 @@ def annual_panel():
     if exclusive:
         st.info("HiGHS exclusivo: não há fallback para SLSQP. Uma falha interrompe essa execução e fica registrada.")
     fallback = st.selectbox(
-        "Política de falha ou categoria incompatível", ["fail"] if exclusive else ["native_slsqp", "fail"]
+        "Política de falha ou categoria incompatível",
+        ["fail"] if exclusive else ["native_slsqp", "fail"],
+        format_func=label,
     )
     feed = json.loads((ROOT / "input/data/feed/example_Midwest_feed.json").read_text())
     records = [
@@ -127,32 +133,54 @@ def annual_panel():
 
 @st.fragment(run_every="3s")
 def show_jobs():
-    jobs = st.session_state.get("annual_jobs", [])
+    jobs = st.session_state.get("annual_jobs", []) + st.session_state.get("annual_evidence_jobs", [])
     summaries = []
+    groups = {}
     for job in jobs:
         path = Path(job["path"])
         progress = path / "progress.json"
         status = (
-            json.loads(progress.read_text())
-            if progress.exists()
-            else dict(completed_days=0, requested_days=job["requested_days"])
+            read_json(progress) if progress.exists() else dict(completed_days=0, requested_days=job["requested_days"])
         )
         completed, requested = status["completed_days"], status["requested_days"]
-        st.write(f"{job['strategy']} · execução {path.parent.name[:8]}")
+        archived = job.get("source") == "evidence"
+        st.write(f"{label(job['strategy'])} · {'evidência arquivada' if archived else 'nova simulação'}")
+        st.caption(
+            f"Resultados carregados de evidências — não é nova simulação. {job['group_id'].removeprefix('evidence:')}"
+            if archived
+            else f"Nova execução · {path.parent.name[:8]}"
+        )
         st.progress(min(completed / requested, 1.0), text=f"{completed}/{requested} dias efetivamente simulados")
         summary_file = path / "summary.json"
         if summary_file.exists():
-            summary = json.loads(summary_file.read_text())
+            summary = read_json(summary_file)
             if summary["status"] == "complete":
-                summaries.append(summary)
-                st.success(f"Simulação concluída em {summary['simulated_days']} dias.")
+                summaries.append(
+                    summary | {"execution_origin": "Evidências arquivadas" if archived else "Nova simulação"}
+                )
+                group = job.get("group_id", "new:" + str(path.parent))
+                groups.setdefault(group, {})[job["strategy"]] = summary
+                st.success(
+                    f"Evidência carregada: {summary['simulated_days']} dias já calculados."
+                    if archived
+                    else f"Simulação concluída em {summary['simulated_days']} dias."
+                )
             else:
                 st.error(summary.get("error", "Simulação interrompida."))
-        elif job["process"].poll() is not None:
+        elif not archived and job["process"].poll() is not None:
             st.error("Processo encerrado antes da conclusão. Consulte o log no diretório desta execução.")
         daily = path / "daily.jsonl"
-        if daily.exists() and completed:
-            records = [json.loads(line) for line in daily.read_text(encoding="utf-8").splitlines()[:completed]]
+        if (
+            daily.exists()
+            and completed
+            and st.checkbox(
+                "Carregar séries diárias e detalhes desta execução",
+                key="details-" + str(path),
+                value=False,
+                help="Lê o diário somente quando solicitado; o cache é invalidado quando o arquivo muda.",
+            )
+        ):
+            records = read_daily(daily, completed)
             frame = pd.DataFrame(
                 [
                     dict(
@@ -169,18 +197,19 @@ def show_jobs():
                 ]
             ).set_index("day")
             frame["accumulated_cost"] = frame["cost"].cumsum()
+            frame.index.name = "Dia"
             with st.expander("Consultar séries diárias e dia específico"):
                 st.caption(
                     "A série de aprovação considera currais adultos. Os registros de bezerros permanecem no JSON, sob o fluxo nativo próprio."
                 )
-                st.line_chart(frame[["cost", "accumulated_cost"]])
-                st.line_chart(frame[["milk", "dry_matter"]])
-                st.line_chart(frame[["inventory"]])
-                st.line_chart(frame[["approved_pens", "rejected_pens"]])
+                st.line_chart(frame[["cost", "accumulated_cost"]].rename(columns=COLUMNS))
+                st.line_chart(frame[["milk", "dry_matter"]].rename(columns=COLUMNS))
+                st.line_chart(frame[["inventory"]].rename(columns=COLUMNS))
+                st.line_chart(frame[["approved_pens", "rejected_pens"]].rename(columns=COLUMNS))
                 st.caption(
                     "Bezerros: registros nativos separados; os indicadores comuns de novilhas não certificam adequação da dieta de leite e concentrado inicial."
                 )
-                st.line_chart(frame[["calf_not_approved"]])
+                st.line_chart(frame[["calf_not_approved"]].rename(columns=COLUMNS))
                 ingredients = pd.DataFrame([r["fed_kg_dm"] for r in records]).fillna(0)
                 st.area_chart(ingredients)
                 day = st.number_input(
@@ -190,6 +219,7 @@ def show_jobs():
                     value=completed - 1,
                     key="day-" + str(path),
                 )
+                st.caption("JSON técnico original para auditoria; nomes internos e precisão preservados.")
                 st.json(records[day], expanded=1)
                 mineral_rows = []
                 for row in records:
@@ -215,7 +245,7 @@ def show_jobs():
                     "Minerais por dia e categoria: requisitos absorvíveis separados dos tetos totais; déficits nos deltas nativos do JSON."
                 )
                 if mineral_rows:
-                    st.dataframe(pd.DataFrame(mineral_rows), hide_index=True)
+                    st.dataframe(display_table(pd.DataFrame(mineral_rows)), hide_index=True)
                 convergence = [
                     dict(
                         day=row["day"],
@@ -231,33 +261,28 @@ def show_jobs():
                     for e in row["formulations"]
                 ]
                 st.caption("Formulações e convergência; histórico completo das iterações no JSON do dia selecionado.")
-                st.dataframe(pd.DataFrame(convergence), hide_index=True)
+                st.dataframe(display_table(pd.DataFrame(convergence)), hide_index=True)
                 st.download_button(
                     "Baixar resumo diário CSV",
-                    frame.to_csv(),
+                    frame.rename(columns=COLUMNS).to_csv(),
                     "serie_anual.csv",
                     "text/csv",
                     key="download-" + str(path),
                 )
     if summaries:
         st.subheader("Indicadores das execuções concluídas")
-        st.dataframe(pd.DataFrame(summaries), hide_index=True)
-        latest = {}
-        for job in jobs:
-            file = Path(job["path"]) / "summary.json"
-            if file.exists():
-                summary = json.loads(file.read_text())
-                if summary["status"] == "complete":
-                    latest[job["strategy"]] = (Path(job["path"]).parent, summary)
-        for alternative_name in ("linear_highs_all", "linear_highs_exclusive"):
-            if not all(name in latest for name in ("native_slsqp", alternative_name)):
-                continue
-            baseline, alternative = latest["native_slsqp"], latest[alternative_name]
-            if baseline[0] == alternative[0] and baseline[1]["estimated_diet_cost"] > 0:
-                difference = (
-                    100
-                    * (baseline[1]["estimated_diet_cost"] - alternative[1]["estimated_diet_cost"])
-                    / baseline[1]["estimated_diet_cost"]
-                )
-                st.metric(f"Redução do custo estimado: {alternative_name}", f"{difference:.7f}%")
-                st.caption("Interprete também leite, dietas reprovadas, cobertura HiGHS e compras efetivas.")
+        st.dataframe(display_table(pd.DataFrame(summaries)), hide_index=True)
+        for group, complete in groups.items():
+            for alternative in ("linear_highs_all", "linear_highs_exclusive", "linear_highs"):
+                if "native_slsqp" in complete and alternative in complete:
+                    st.subheader(f"Comparação econômica · {label(alternative)}")
+                    st.caption(
+                        ("Evidências carregadas · " + group.removeprefix("evidence:"))
+                        if group.startswith("evidence:")
+                        else "Novas simulações do mesmo conjunto de entradas"
+                    )
+                    economic_cards(
+                        complete["native_slsqp"]["estimated_diet_cost"],
+                        complete[alternative]["estimated_diet_cost"],
+                        alternative,
+                    )

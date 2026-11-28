@@ -12,4 +12,4 @@ O ano controlado registrou 2.319,34875854 unidades monetárias no SLSQP e 2.316,
 
 ## 04:25–05:00 — Slide 4 — validação e limites
 
-A referência computacional tem 954 testes aprovados, incluindo um ano exclusivo real. A instalação e as execuções foram conferidas numa cópia isolada, com venv nova. A solução não certifica ótimo global não linear nem vantagem econômica universal. Permanecem limitações dos coeficientes minerais, da resposta biológica e dos indicadores de bezerros. As evidências históricas foram preservadas. Encerramos a apresentação e iniciamos cinco minutos de perguntas.
+A referência computacional tem 969 testes aprovados, incluindo um ano exclusivo real. A base anterior de 954 casos foi conferida em cópia isolada, com venv nova; os 15 novos casos passaram na revisão de usabilidade. A solução não certifica ótimo global não linear nem vantagem econômica universal. Permanecem limitações dos coeficientes minerais, da resposta biológica e dos indicadores de bezerros. As evidências históricas foram preservadas. Encerramos a apresentação e iniciamos cinco minutos de perguntas.

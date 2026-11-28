@@ -1,10 +1,10 @@
 # Validação vigente e histórico
 
-Base Git 5bb6775, branch fix/validacao-nutricional-rufas, com alterações locais identificadas nos manifestos. Documentação consolidada em 27/11/2026.
+Base da publicação anterior: d13ef5d, branch fix/validacao-nutricional-rufas. Revisão de frontend consolidada em 28/11/2026; alterações identificadas no [inventário desta entrega](../../evidencias/frontend_final/inventario.json). Os manifestos anteriores preservam as bases históricas.
 
 ## Estado oficial
 
-**954 testes aprovados**, preservando os 937 anteriores e acrescentando 17 regressões da correção dinâmica. [Comando e cobertura](11-testes.md). Os XML oficiais [testes_finais](../../evidencias/correcao_dinamica/testes_finais.xml) e [testes_verificacao](../../evidencias/correcao_dinamica/testes_verificacao.xml) permanecem preservados.
+**969 testes aprovados**, preservando os 954 anteriores e acrescentando 15 regressões de usabilidade. [Comando e cobertura](11-testes.md). Os XML oficiais [testes_finais](../../evidencias/correcao_dinamica/testes_finais.xml) e [testes_verificacao](../../evidencias/correcao_dinamica/testes_verificacao.xml) permanecem preservados.
 
 O cenário controlado executou 365 dias nas três estratégias. A exclusiva registrou 1.002 chamadas HiGHS, zero SLSQP/fallback, 959 formulações convergentes e 43 soluções viáveis sem convergência. Os 998 curral-dias adultos passaram na avaliação nativa e nos tetos totais Ca/P do HiGHS.
 
@@ -30,6 +30,7 @@ A comparação exclusiva no frontend é exercitada por processos reais, incluind
 | Experimento A/B | 466 testes | evidencias/comparacao |
 | Primeira integração anual híbrida | 937 testes; aumento de custo de 9,05% | evidencias/anual |
 | Correção de formulação/convergência | 954 testes; redução de 0,1249355% | evidencias/correcao_dinamica |
+| Usabilidade final | 969 testes; resultados científicos preservados | [Evidências](../../evidencias/frontend_final/README.md) |
 
 O aumento histórico concentrado no primeiro dia foi corrigido sem excluir o dia. Falhas intermediárias, arquivos antigos e suas avaliações foram preservados. As cópias documentais pré-consolidação estão em [manifesto histórico](../../evidencias/publicacao/historico_documental/manifesto.json).
 

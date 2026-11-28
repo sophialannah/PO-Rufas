@@ -33,7 +33,7 @@ No LP estático, as quantidades em matéria natural são as variáveis; composi�
 
 **Sophia — 35 segundos**
 
-Na área Simulação anual, vemos cinco opções. Vou mostrar Comparação SLSQP versus HiGHS exclusivo. O aviso informa que o exclusivo não tem fallback. As duas estratégias recebem as mesmas entradas. O progresso e os resultados vêm de processos reais. Se executarmos apenas um dia ao vivo, esse será um teste curto; os números anuais pertencem às evidências de 365 dias.
+Em Ingredientes, carregamos o cenário validado com quatro alimentos; a multisseleção preserva os parâmetros e destaca pendências. P e Ca são obrigatórios; NASEM fica avançado e separado do NRC. Em Simulação anual, carregamos as evidências de 365 dias sem reexecutá-las. Os cartões mostram custos e diferenças reais, identificando dinamicamente a estratégia mais econômica. O exclusivo segue sem fallback.
 
 ## 03:35–04:25 — Demonstração — resultado
 
@@ -45,7 +45,7 @@ O ano controlado registrou 2.319,34875854 unidades monetárias no SLSQP e 2.316,
 
 **Anderson — 35 segundos**
 
-A referência computacional tem 954 testes aprovados, incluindo um ano exclusivo real. A instalação e as execuções foram conferidas numa cópia isolada, com venv nova. A solução não certifica ótimo global não linear nem vantagem econômica universal. Permanecem limitações dos coeficientes minerais, da resposta biológica e dos indicadores de bezerros. As evidências históricas foram preservadas. Encerramos a apresentação e iniciamos cinco minutos de perguntas.
+A referência computacional tem 969 testes aprovados, incluindo um ano exclusivo real. A base anterior de 954 casos foi conferida em cópia isolada, com venv nova; os 15 novos casos passaram na revisão de usabilidade. A solução não certifica ótimo global não linear nem vantagem econômica universal. Permanecem limitações dos coeficientes minerais, da resposta biológica e dos indicadores de bezerros. As evidências históricas foram preservadas. Encerramos a apresentação e iniciamos cinco minutos de perguntas.
 
 ## 05:00–10:00 — perguntas
 

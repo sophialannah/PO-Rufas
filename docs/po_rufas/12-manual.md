@@ -19,15 +19,19 @@ O constraints-release.txt original é histórico; use constraints-po-rufas.txt p
 
 1. Visão geral: perfil e fluxo.
 2. Animal: registro da população, leite assumido e prévia NRC do cenário estático.
-3. Ingredientes: composições de leitura e parâmetros econômicos editáveis.
-4. Otimização: período, metas fixas, mínimos P/Ca NRC e diagnóstico separado NASEM.
+3. Ingredientes: seleção múltipla NRC, composição/limites de fonte identificada, campos pendentes destacados e parâmetros editáveis preservados ao mudar a seleção.
+4. Otimização: período, metas fixas e mínimos P/Ca absorvíveis obrigatórios no NRC; diagnóstico separado NASEM em Configurações avançadas.
 5. Resultados: status LP, dieta MN/MS, custo, checks e parecer; CSV/JSON/Markdown.
 6. Cenários: reotimização, A mesmo LP e B formulações distintas.
 7. Simulação anual: ciclo FULL_FARM, seleção de estratégia, progresso e séries reais.
 
 ## Exemplo estático e comparação A/B
 
-A referência 98605 com três alimentos, sete dias e minerais desligados custa aproximadamente R$35,1059/dia e reprova por P absorvível. Para a suplementada, adicione 231, use os parâmetros do [capítulo 3](03-dados.md), ative os mínimos e confira simultaneamente checks e parecer.
+Os mínimos de P/Ca absorvíveis são obrigatórios na interface NRC 2001 e não possuem caixa de seleção. A referência 98605 com três alimentos fica inviável por fósforo nesse fluxo. Para a suplementada, adicione 231, use os parâmetros do [capítulo 3](03-dados.md) e confira simultaneamente checks e parecer. O caso histórico sem mínimos, com R$35,1059/dia e reprovação por P, permanece reproduzível no backend; seus resultados experimentais não foram alterados.
+
+Em **Configurações avançadas**, inicialmente recolhidas, há um diagnóstico complementar de fósforo NASEM 2021, desativado por padrão. Sua ativação calcula apenas a exigência separada: não muda a dieta, os requisitos nem a otimização NRC 2001.
+
+Na aba Ingredientes, **Carregar cenário demonstrativo validado (4 ingredientes)** preenche os parâmetros publicados de 1, 44, 167 e fosfato bicálcico 231. Eles são demonstrativos, não cotações. Para outros ingredientes, composição/limites disponíveis vêm do NRC; preço, estoque e NEL sem fonte ficam em branco. DE/NDT originais são apresentados sem deduzir NEL. Confira a lista de campos obrigatórios e mantenha suas escolhas: o sistema não adiciona ingredientes para resolver inviabilidade.
 
 Na área Cenários, escolha A ou B, informe repetições e execute a comparação. A exibição distingue convergência do solver, viabilidade e avaliação nativa. Formulações diferentes não permitem atribuir custo menor apenas ao algoritmo.
 
@@ -54,6 +58,10 @@ Cada estratégia recebe UUID/pasta e processo próprios. O progresso vem de dias
 
 A aprovação adulta e os registros de bezerros aparecem separados. Há 998 curral-dias adultos aprovados na evidência HiGHS e 252 registros de bezerros não aprovados por estratégia. [Interpretação](05-restricoes.md).
 
+Para visualizar anos anteriores sem executá-los novamente, abra **Resultados anuais já calculados**, selecione o conjunto e clique **Carregar resultados anuais das evidências**. O painel identifica evidências arquivadas e novas execuções separadamente. Resumos e cartões aparecem sem ler todos os traços; marque **Carregar séries diárias e detalhes desta execução** quando quiser gráficos e o JSON de um dia. O cache invalida quando o arquivo muda e preserva a precisão.
+
+Os cartões comparam custos reais dos pares do mesmo grupo: RuFaS original, PO-RuFaS, magnitude da diferença, percentual e estratégia mais econômica. A identificação é dinâmica, inclusive quando RuFaS é mais barato ou há empate; não se presume redução. Tabelas e gráficos têm rótulos em português, enquanto o JSON de auditoria mantém os nomes internos. [Detalhes de uso e investigação de desempenho](../../frontend/README.md).
+
 ```powershell
 .\.venv\Scripts\python.exe -X utf8 -m experiments.annual --days 365 --strategy linear_highs_exclusive --output output/exclusivo_novo
 ```
@@ -62,14 +70,17 @@ Use uma pasta nova: o runner recusa sobrescrever uma execução. --mineral-polic
 
 ## Capturas finais reais
 
-As telas abaixo são capturas do frontend executado na cópia isolada, com resultados do backend; não são maquetes. Os arquivos de captura identificam duração e configuração, sem representar uma execução de um dia como resultado anual.
+As telas abaixo registram a interface real em 28/11/2026, com o cenário demonstrativo publicado e os resultados anuais arquivados. O carregamento não executou novamente os 365 dias. O [manifesto](../../evidencias/frontend_final/telas/manifesto.json) identifica a origem. As [capturas da publicação anterior](../../evidencias/publicacao/telas/manifesto.json), obtidas na cópia isolada, permanecem preservadas como histórico.
 
-![Visão geral final](../../evidencias/publicacao/telas/visao_geral.png)
-![Seleção de comparação exclusiva](../../evidencias/publicacao/telas/comparacao_exclusiva.png)
-![Resultados reais da comparação](../../evidencias/publicacao/telas/resultado_comparacao.png)
+![Seleção múltipla de ingredientes](../../evidencias/frontend_final/telas/ingredientes.png)
+![Cenário validado com fosfato bicálcico 231](../../evidencias/frontend_final/telas/cenario_validado.png)
+![Fluxo NRC com restrições obrigatórias](../../evidencias/frontend_final/telas/otimizacao_nrc.png)
+![Diagnóstico NASEM avançado e desativado](../../evidencias/frontend_final/telas/nasem_avancado.png)
+![Comparação econômica calculada das evidências](../../evidencias/frontend_final/telas/comparacao_economica.png)
+![Resultados anuais arquivados e identificados](../../evidencias/frontend_final/telas/resultados_arquivados.png)
 
 ## Falhas e limites
 
 Módulo ausente: confira interpretador/instalação. Inviabilidade: reveja entradas, limites e requisitos. Falha exclusiva: consulte summary e log, sem esperar fallback. Porta ocupada: escolha outra. Falta de .git em fonte exportada: commit é indisponível, mas as execuções continuam e o manifesto identifica a origem.
 
-Os 954 testes de referência não certificam nutrição integral, ótimo global não linear ou benefício econômico fora do cenário. [Limitações](13-limitacoes.md).
+Os 969 testes de referência não certificam nutrição integral, ótimo global não linear ou benefício econômico fora do cenário. [Limitações](13-limitacoes.md).

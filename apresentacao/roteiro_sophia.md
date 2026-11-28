@@ -12,4 +12,4 @@ No LP estático, as quantidades em matéria natural são as variáveis; composi�
 
 ## 03:00–03:35 — Demonstração — seleção
 
-Na área Simulação anual, vemos cinco opções. Vou mostrar Comparação SLSQP versus HiGHS exclusivo. O aviso informa que o exclusivo não tem fallback. As duas estratégias recebem as mesmas entradas. O progresso e os resultados vêm de processos reais. Se executarmos apenas um dia ao vivo, esse será um teste curto; os números anuais pertencem às evidências de 365 dias.
+Em Ingredientes, carregamos o cenário validado com quatro alimentos; a multisseleção preserva os parâmetros e destaca pendências. P e Ca são obrigatórios; NASEM fica avançado e separado do NRC. Em Simulação anual, carregamos as evidências de 365 dias sem reexecutá-las. Os cartões mostram custos e diferenças reais, identificando dinamicamente a estratégia mais econômica. O exclusivo segue sem fallback.

@@ -41,9 +41,16 @@ def test_frontend_comparison_executes_real_models():
     from streamlit.testing.v1 import AppTest
 
     app = AppTest.from_file(Path(__file__).resolve().parents[1] / "frontend/app.py", default_timeout=40).run()
+    app.multiselect[0].select(231).run()
+    editor = "editor-" + ",".join(map(str, app.multiselect[0].value))
+    app.session_state[editor] = {
+        "edited_rows": {3: dict(price=5.0, stock=1.0, minimum=0.0, maximum=0.1, nel=0.0)},
+        "added_rows": [],
+        "deleted_rows": [],
+    }
     next(field for field in app.number_input if field.label == "Repetições de medição").set_value(2)
     next(button for button in app.button if button.label == "Executar comparação dos otimizadores").click().run()
     assert not app.exception
     report = app.session_state["optimizer_comparison"]
-    assert report["methods"]["A_HiGHS"]["cost_per_day"] == pytest.approx(35.1059017708)
+    assert report["methods"]["A_HiGHS"]["cost_per_day"] == pytest.approx(35.3416211228)
     assert len(report["methods"]) == 3

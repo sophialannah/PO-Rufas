@@ -16,7 +16,7 @@ A versão vigente oferece um **LP estático de coeficientes fixos** e um **model
 
 A redução de custo foi **0,1249355%**. Das 1.002 formulações HiGHS, **959 atingiram o critério de convergência**; **43 conservaram soluções viáveis sem convergência** (42 por estagnação e uma pelo limite de iterações). Os preços são **demonstrativos**, em UM/kg MS. O resultado não certifica ótimo global não linear ou superioridade econômica universal.
 
-A validação computacional de referência tem **954 testes aprovados**. Os 998 curral-dias aprovados são de **currais adultos**. Há **252 curral-dias de bezerros não aprovados em cada estratégia**, registrados separadamente sob um fluxo próprio de alimentação e com limitações na aplicabilidade dos indicadores comuns. Não há afirmação de aprovação nutricional de todo o rebanho.
+A validação computacional de referência tem **969 testes aprovados**. Os 998 curral-dias aprovados são de **currais adultos**. Há **252 curral-dias de bezerros não aprovados em cada estratégia**, registrados separadamente sob um fluxo próprio de alimentação e com limitações na aplicabilidade dos indicadores comuns. Não há afirmação de aprovação nutricional de todo o rebanho.
 
 [Resultados, diários e XML oficiais](evidencias/correcao_dinamica/README.md) · [Documentação em 14 capítulos](docs/po_rufas/README.md) · [Revisão para publicação](evidencias/publicacao/README.md)
 
@@ -35,11 +35,11 @@ Abra http://127.0.0.1:8501. O BAT `frontend/iniciar_frontend.bat` permanece disp
 ## Funcionalidades e modos
 
 - Seleção de animais e alimentos NRC, edição de preços, estoques e limites.
-- LP estático com MS, PB, NEL, FDN e mínimos absorvíveis opcionais de P/Ca; avaliação nativa posterior.
+- LP estático com MS, PB, NEL, FDN e mínimos absorvíveis de P/Ca obrigatórios na interface NRC; backend preservado para regressões históricas e avaliação nativa posterior.
 - Comparação experimental A (mesmo LP, HiGHS/SLSQP) e B (formulações estática/nativa distintas).
 - Simulação anual: SLSQP controlado, HiGHS híbrido ampliado, HiGHS exclusivo e comparações controladas entre eles.
 - Progresso real, custos diários/acumulados, consumo, compras, estoques, minerais, convergência e critérios por categoria.
-- Diagnóstico de exigência de fósforo NASEM 2021 separado do modo operacional NRC.
+- Diagnóstico complementar de fósforo NASEM 2021 em configurações avançadas, desativado por padrão e sem interferir na otimização NRC.
 - Exportação CSV/JSON/Markdown e capturas reais para o [manual](docs/po_rufas/12-manual.md).
 
 O modo exclusivo não executa fallback SLSQP; uma falha interrompe a execução e fica registrada. Os bezerros não passam pelo RationOptimizer e não são contabilizados como fallback.
@@ -66,7 +66,7 @@ Use diretórios novos para as simulações:
 .\.venv\Scripts\python.exe -X utf8 -m experiments.annual --days 365 --strategy linear_highs_exclusive --output output/exclusivo_novo
 ```
 
-[Comando completo da suíte de 954 testes](docs/po_rufas/11-testes.md) · [Procedimento de reprodução isolada](evidencias/publicacao/README.md)
+[Comando completo da suíte de 969 testes](docs/po_rufas/11-testes.md) · [Procedimento de reprodução isolada](evidencias/publicacao/README.md)
 
 ## Organização e histórico
 

@@ -2,7 +2,7 @@
 
 Versão acadêmica consolidada em 27/11/2026. Autores: Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.
 
-O projeto oferece LP estático, comparação experimental e simulação dinâmica FULL_FARM de 365 dias. O HiGHS exclusivo substituiu SLSQP nas 1.002 chamadas das categorias adultas ativas do cenário NRC validado. A contagem de referência é **954 testes aprovados**.
+O projeto oferece LP estático, comparação experimental e simulação dinâmica FULL_FARM de 365 dias. O HiGHS exclusivo substituiu SLSQP nas 1.002 chamadas das categorias adultas ativas do cenário NRC validado. A contagem de referência é **969 testes aprovados**.
 
 ## Sumário
 

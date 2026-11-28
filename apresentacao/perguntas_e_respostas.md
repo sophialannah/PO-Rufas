@@ -40,7 +40,7 @@ O modelo original usa curva de lactação e equações de crescimento que não r
 Instalar na fonte com Python 3.12, constraints-po-rufas.txt, projeto dev e frontend/requirements.txt. Executar exemplos, comparação e annual exclusivo em pasta nova. A reprodução foi feita em cópia sem .git e venv nova. Ver [publicação](../evidencias/publicacao/README.md).
 
 ## Quais testes e limites?
-954 testes de referência, incluindo o ano exclusivo e frontend real. Não é a suíte inteira do RuFaS nem certificação clínica. Permanecem limitações de coeficientes minerais, resposta produtiva, preços completos, bezerros e generalização de cenários.
+969 testes de referência, incluindo o ano exclusivo e frontend real. Não é a suíte inteira do RuFaS nem certificação clínica. Permanecem limitações de coeficientes minerais, resposta produtiva, preços completos, bezerros e generalização de cenários.
 
 ## O resultado +9,05% ainda vale?
 É histórico, anterior à correção do primeiro dia e da convergência. Foi preservado e explicado; o resultado oficial controlado vigente é redução de 0,1249355%.
