@@ -1,0 +1,93 @@
+{
+  "initial_states_equal": true,
+  "recorded_biological_states_equal": true,
+  "reduction_percent": {
+    "SLSQP_MTL": 0.0,
+    "HiGHS_hibrido": 0.12493553763438835,
+    "HiGHS_exclusivo": 0.12493553763438835
+  },
+  "nutrition": {
+    "SLSQP_MTL": {
+      "approved_adult_pen_days": 362,
+      "rejected_adult_pen_days": 636,
+      "minerals_tolerable_pen_days": 998,
+      "failure_classification": {
+        "numerical_deviation": 751
+      },
+      "failure_nutrients": {
+        "ndf_percent": 59,
+        "calcium": 2,
+        "dry_matter": 358,
+        "phosphorus": 305,
+        "metabolizable_protein": 26,
+        "total_energy": 1
+      },
+      "categories": {
+        "close_up": {
+          "attempts": 272,
+          "accepted": 272,
+          "converged": 0
+        },
+        "growing": {
+          "attempts": 365,
+          "accepted": 365,
+          "converged": 0
+        },
+        "lac_cow": {
+          "attempts": 365,
+          "accepted": 365,
+          "converged": 0
+        }
+      }
+    },
+    "HiGHS_hibrido": {
+      "approved_adult_pen_days": 998,
+      "rejected_adult_pen_days": 0,
+      "minerals_tolerable_pen_days": 998,
+      "failure_classification": {},
+      "failure_nutrients": {},
+      "categories": {
+        "close_up": {
+          "attempts": 272,
+          "accepted": 272,
+          "converged": 234
+        },
+        "growing": {
+          "attempts": 365,
+          "accepted": 365,
+          "converged": 365
+        },
+        "lac_cow": {
+          "attempts": 365,
+          "accepted": 365,
+          "converged": 360
+        }
+      }
+    },
+    "HiGHS_exclusivo": {
+      "approved_adult_pen_days": 998,
+      "rejected_adult_pen_days": 0,
+      "minerals_tolerable_pen_days": 998,
+      "failure_classification": {},
+      "failure_nutrients": {},
+      "categories": {
+        "close_up": {
+          "attempts": 272,
+          "accepted": 272,
+          "converged": 234
+        },
+        "growing": {
+          "attempts": 365,
+          "accepted": 365,
+          "converged": 365
+        },
+        "lac_cow": {
+          "attempts": 365,
+          "accepted": 365,
+          "converged": 360
+        }
+      }
+    }
+  },
+  "numerical_classification": "Operational audit threshold 1e-3 in each field's native unit; no approvals or constraints altered. Not a biological threshold."
+}

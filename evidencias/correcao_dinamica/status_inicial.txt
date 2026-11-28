@@ -1,0 +1,32 @@
+﻿ M README.md
+ M RUFAS/biophysical/animal/herd_manager.py
+ M RUFAS/biophysical/animal/ration/linear_diet.py
+ M RUFAS/input/metadata/properties/default.json
+ M apresentacao/README.md
+ M apresentacao/cartoes_consulta.md
+ M apresentacao/checklist_apresentacao.md
+ M apresentacao/guia_demonstracao.md
+ M apresentacao/guia_demonstracao_web.md
+ M apresentacao/perguntas_e_respostas.md
+ M apresentacao/resultados_validados.md
+ M apresentacao/roteiro_anderson.md
+ M apresentacao/roteiro_completo.md
+ M apresentacao/roteiro_sophia.md
+ M apresentacao/simulacao_arguicao.md
+ M docs/apresentacao_projeto.md
+ M docs/auditoria_comparativa_rufas.md
+ M docs/integracao_real_rufas.md
+ M docs/o_que_foi_corrigido.md
+ M docs/otimizador_linear.md
+ M docs/revisao_final_otimizador.md
+ M frontend/README.md
+ M frontend/app.py
+ M tests/test_biophysical/test_animal/test_herd_manager/test_herd_manager_pen_management.py
+?? HISTORICO_DESENVOLVIMENTO.md
+?? RUFAS/biophysical/animal/ration/dynamic_linear_optimizer.py
+?? docs/po_rufas/
+?? evidencias/
+?? experiments/
+?? frontend/annual.py
+?? tests/test_annual.py
+?? tests/test_comparison.py

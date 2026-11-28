@@ -7,6 +7,7 @@
 *.doc
 *.docx
 !constraints-release.txt
+!constraints-po-rufas.txt
 
 # ignore log files
 *.log
@@ -71,3 +72,19 @@ DataCollectionApp/schema/*
 !DataCollectionApp/schema/.keep
 
 docs/_build/
+
+# Local caches, browser profiles and personal conversation export
+__pycache__/
+*.pyo
+.mypy_cache/
+.ruff_cache/
+.uv-cache/
+.env
+.env.*
+!.env.example
+/HISTORICO_DESENVOLVIMENTO.md
+
+# Scientific evidence and upstream license texts are intentional source assets.
+!/COPYING.txt
+!/COPYING.LESSER.txt
+!/evidencias/**/*.txt

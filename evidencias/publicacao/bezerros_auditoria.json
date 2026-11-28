@@ -1,0 +1,35 @@
+{
+  "native_slsqp": {
+    "calf_pen_days": 252,
+    "native_not_approved": 252,
+    "failed_fields": {
+      "metabolizable_protein": 252,
+      "dry_matter": 252,
+      "ndf_percent": 252,
+      "forage_ndf_percent": 252,
+      "fat_percent": 252
+    }
+  },
+  "linear_highs_all": {
+    "calf_pen_days": 252,
+    "native_not_approved": 252,
+    "failed_fields": {
+      "metabolizable_protein": 252,
+      "dry_matter": 252,
+      "ndf_percent": 252,
+      "forage_ndf_percent": 252,
+      "fat_percent": 252
+    }
+  },
+  "linear_highs_exclusive": {
+    "calf_pen_days": 252,
+    "native_not_approved": 252,
+    "failed_fields": {
+      "metabolizable_protein": 252,
+      "dry_matter": 252,
+      "ndf_percent": 252,
+      "forage_ndf_percent": 252,
+      "fat_percent": 252
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "commit": "5bb6775a4797f7c445bcfa025c3121aa2fb3bc96",
+  "files": {
+    "experiments/comparison.py": "6510421668d53929577cf53b9d2509f6e0f27861d251032b51d1aed620ced18c",
+    "experiments/capture_frontend.py": "68667efa6a3d5df4cb3a1ee4459a2d3d3911f3569becbf5f8b3a475055217f80",
+    "frontend/app.py": "c6c73f056b266c90425356ca49361e57201850c70f04e30d5858e2ea59d8fa17",
+    "frontend/service.py": "9699c273cb107e04fad0458cb0b53f642b9341d2d604ecb882b7500a25fdfcc2",
+    "tests/test_comparison.py": "9d7c2c94ee588f082c67684febb961730550f8ece4e709de4db9fd69e56137aa"
+  }
+}

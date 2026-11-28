@@ -1,4 +1,6 @@
-﻿# Auditoria comparativa PO-Rufas
+> Registro de uma etapa anterior. Para o estado operacional e resultados reconferidos, consulte a [documentacao consolidada](po_rufas/README.md). Os numeros historicos deste arquivo foram preservados.
+
+# Auditoria comparativa PO-Rufas
 
 Data: 24/11/2026. Integrantes: Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.
 

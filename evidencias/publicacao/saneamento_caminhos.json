@@ -1,0 +1,114 @@
+[
+  {
+    "path": "docs/revisao_final_otimizador.md",
+    "original_sha256": "a9cf3c545d9cf82c6cdb7de85a58be1d80c8a7860b267a9fc47e6516d3a2ce2a",
+    "publication_sha256": "c4a0754a2030be75a2df65f47c6f385cdb0011d31df78246ad05745b19d11edf",
+    "change": "Local path redaction and line-ending normalization only; original preserved under ignored output/publication_private_originals",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/correcao_dinamica/testes.xml",
+    "original_sha256": "33c7f10cb832654ea0ddce60d88f53ef1a0225c3bfecf20b696b3608b373eddb",
+    "publication_sha256": "d32ff8a1093c00aa001619a8fff5396a37af3ab28434779784067a64846a79bb",
+    "change": "Local path redaction and line-ending normalization only; original preserved under ignored output/publication_private_originals",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/anual/README.md",
+    "original_sha256": "2b2aede4ca20e0579c1cd21651c03accc26381fb92ac0594bceab6f17bef35ee",
+    "publication_sha256": "1cc33bd17f63bab6c984ce2095acba5eb83b02f39a5c7b2c35df03289c0dbca6",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/anual/teste_ui_saida.md",
+    "original_sha256": "3e379b879d9d8a3c880179dd9ac8a562e6a2ffe1b164439186b2212650dc8d2f",
+    "publication_sha256": "f551b91feed34462d7b692f71723ec0ad9c7cb53fb96c9592edb37c6cc130e72",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/anual/testes_saida.md",
+    "original_sha256": "f332fb9ab7126e5fe862efb9bd3a9a5722a529c88fd7d63289fc5fe5e46852ad",
+    "publication_sha256": "b7331cab38394f23c1f3ab6ca5f0b98c99b28b41d1af96727300a0b44246cecb",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/comparacao/testes_saida.md",
+    "original_sha256": "b6fe3e4dbc15c284630f4e27210792c9bcdcc48739dce5244b325fe2fb903239",
+    "publication_sha256": "6f124ba4d3cf5bd15b2178f738b59a17533c71818ee3658f29162efb9f393af9",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/correcao_dinamica/README.md",
+    "original_sha256": "3ad76b5a3a63ec75b1b6113b83fcc2d66560d22b66e5be934edd4c1d3d9be141",
+    "publication_sha256": "add420a8d30fc107efb69da145ce1c1c5acab20c22cf18da018675f7f1bc19ec",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/correcao_dinamica/ausentes_upstream/.github__workflows__combined_format_lint_test_mypy.yml.txt",
+    "original_sha256": "a875e49471ed48ff9e694e6cf290f2f9b812ebfb7c028a6128552b04a23c741d",
+    "publication_sha256": "1a4464973641a21d26e985ecf53f95605e70377faf359d692b26165f5ab28d0c",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/correcao_dinamica/testes.xml",
+    "original_sha256": "c248cbe6061920c23ed9b41f980a199d8c683970f9f015fae9162ceb72ec5ca8",
+    "publication_sha256": "d32ff8a1093c00aa001619a8fff5396a37af3ab28434779784067a64846a79bb",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/VALIDACAO.md.txt",
+    "original_sha256": "0fbc0a381948c141baf073a3b12aa17cfb8af8234f54573e10a4160d2df282e5",
+    "publication_sha256": "d9ad0a99945368b7daccc642c911c3c758dc768b87434cca7a35be3e80915036",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/publicacao/reproducao/install_check.log.txt",
+    "original_sha256": "af53b0c9c8e73017dafbcbff44fce58574ae6537e30f7b2de7c84dd27ba7c97a",
+    "publication_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/publicacao/reproducao/installation.log.txt",
+    "original_sha256": "5118dd55ad6a82995520e9804dc9c79fabfa286826a0f05ac01269039ccc0c4e",
+    "publication_sha256": "6810895f9f75e533bd8e6431a304ea04a8389bddd8d8b63c1807e349ba7bc4d6",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/publicacao/reproducao/publication_tests.log.txt",
+    "original_sha256": "c3d093a35fe824b2c0ed30958a83680efa5ceebd7122396547565e39dc8bec19",
+    "publication_sha256": "da5722b6deada6de1a03efe7dc23cd2363721d48a3f43c7969d1b6b791a0bcdf",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/publicacao/reproducao/reproduction_comparison.log.txt",
+    "original_sha256": "bb89fbb870d87d7dd6ce66da3d6cc796be119237779ddf422c9dedf548b61dd5",
+    "publication_sha256": "569f139a560d1aad2703ccd5c8e069fe823f331b09a31c956bcf41708268dcd1",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/publicacao/reproducao/reproduction_exclusive.log.txt",
+    "original_sha256": "22831ea151b520a7741bcc22ab21c16c8191e32d3ae0938679d81144ebf1bfdd",
+    "publication_sha256": "526cba1d554212a10d9d31d442691b0a09b181568f41ac76e5cf919452f166ce",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  },
+  {
+    "path": "evidencias/publicacao/reproducao/reproduction_static.log.txt",
+    "original_sha256": "b52cee3f2b5986bf4d4bb5b9f2659eb469e8b4b3932a0e8a017744732e3652a6",
+    "publication_sha256": "1a1caec112b6431ed8bf95d707eaa9d7f4b0647d7eceb9cc1bd0d62981537e5d",
+    "change": "Whitespace/line-ending normalization before publication; original preserved under ignored output/publication_raw_before_whitespace",
+    "scientific_values_changed": false
+  }
+]

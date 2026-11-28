@@ -1,0 +1,199 @@
+{
+  "inventory_kg_dm": {
+    "1": 0.0,
+    "23": 0.0,
+    "44": 0.0,
+    "50": 0.0,
+    "95": 0.0,
+    "104": 0.0,
+    "110": 0.0,
+    "167": 0.0,
+    "202": 0.0,
+    "216": 0.0,
+    "231": 0.0
+  },
+  "animals": [
+    {
+      "id": 12338,
+      "category": "CALF",
+      "weight": 61.43902053270324,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12339,
+      "category": "CALF",
+      "weight": 86.2475627198801,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12340,
+      "category": "CALF",
+      "weight": 76.07710686478431,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12341,
+      "category": "CALF",
+      "weight": 76.27928274005454,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12342,
+      "category": "CALF",
+      "weight": 57.13719711927668,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12343,
+      "category": "CALF",
+      "weight": 61.76628836768268,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12344,
+      "category": "CALF",
+      "weight": 47.996277308453216,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12345,
+      "category": "CALF",
+      "weight": 84.86791068407985,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12346,
+      "category": "HEIFER_I",
+      "weight": 221.4622736604794,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12347,
+      "category": "HEIFER_I",
+      "weight": 401.1210643649607,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 12348,
+      "category": "HEIFER_II",
+      "weight": 428.28035680208137,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 140
+    },
+    {
+      "id": 12349,
+      "category": "HEIFER_II",
+      "weight": 431.4247587780953,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 69
+    },
+    {
+      "id": 12350,
+      "category": "HEIFER_III",
+      "weight": 670.0630450616758,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 274
+    },
+    {
+      "id": 12351,
+      "category": "HEIFER_III",
+      "weight": 631.417002695627,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 269
+    },
+    {
+      "id": 12352,
+      "category": "HEIFER_III",
+      "weight": 686.6336756665789,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 260
+    },
+    {
+      "id": 12353,
+      "category": "HEIFER_III",
+      "weight": 550.4761698359354,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 269
+    },
+    {
+      "id": 12354,
+      "category": "HEIFER_III",
+      "weight": 589.3479846045994,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 270
+    },
+    {
+      "id": 17363,
+      "category": "DRY_COW",
+      "weight": 819.0821138779183,
+      "days_in_milk": 0,
+      "days_in_pregnancy": 252
+    },
+    {
+      "id": 17361,
+      "category": "LAC_COW",
+      "weight": 602.4383574649459,
+      "days_in_milk": 10,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 17357,
+      "category": "LAC_COW",
+      "weight": 588.9349498579613,
+      "days_in_milk": 84,
+      "days_in_pregnancy": 12
+    },
+    {
+      "id": 17356,
+      "category": "LAC_COW",
+      "weight": 694.5016688439575,
+      "days_in_milk": 98,
+      "days_in_pregnancy": 0
+    },
+    {
+      "id": 17360,
+      "category": "LAC_COW",
+      "weight": 665.2141749999588,
+      "days_in_milk": 133,
+      "days_in_pregnancy": 18
+    },
+    {
+      "id": 17355,
+      "category": "LAC_COW",
+      "weight": 676.1167012663469,
+      "days_in_milk": 154,
+      "days_in_pregnancy": 82
+    },
+    {
+      "id": 17362,
+      "category": "LAC_COW",
+      "weight": 789.5315366866216,
+      "days_in_milk": 156,
+      "days_in_pregnancy": 84
+    },
+    {
+      "id": 17359,
+      "category": "LAC_COW",
+      "weight": 524.5141091309764,
+      "days_in_milk": 209,
+      "days_in_pregnancy": 66
+    },
+    {
+      "id": 17358,
+      "category": "LAC_COW",
+      "weight": 589.8187143046435,
+      "days_in_milk": 302,
+      "days_in_pregnancy": 205
+    }
+  ]
+}

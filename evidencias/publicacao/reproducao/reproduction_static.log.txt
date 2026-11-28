@@ -1,0 +1,20 @@
+Exemplo academico: composicao RuFaS; precos, estoques, NEL e limites suplementares ilustrativos.
+Resultado: optimal | Optimization terminated successfully. (HiGHS Status 7: Optimal)
+Ingrediente                 | kg MN/dia | kg MS/dia | R$/dia
+Alfafa (farinha)            |   15.9119 |   14.3685 | 20.1158
+Milho (moagem media)        |    9.0957 |    8.0133 | 14.4239
+Farelo de soja              |    0.1828 |    0.1636 |  0.4580
+Custo total: R$ 34.9978/dia
+Totais: {'DM_kg': 22.545320001976965, 'CP_kg': 3.6000000000000005, 'NEL_Mcal': 35.0, 'NDF_kg': 6.754572497515793}
+DM_kg: fornecido=22.545320; min=22.545320001976965; max=22.545320001976965; folga=-0.000000; OK
+CP_kg: fornecido=3.600000; min=3.6; max=None; folga=0.000000; OK
+NEL_Mcal: fornecido=35.000000; min=35.0; max=None; folga=0.000000; OK
+NDF_min_kg_residual: fornecido=0.441883; min=0.0; max=None; folga=0.441883; OK
+NDF_max_kg_residual: fornecido=-2.263556; min=None; max=0.0; folga=2.263556; OK
+inclusion_1_kg_day: fornecido=15.911918; min=0.0; max=17.718715393133998; folga=1.806797; OK
+stock_1_kg: fornecido=111.383428; min=0.0; max=166.11295681063123; folga=54.729529; OK
+inclusion_44_kg_day: fornecido=9.095659; min=0.0; max=11.350737797956869; folga=2.255079; OK
+stock_44_kg: fornecido=63.669611; min=0.0; max=113.50737797956869; folga=49.837767; OK
+inclusion_167_kg_day: fornecido=0.182774; min=0.0; max=6.70391061452514; folga=0.182774; OK
+stock_167_kg: fornecido=1.279416; min=0.0; max=67.0391061452514; folga=1.279416; OK
+Entrada e resultado completos: output\linear_diet_example.json

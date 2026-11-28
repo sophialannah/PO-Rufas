@@ -1,0 +1,60 @@
+{
+  "files_hashed": 1607,
+  "total_bytes": 575407915,
+  "largest": [
+    {
+      "path": "input/data/end_to_end_testing/open_lot/e2e_json_animal_filter.json",
+      "bytes": 92832902,
+      "sha256": "b451488fdb94aa0857a8811ab1e682ebd837d0780f7c57e2ebc94b3aa031520a"
+    },
+    {
+      "path": "input/data/end_to_end_testing/field_and_feed/e2e_json_crop_soil_filter.json",
+      "bytes": 25745030,
+      "sha256": "8adc4f10deb3c90803e43f898a368b76d0719f656c2a9400e7dbf3bd35e0c4a3"
+    },
+    {
+      "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/daily.jsonl",
+      "bytes": 21883947,
+      "sha256": "14cb4266c2ec45857b3c7abbea1870867351d38514343663060037c4cedf66c1"
+    },
+    {
+      "path": "evidencias/publicacao/reproducao/exclusivo_365/daily.jsonl",
+      "bytes": 21883947,
+      "sha256": "14cb4266c2ec45857b3c7abbea1870867351d38514343663060037c4cedf66c1"
+    },
+    {
+      "path": "evidencias/correcao_dinamica/hibrido_final_365/daily.jsonl",
+      "bytes": 21877935,
+      "sha256": "eef4f28f0f0ff8fec31bf636246c8de0ac6276470481e1a93e6836e4658c67cb"
+    },
+    {
+      "path": "input/data/animal/animal_population.json",
+      "bytes": 21346204,
+      "sha256": "a062eb6e1c77cc20d8e28e901a7648984a75620943da77e7dcecf25d3e572d15"
+    },
+    {
+      "path": "input/data/end_to_end_testing/animals_only/e2e_json_animal_filter.json",
+      "bytes": 10652767,
+      "sha256": "07a5a7af84dc90810cf0891b1750c97ceee5da32b3b749a0702c96ca996bd2ca"
+    },
+    {
+      "path": "input/data/end_to_end_testing/freestall/e2e_json_animal_filter.json",
+      "bytes": 10652767,
+      "sha256": "170fa0a4dda3313f141930e257e8206c78e8550eb067bff0215a24eed36e052d"
+    },
+    {
+      "path": "evidencias/correcao_dinamica/hibrido_365/daily.jsonl",
+      "bytes": 10386860,
+      "sha256": "561af5f145844e930fdc537dc29a2880f3802e8dad26063e6cd12e82dd003962"
+    },
+    {
+      "path": "input/data/EEE/econ/commodity_prices.corn_silage.dollar_per_kilogram.csv",
+      "bytes": 10194813,
+      "sha256": "6caa8572329e066097114b2af86d0719b7a2d5c72c57ab6d27c7143abc39975e"
+    }
+  ],
+  "private_files_in_candidate": [],
+  "personal_local_path_mentions": [],
+  "credential_pattern_matches": [],
+  "git_operations": "Read-only; no staging, commit, push or merge"
+}

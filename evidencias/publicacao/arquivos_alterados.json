@@ -1,0 +1,2342 @@
+[
+  {
+    "status": " M",
+    "path": ".gitignore"
+  },
+  {
+    "status": " M",
+    "path": "README.md"
+  },
+  {
+    "status": " M",
+    "path": "RUFAS/biophysical/animal/herd_manager.py"
+  },
+  {
+    "status": " M",
+    "path": "RUFAS/biophysical/animal/ration/linear_diet.py"
+  },
+  {
+    "status": " M",
+    "path": "RUFAS/biophysical/feed_storage/feed_manager.py"
+  },
+  {
+    "status": " M",
+    "path": "RUFAS/input/metadata/properties/default.json"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/README.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/cartoes_consulta.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/checklist_apresentacao.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/guia_demonstracao.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/guia_demonstracao_web.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/perguntas_e_respostas.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/resultados_validados.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/roteiro_anderson.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/roteiro_completo.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/roteiro_sophia.md"
+  },
+  {
+    "status": " M",
+    "path": "apresentacao/simulacao_arguicao.md"
+  },
+  {
+    "status": " M",
+    "path": "docs/apresentacao_projeto.md"
+  },
+  {
+    "status": " M",
+    "path": "docs/auditoria_comparativa_rufas.md"
+  },
+  {
+    "status": " M",
+    "path": "docs/integracao_real_rufas.md"
+  },
+  {
+    "status": " M",
+    "path": "docs/o_que_foi_corrigido.md"
+  },
+  {
+    "status": " M",
+    "path": "docs/otimizador_linear.md"
+  },
+  {
+    "status": " M",
+    "path": "docs/revisao_final_otimizador.md"
+  },
+  {
+    "status": " M",
+    "path": "frontend/README.md"
+  },
+  {
+    "status": " M",
+    "path": "frontend/app.py"
+  },
+  {
+    "status": " M",
+    "path": "tests/test_biophysical/test_animal/test_herd_manager/test_herd_manager_pen_management.py"
+  },
+  {
+    "status": "??",
+    "path": "COPYING.LESSER.txt"
+  },
+  {
+    "status": "??",
+    "path": "COPYING.txt"
+  },
+  {
+    "status": "??",
+    "path": "RUFAS/biophysical/animal/ration/dynamic_linear_optimizer.py"
+  },
+  {
+    "status": "??",
+    "path": "RUFAS/biophysical/animal/ration/mineral_limits.py"
+  },
+  {
+    "status": "??",
+    "path": "apresentacao/apresentacao_po_rufas_final.pptx"
+  },
+  {
+    "status": "??",
+    "path": "apresentacao/gerar_versao_final.py"
+  },
+  {
+    "status": "??",
+    "path": "constraints-po-rufas.txt"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/01-contextualizacao.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/02-fundamentacao.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/03-dados.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/04-modelagem.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/05-restricoes.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/06-implementacao.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/07-integracao.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/08-minerais.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/09-comparacao.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/10-resultados.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/11-testes.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/12-manual.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/13-limitacoes.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/14-referencias.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/README.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/README_ANTERIOR.md"
+  },
+  {
+    "status": "??",
+    "path": "docs/po_rufas/VALIDACAO.md"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/INDEX.md"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/README.md"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/accumulated_cost.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/auditoria_local.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/auditoria_upstream.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/comparacao.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/accumulated_cost.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/auditoria_local.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/auditoria_upstream.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/comparacao.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/diet_cost.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/dry_matter.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/inventory.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/daily.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/ingredientes.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/linear_highs_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/milk.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/daily.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/ingredientes.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/native_slsqp_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/rejected_pens.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/confirmacao/resumo.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/diet_cost.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/dry_matter.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/inventory.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/linear_highs_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/linear_highs_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/linear_highs_365/daily.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/linear_highs_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/linear_highs_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/linear_highs_365/ingredientes.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/linear_highs_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/linear_highs_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/linear_highs_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/manifesto.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/milk.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/native_slsqp_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/native_slsqp_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/native_slsqp_365/daily.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/native_slsqp_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/native_slsqp_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/native_slsqp_365/ingredientes.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/native_slsqp_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/native_slsqp_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/native_slsqp_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/progressivas.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/rejected_pens.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/resumo.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/teste_ui_saida.md"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/testes.xml"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/testes_finais.xml"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/testes_saida.md"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/anual/validacao_dinamica.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/README.md"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/configuracao.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/cost.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/cotacoes.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/economico_parcial.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/ingredientes.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/ingredientes_93785.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/ingredientes_98605.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/manifesto.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/median_seconds.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/milho_ifag.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/nutricao.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/nutricao_93785.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/nutricao_98605.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/restricoes.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/resultados.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/resumo.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/sensibilidade.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/sensibilidade.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/sensibilidade.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/telas/comparacao.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/telas/resultado_referencia.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/telas/visao_geral.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/tempos.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/testes.xml"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/comparacao/testes_saida.md"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/README.md"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/accumulated_cost.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/auditoria_fisica.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/auditoria_historica.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/auditoria_resultados.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/ausentes_upstream/.github__workflows__combined_format_lint_test_mypy.yml.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/ausentes_upstream/helpful_scripts__herd_inputs_calculator__herd_inputs_calculator.py.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/ausentes_upstream/manifesto.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/ausentes_upstream/output__output_filters__.keep.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/ausentes_upstream/output__output_filters___csv_all_variables.txt.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/cenario_comercial_parcial.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/comparacao_anual.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/convergencia_por_categoria.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/correcao_config_policy.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/correcao_flag_false.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/correcao_stock_tests.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/correcao_suite_final.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/correcao_verificacao.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/cost.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/diagnostico_estoque_126/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/diagnostico_estoque_126/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/diagnostico_estoque_126/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/diagnostico_estoque_126/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/diagnostico_estoque_126/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/diagnostico_estoque_126/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/diagnostico_estoque_126/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/diagnostico_estoque_126/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/diagnostico_estoque_126/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/dry_matter.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_30/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_30/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_30/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_30/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_30/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_30/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_30/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_30/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_30/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_7/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_7/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_7/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_7/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_7/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_7/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_7/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_7/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_estoque_7/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_30/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_30/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_30/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_30/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_30/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_30/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_30/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_30/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_30/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_7/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_7/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_7/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_7/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_7/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_7/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_7/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_7/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/exclusivo_final_7/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hashes_implementacao.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_30/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_30/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_30/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_30/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_30/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_30/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_30/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_30/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_30/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_7/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_7/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_7/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_7/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_7/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_7/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_7/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_7/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_7/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_final_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_final_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_final_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_final_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_final_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_final_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_final_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_final_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_final_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_30/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_30/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_30/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_30/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_30/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_30/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_30/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_30/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_30/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_7/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_7/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_7/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_7/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_7/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_7/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_7/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_7/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_todas_final_7/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_validado_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_validado_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_validado_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_validado_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_validado_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_validado_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_validado_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_validado_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/hibrido_validado_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/inventory.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/licencas_recuperadas.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/manifesto_rodadas.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/milk.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/minerais_por_curral_dia.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_final_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_final_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_final_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_final_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_final_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_final_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_final_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_final_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_final_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_30/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_30/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_30/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_30/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_30/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_30/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_30/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_30/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_30/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_7/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_7/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_7/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_7/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_7/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_7/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_7/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_7/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_7/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/configuration_check.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/nativo_mtl_flag_false_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/optimizer_anterior.py.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/primeiro_dia_comparacao.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/primeiro_dia_entradas.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/primeiro_dia_comparacao.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/primeiro_dia_entradas.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/reproducao_original_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/reproducao_original_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/reproducao_original_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/reproducao_original_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/reproducao_original_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/reproducao_original_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/reproducao_original_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/reproducao_original_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_final/reproducao_original_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/primeiro_dia_comparacao.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/primeiro_dia_entradas.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/reproducao_original_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/reproducao_original_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/reproducao_original_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/reproducao_original_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/reproducao_original_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/reproducao_original_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/reproducao_original_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/reproducao_original_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/replay_validado/reproducao_original_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reproducao_original_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reproducao_original_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reproducao_original_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reproducao_original_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reproducao_original_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reproducao_original_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reproducao_original_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reproducao_original_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reproducao_original_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reprovacoes_detalhadas.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/reprovacoes_historicas.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/serie_HiGHS_exclusivo.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/serie_HiGHS_hibrido.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/serie_SLSQP_MTL.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/status_inicial.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/testes.xml"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/testes_finais.xml"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/testes_verificacao.xml"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_30/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_30/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_30/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_30/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_30/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_30/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_30/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_30/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_30/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_7/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_7/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_7/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_7/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_7/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_7/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_7/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_7/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_7/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_reinicio_1/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_reinicio_1/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_reinicio_1/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_reinicio_1/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_reinicio_1/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_reinicio_1/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_reinicio_1/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_reinicio_1/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/correcao_dinamica/todas_reinicio_1/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/indice_execucoes.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/README.md"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/arquivos_alterados.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/arquivos_alterados.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/auditoria_git.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/bezerros_auditoria.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/bezerros_criterios.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/candidato_arquivos.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/candidato_inventario.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/README.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/README.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/cartoes_consulta.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/checklist_apresentacao.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/guia_demonstracao.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/guia_demonstracao_web.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/perguntas_e_respostas.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/resultados_validados.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/roteiro_anderson.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/roteiro_completo.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/roteiro_sophia.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/apresentacao/simulacao_arguicao.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/apresentacao_projeto.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/01-contextualizacao.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/02-fundamentacao.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/03-dados.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/04-modelagem.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/05-restricoes.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/06-implementacao.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/07-integracao.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/08-minerais.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/09-comparacao.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/10-resultados.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/11-testes.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/12-manual.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/13-limitacoes.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/14-referencias.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/README.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/README_ANTERIOR.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/docs/po_rufas/VALIDACAO.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/frontend/README.md.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/historico_documental/manifesto.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/ambiente.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/configuracao.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/cost.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/cotacoes.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/economico_parcial.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/ingredientes.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/ingredientes_93785.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/ingredientes_98605.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/median_seconds.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/nutricao.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/nutricao_93785.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/nutricao_98605.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/restricoes.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/resultados.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/resumo.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/sensibilidade.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/sensibilidade.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/sensibilidade.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/comparacao/tempos.csv"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/estatico.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/exclusivo_365/animal.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/exclusivo_365/config.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/exclusivo_365/daily.jsonl"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/exclusivo_365/effective_inputs.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/exclusivo_365/feed.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/exclusivo_365/initial_state.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/exclusivo_365/metadata.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/exclusivo_365/progress.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/exclusivo_365/summary.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/install_check.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/installation.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/origem_imports.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/publication_tests.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/reproduction_comparison.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/reproduction_exclusive.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/reproduction_static.log.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/reproducao/testes_isolados.xml"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/saneamento_caminhos.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/status_inicial.txt"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/telas/comparacao_exclusiva.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/telas/manifesto.json"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/telas/resultado_comparacao.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/telas/visao_geral.png"
+  },
+  {
+    "status": "??",
+    "path": "evidencias/publicacao/verificacao_documental.json"
+  },
+  {
+    "status": "??",
+    "path": "experiments/__init__.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/annual.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/annual_report.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/calf_report.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/capture_frontend.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/capture_publication.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/comparison.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/convergence_report.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/first_day_regression.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/provenance.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/publication.py"
+  },
+  {
+    "status": "??",
+    "path": "experiments/recover_licenses.py"
+  },
+  {
+    "status": "??",
+    "path": "frontend/annual.py"
+  },
+  {
+    "status": "??",
+    "path": "tests/fixtures/dynamic_first_day.json"
+  },
+  {
+    "status": "??",
+    "path": "tests/test_annual.py"
+  },
+  {
+    "status": "??",
+    "path": "tests/test_comparison.py"
+  },
+  {
+    "status": "??",
+    "path": "tests/test_dynamic_convergence.py"
+  }
+]

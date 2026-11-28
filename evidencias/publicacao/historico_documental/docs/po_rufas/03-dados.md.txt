@@ -1,0 +1,76 @@
+# Dados de entrada e rastreabilidade
+
+[Sumário](README.md)
+
+A composição vem de arquivos do RuFaS. Valores econômicos, produção assumida de leite e metas suplementares descrevem um cenário demonstrativo. O JSON exportado registra o perfil, as hipóteses e as fontes dos ingredientes.
+
+| Parâmetro | Valor demonstrativo | Unidade | Classificação e origem | Arquivo / função |
+|---|---:|---|---|---|
+| Animal inicial | 98605 | ID | Registro RuFaS | `input/data/animal/animal_population.json`; `load_animals` |
+| Peso do animal 98605 | 627,560669 | kg | Registro RuFaS | Mesmo arquivo; construtor `Animal` |
+| DEL / paridade 98605 | 100 / 4 | dias / contagem | Registro RuFaS | Mesmo arquivo |
+| Animal alternativo | 93785 | ID | Registro RuFaS | Mesmo arquivo |
+| Leite | 30 ou 31 | kg/dia | Hipótese do cenário | `demo_inputs`, `run_scenario` |
+| Gordura / proteína verdadeira / lactose do leite | 3,8 / 3,2 / 4,8 | % | Hipóteses | `frontend/service.py::ASSUMPTIONS` |
+| Ambiente | Barn, caminhada 0, temperatura anterior 20 | configuração / distância nativa / °C | Hipóteses | `demo_inputs`, `run_scenario` |
+| MS dos alimentos | 90,3 / 88,1 / 89,5 | % MN | Biblioteca NRC, IDs 1/44/167 | `input/data/feed/NRC_comp.csv` |
+| PB / FDN / P / Ca dos alimentos | Por registro | % MS | Biblioteca NRC | Mesmo arquivo; `build_feeds` |
+| Preço alfafa / milho / soja | 1.400 / 1.800 / 2.800 | R$/t MS | Hipóteses econômicas | `linear_diet_example.py::example_feeds` |
+| Estoque alfafa / milho / soja | 150 / 100 / 60 | kg MS | Hipóteses alocadas ao animal | `example_feeds` |
+| Máximos alfafa / milho / soja | 16 / 10 / 6 | kg MS/dia | Hipóteses de inclusão | `example_feeds` |
+| NEL alfafa / milho / soja | 1,3 / 2,0 / 1,8 | Mcal/kg MS | Hipóteses de coeficientes fixos | `DEMO_FEEDS` |
+| PB mínima / NEL mínima | 3,6 / 35 | kg/dia / Mcal/dia | Metas externas | Widgets em `frontend/app.py` |
+| FDN mínima / máxima | 28 / 40 | % MS | Metas externas | Mesmo arquivo |
+| Horizonte | 7 | dias | Hipótese operacional | `run_scenario` |
+| Consumo de MS | Calculado por animal | kg MS/dia | Calculador NRC | `Animal.calculate_nutrition_requirements` |
+| P / Ca absorvidos requeridos | Calculados | g/dia | Calculador NRC e exigência processual de P | `optimize_animal_ration` |
+| Fosfato bicálcico 231 | 97 MS; 19,3 P; 22 Ca | % | Biblioteca NRC | `NRC_comp.csv` |
+| Preço / estoque / máximo ID 231 | 5 / 1 / 0,10 | R$/kg MN / kg MN / kg MN/dia | Hipóteses de reprodução | Entrada manual em Ingredientes |
+| NEL ID 231 | 0 | Mcal/kg MS | Valor explícito no cenário mineral | Entrada manual |
+
+O frontend disponibiliza somente candidatos com composição NRC. A ferramenta de catálogo por terminal possui uma auditoria mais ampla, com precedência NRC e candidatos NASEM quando ausentes no NRC. Seus resultados pertencem a outro fluxo.
+
+Conversões do adaptador, para `d=DM/100`:
+- preço por kg MN = preço por kg MS × d;
+- estoque MN = estoque MS / d;
+- limite MN = limite MS / d;
+- percentual de PB, FDN ou mineral dividido por 100 gera fração na MS;
+- preço por tonelada dividido por 1.000 conserva a base original.
+
+O período representa estoque alocado a um animal. Reutilizar esse estoque integral para vários animais exige uma alocação adicional. [Código do adaptador](../../RUFAS/biophysical/animal/ration/linear_diet_adapter.py)
+
+
+
+## Cotação regional e cenário híbrido
+
+O IFAG publicou em 17/11/2026 o boletim da semana 09–13/11 com milho disponível em Goiás a R$54,48/saca. O cenário econômico separado usa apenas essa cotação, preservando os outros preços como demonstrativos. [Publicação primária](https://apoiar.sistemafaeg.org.br/milho/%F0%9F%8C%BD-destaques-semanal-do-mercado-do-milho-em-goias-09-11-a-13-11-ifag/)
+
+| Item | Valor | Natureza |
+|---|---:|---|
+| Milho disponível Goiás | R$54,48/saca | Indicador IFAG observado na semana 09–13/11/2026 |
+| Massa da saca | 60 kg MN | Convenção adotada, apoiada na metodologia IFAG |
+| Preço MN | R$0,908/kg MN | 54,48/60 |
+| MS milho 44 | 88,1% | Biblioteca NRC, aproximação do produto comercial |
+| Preço MS | R$1,03065/kg MS | 0,908/0,881 |
+
+A massa comercial foi interpretada pela metodologia institucional; a umidade e a moagem não foram medidas no boletim. Preço ao produtor não inclui automaticamente moagem, frete, impostos ou margem de compra. A pesquisa não verificou fontes equivalentes para alfafa, farelo e fosfato. Soja em grão não foi usada como cotação do farelo. [Metodologia IFAG sobre saca de 60 kg](https://sistemafaeg.com.br/storage/arquivos/%C3%8Dndice-de-Insumos-ILC-Maio-2024.pdf)
+
+Cotação, conversões, fonte e cenário híbrido estão em cotacoes.csv e economico_parcial.json. Os cenários de regressão continuam com os preços originais.
+
+
+## Entradas da simulação anual
+
+O cenário anual copia example_freestall_dairy_metadata e seus arquivos de configuração para uma pasta isolada. Usa clima de 2013, padrão NRC, semente 42 e intervalo de um dia. O alvo de vacas é 10; o HerdFactory original determina a população efetiva. Os demais números nativos e o mercado de reposição ficam em effective_inputs.json e initial_state.json.
+
+O exemplo original era NASEM. Os IDs 301/302 foram retirados por ausência na biblioteca NRC, e IDs 1/167/231 foram acrescentados em cópia do feed. Os preços do cenário anual são UM/kg MS, demonstrativos. São distintos dos preços BRL do estudo estático. As duas estratégias recebem as mesmas entradas, clima, estoque inicial nativo e manejo. [Configurações arquivadas](../../evidencias/anual/README.md)
+
+
+
+
+## Dados congelados e cenário comercial separado
+
+`tests/fixtures/dynamic_first_day.json` guarda os alimentos completos, unidades, categoria, peso e requisitos do primeiro dia reproduzido. A reprodução experimental restaura os estados dos geradores entre solvers e preserva as entradas em `replay_final/primeiro_dia_entradas.json`. O código antigo foi congelado em `optimizer_anterior.py.txt`; os diários anteriores não foram sobrescritos.
+
+O catálogo dá ao suplemento 231 DM=97%, Ca=22% MS, P=19,3% MS e limite nativo de 100 kg MS por animal/dia neste cenário. Esse limite amplo não é uma recomendação científica de suplementação. Os tetos da dieta agora limitam sua inclusão implicitamente, sem inventar um máximo fixo específico.
+
+Os preços anuais continuam em UM/kg MS, incluindo valores demonstrativos muito baixos. `cenario_comercial_parcial.json` separa uma cotação verificável de milho CEPEA de 04/09/2026, 70,93 R$/saca de 60 kg MN, convertida com DM=0,881. Os demais preços não verificados ficam nulos. Esse arquivo é incompleto e não foi usado como cenário comercial completo, nem misturado às UM do cenário original.

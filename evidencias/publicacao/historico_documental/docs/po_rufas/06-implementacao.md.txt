@@ -1,0 +1,53 @@
+# Implementação computacional
+
+[Sumário](README.md)
+
+| Módulo | Responsabilidade |
+|---|---|
+| `frontend/app.py` | Seis abas, seleção e execução |
+| `frontend/service.py` | Carregamento, validação, NRCFeed e cenários |
+| `frontend/results.py` | Tabelas, gráficos, balanço mineral, parecer e downloads |
+| `frontend/style.css` | Estilo responsivo |
+| `linear_diet.py` | Ingredient, AnimalProfile, DietRequirements, LP e checks |
+| `linear_diet_adapter.py` | Conversões explícitas entre Feed e modelo linear |
+| `linear_diet_integration.py` | Animal, mínimos absorvíveis, RationManager e parecer |
+| `linear_diet_integrated_example.py` | Contexto reproduzível e terminal |
+| `linear_diet_catalog.py` | Auditoria ampliada do catálogo e CLI |
+| `linear_diet_sensitivity.py` | Reotimização de preços |
+| `linear_diet_workflow.py` | Workflow por entradas explícitas NRC |
+
+Os módulos lineares ficam em `RUFAS/biophysical/animal/ration/`. A aplicação importa Python diretamente. Streamlit mantém estado por sessão; Pandas prepara tabelas; os gráficos usam os recursos do Streamlit. A dependência adicional declarada é Streamlit 1.67.0.
+
+O cache guarda estruturas serializáveis e prévias de requisitos. As instâncias mutáveis são construídas dentro de cada execução. Um lock no serviço serializa o contexto que altera temporariamente classes RuFaS e RNG. O contexto restaura estado ao sair. Subclasses locais guardam a configuração de ração e padrão de oferta. O isolamento é voltado à execução acadêmica local.
+
+Entradas inválidas geram mensagens. O solver distingue `infeasible`, `solver_failure` e `verification_failed`; resultados sem ótimo não expõem dieta utilizável. O diagnóstico mineral resolve variações de restrições para localizar conflitos, sem calcular um conjunto mínimo geral de inviabilidade.
+
+
+
+## Comparação e mensuração reproduzível
+
+O módulo experiments/comparison.py valida o cenário pelo backend, monta a matriz do LP com os construtores existentes e executa HiGHS e SLSQP. O SLSQP linear usa Jacobianas analíticas, ftol=1e-9 e maxiter=1000; parte do ponto médio dos bounds. O HiGHS usa inicialização interna. A formulação nativa usa RationOptimizer.attempt_optimization com sua partida e opções originais.
+
+Há uma chamada de aquecimento excluída por método e cinco medições sequenciais via perf_counter. Mínimo, máximo, mediana, amostras, iterações e resultados são arquivados. Oferta e avaliação nutricional são calculadas fora do cronômetro. A API nativa inclui sua montagem de configuração dentro da medição, enquanto a matriz A é preparada antes.
+
+A subclasse local NRC do calculador de oferta avalia todas as candidatas. O contexto usa o lock e a restauração de estado já existentes. A comparação aparece em Cenários, preservando as seis áreas. A captura automatizada usa Edge/DevTools com perfil temporário e não entra no fluxo de produção.
+
+
+## Implementação anual
+
+DynamicRationOptimizer é uma subclasse local de RationOptimizer com seleção por instância. HerdManager configura cada Pen a partir de animal.ration.optimizer_strategy. O padrão é native_slsqp. Somente o modo opt-in usa o adaptador; o comportamento nativo normal permanece no método original.
+
+Os campos de configuração foram incluídos no esquema nativo de entrada para evitar descarte silencioso. optimizer_fallback aceita native_slsqp ou fail. optimizer_record_events habilita proveniência. O runner experiments/annual.py inicializa InputManager, HerdFactory e SimulationEngine FULL_FARM em processo isolado.
+
+RecordedSimulation observa deduções e compras nos métodos da instância FeedManager e registra no avanço real do dia. Não executa uma segunda dedução. A aplicação frontend/annual.py inicia processos com UUID, mantém os resultados e lê o progresso dos diários. experiments/annual_report.py deriva tabelas e gráficos.
+
+
+
+
+## Implementação corrigida e rastreabilidade
+
+`dynamic_linear_optimizer.py` mantém seleção por instância, conserva o método SLSQP original e registra cada LP, raio, limites físicos e locais, resíduos originais, avaliação, minerais, custo, decisão de passo e encerramento. `mineral_limits.py` concentra a política NRC 2005, independente do NutritionEvaluator. Não se modificaram os indicadores nativos para transformar reprovações em aprovações.
+
+`linear_highs` mantém a cobertura histórica de lactação; `linear_highs_all` amplia o híbrido às categorias adultas NRC reconhecidas; `linear_highs_exclusive` usa a mesma formulação ampliada e impõe falha explícita, independentemente da seleção de fallback. Categorias/padrões não suportados não são convertidos silenciosamente. Uma falha de formulação no exclusivo interrompe a execução e registra o motivo.
+
+Uma correção adicional em FeedManager consome lotes reais subgrama numa segunda passagem antes de declarar falta. A primeira passagem e seus testes anteriores foram preservados. O diagnóstico do dia 126 identificou três lotes do alimento 104, somando 0,00153654789375 kg MS, que eram contados na consulta e ignorados na retirada.

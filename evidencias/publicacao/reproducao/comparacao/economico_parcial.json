@@ -1,0 +1,984 @@
+{
+  "classification": "Cenário híbrido exploratório: cotação apenas do milho; demais preços demonstrativos",
+  "quote": {
+    "ingredient": "Milho disponível em Goiás",
+    "price": 54.48,
+    "unit": "R$/saca",
+    "observation_period": "09–13/11/2026",
+    "publication_date": "2026-11-17",
+    "source": "IFAG, Programa Apoiar",
+    "url": "https://apoiar.sistemafaeg.org.br/milho/%F0%9F%8C%BD-destaques-semanal-do-mercado-do-milho-em-goias-09-11-a-13-11-ifag/",
+    "conversion_assumption": "Saca de 60 kg MN; composição do milho 44 usada como aproximação do produto comercial",
+    "brl_per_kg_mn": 0.9079999999999999,
+    "brl_per_kg_dm": 1.0306469920544834,
+    "limitations": "Indicador ao produtor; moagem, frete, impostos e margem de compra não incluídos. Demais preços demonstrativos."
+  },
+  "scenarios": [
+    {
+      "animal_id": 98605,
+      "profile": {
+        "body_weight_kg": 627.5606687009408,
+        "days_in_milk": 100,
+        "milk_kg_day": 30.0,
+        "milk_fat_percent": 3.8,
+        "milk_protein_percent": 3.2,
+        "requirements": {
+          "dm_min_kg": 22.23158035429436,
+          "dm_max_kg": 22.23158035429436,
+          "cp_min_kg": 3.6,
+          "nel_min_mcal": 35.0,
+          "ndf_min_fraction": 0.28,
+          "ndf_max_fraction": 0.4,
+          "mineral_min_kg": {},
+          "sources": {
+            "cp_min_kg": "Metas externas do cenário web",
+            "nel_min_mcal": "Metas externas do cenário web",
+            "ndf_min_fraction": "Metas externas do cenário web",
+            "ndf_max_fraction": "Metas externas do cenário web",
+            "mineral_min_kg": "Metas externas do cenário web",
+            "dm_min_kg": "RuFaS NutritionRequirements.dry_matter (kg/day)",
+            "dm_max_kg": "RuFaS NutritionRequirements.dry_matter (kg/day)"
+          }
+        },
+        "source": "RuFaS Animal and MilkProduction snapshot"
+      },
+      "requirements": {
+        "maintenance_energy": 10.030712314356059,
+        "growth_energy": 0.0,
+        "pregnancy_energy": 0.0,
+        "lactation_energy": 21.925051612903225,
+        "metabolizable_protein": 2120.537744724124,
+        "calcium": 56.556429264689925,
+        "phosphorus": 50.48670169169624,
+        "process_based_phosphorus": 0.0,
+        "dry_matter": 22.23158035429436,
+        "activity_energy": 0.0,
+        "essential_amino_acids": {
+          "histidine": 0.0,
+          "isoleucine": 0.0,
+          "leucine": 0.0,
+          "lysine": 0.0,
+          "methionine": 0.0,
+          "phenylalanine": 0.0,
+          "threonine": 0.0,
+          "thryptophan": 0.0,
+          "valine": 0.0
+        }
+      },
+      "ingredients": [
+        {
+          "identifier": 1,
+          "name": "Alfafa",
+          "price_per_kg": 1.2642,
+          "stock_kg": 166.11295681063123,
+          "dm_fraction": 0.903,
+          "nel_mcal_per_kg_dm": 1.3,
+          "cp_fraction": 0.192,
+          "ndf_fraction": 0.41600000000000004,
+          "minimum_kg_day": 0.0,
+          "maximum_kg_day": 17.718715393133998,
+          "mineral_fractions": {
+            "calcium": 0.0147,
+            "phosphorus": 0.0028000000000000004,
+            "magnesium": 0.0029,
+            "potassium": 0.023700000000000002,
+            "sodium": 0.001,
+            "chlorine": 0.006500000000000001,
+            "sulfur": 0.0026
+          },
+          "sources": {
+            "identifier": "input/data/feed/NRC_comp.csv",
+            "name": "input/data/feed/NRC_comp.csv",
+            "price_per_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "stock_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "dm_fraction": "input/data/feed/NRC_comp.csv",
+            "cp_fraction": "input/data/feed/NRC_comp.csv",
+            "ndf_fraction": "input/data/feed/NRC_comp.csv",
+            "minimum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "maximum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "mineral_fractions": "input/data/feed/NRC_comp.csv",
+            "nel_mcal_per_kg_dm": "Hipótese da demonstração ou valor informado no cenário web"
+          }
+        },
+        {
+          "identifier": 44,
+          "name": "Milho",
+          "price_per_kg": 0.9079999999999999,
+          "stock_kg": 113.50737797956869,
+          "dm_fraction": 0.8809999999999999,
+          "nel_mcal_per_kg_dm": 2.0,
+          "cp_fraction": 0.094,
+          "ndf_fraction": 0.095,
+          "minimum_kg_day": 0.0,
+          "maximum_kg_day": 11.350737797956869,
+          "mineral_fractions": {
+            "calcium": 0.0004,
+            "phosphorus": 0.003,
+            "magnesium": 0.0012,
+            "potassium": 0.0042,
+            "sodium": 0.0002,
+            "chlorine": 0.0008,
+            "sulfur": 0.001
+          },
+          "sources": {
+            "identifier": "input/data/feed/NRC_comp.csv",
+            "name": "input/data/feed/NRC_comp.csv",
+            "price_per_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "stock_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "dm_fraction": "input/data/feed/NRC_comp.csv",
+            "cp_fraction": "input/data/feed/NRC_comp.csv",
+            "ndf_fraction": "input/data/feed/NRC_comp.csv",
+            "minimum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "maximum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "mineral_fractions": "input/data/feed/NRC_comp.csv",
+            "nel_mcal_per_kg_dm": "Hipótese da demonstração ou valor informado no cenário web"
+          }
+        },
+        {
+          "identifier": 167,
+          "name": "Farelo de soja",
+          "price_per_kg": 2.506,
+          "stock_kg": 67.0391061452514,
+          "dm_fraction": 0.895,
+          "nel_mcal_per_kg_dm": 1.8,
+          "cp_fraction": 0.5379999999999999,
+          "ndf_fraction": 0.098,
+          "minimum_kg_day": 0.0,
+          "maximum_kg_day": 6.70391061452514,
+          "mineral_fractions": {
+            "calcium": 0.0034999999999999996,
+            "phosphorus": 0.006999999999999999,
+            "magnesium": 0.0029,
+            "potassium": 0.0241,
+            "sodium": 0.0003,
+            "chlorine": 0.0013,
+            "sulfur": 0.0039000000000000003
+          },
+          "sources": {
+            "identifier": "input/data/feed/NRC_comp.csv",
+            "name": "input/data/feed/NRC_comp.csv",
+            "price_per_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "stock_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "dm_fraction": "input/data/feed/NRC_comp.csv",
+            "cp_fraction": "input/data/feed/NRC_comp.csv",
+            "ndf_fraction": "input/data/feed/NRC_comp.csv",
+            "minimum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "maximum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "mineral_fractions": "input/data/feed/NRC_comp.csv",
+            "nel_mcal_per_kg_dm": "Hipótese da demonstração ou valor informado no cenário web"
+          }
+        },
+        {
+          "identifier": 231,
+          "name": "Dicalcium Phosphate, dibasic - CaHPO4",
+          "price_per_kg": 5.0,
+          "stock_kg": 1.0,
+          "dm_fraction": 0.97,
+          "nel_mcal_per_kg_dm": 0.0,
+          "cp_fraction": 0.0,
+          "ndf_fraction": 0.0,
+          "minimum_kg_day": 0.0,
+          "maximum_kg_day": 0.1,
+          "mineral_fractions": {
+            "calcium": 0.22,
+            "phosphorus": 0.193,
+            "magnesium": 0.0,
+            "potassium": 0.0,
+            "sodium": 0.0,
+            "chlorine": 0.0,
+            "sulfur": 0.011399999999999999
+          },
+          "sources": {
+            "identifier": "input/data/feed/NRC_comp.csv",
+            "name": "input/data/feed/NRC_comp.csv",
+            "price_per_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "stock_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "dm_fraction": "input/data/feed/NRC_comp.csv",
+            "cp_fraction": "input/data/feed/NRC_comp.csv",
+            "ndf_fraction": "input/data/feed/NRC_comp.csv",
+            "minimum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "maximum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "mineral_fractions": "input/data/feed/NRC_comp.csv",
+            "nel_mcal_per_kg_dm": "Hipótese da demonstração ou valor informado no cenário web"
+          }
+        }
+      ],
+      "result": {
+        "status": "optimal",
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "quantities_kg_day": {
+          "1": 14.196086979118947,
+          "44": 9.979350856448253,
+          "167": 0.6486038962479863,
+          "231": 0.04144868090421863
+        },
+        "ration_kg_dm_day": {
+          "1": 12.819066542144409,
+          "44": 8.79180810453091,
+          "167": 0.5805004871419478,
+          "231": 0.040205220477092074
+        },
+        "costs_per_day": {
+          "1": 17.946693159002173,
+          "44": 9.061250577655013,
+          "167": 1.6254013639974536,
+          "231": 0.20724340452109316
+        },
+        "cost_per_day": 28.840588505175734,
+        "totals": {
+          "DM_kg": 22.23158035429436,
+          "CP_kg": 3.6,
+          "NEL_Mcal": 35.29330359070506,
+          "NDF_kg": 6.224842499202421
+        },
+        "checks": [
+          {
+            "name": "DM_kg",
+            "supplied": 22.23158035429436,
+            "lower": 22.23158035429436,
+            "upper": 22.23158035429436,
+            "slack": 0.0,
+            "satisfied": true
+          },
+          {
+            "name": "CP_kg",
+            "supplied": 3.6,
+            "lower": 3.6,
+            "upper": null,
+            "slack": 0.0,
+            "satisfied": true
+          },
+          {
+            "name": "NEL_Mcal",
+            "supplied": 35.293303590705065,
+            "lower": 35.0,
+            "upper": null,
+            "slack": 0.2933035907050652,
+            "satisfied": true
+          },
+          {
+            "name": "NDF_min_kg_residual",
+            "supplied": 1.448494102440634e-15,
+            "lower": 0.0,
+            "upper": null,
+            "slack": 1.448494102440634e-15,
+            "satisfied": true
+          },
+          {
+            "name": "NDF_max_kg_residual",
+            "supplied": -2.667789642515322,
+            "lower": null,
+            "upper": 0.0,
+            "slack": 2.667789642515322,
+            "satisfied": true
+          },
+          {
+            "name": "absorbed_phosphorus_g",
+            "supplied": 50.48670269169626,
+            "lower": 50.48670269169624,
+            "upper": null,
+            "slack": 2.1316282072803006e-14,
+            "satisfied": true
+          },
+          {
+            "name": "absorbed_calcium_g",
+            "supplied": 68.2640594986546,
+            "lower": 56.55643026468992,
+            "upper": null,
+            "slack": 11.707629233964681,
+            "satisfied": true
+          },
+          {
+            "name": "inclusion_1_kg_day",
+            "supplied": 14.196086979118947,
+            "lower": 0.0,
+            "upper": 17.718715393133998,
+            "slack": 3.522628414015051,
+            "satisfied": true
+          },
+          {
+            "name": "stock_1_kg",
+            "supplied": 99.37260885383263,
+            "lower": 0.0,
+            "upper": 166.11295681063123,
+            "slack": 66.7403479567986,
+            "satisfied": true
+          },
+          {
+            "name": "inclusion_44_kg_day",
+            "supplied": 9.979350856448253,
+            "lower": 0.0,
+            "upper": 11.350737797956869,
+            "slack": 1.3713869415086162,
+            "satisfied": true
+          },
+          {
+            "name": "stock_44_kg",
+            "supplied": 69.85545599513777,
+            "lower": 0.0,
+            "upper": 113.50737797956869,
+            "slack": 43.65192198443091,
+            "satisfied": true
+          },
+          {
+            "name": "inclusion_167_kg_day",
+            "supplied": 0.6486038962479863,
+            "lower": 0.0,
+            "upper": 6.70391061452514,
+            "slack": 0.6486038962479863,
+            "satisfied": true
+          },
+          {
+            "name": "stock_167_kg",
+            "supplied": 4.540227273735904,
+            "lower": 0.0,
+            "upper": 67.0391061452514,
+            "slack": 4.540227273735904,
+            "satisfied": true
+          },
+          {
+            "name": "inclusion_231_kg_day",
+            "supplied": 0.04144868090421863,
+            "lower": 0.0,
+            "upper": 0.1,
+            "slack": 0.04144868090421863,
+            "satisfied": true
+          },
+          {
+            "name": "stock_231_kg",
+            "supplied": 0.29014076632953045,
+            "lower": 0.0,
+            "upper": 1.0,
+            "slack": 0.29014076632953045,
+            "satisfied": true
+          }
+        ]
+      },
+      "native_return": {
+        "config": {
+          "rations": [
+            {
+              "animal_combination": "lac_cow",
+              "feeds": [
+                {
+                  "feed_type": 1,
+                  "ration_percentage": 57.66151725542181
+                },
+                {
+                  "feed_type": 44,
+                  "ration_percentage": 39.54648281597598
+                },
+                {
+                  "feed_type": 167,
+                  "ration_percentage": 2.6111525941511196
+                },
+                {
+                  "feed_type": 231,
+                  "ration_percentage": 0.1808473344510834
+                }
+              ]
+            }
+          ],
+          "ration_formulation_parameters": {
+            "user_defined_ration_tolerance": 1e-07
+          }
+        },
+        "ration_feeds": [
+          1,
+          44,
+          167,
+          231
+        ],
+        "ration_kg_dm_day": {
+          "1": 12.819066542144409,
+          "44": 8.79180810453091,
+          "167": 0.5805004871419478,
+          "231": 0.04020522047709207
+        },
+        "total_dm": 22.23158035429436,
+        "supply_kg": {
+          "CP": 3.5999999999999996,
+          "NDF": 6.224842499202421
+        },
+        "native_evaluation": {
+          "is_valid_cow_ration": true,
+          "deltas": {
+            "total_energy": 2.254691413365542,
+            "maintenance_energy": 24.179743026268767,
+            "lactation_energy": 12.116616729718828,
+            "growth_energy": 20.754214137702782,
+            "metabolizable_protein": 0.0,
+            "calcium": 11.707630233964665,
+            "phosphorus": 1.0000000116860974e-06,
+            "dry_matter": 0.0,
+            "ndf_percent": 0.0,
+            "forage_ndf_percent": 8.987191178255475,
+            "fat_percent": 3.8687871118078005
+          },
+          "criteria": {
+            "total_energy": true,
+            "maintenance_energy": true,
+            "lactation_energy": true,
+            "growth_energy": true,
+            "metabolizable_protein": true,
+            "calcium": true,
+            "phosphorus": true,
+            "dry_matter": true,
+            "ndf_percent": true,
+            "forage_ndf_percent": true,
+            "fat_percent": true
+          },
+          "supply_summary": {
+            "metabolizable_protein_g": 2320.909495599983,
+            "maintenance_energy_mcal": 34.210455340624826,
+            "lactation_energy_mcal": 34.04166834262205,
+            "calcium_g": 68.26405949865459,
+            "phosphorus_g": 50.48670269169625,
+            "forage_ndf_kg": 5.332731681532074,
+            "fat_kg": 0.69611810930247
+          }
+        },
+        "consumer": "RationManager.set_user_defined_rations/get_user_defined_ration"
+      },
+      "nrc_minerals": {
+        "enabled": true,
+        "requirement_g_day": {
+          "phosphorus": 50.48670169169624,
+          "calcium": 56.556429264689925
+        },
+        "lp_minimum_g_day": {
+          "phosphorus": 50.48670269169624,
+          "calcium": 56.55643026468992
+        },
+        "coefficients_g_per_kg_dm": {
+          "phosphorus": {
+            "1": 1.7920000000000003,
+            "44": 2.1,
+            "167": 4.8999999999999995,
+            "231": 154.4
+          },
+          "calcium": {
+            "1": 4.41,
+            "44": 0.24000000000000002,
+            "167": 2.1,
+            "231": 209.0
+          }
+        },
+        "source": "RuFaS NRC: NutritionSupplyCalculator.calculate_phosphorus_supply/calculate_calcium_supply",
+        "infeasibility": null,
+        "phosphorus_total_g_day": 74.09192159366948
+      },
+      "scenario_id": "016afab8c46b",
+      "animal": {
+        "id": 98605,
+        "breed": "HO",
+        "body_weight": 627.5606687009408,
+        "days_in_milk": 100,
+        "parity": 4
+      },
+      "period_days": 7,
+      "nutrient_standard": "NRC 2001",
+      "nasem_phosphorus_diagnostic": null,
+      "assumptions": {
+        "gordura_pct": 3.8,
+        "proteina_verdadeira_pct": 3.2,
+        "lactose_pct": 4.8,
+        "alojamento": "Barn",
+        "distancia_caminhada": 0.0,
+        "temperatura_anterior_c": 20.0,
+        "origem": "Hipóteses do cenário integrado RuFaS",
+        "leite_kg_dia": 30.0,
+        "origem_animal": "input/data/animal/animal_population.json"
+      },
+      "limitations": [
+        "Escopo de uma vaca Holandesa em lactação no padrão NRC.",
+        "O LP usa consumo de MS calculado pelo RuFaS e metas externas de PB, NEL e FDN.",
+        "Os dados econômicos e valores de NEL pré-preenchidos são ilustrativos.",
+        "O parecer nativo se aplica aos critérios avaliados. A simulação da fazenda e a baixa de estoque estão fora do fluxo."
+      ]
+    },
+    {
+      "animal_id": 93785,
+      "profile": {
+        "body_weight_kg": 586.2326957760057,
+        "days_in_milk": 236,
+        "milk_kg_day": 31.0,
+        "milk_fat_percent": 3.8,
+        "milk_protein_percent": 3.2,
+        "requirements": {
+          "dm_min_kg": 22.701314931104825,
+          "dm_max_kg": 22.701314931104825,
+          "cp_min_kg": 3.6,
+          "nel_min_mcal": 35.0,
+          "ndf_min_fraction": 0.28,
+          "ndf_max_fraction": 0.4,
+          "mineral_min_kg": {},
+          "sources": {
+            "cp_min_kg": "Metas externas do cenário web",
+            "nel_min_mcal": "Metas externas do cenário web",
+            "ndf_min_fraction": "Metas externas do cenário web",
+            "ndf_max_fraction": "Metas externas do cenário web",
+            "mineral_min_kg": "Metas externas do cenário web",
+            "dm_min_kg": "RuFaS NutritionRequirements.dry_matter (kg/day)",
+            "dm_max_kg": "RuFaS NutritionRequirements.dry_matter (kg/day)"
+          }
+        },
+        "source": "RuFaS Animal and MilkProduction snapshot"
+      },
+      "requirements": {
+        "maintenance_energy": 9.53108876862003,
+        "growth_energy": 0.0,
+        "pregnancy_energy": 0.0,
+        "lactation_energy": 22.655886666666664,
+        "metabolizable_protein": 2176.3441397542656,
+        "calcium": 56.46219972567698,
+        "phosphorus": 51.77378032265684,
+        "process_based_phosphorus": 0.0,
+        "dry_matter": 22.701314931104825,
+        "activity_energy": 0.0,
+        "essential_amino_acids": {
+          "histidine": 0.0,
+          "isoleucine": 0.0,
+          "leucine": 0.0,
+          "lysine": 0.0,
+          "methionine": 0.0,
+          "phenylalanine": 0.0,
+          "threonine": 0.0,
+          "thryptophan": 0.0,
+          "valine": 0.0
+        }
+      },
+      "ingredients": [
+        {
+          "identifier": 1,
+          "name": "Alfafa",
+          "price_per_kg": 1.2642,
+          "stock_kg": 166.11295681063123,
+          "dm_fraction": 0.903,
+          "nel_mcal_per_kg_dm": 1.3,
+          "cp_fraction": 0.192,
+          "ndf_fraction": 0.41600000000000004,
+          "minimum_kg_day": 0.0,
+          "maximum_kg_day": 17.718715393133998,
+          "mineral_fractions": {
+            "calcium": 0.0147,
+            "phosphorus": 0.0028000000000000004,
+            "magnesium": 0.0029,
+            "potassium": 0.023700000000000002,
+            "sodium": 0.001,
+            "chlorine": 0.006500000000000001,
+            "sulfur": 0.0026
+          },
+          "sources": {
+            "identifier": "input/data/feed/NRC_comp.csv",
+            "name": "input/data/feed/NRC_comp.csv",
+            "price_per_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "stock_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "dm_fraction": "input/data/feed/NRC_comp.csv",
+            "cp_fraction": "input/data/feed/NRC_comp.csv",
+            "ndf_fraction": "input/data/feed/NRC_comp.csv",
+            "minimum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "maximum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "mineral_fractions": "input/data/feed/NRC_comp.csv",
+            "nel_mcal_per_kg_dm": "Hipótese da demonstração ou valor informado no cenário web"
+          }
+        },
+        {
+          "identifier": 44,
+          "name": "Milho",
+          "price_per_kg": 0.9079999999999999,
+          "stock_kg": 113.50737797956869,
+          "dm_fraction": 0.8809999999999999,
+          "nel_mcal_per_kg_dm": 2.0,
+          "cp_fraction": 0.094,
+          "ndf_fraction": 0.095,
+          "minimum_kg_day": 0.0,
+          "maximum_kg_day": 11.350737797956869,
+          "mineral_fractions": {
+            "calcium": 0.0004,
+            "phosphorus": 0.003,
+            "magnesium": 0.0012,
+            "potassium": 0.0042,
+            "sodium": 0.0002,
+            "chlorine": 0.0008,
+            "sulfur": 0.001
+          },
+          "sources": {
+            "identifier": "input/data/feed/NRC_comp.csv",
+            "name": "input/data/feed/NRC_comp.csv",
+            "price_per_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "stock_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "dm_fraction": "input/data/feed/NRC_comp.csv",
+            "cp_fraction": "input/data/feed/NRC_comp.csv",
+            "ndf_fraction": "input/data/feed/NRC_comp.csv",
+            "minimum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "maximum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "mineral_fractions": "input/data/feed/NRC_comp.csv",
+            "nel_mcal_per_kg_dm": "Hipótese da demonstração ou valor informado no cenário web"
+          }
+        },
+        {
+          "identifier": 167,
+          "name": "Farelo de soja",
+          "price_per_kg": 2.506,
+          "stock_kg": 67.0391061452514,
+          "dm_fraction": 0.895,
+          "nel_mcal_per_kg_dm": 1.8,
+          "cp_fraction": 0.5379999999999999,
+          "ndf_fraction": 0.098,
+          "minimum_kg_day": 0.0,
+          "maximum_kg_day": 6.70391061452514,
+          "mineral_fractions": {
+            "calcium": 0.0034999999999999996,
+            "phosphorus": 0.006999999999999999,
+            "magnesium": 0.0029,
+            "potassium": 0.0241,
+            "sodium": 0.0003,
+            "chlorine": 0.0013,
+            "sulfur": 0.0039000000000000003
+          },
+          "sources": {
+            "identifier": "input/data/feed/NRC_comp.csv",
+            "name": "input/data/feed/NRC_comp.csv",
+            "price_per_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "stock_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "dm_fraction": "input/data/feed/NRC_comp.csv",
+            "cp_fraction": "input/data/feed/NRC_comp.csv",
+            "ndf_fraction": "input/data/feed/NRC_comp.csv",
+            "minimum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "maximum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "mineral_fractions": "input/data/feed/NRC_comp.csv",
+            "nel_mcal_per_kg_dm": "Hipótese da demonstração ou valor informado no cenário web"
+          }
+        },
+        {
+          "identifier": 231,
+          "name": "Dicalcium Phosphate, dibasic - CaHPO4",
+          "price_per_kg": 5.0,
+          "stock_kg": 1.0,
+          "dm_fraction": 0.97,
+          "nel_mcal_per_kg_dm": 0.0,
+          "cp_fraction": 0.0,
+          "ndf_fraction": 0.0,
+          "minimum_kg_day": 0.0,
+          "maximum_kg_day": 0.1,
+          "mineral_fractions": {
+            "calcium": 0.22,
+            "phosphorus": 0.193,
+            "magnesium": 0.0,
+            "potassium": 0.0,
+            "sodium": 0.0,
+            "chlorine": 0.0,
+            "sulfur": 0.011399999999999999
+          },
+          "sources": {
+            "identifier": "input/data/feed/NRC_comp.csv",
+            "name": "input/data/feed/NRC_comp.csv",
+            "price_per_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "stock_kg": "Parâmetros da demonstração ou valores informados no cenário web",
+            "dm_fraction": "input/data/feed/NRC_comp.csv",
+            "cp_fraction": "input/data/feed/NRC_comp.csv",
+            "ndf_fraction": "input/data/feed/NRC_comp.csv",
+            "minimum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "maximum_kg_day": "Parâmetros da demonstração ou valores informados no cenário web",
+            "mineral_fractions": "input/data/feed/NRC_comp.csv",
+            "nel_mcal_per_kg_dm": "Hipótese da demonstração ou valor informado no cenário web"
+          }
+        }
+      ],
+      "result": {
+        "status": "optimal",
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "quantities_kg_day": {
+          "1": 14.49931456870169,
+          "44": 10.37572540189521,
+          "167": 0.47124984715629253,
+          "231": 0.04706307555942074
+        },
+        "ration_kg_dm_day": {
+          "1": 13.092881055537626,
+          "44": 9.141014079069679,
+          "167": 0.42176861320488185,
+          "231": 0.04565118329263812
+        },
+        "costs_per_day": {
+          "1": 18.330033477752675,
+          "44": 9.42115866492085,
+          "167": 1.180952116973669,
+          "231": 0.2353153777971037
+        },
+        "cost_per_day": 29.167459637444296,
+        "totals": {
+          "DM_kg": 22.701314931104825,
+          "CP_kg": 3.6000000000000005,
+          "NEL_Mcal": 36.06195703410706,
+          "NDF_kg": 6.35636818070935
+        },
+        "checks": [
+          {
+            "name": "DM_kg",
+            "supplied": 22.701314931104825,
+            "lower": 22.701314931104825,
+            "upper": 22.701314931104825,
+            "slack": 0.0,
+            "satisfied": true
+          },
+          {
+            "name": "CP_kg",
+            "supplied": 3.6000000000000005,
+            "lower": 3.6,
+            "upper": null,
+            "slack": 4.440892098500626e-16,
+            "satisfied": true
+          },
+          {
+            "name": "NEL_Mcal",
+            "supplied": 36.06195703410706,
+            "lower": 35.0,
+            "upper": null,
+            "slack": 1.0619570341070599,
+            "satisfied": true
+          },
+          {
+            "name": "NDF_min_kg_residual",
+            "supplied": -2.740863092043355e-16,
+            "lower": 0.0,
+            "upper": null,
+            "slack": -2.740863092043355e-16,
+            "satisfied": true
+          },
+          {
+            "name": "NDF_max_kg_residual",
+            "supplied": -2.7241577917325794,
+            "lower": null,
+            "upper": 0.0,
+            "slack": 2.7241577917325794,
+            "satisfied": true
+          },
+          {
+            "name": "absorbed_phosphorus_g",
+            "supplied": 51.773781322657,
+            "lower": 51.77378132265684,
+            "upper": null,
+            "slack": 1.6342482922482304e-13,
+            "satisfied": true
+          },
+          {
+            "name": "absorbed_calcium_g",
+            "supplied": 70.36026022978928,
+            "lower": 56.46220072567698,
+            "upper": null,
+            "slack": 13.898059504112297,
+            "satisfied": true
+          },
+          {
+            "name": "inclusion_1_kg_day",
+            "supplied": 14.49931456870169,
+            "lower": 0.0,
+            "upper": 17.718715393133998,
+            "slack": 3.2194008244323076,
+            "satisfied": true
+          },
+          {
+            "name": "stock_1_kg",
+            "supplied": 101.49520198091183,
+            "lower": 0.0,
+            "upper": 166.11295681063123,
+            "slack": 64.6177548297194,
+            "satisfied": true
+          },
+          {
+            "name": "inclusion_44_kg_day",
+            "supplied": 10.37572540189521,
+            "lower": 0.0,
+            "upper": 11.350737797956869,
+            "slack": 0.9750123960616595,
+            "satisfied": true
+          },
+          {
+            "name": "stock_44_kg",
+            "supplied": 72.63007781326647,
+            "lower": 0.0,
+            "upper": 113.50737797956869,
+            "slack": 40.87730016630222,
+            "satisfied": true
+          },
+          {
+            "name": "inclusion_167_kg_day",
+            "supplied": 0.47124984715629253,
+            "lower": 0.0,
+            "upper": 6.70391061452514,
+            "slack": 0.47124984715629253,
+            "satisfied": true
+          },
+          {
+            "name": "stock_167_kg",
+            "supplied": 3.298748930094048,
+            "lower": 0.0,
+            "upper": 67.0391061452514,
+            "slack": 3.298748930094048,
+            "satisfied": true
+          },
+          {
+            "name": "inclusion_231_kg_day",
+            "supplied": 0.04706307555942074,
+            "lower": 0.0,
+            "upper": 0.1,
+            "slack": 0.04706307555942074,
+            "satisfied": true
+          },
+          {
+            "name": "stock_231_kg",
+            "supplied": 0.3294415289159452,
+            "lower": 0.0,
+            "upper": 1.0,
+            "slack": 0.3294415289159452,
+            "satisfied": true
+          }
+        ]
+      },
+      "native_return": {
+        "config": {
+          "rations": [
+            {
+              "animal_combination": "lac_cow",
+              "feeds": [
+                {
+                  "feed_type": 1,
+                  "ration_percentage": 57.67454922885572
+                },
+                {
+                  "feed_type": 44,
+                  "ration_percentage": 40.2664519954519
+                },
+                {
+                  "feed_type": 167,
+                  "ration_percentage": 1.857903890082526
+                },
+                {
+                  "feed_type": 231,
+                  "ration_percentage": 0.20109488560985472
+                }
+              ]
+            }
+          ],
+          "ration_formulation_parameters": {
+            "user_defined_ration_tolerance": 1e-07
+          }
+        },
+        "ration_feeds": [
+          1,
+          44,
+          167,
+          231
+        ],
+        "ration_kg_dm_day": {
+          "1": 13.092881055537626,
+          "44": 9.14101407906968,
+          "167": 0.42176861320488185,
+          "231": 0.04565118329263812
+        },
+        "total_dm": 22.701314931104825,
+        "supply_kg": {
+          "CP": 3.6000000000000005,
+          "NDF": 6.35636818070935
+        },
+        "native_evaluation": {
+          "is_valid_cow_ration": true,
+          "deltas": {
+            "total_energy": 2.122151566419184,
+            "maintenance_energy": 24.77803823308585,
+            "lactation_energy": 11.603885953066818,
+            "growth_energy": 20.642245699501427,
+            "metabolizable_protein": 0.0,
+            "calcium": 13.898060504112294,
+            "phosphorus": 1.000000160900072e-06,
+            "dry_matter": 0.0,
+            "ndf_percent": 0.0,
+            "forage_ndf_percent": 8.992612479203977,
+            "fat_percent": 3.846508342678719
+          },
+          "criteria": {
+            "total_energy": true,
+            "maintenance_energy": true,
+            "lactation_energy": true,
+            "growth_energy": true,
+            "metabolizable_protein": true,
+            "calcium": true,
+            "phosphorus": true,
+            "dry_matter": true,
+            "ndf_percent": true,
+            "forage_ndf_percent": true,
+            "fat_percent": true
+          },
+          "supply_summary": {
+            "metabolizable_protein_g": 2352.532641783674,
+            "maintenance_energy_mcal": 34.30912700170588,
+            "lactation_energy_mcal": 34.25977261973348,
+            "calcium_g": 70.36026022978928,
+            "phosphorus_g": 51.773781322657,
+            "forage_ndf_kg": 5.446638519103653,
+            "fat_kg": 0.7158840724546209
+          }
+        },
+        "consumer": "RationManager.set_user_defined_rations/get_user_defined_ration"
+      },
+      "nrc_minerals": {
+        "enabled": true,
+        "requirement_g_day": {
+          "phosphorus": 51.77378032265684,
+          "calcium": 56.46219972567698
+        },
+        "lp_minimum_g_day": {
+          "phosphorus": 51.77378132265684,
+          "calcium": 56.46220072567698
+        },
+        "coefficients_g_per_kg_dm": {
+          "phosphorus": {
+            "1": 1.7920000000000003,
+            "44": 2.1,
+            "167": 4.8999999999999995,
+            "231": 154.4
+          },
+          "calcium": {
+            "1": 4.41,
+            "44": 0.24000000000000002,
+            "167": 2.1,
+            "231": 209.0
+          }
+        },
+        "source": "RuFaS NRC: NutritionSupplyCalculator.calculate_phosphorus_supply/calculate_calcium_supply",
+        "infeasibility": null,
+        "phosphorus_total_g_day": 75.84616786062773
+      },
+      "scenario_id": "08989ac59ff3",
+      "animal": {
+        "id": 93785,
+        "breed": "HO",
+        "body_weight": 586.2326957760057,
+        "days_in_milk": 236,
+        "parity": 4
+      },
+      "period_days": 7,
+      "nutrient_standard": "NRC 2001",
+      "nasem_phosphorus_diagnostic": null,
+      "assumptions": {
+        "gordura_pct": 3.8,
+        "proteina_verdadeira_pct": 3.2,
+        "lactose_pct": 4.8,
+        "alojamento": "Barn",
+        "distancia_caminhada": 0.0,
+        "temperatura_anterior_c": 20.0,
+        "origem": "Hipóteses do cenário integrado RuFaS",
+        "leite_kg_dia": 31.0,
+        "origem_animal": "input/data/animal/animal_population.json"
+      },
+      "limitations": [
+        "Escopo de uma vaca Holandesa em lactação no padrão NRC.",
+        "O LP usa consumo de MS calculado pelo RuFaS e metas externas de PB, NEL e FDN.",
+        "Os dados econômicos e valores de NEL pré-preenchidos são ilustrativos.",
+        "O parecer nativo se aplica aos critérios avaliados. A simulação da fazenda e a baixa de estoque estão fora do fluxo."
+      ]
+    }
+  ]
+}

@@ -322,7 +322,7 @@ def test_add_animal_to_pen_and_id_map_with_empty_pen(
 def test_add_animal_to_pen_and_id_map_uses_default_ration_feeds_when_not_user_defined(
     herd_manager: HerdManager, mocker: MockerFixture, mock_herd: dict[str, list[Animal]]
 ) -> None:
-    """When ration is not user-defined, _add_animal_to_pen_and_id_map should use RationManager.ration_feeds."""
+    """An entering animal needs its category's feed IDs, not the whole category-to-feeds mapping."""
     mock_current_day_conditions = MagicMock(auto_spec=CurrentDayConditions)
     animal = mock_herd["calves"][0]
 
@@ -342,8 +342,8 @@ def test_add_animal_to_pen_and_id_map_uses_default_ration_feeds_when_not_user_de
     mocker.patch.object(pen_with_min_stocking_density, "set_animal_nutritional_requirements")
     mock_reformulate_ration_single_pen = mocker.patch.object(herd_manager, "_reformulate_ration_single_pen")
 
-    mock_ration_feeds = mocker.MagicMock(name="ration_feeds")
-    mocker.patch.object(RationManager, "ration_feeds", mock_ration_feeds, create=True)
+    mock_ration_feeds = [202, 216]
+    mock_get_ration_feeds = mocker.patch.object(RationManager, "get_ration_feeds", return_value=mock_ration_feeds)
 
     mock_pen_avail_feeds = mocker.MagicMock()
     mock_find_pen_available_feeds = mocker.patch.object(
@@ -358,6 +358,7 @@ def test_add_animal_to_pen_and_id_map_uses_default_ration_feeds_when_not_user_de
     )
 
     mock_find_pen_available_feeds.assert_called_once_with(available_feeds, mock_ration_feeds)
+    mock_get_ration_feeds.assert_called_once_with(animal_combination)
 
     mock_reformulate_ration_single_pen.assert_called_once_with(
         pen=pen_with_min_stocking_density,

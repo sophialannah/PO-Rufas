@@ -208,6 +208,7 @@ def optimize_diet(
     period_days: float = 1.0,
     tolerance: float = 1e-7,
     absorbed_minerals: dict[str, tuple[float, dict[int, float]]] | None = None,
+    linear_constraints: list[tuple[str, dict[int, float], float]] | None = None,
 ) -> DietResult:
     """Minimize daily cost for a constant daily ration over period_days.
 
@@ -223,6 +224,10 @@ def optimize_diet(
     if not ingredients or len(ids) != len(ingredients):
         raise ValueError("Provide a nonempty list of ingredients with unique IDs")
     rows = _nutrient_rows(ingredients, animal.requirements)
+    for name, by_id, lower in linear_constraints or []:
+        if by_id.keys() != ids or not isfinite(lower) or not all(isfinite(v) for v in by_id.values()):
+            raise ValueError("Additional linear constraints require finite coefficients covering every ingredient")
+        rows.append(_Row(name, np.array([by_id[i.identifier] for i in ingredients]), lower=lower))
     for mineral, (minimum_g, by_id) in (absorbed_minerals or {}).items():
         _nonnegative(f"Absorbed {mineral} minimum (g/day)", minimum_g)
         if by_id.keys() != ids:

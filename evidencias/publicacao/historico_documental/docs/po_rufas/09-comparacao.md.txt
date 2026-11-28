@@ -1,0 +1,49 @@
+# Comparação dos otimizadores
+
+[Sumário](README.md)
+
+| Aspecto | LP PO-RuFaS | Nativo RuFaS |
+|---|---|---|
+| Entrada principal | AnimalProfile e Ingredient | RationConfig com Feed e requisitos |
+| Método | HiGHS, linprog | SLSQP, minimize |
+| Variável | kg MN/dia | kg MS/dia |
+| Objetivo | Custo diário | Custo diário |
+| Consumo | Fixado ao NRC na integração | Faixa nativa |
+| Proteína | PB mínima externa | Limites de MP |
+| Energia | NEL fixa externa | Componentes nativos |
+| Minerais | P/Ca absorvíveis opcionais | Ca/P nativos |
+| Estoque | Restrição explícita por T | Teto diário deve ser preparado pelo chamador |
+
+Na conversa foi registrada uma chamada isolada SLSQP para 98605, 30 kg leite/dia e quatro alimentos, com preço do suplemento R$5/kg MN, estoque 1 kg para sete dias e máximo 0,10 kg MN/dia. O custo foi R$32,7801/dia e MS 19,6230 kg/dia. As quantidades em kg MS foram 9,483496 de alfafa, 9,030664 de milho, 1,048022 de soja e 0,060833 de fosfato. É um resultado histórico conversacional, sem arquivo de evidência comparativa equivalente identificado nesta revisão.
+
+O LP suplementado fixa 22,2316 kg MS/dia e retorna R$35,3416. A diferença de consumo e de restrições impede atribuir a diferença de custo ao algoritmo.
+
+Uma comparação experimental equivalente deve congelar animal, padrão, composição, moeda/base, preços, estoque e limites. Deve avaliar cada candidata pelo mesmo NutritionEvaluator e registrar status, resíduos, tempos, critérios e condições iniciais do SLSQP. Para comparar somente algoritmos, ambos precisam resolver a mesma formulação matemática. Para comparar formulações, as diferenças nutricionais precisam ser exibidas.
+
+A [auditoria histórica](../auditoria_comparativa_rufas.md) registra a investigação anterior do outro grupo. Seus custos e perfis pertencem aos cenários daquele repositório. Esta revisão consultou seus quatro READMEs para avaliar organização por instalação, dados, formulação, resultados, glossário e limitações. Não executou seu código.
+
+
+
+## Comparação agora executável
+
+Execute `python -m experiments.comparison --repeats 5`. O experimento A usa as mesmas variáveis MN, objetivo, composição, restrições e bounds. O SLSQP recebe a igualdade MS explicitamente; HiGHS recebe as desigualdades equivalentes do backend. O ponto inicial SLSQP é documentado e não deriva da solução HiGHS.
+
+No B, o nativo usa NRCFeed em MS, requisitos idênticos do animal, estoque traduzido em teto diário e sua própria faixa de consumo, energia e MP. O ensaio alcançou aproximadamente R$32,780122/dia para 98605 e R$33,394562 para 93785. O LP encontrou R$35,341621 e R$35,247992, respectivamente. As diferenças de consumo e formulação impedem atribuir o menor custo ao algoritmo.
+
+O experimento A alcançou o mesmo custo e dieta com ambos os algoritmos, dentro da tolerância. Há apenas dois animais, quatro alimentos e cinco repetições neste ambiente. A velocidade observada não é prova de superioridade geral. Pareceres nativos podem variar nas bordas numéricas; o JSON conserva cada repetição. [Evidências](../../evidencias/comparacao/README.md)
+
+
+## Comparação econômica anual integrada
+
+Além dos experimentos estáticos A/B, foram executadas duas fazendas de 365 dias com semente, população de origem, manejo, preços, estoques e clima iguais. A evolução biológica é deixada ao RuFaS.
+
+A comparação anual avalia a estratégia híbrida inteira, incluindo categorias nativas e fallbacks. Na primeira rodada completa houve 365 tentativas HiGHS, 352 aceites, 13 fallbacks e 637 chamadas nativas por categoria sem suporte. A classificação é integração parcial/híbrida, não substituição completa. O custo estimado aumentou 9,05% no cenário demonstrativo. [Resultados e metodologia](../../evidencias/anual/README.md)
+
+
+
+
+## Comparação controlada corrigida
+
+Não se comparou uma dieta HiGHS com tetos minerais a um SLSQP sem esses mesmos tetos para inferir economia. A referência controlada aplica `nrc2005_mtl` a ambos. A referência histórica original continua disponível separadamente. `comparacao_anual.csv` registra consumo valorizado e compras em colunas distintas, sem refazer a metodologia econômica já auditada.
+
+Resultado controlado: SLSQP 2.319,34875854 UM; híbrido ampliado e exclusivo 2.316,45106770 UM, diferença de 0,1249355%. As despesas de compra foram 2.323,21061538 e 2.320,31250669 UM. Isso não constitui benefício comercial generalizável, pois os preços são demonstrativos. Execuções concorrentes não sustentam conclusão de velocidade comparativa.

@@ -1,0 +1,10 @@
+{
+  "source": "Real isolated Streamlit backend",
+  "days": 365,
+  "selection": "Comparação SLSQP versus HiGHS exclusivo",
+  "files": [
+    "visao_geral.png",
+    "comparacao_exclusiva.png",
+    "resultado_comparacao.png"
+  ]
+}

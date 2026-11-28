@@ -192,31 +192,16 @@ def test_streamlit_runs_real_solver_and_displays_native_alert():
     app = AppTest.from_file(str(Path(__file__).resolve().parents[1] / "frontend/app.py"), default_timeout=30).run()
     assert not app.exception
     assert "report" not in app.session_state
+    assert not any("Exigir fósforo" in field.label for field in app.checkbox)
+    advanced = next(section for section in app.expander if section.label == "Configurações avançadas")
+    diagnostic = next(field for field in advanced.checkbox if "NASEM 2021" in field.label)
+    assert diagnostic.value is False
     next(button for button in app.button if button.label == "Executar otimização").click().run()
     assert not app.exception
-    assert app.session_state["report"]["result"]["cost_per_day"] == pytest.approx(35.1059017708)
-    assert any("35,1059" in metric.value for metric in app.metric)
-    assert any("fósforo absorvível" in warning.value and "6,68 g/dia" in warning.value for warning in app.warning)
-    assert any("Não aprovada" in error.value for error in app.error)
-    next(button for button in app.button if button.label == "Recalcular cenários").click().run()
-    base, alternate = app.session_state["comparison_result"]
-    assert base["Custo (R$/dia)"] == pytest.approx(35.1059017708)
-    assert alternate["Custo (R$/dia)"] > base["Custo (R$/dia)"]
-
-    next(field for field in app.number_input if field.label == "Período de estoque (dias)").set_value(10000)
-    next(button for button in app.button if button.label == "Executar otimização").click().run()
-    assert not app.exception
-    assert any("Cenário inviável" in error.value for error in app.error)
-    assert app.session_state["report"]["native_return"] is None
-
-    next(field for field in app.number_input if field.label == "Período de estoque (dias)").set_value(7)
-    next(field for field in app.checkbox if "Exigir fósforo" in field.label).check()
-    next(field for field in app.checkbox if "NASEM 2021" in field.label).check()
-    next(button for button in app.button if button.label == "Executar otimização").click().run()
-    assert not app.exception
+    assert app.session_state["report"]["result"]["status"] == "infeasible"
+    assert app.session_state["report"]["nrc_minerals"]["infeasibility"] == "phosphorus_conflict"
+    assert app.session_state["report"]["nasem_phosphorus_diagnostic"] is None
     assert any("retirar somente o mínimo de fósforo" in warning.value for warning in app.warning)
-    assert any("Diagnóstico NASEM 2021" in component.value for component in app.markdown)
-    assert app.session_state["report"]["nutrient_standard"] == "NRC 2001"
 
     app.multiselect[0].select(231).run()
     editor = "editor-" + ",".join(map(str, app.multiselect[0].value))
@@ -227,7 +212,29 @@ def test_streamlit_runs_real_solver_and_displays_native_alert():
     }
     next(button for button in app.button if button.label == "Executar otimização").click().run()
     assert not app.exception
+    without_diagnostic = app.session_state["report"]
+    assert without_diagnostic["result"]["cost_per_day"] == pytest.approx(35.3416211228)
+    assert any("Aprovada pelo NutritionEvaluator" in success.value for success in app.success)
+    next(button for button in app.button if button.label == "Recalcular cenários").click().run()
+    base, alternate = app.session_state["comparison_result"]
+    assert base["Custo (R$/dia)"] == pytest.approx(35.3416211228)
+    assert alternate["Custo (R$/dia)"] > base["Custo (R$/dia)"]
+
+    next(field for field in app.number_input if field.label == "Período de estoque (dias)").set_value(10000)
+    next(button for button in app.button if button.label == "Executar otimização").click().run()
+    assert not app.exception
+    assert any("Cenário inviável" in error.value for error in app.error)
+    assert app.session_state["report"]["native_return"] is None
+
+    next(field for field in app.number_input if field.label == "Período de estoque (dias)").set_value(7)
+    next(field for field in app.checkbox if "NASEM 2021" in field.label).check()
+    next(button for button in app.button if button.label == "Executar otimização").click().run()
+    assert not app.exception
+    assert any("Diagnóstico NASEM 2021" in component.value for component in app.markdown)
+    assert app.session_state["report"]["nutrient_standard"] == "NRC 2001"
     report = app.session_state["report"]
+    assert report["result"]["cost_per_day"] == without_diagnostic["result"]["cost_per_day"]
+    assert report["result"]["quantities_kg_day"] == without_diagnostic["result"]["quantities_kg_day"]
     assert report["result"]["quantities_kg_day"][231] == pytest.approx(0.04418934)
     assert any("Balanço mineral" in component.value for component in app.subheader)
     assert any("Aprovada pelo NutritionEvaluator" in success.value for success in app.success)

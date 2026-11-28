@@ -1,38 +1,15 @@
-# Checklist de apresentação
+# Checklist da apresentação final
 
-**Integrantes:** Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.
-
-## Validação técnica registrada
-
-- [x] Solver executado novamente e custo reconferido.
-- [x] 11/11 verificações satisfeitas na demonstração.
-- [x] 442 testes relacionados aprovados, incluindo 42 específicos.
-- [x] Dados ilustrativos identificados em slides, terminal e roteiro.
-- [x] Quatro slides gerados, com nomes completos e notas de fala.
-- [x] Cronograma de 300 segundos de apresentação + 300 segundos de arguição = 600 segundos.
-- [x] BAT e modo automático preparados para o Windows.
-- [x] Integração descrita como adaptador; sem alegação de ciclo diário completo.
-- [x] Sem percentual de economia inventado e sem comparação de cenários incompatíveis.
-
-## Antes de apresentar — verificar manualmente
-
-- [ ] Abrir o PPTX no computador e projetor que serão usados; conferir fontes e proporção 16:9.
-- [ ] Consultar `evidencias/verificacao_powerpoint.json` para conferir abertura e exportação automáticas.
-- [ ] Ensaiar a dupla com cronômetro: slide 1 até 00:45; slide 2 até 01:45; slide 3 até 03:00.
-- [ ] Ensaiar demo até 04:25, conclusão até 05:00, perguntas separadas até 10:00.
-- [ ] Abrir o frontend e ensaiar a sequência do [guia web](guia_demonstracao_web.md).
-- [ ] Testar Alt+Tab entre PowerPoint e navegador, com a aba Animal pronta para começar.
-- [ ] Testar o terminal com `--auto` e deixá-lo aguardando Enter como alternativa.
-- [ ] Fechar notificações e conectar o carregador.
-- [ ] Guardar PPTX, PDF/prévias e cópia das evidências localmente para uso sem internet.
-- [ ] Estudar os cartões e pelo menos as perguntas prioritárias.
-
-Os itens manuais não foram marcados como concluídos: não houve ensaio oral da dupla nem teste do projetor.
-Se ocorrer falha ao vivo, identificar a saída de contingência como execução anterior, nunca como execução ao vivo.
-
-
-## Integração comprovada nesta versão
-
-Integração comprovada: Animal 98605 construído de animal_population.json → cálculo NRC → lista NRCFeed/Ingredient → HiGHS → percentuais MS → RationManager → FeedInRation → NutritionSupplyCalculator e NutritionEvaluator. DEL 100, leite 30 kg/dia assumido. DMI calculada; PB/NEL/FDN externas; déficit diagnóstico de P absorvível (-6,68 g/dia) sem suplemento mineral no LP. O ciclo diário da fazenda não foi executado. Demo: demonstracao_integrada.bat. 5 minutos de apresentação + 5 minutos adicionais de perguntas.
-
-Resultado: R$ 35,1059/dia. Relatório: [integração real](../docs/integracao_real_rufas.md).
+- Preparar Python/venv e testar o frontend antes da exposição.
+- Abrir o deck **apresentacao_po_rufas_final.pptx**, não os slides históricos.
+- Reservar cinco minutos de exposição e cinco adicionais para perguntas.
+- Distinguir LP estático de programação linear sequencial dinâmica.
+- Mostrar as cinco escolhas anuais e o aviso de ausência de fallback no exclusivo.
+- Usar resultados reais e identificar duração curta versus 365 dias.
+- Conferir os números no [quadro oficial](resultados_validados.md).
+- Informar preços demonstrativos, 959 convergentes e 43 viáveis sem convergência.
+- Separar 998 curral-dias adultos aprovados dos 252 registros de bezerros não aprovados.
+- Não declarar ótimo global não linear, superioridade universal ou aprovação de todo o rebanho.
+- Manter os logs e alertas acessíveis se ocorrer uma falha.
+- Apresentar a reprodução em cópia isolada e os 969 testes de referência.
+- Não fazer commit/push/merge como parte da demonstração.

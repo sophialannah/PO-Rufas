@@ -1,0 +1,77 @@
+# Validação da revisão documental
+
+Revisão iniciada em 26/11/2026 e concluída no contexto de 27/11/2026. Base de código 5bb6775, branch fix/validacao-nutricional-rufas.
+
+## Evidências reconferidas
+
+A suíte de frontend, rações, nutrientes e estruturas nutricionais retornou **462 passed in 19.24s**, com código de saída zero. O comando está no [capítulo de testes](11-testes.md). Nenhum código-fonte ou teste foi editado nesta revisão.
+
+Seis chamadas reais de run_scenario reconferiram os valores com sete dias, metas demonstrativas e o suplemento 231 descrito no [capítulo de dados](03-dados.md).
+
+| Animal | P/Ca ativos | Ingredientes | LP | Custo R$/dia | Checks | Critérios nativos atendidos |
+|---|---|---:|---|---:|---:|---|
+|98605|Não|3|optimal|35,1059017708|11|10/11|
+|98605|Sim|3|infeasible|—|0|Sem avaliação|
+|98605|Sim|4|optimal|35,3416211228|15|11/11|
+|93785|Não|3|optimal|34,9440111041|11|10/11|
+|93785|Sim|3|optimal|38,2663340932|13|11/11|
+|93785|Sim|4|optimal|35,2479923169|15|11/11|
+
+O parecer foi verdadeiro nos três casos com 11 critérios atendidos. O diagnóstico NASEM foi solicitado em paralelo, sem alimentar os mínimos NRC.
+
+## Divergências documentais e tratamento
+
+- O README anterior enfatizava 433 testes e não apresentava a aplicação atual. Foi preservado em README_ANTERIOR.md e substituído por uma entrada com 14 capítulos.
+- Os documentos antigos descreviam interface, sensibilidade e avaliação nativa como etapas futuras. Receberam indicação do seu caráter histórico.
+- Apenas DMI era importada na etapa original. O fluxo atual acrescenta mínimos opcionais de P/Ca absorvíveis.
+- A reprovação suplementada por gordura foi uma etapa intermediária. O texto atual mostra a correção e a aprovação nos critérios efetivamente avaliados.
+- Os catálogos do terminal e da interface possuem abrangência diferente. Os capítulos distinguem as entradas de cada caminho.
+- O ensaio SLSQP histórico tem consumo diferente do LP. A comparação equivalente permanece pendente.
+- Contagens antigas e arquivos de evidências foram mantidos com seus números históricos.
+- O histórico exportado tinha caracteres perdidos por codificação. A recuperação é declarada no próprio arquivo e não constitui nova transcrição literal.
+
+## Investigação e preservação
+
+Foram lidos o histórico e os documentos acadêmicos Markdown de docs, frontend e apresentacao, além dos módulos do solver, adaptador, integração, serviço e interface. As fontes científicas originais em docs/scientific e a documentação Sphinx foram preservadas.
+
+Foram consultados os READMEs externos da raiz e dos módulos NRC, NASEM e interface para analisar organização. Nenhum texto ou código da referência foi incorporado.
+
+Os slides binários e seus geradores conservam a versão histórica. A comparação experimental equivalente com SLSQP, o modo NASEM completo e o ciclo diário da fazenda exigem trabalho posterior.
+
+[Sumário](README.md)
+
+
+## Etapa científica e experimental de 27/11/2026
+
+Foram criados o módulo independente de comparação, as evidências A/B, a sensibilidade, um cenário econômico parcial e a área ao vivo na aba Cenários. Os 14 capítulos e a documentação já produzida foram preservados. O README anterior teve os links relativos corrigidos.
+
+A suíte ampliada executou **466 testes aprovados em 14,33 s**, incluindo os 462 anteriores e quatro novos. Os arquivos de saída e JUnit estão em evidencias/comparacao. As capturas de três telas foram realizadas no Edge, com execução de otimização e comparação reais. Não foram alterados o núcleo linear, os cálculos de nutrientes ou os predicados do avaliador.
+
+Permanecem limitações de escala do ensaio, oscilação de parecer em resíduos limítrofes do nativo, cotações incompletas e modo NASEM restrito ao diagnóstico. Os hashes dos arquivos de implementação estão em manifesto.json.
+
+
+## Integração anual de 27/11/2026
+
+Foram executados o motor nativo em 1/7/30 dias e duas estratégias FULL_FARM de 365 dias, com confirmação anual independente. A confirmação reproduziu os custos e contagens da primeira rodada completa. As fotografias iniciais das duas estratégias são idênticas, com 26 animais efetivos. O clima e o conjunto de entradas são os mesmos.
+
+A suíte ampliada retornou **937 testes aprovados em 123,52 s**, incluindo os 466 anteriores e componentes nativos de Pen, HerdManager, SimulationEngine e FeedManager. Após um ajuste apenas na exibição inicial do denominador de progresso, os cinco testes anuais passaram novamente em 56,32 s.
+
+O nativo apresentou 344 currais-dia adultos aprovados e 654 reprovados; a estratégia híbrida apresentou 517 aprovados e 481 reprovados. São pareceres por média de curral, com resultados originais preservados. O ano não é declarado nutricionalmente aprovado em sua totalidade.
+
+Os arquivos de evidência têm entradas, estado inicial, diários, ofertas, requisitos, motivos de fallback, custos de consumo e compra, tabelas, gráficos e auditoria. Os metadados de validação foram saneados para omitir nome da máquina e caminhos pessoais. [Evidências anuais](../../evidencias/anual/README.md)
+
+
+
+
+## Validação corrigida de 27/11/2026
+
+Suíte definitiva: **954 aprovados em 128,87 s**, mantendo os 937 anteriores e acrescentando 17 regressões. Três execuções anuais controladas concluídas, estados iniciais idênticos e zero estoques negativos. HiGHS híbrido ampliado e exclusivo: 1.002 chamadas aceitas, zero chamadas SLSQP, 998 curral-dias adultos aprovados e dentro dos tetos minerais. 959 chamadas atingiram convergência; 42 estagnaram e uma atingiu o orçamento, conservando candidatas viáveis. O SLSQP controlado teve 636 reprovações nativas de pequena magnitude; elas não foram suprimidas.
+
+Há uma regressão que executa realmente o ano exclusivo, verifica transições/categorias, tetos e estoques. JUnit, saída e diários: [evidências corrigidas](../../evidencias/correcao_dinamica/README.md). Os diretórios com tentativas falhas são intermediários preservados e não substituem as três execuções definitivas identificadas no relatório. Nenhuma alteração foi commitada ou enviada ao GitHub.
+
+
+
+
+### Rechecagem do estado de revisão
+
+A suíte foi repetida após os últimos ajustes: **954 aprovados**, JUnit em `evidencias/correcao_dinamica/testes_verificacao.xml`. O tempo registrado nessa repetição foi 11.233,60 s; a rodada anterior registrou 128,87 s. Não se usou essa variação como benchmark. A checagem direcionada de HerdManager/frontend passou 206 casos sobrepostos. Uma execução real de um dia verificou que `optimizer_mineral_policy=nrc2005_mtl` continua ativo com `optimizer_record_events=False`.

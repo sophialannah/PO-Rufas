@@ -1,0 +1,47 @@
+# Limitações e trabalhos futuros
+
+[Sumário](README.md)
+
+O escopo integrado cobre uma vaca Holandesa em lactação NRC por execução. Produção e composição do leite são hipóteses do cenário. O resultado depende dos alimentos selecionados, preços, estoques e metas.
+
+PB e NEL fixas simplificam mecanismos dietodependentes. O LP não inclui diretamente limites de MP, FDN de forragem, gordura, aminoácidos, amido ou respostas produtivas. Alguns desses critérios são verificados após resolver. Uma dieta pode ser ótima e reprovada.
+
+O motor de oferta local usa coeficientes minerais por categoria e não os coeficientes completos por fonte do NASEM. Os mínimos absorvíveis garantem coerência interna com o código NRC executado; sua adequação científica para cada produto exige validação externa. Faltam tetos minerais, Ca:P, vitaminas e outros minerais pertinentes.
+
+O diagnóstico NASEM cobre exigência de P. Uma otimização NASEM completa exige revisar oferta, energia, proteína, composição e critérios antes de habilitar um modo operacional.
+
+São trabalhos futuros comparação equivalente com SLSQP, dados econômicos datados, alocação de estoque a múltiplos animais, perdas, compras, planejamento dinâmico e integração ao ciclo diário. A dieta constante em sete dias não modela avanço de lactação.
+
+As quatro lâminas e evidências históricas da apresentação conservam números de versões anteriores. A exposição deve usar o [guia visual atualizado](../../apresentacao/guia_demonstracao_web.md) com os cenários e o estado de cada execução. Esta revisão documental não altera slides binários ou seus geradores.
+
+
+
+## Limites do estudo experimental
+
+A comparação equivalente agora está implementada para o LP e a comparação de formulações registra a saída nativa real. Permanecem necessários estudos maiores, partidas alternativas, outros equipamentos, tratamento de incerteza e validação de campo.
+
+O parecer nativo em bordas do SLSQP pode variar com resíduos muito pequenos. Sua correção geral de tolerâncias requer auditoria própria. O estudo registra os resultados sem modificar a candidata ou os predicados.
+
+A cotação do milho é parcial e exige aproximação de unidade, processamento e MS. Os outros preços são demonstrativos. Ainda não há orçamento alimentar completo com preços comerciais verificáveis de todos os ingredientes. NASEM permanece diagnóstico separado.
+
+
+## Alcance da integração anual
+
+A integração diária e duas execuções completas de 365 dias foram comprovadas. O suporte HiGHS ainda cobre vacas em lactação NRC; categorias restantes e rejeições podem usar SLSQP, com contagem explícita. O procedimento usa LPs locais sequenciais e aceita a primeira candidata verificada, sem certificado de ótimo global do problema não linear.
+
+As limitações atuais incluem expansão de categorias, refinamento da aproximação e de sua otimalidade, avaliação individual além da média do curral, coeficientes minerais por fonte, sistema NASEM completo, preços reais e rebanhos mais representativos. Custo menor não deve ser interpretado isoladamente da produção e das inadequações.
+
+A auditoria identificou ausência de alguns arquivos do upstream, incluindo licenças e filtros. Não houve necessidade de transplantar arquivos para executar a experiência, e a identidade histórica exata do clone permanece limitada pela importação sem ancestralidade original.
+
+
+
+
+## Limites após a correção
+
+A substituição exclusiva foi validada no cenário NRC e nas três categorias ativas do agrupamento padrão. Não se estende automaticamente a NASEM, bezerros, dietas prescritas pelo usuário, todos os agrupamentos alternativos, outros preços/climas ou grandes rebanhos. Growing_and_close_up tem teste de seleção das restrições correspondentes, sem experimento anual próprio.
+
+A convergência é local e heurística. Das 1.002 chamadas, 43 conservaram candidatas viáveis sem satisfazer o critério de convergência. Diferenças finitas, escalas de mérito, ponto inicial e orçamento podem influenciar os resultados. Não existe certificado de ótimo global não linear.
+
+O avaliador nativo não é certificação nutricional completa. Os tetos Ca/P não modelam toxicidade crônica, todas as interações minerais, DCAD de vacas secas ou coeficientes específicos de cada suplemento. A resposta de leite/peso à dieta é limitada pelas equações originais. O inventário mantém sua tolerância operacional histórica de 0,001 kg MS: a maior diferença observada entre ração solicitada e quantidade efetivamente deduzida foi 0,00082 kg por alimento/dia no HiGHS e 0,000788 no SLSQP, explicitamente registrada na auditoria física.
+
+A economia de 0,125% usa preços demonstrativos e não é resultado comercial. Há apenas cotação comercial parcial verificável; preços ausentes não foram inventados. Os documentos upstream foram recuperados da revisão candidata auditada, cuja ancestralidade exata permanece não comprovada.

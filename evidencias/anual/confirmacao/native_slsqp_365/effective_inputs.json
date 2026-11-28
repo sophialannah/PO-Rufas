@@ -1,0 +1,275 @@
+{
+  "config": {
+    "start_date": "2013:1",
+    "end_date": "2013:365",
+    "simulation_type": "full_farm",
+    "nutrient_standard": "NRC",
+    "FIPS_county_code": 55025,
+    "include_detailed_values": false
+  },
+  "herd_information": {
+    "calf_num": 8,
+    "heiferI_num": 2,
+    "heiferII_num": 2,
+    "heiferIII_num_springers": 5,
+    "cow_num": 10,
+    "replace_num": 5000,
+    "herd_num": 10,
+    "herd_size_adjustment_period": 30,
+    "herd_size_sell_threshold": 11,
+    "herd_size_buy_threshold": 9,
+    "breed": "HO",
+    "parity_fractions": {
+      "1": 0.36,
+      "2": 0.26,
+      "3": 0.18,
+      "4": 0.11,
+      "5": 0.09
+    },
+    "milking_cow_fraction": 0.8356,
+    "annual_milk_yield": null,
+    "simulate_genetics": false
+  },
+  "ration": {
+    "phosphorus_requirement_buffer": 0,
+    "user_input": false,
+    "formulation_interval": 1,
+    "maximum_ration_reformulation_attempts": 8,
+    "optimizer_strategy": "native_slsqp",
+    "optimizer_fallback": "native_slsqp",
+    "optimizer_record_events": true
+  },
+  "feed": {
+    "feeds": [
+      {
+        "feed_type": 23,
+        "purchased_feed_cost": 0.1,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 44,
+        "purchased_feed_cost": 0.5,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 50,
+        "purchased_feed_cost": 0.01,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 95,
+        "purchased_feed_cost": 0.01,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 104,
+        "purchased_feed_cost": 0.01,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 110,
+        "purchased_feed_cost": 0.01,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 202,
+        "purchased_feed_cost": 0.1,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 216,
+        "purchased_feed_cost": 0.1,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 1,
+        "purchased_feed_cost": 1.4,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 167,
+        "purchased_feed_cost": 2.8,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      },
+      {
+        "feed_type": 231,
+        "purchased_feed_cost": 5.0,
+        "buffer": 0.15,
+        "runtime_purchase_allowance": 1000.0,
+        "advance_purchase_allowance": 1000000.0,
+        "planning_cycle_allowance": 1000.0
+      }
+    ],
+    "ration_formulation_parameters": {
+      "milk_reduction_maximum": 0.5,
+      "max_daily_feed_recalculations_per_year": 4,
+      "user_defined_ration_tolerance": 0.1
+    },
+    "rations": [
+      {
+        "animal_combination": "calf",
+        "intake_option": "set_DMI",
+        "intake_value": 3,
+        "feeds": [
+          {
+            "feed_type": 202,
+            "ration_percentage": 50.0
+          },
+          {
+            "feed_type": 216,
+            "ration_percentage": 50.0
+          }
+        ]
+      },
+      {
+        "animal_combination": "growing",
+        "intake_option": "predict_DMI",
+        "intake_value": null,
+        "feeds": [
+          {
+            "feed_type": 44,
+            "ration_percentage": 4.679502802827199
+          },
+          {
+            "feed_type": 50,
+            "ration_percentage": 37.05825006093102
+          },
+          {
+            "feed_type": 95,
+            "ration_percentage": 13.106263709480867
+          },
+          {
+            "feed_type": 104,
+            "ration_percentage": 13.106263709480867
+          },
+          {
+            "feed_type": 110,
+            "ration_percentage": 32.049719717280034
+          },
+          {
+            "feed_type": 1,
+            "ration_percentage": 0.0
+          },
+          {
+            "feed_type": 167,
+            "ration_percentage": 0.0
+          },
+          {
+            "feed_type": 231,
+            "ration_percentage": 0.0
+          }
+        ]
+      },
+      {
+        "animal_combination": "close_up",
+        "intake_option": "predict_DMI",
+        "intake_value": null,
+        "feeds": [
+          {
+            "feed_type": 44,
+            "ration_percentage": 2.566371681415929
+          },
+          {
+            "feed_type": 50,
+            "ration_percentage": 42.857142857142854
+          },
+          {
+            "feed_type": 95,
+            "ration_percentage": 17.730720606826804
+          },
+          {
+            "feed_type": 104,
+            "ration_percentage": 17.730720606826804
+          },
+          {
+            "feed_type": 110,
+            "ration_percentage": 19.11504424778761
+          },
+          {
+            "feed_type": 1,
+            "ration_percentage": 0.0
+          },
+          {
+            "feed_type": 167,
+            "ration_percentage": 0.0
+          },
+          {
+            "feed_type": 231,
+            "ration_percentage": 0.0
+          }
+        ]
+      },
+      {
+        "animal_combination": "lac_cow",
+        "intake_option": "predict_DMI",
+        "intake_value": null,
+        "feeds": [
+          {
+            "feed_type": 23,
+            "ration_percentage": 1.034675615212528
+          },
+          {
+            "feed_type": 44,
+            "ration_percentage": 21.406599552572708
+          },
+          {
+            "feed_type": 50,
+            "ration_percentage": 52.362975391498885
+          },
+          {
+            "feed_type": 104,
+            "ration_percentage": 0.517337807606264
+          },
+          {
+            "feed_type": 110,
+            "ration_percentage": 24.67841163310962
+          },
+          {
+            "feed_type": 1,
+            "ration_percentage": 0.0
+          },
+          {
+            "feed_type": 167,
+            "ration_percentage": 0.0
+          },
+          {
+            "feed_type": 231,
+            "ration_percentage": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  "seed": 42,
+  "economics": "Illustrative monetary units per kg dry matter; no market quotation"
+}

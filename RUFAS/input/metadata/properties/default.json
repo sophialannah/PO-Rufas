@@ -906,6 +906,29 @@
     "ration": {
       "type": "object",
       "description": "Ration",
+      "optimizer_mineral_policy": {
+        "type": "string",
+        "default": "native",
+        "pattern": "^(native|nrc2005_mtl)$",
+        "description": "Explicit NRC 2005 total mineral ceilings; separate from NRC 2001 requirements"
+      },
+      "optimizer_strategy": {
+        "type": "string",
+        "default": "native_slsqp",
+        "pattern": "^(native_slsqp|linear_highs|linear_highs_all|linear_highs_exclusive)$",
+        "description": "Instance-local ration optimizer selection."
+      },
+      "optimizer_fallback": {
+        "type": "string",
+        "default": "native_slsqp",
+        "pattern": "^(native_slsqp|fail)$",
+        "description": "Explicit policy when the selected linear method is unsupported or fails."
+      },
+      "optimizer_record_events": {
+        "type": "bool",
+        "default": false,
+        "description": "Record per-call optimizer provenance for an observed simulation."
+      },
       "user_input": {
         "description": "User Input -- A bool value indicating if the user will provide the ration or diet formulation they would like to feed to the cattle (true) or not (false).",
         "type": "bool",

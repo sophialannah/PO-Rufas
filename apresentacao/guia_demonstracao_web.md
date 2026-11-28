@@ -1,17 +1,10 @@
-# Demonstração web em 85 segundos
+# Demonstração web final
 
-Prepare o PowerPoint no slide 1 e o navegador no frontend. Use `.\frontend\iniciar_frontend.bat` na raiz do projeto. Confira a aplicação uma vez antes da aula. Recarregue a sessão e confirme o animal 98605, três alimentos da demonstração e sete dias de estoque. Para começar, deixe a aba **Animal** visível.
+Prepare servidor e abas conforme o [manual](../docs/po_rufas/12-manual.md). A demonstração ocupa 03:00–03:35; a exposição termina em 05:00 e a arguição em 10:00.
 
-| Tempo | Pessoa | Ação na tela |
-|---|---|---|
-| 03:00–03:12 | Sophia | Passe para o navegador. Mostre ID 98605, 627,56 kg, 100 dias em lactação e paridade 4. Identifique 30 kg/dia de leite como hipótese. |
-| 03:12–03:24 | Sophia | Abra **Ingredientes**. Mostre alfafa, milho e farelo de soja. Aponte a fonte NRC e os valores ilustrativos de preço, estoque e NEL. |
-| 03:24–03:35 | Sophia | Abra **Otimização**. Aponte o consumo de MS calculado, as metas externas e o período de sete dias. Clique **Executar otimização**. |
-| 03:35–04:00 | Anderson | Abra **Resultados**. Mostre o custo diário e as verificações do LP. Aponte quantidades em MN e MS na tabela da dieta. |
-| 04:00–04:25 | Anderson | Destaque **Não aprovada** e o déficit de fósforo absorvível de 6,68 g/dia. Explique a passagem pelo RationManager e o parecer do NutritionEvaluator. Volte ao PowerPoint para o slide 4. |
+1. Em Ingredientes, carregue o cenário validado de quatro alimentos, incluindo 231. Mostre multisseleção, parâmetros preservados e campos pendentes. Preços são demonstrativos; dados ausentes não são inventados.
+2. Em Otimização, indique P/Ca obrigatórios no NRC e NASEM nas configurações avançadas, desligado por padrão e sem interferência na otimização NRC.
+3. Em Simulação anual, abra Resultados anuais já calculados e carregue a comparação controlada NRC de 365 dias, sem iniciar uma nova execução.
+4. Mostre a identificação de evidência arquivada e os cartões com custos, diferenças e estratégia mais econômica calculada dinamicamente. As séries diárias são opcionais. O exclusivo continua sem fallback.
 
-A apresentação termina às 05:00. A arguição vai das 05:00 às 10:00.
-
-## Alternativa pelo terminal
-
-Deixe o terminal pronto antes da aula, com `.\apresentacao\demonstracao_integrada.bat` aguardando Enter. Em caso de falha no navegador, use o [guia do terminal](guia_demonstracao.md), pressione Enter e mostre o mesmo cálculo e diagnóstico. Para validar essa alternativa antes da aula, use `.\apresentacao\demonstracao_integrada.bat --auto`.
+Anderson apresenta os resultados no intervalo seguinte: redução de 0,1249355% no cenário com preços demonstrativos, 959 convergentes/43 viáveis sem convergência e registros separados de adultos e bezerros. A validação atual tem 969 testes; a reprodução isolada anterior corresponde à base de 954. Não afirmar ótimo global ou vantagem universal. As [capturas reais atuais](../evidencias/frontend_final/README.md) usam evidências arquivadas.

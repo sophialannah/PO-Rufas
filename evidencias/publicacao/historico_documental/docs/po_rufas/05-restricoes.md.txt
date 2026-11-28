@@ -1,0 +1,49 @@
+# Restrições nutricionais e parecer
+
+[Sumário](README.md)
+
+A avaliação acontece em dois momentos. O LP contém MS, PB, NEL, limites de FDN, inclusão e estoque. P/Ca absorvíveis entram apenas quando ativados. O avaliador nativo examina a oferta da dieta que foi recuperada pelo RationManager.
+
+| Critério NutritionEvaluator | Regra sobre o delta | Linha correspondente no LP |
+|---|---|---|
+| Energia total | ≥0 | NEL fixa é outra representação |
+| Energia de mantença e atividade | ≥0 | Ausente como linha individual |
+| Energia de lactação e gestação | ≥0 | Ausente como linha individual |
+| Energia de crescimento | ≥0 | Ausente como linha individual |
+| MP | Zero quando dentro da faixa | PB mínima usa grandeza diferente |
+| Ca absorvível | ≥0 | Opcional |
+| P absorvível | ≥0 | Opcional |
+| MS | Zero quando dentro da faixa | Consumo fixo integrado |
+| FDN total | Zero quando dentro da faixa | Limites externos 28–40% |
+| FDN de forragem | ≥0 | Ausente como linha individual |
+| Gordura | Margem até máximo ≥−1e-9 p.p. | Ausente como linha individual |
+
+A MP nativa usa faixa com teto 1,5 vezes a exigência; MS usa a faixa do modelo nativo; FDN total possui limites nativos próprios. Consulte as constantes e funções de [NutritionEvaluator](../../RUFAS/biophysical/animal/nutrients/nutrition_evaluator.py) para os valores executáveis.
+
+O erro corrigido de gordura era exigir margem exatamente zero. A oferta retorna máximo menos teor em % MS; agora teores inferiores são aceitos. Os indicadores do relatório para lactação e FDN foram alinhados aos predicados efetivamente usados na aprovação. A aprovação da vaca inclui energia total/lactação e critérios comuns de novilhas. Dados nutricionais e deltas permanecem disponíveis.
+
+`optimal` significa ótimo do problema fornecido. O parecer aprovado exige todos os critérios nativos pertinentes. Ambos aparecem em Resultados, e alertas de falha continuam visíveis.
+
+
+
+## Convergência, viabilidade numérica e parecer
+
+O comparador registra três condições independentes. success usa o retorno do solver; feasible exige folgas ≥−1e-7; approved é a resposta original do NutritionEvaluator. O avaliador usa comparações estritas para mínimos e resíduos de faixa, exceto a tolerância de gordura já corrigida.
+
+Candidatas do SLSQP próximas ao limite podem reprovar por resíduos de 1e-9 g ou p.p., mesmo com convergência. Cada repetição guarda vetores e avaliação. Os valores não são arredondados para obter aprovação. Um resultado success=True também pode violar a tolerância independente de 1e-7.
+
+
+## Verificação dinâmica
+
+As candidatas HiGHS são conferidas contra as restrições não lineares originais e o NutritionEvaluator com os requisitos do curral. Antes do aceite, verifica-se também o arredondamento nativo de seis casas. Os mínimos e coeficientes são recalculados a cada chamada; não se usa a fotografia estática durante 365 iterações.
+
+O parecer final observado de cada curral continua registrado ao longo do ano. Uma estratégia híbrida pode conter dietas nativas reprovadas ou falhas originais. A aprovação de um candidato não equivale a certificar todos os animais individualmente. Bezerros seguem o ramo nativo próprio; os gráficos de aprovação adulta os identificam separadamente.
+
+
+
+
+## Restrições minerais e categorias na rodada corrigida
+
+Além das restrições nativas da categoria, a política explícita `nrc2005_mtl` adiciona: Σx_i(15−10·Ca_i)≥0 e Σx_i(7−10·P_i)≥0, com Ca_i e P_i em porcentagem da MS e x_i em kg MS. As expressões comparam gramas totais com tetos dependentes da DMI; não comparam totais com requisitos absorvíveis. A mesma política é aplicada ao SLSQP controlado e ao HiGHS.
+
+Os limites físicos continuam vindo do catálogo/configuração e disponibilidade nativa. A região de confiança é apenas um limite local transitório, distinto de um mínimo físico de inclusão. Lactação usa as restrições nativas completas; growing/close_up/misto usam a seleção nativa de novilhas, que remove as linhas de energia total e lactação. Vacas secas integram close_up neste agrupamento. Bezerros continuam em sua rotina própria, fora do RationOptimizer.

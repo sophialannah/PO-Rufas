@@ -1,3 +1,5 @@
+> Registro de uma etapa anterior. Para o estado operacional e resultados reconferidos, consulte a [documentacao consolidada](po_rufas/README.md). Os numeros historicos deste arquivo foram preservados.
+
 # Integração real do otimizador com RuFaS
 
 Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.

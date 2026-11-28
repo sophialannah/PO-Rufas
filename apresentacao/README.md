@@ -1,53 +1,34 @@
-# Apresentação acadêmica — PO-Rufas
+# Apresentação acadêmica vigente — PO-RuFaS
 
-**Integrantes:** Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.
+**Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.** Quatro slides, cinco minutos de exposição/demonstração e cinco minutos adicionais de perguntas.
 
-**Exatamente quatro slides, 5 minutos de exposição e demonstração + 5 minutos adicionais de perguntas.**
-**Total: 10 minutos.**
+O tema central é a integração dinâmica de 365 dias, com programação linear sequencial no RuFaS NRC. O LP estático de coeficientes fixos continua como exemplo e estudo complementar. A aplicação já realiza o ciclo diário e a baixa real de estoque.
 
-Abra [apresentacao_rufas_5min.pptx](apresentacao_rufas_5min.pptx).
-Leia o [roteiro completo](roteiro_completo.md) e o [guia da demonstração no navegador](guia_demonstracao_web.md).
-Use os [cartões](cartoes_consulta.md) para ensaiar e o [banco de perguntas](perguntas_e_respostas.md) para estudar.
-Arguição: [simulação de cinco minutos](simulacao_arguicao.md).
-Falas individuais: [Sophia](roteiro_sophia.md) e [Anderson](roteiro_anderson.md).
+## Material vigente
 
-Na raiz do projeto, execute `.\frontend\iniciar_frontend.bat`. Consulte o [guia de instalação do frontend](../frontend/README.md).
+- [PowerPoint vigente — interface final e 969 testes](apresentacao_po_rufas_frontend_final.pptx). O [deck anterior](apresentacao_po_rufas_final.pptx) permanece histórico, com 954 testes.
+- [Roteiro completo e cronograma](roteiro_completo.md).
+- [Fala de Sophia](roteiro_sophia.md) e [fala de Anderson](roteiro_anderson.md).
+- [Guia da demonstração web](guia_demonstracao_web.md) e [alternativa terminal](guia_demonstracao.md).
+- [Resultados oficiais](resultados_validados.md), [cartões](cartoes_consulta.md), [perguntas](perguntas_e_respostas.md), [arguição](simulacao_arguicao.md) e [checklist](checklist_apresentacao.md).
 
-Como alternativa, execute `.\apresentacao\demonstracao_integrada.bat`. Pressione Enter para executar o solver e devolver a dieta ao `RationManager`. [Guia do terminal](guia_demonstracao.md).
-A demonstração anterior (sem retorno ao `RationManager`) permanece em `demonstracao_solver.bat`.
-A busca no catálogo permanece disponível como apoio (`linear_diet_catalog`).
+## Números para apresentar
 
-Resultados: [relatório técnico](resultados_validados.md). Preparação: [checklist](checklist_apresentacao.md).
-As saídas em `evidencias/` documentam execuções reais; os parâmetros ilustrativos continuam identificados.
+365 dias; SLSQP controlado 2.319,34875854 UM; HiGHS exclusivo 2.316,45106770 UM; redução demonstrativa 0,1249355%; leite 140.223,666523 kg em ambos; 1.002 formulações HiGHS e zero SLSQP no exclusivo; 959 convergentes e 43 viáveis sem convergência; 998 curral-dias adultos aprovados; 969 testes.
 
-## Recriar os materiais
+Sempre informar os **252 curral-dias de bezerros não aprovados em cada estratégia** e as limitações dos indicadores comuns. Não dizer que todo o rebanho foi aprovado, que o ótimo não linear é global ou que há vantagem econômica universal.
 
-Dependências opcionais de autoria e verificação:
+## Executar e gerar
 
-```powershell
-.\.venv\Scripts\python.exe -m pip install -r apresentacao/requirements.in
-```
+Na raiz: `frontend/iniciar_frontend.bat`. Na demonstração de 35 segundos, carregue o cenário de quatro ingredientes e os resultados anuais já calculados. Mostre a identificação de evidência arquivada e os cartões econômicos. Novas simulações mantêm cinco opções, incluindo a comparação exclusiva sem fallback. Preserve cinco minutos de exposição/demonstração e cinco de arguição. A base de 954 foi reproduzida em cópia isolada; os 15 casos adicionais foram verificados na revisão de usabilidade, totalizando 969.
 
-Os registros versionados omitem caminhos pessoais e o nome da máquina; os resultados numéricos são preservados.
-
-Na raiz do repositório, com o ambiente preparado e `python-pptx==1.0.2` instalado:
+Para gerar novamente o deck final, instale as dependências opcionais e escolha um nome novo:
 
 ```powershell
-.\.venv\Scripts\python.exe -X utf8 -m apresentacao.validar_projeto
-.\.venv\Scripts\python.exe -X utf8 -m apresentacao.gerar_materiais
+.\.venv\Scripts\python.exe -m pip install -c constraints-po-rufas.txt -r apresentacao/requirements.in
+.\.venv\Scripts\python.exe -m apresentacao.gerar_versao_final --output output/apresentacao_revisada.pptx
 ```
 
-A regeneração substitui os arquivos gerados e atualiza a base de resultados dos slides.
-`conteudo.py` centraliza as falas e perguntas; `gerar_materiais.py` cria o PowerPoint e os guias.
-O solver e as equações continuam nos módulos originais do projeto.
-A entrega é acompanhada no [PR #6](https://github.com/sophialannah/PO-Rufas/pull/6).
+Os arquivos apresentacao_rufas_5min.pptx/.pdf, geradores antigos e prévias são **históricos**, preservados sem representar a versão vigente. Não execute os geradores históricos para recriar estes novos roteiros. As cópias textuais anteriores estão no [manifesto documental](../evidencias/publicacao/historico_documental/manifesto.json).
 
-## Revisão técnica final — 24/11/2026
-
-A revisão posterior passou em 437 testes. Os 433 citados nos slides pertencem à validação histórica registrada. O custo da demo permanece R$ 34,9978/dia. TDN=0,65 corrige o cálculo intermediário de MP, que não é restrição do LP. Somente DMI é importada como exigência; PB, NEL e FDN suplementares continuam externas. A integração nutricional não está completa nem certificada pelo NASEM.
-
-Leia a [revisão final](../docs/revisao_final_otimizador.md). Exemplo rastreável adicional: `python -m RUFAS.biophysical.animal.ration.linear_diet_workflow`. Preserve cinco minutos de apresentação e cinco adicionais de perguntas; use esse relatório como apoio à arguição.
-
-## Demonstração integrada atual
-
-Use `.\apresentacao\demonstracao_integrada.bat`: Animal 98605 (`Animal`) → NRC → lista `NRCFeed`/`Ingredient` → HiGHS → percentuais MS → `RationManager` → `NutritionSupplyCalculator` e `NutritionEvaluator`. Custo R$ 35,1059/dia; **442 testes aprovados** (42 específicos). A demo anterior permanece disponível em `demonstracao_solver.bat`. Veja [integração real](../docs/integracao_real_rufas.md). Após regenerar os materiais históricos com `gerar_materiais.py`, execute `atualizar_integracao.py` e exporte novamente o PDF no PowerPoint.
+[Manual completo](../docs/po_rufas/12-manual.md) · [Evidências oficiais](../evidencias/correcao_dinamica/README.md) · [Preparação para publicação](../evidencias/publicacao/README.md).

@@ -1,0 +1,10 @@
+{
+  "journal_bytes": 21883947,
+  "days": 365,
+  "samples": 3,
+  "uncached_read_median_s": 0.8995897999848239,
+  "cached_read_median_s": 0.22154739999677986,
+  "summary_only_median_s": 0.0006454999966081232,
+  "all_parsed_values_equal": true,
+  "scope": "UI journal reading only; no solver or simulation speed claim; local uncontrolled timing"
+}

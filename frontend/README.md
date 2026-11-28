@@ -1,49 +1,79 @@
-# PO-RuFaS | Otimização Inteligente de Dietas
+# Frontend PO-RuFaS
 
-Aplicação local do projeto acadêmico de Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva.
+Aplicação Streamlit local com sete áreas, ligada aos módulos Python do projeto. Mantém o LP estático e a simulação dinâmica anual; os resultados exibidos vêm do backend.
 
-## Executar no Windows
+## Instalação
 
-Use a `.venv` do projeto, com Python 3.12 ou 3.13 e as dependências do RuFaS descritas no `pyproject.toml`.
-Instale a dependência da interface uma vez, com o ambiente preparado:
-
-```powershell
-.\.venv\Scripts\python.exe -m pip install -r frontend/requirements.txt
-```
-
-Se a `.venv` foi criada com uv e não tem pip, use `uv pip install --python .venv/Scripts/python.exe -r frontend/requirements.txt`
-ou, com um pip disponível fora da venv, `pip --python .venv/Scripts/python.exe install -r frontend/requirements.txt`.
+Na raiz, com Python 3.12:
 
 ```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -c constraints-po-rufas.txt -e ".[dev]" -r frontend/requirements.txt
 .\frontend\iniciar_frontend.bat
 ```
 
-Comando equivalente a partir da raiz:
+Alternativa: `python -X utf8 -m streamlit run frontend/app.py --server.address 127.0.0.1 --browser.gatherUsageStats false`. Abra http://127.0.0.1:8501. Use o mesmo interpretador da instalação; Ctrl+C encerra o servidor. Para venv uv sem pip: `uv pip install --python .venv/Scripts/python.exe -c constraints-po-rufas.txt -e ".[dev]" -r frontend/requirements.txt`.
 
-```powershell
-.\.venv\Scripts\python.exe -X utf8 -m streamlit run frontend/app.py --server.address 127.0.0.1 --browser.gatherUsageStats false
-```
+## Áreas existentes
 
-Abra [PO-RuFaS local](http://127.0.0.1:8501). Para outra porta, passe `--server.port 8502` e acesse a URL impressa pelo Streamlit.
+| Área | Funcionamento |
+|---|---|
+| Visão geral | Perfil, catálogo e fluxo operacional |
+| Animal | Estado da população e hipóteses da demonstração estática |
+| Ingredientes | Composição NRC de leitura; preços, estoques, NEL e limites editáveis |
+| Otimização | Horizonte, metas estáticas e mínimos absorvíveis obrigatórios P/Ca no fluxo NRC |
+| Resultados | Dieta MN/MS, custo, checks matemáticos, parecer e downloads |
+| Cenários | Reotimização e experimentos A/B HiGHS/SLSQP |
+| Simulação anual | Processos FULL_FARM isolados, progresso e séries reais |
 
-## Demonstração
+Na interface estática, os mínimos de fósforo e cálcio absorvíveis estão sempre ativos no fluxo NRC 2001. Com os três alimentos iniciais, o caso 98605 fica inviável por fósforo; para suplementação, selecione 231, informe os [parâmetros](../docs/po_rufas/03-dados.md) e execute. Não se acrescenta suplemento automaticamente. A referência sem mínimos (R$35,1059/dia, reprovada por P absorvível) permanece disponível no backend para regressão histórica, sem alterar seus resultados experimentais.
 
-Abra **Animal** para conferir o perfil 98605 e a prévia NRC. Em **Ingredientes**, consulte composição e valores de cenário em matéria natural. Em **Otimização**, mantenha sete dias e clique em **Executar otimização**. Em **Resultados**, confira o custo diário, as restrições, a dieta e o parecer nativo. **Cenários** recalcula uma base e uma variação de preço, estoque ou limite de inclusão.
+O diagnóstico complementar de fósforo NASEM 2021 fica em **Configurações avançadas**, recolhidas inicialmente, e vem desativado. Ele calcula uma exigência em separado e **não interfere na otimização NRC 2001**.
 
-No cenário padrão, a regressão esperada é `optimal`, R$ 35,1059/dia, 11/11 verificações e parecer nativo **Não aprovada**, com déficit de fósforo absorvível de 6,68 g/dia. A aplicação recalcula esses valores. O [roteiro acadêmico](../apresentacao/roteiro_completo.md) inclui a alternativa por terminal.
+## Seleção e edição de ingredientes
 
-Para reotimizar com minerais, adicione uma fonte do catálogo em **Ingredientes**, informe seus parâmetros e marque **Exigir fósforo e cálcio absorvíveis no LP (NRC 2001)**. A opção de diagnóstico NASEM calcula a exigência de fósforo em separado. [Parâmetros para reproduzir os cenários e documentação científica](../docs/fosforo_nasem_2021.md)
+A seleção múltipla aceita ingredientes elegíveis do catálogo NRC. Composição, energia digestível/NDT e limites disponíveis são lidos das fontes originais; os limites são convertidos de kg MS para kg MN. Energia digestível não é transformada em NEL. Preço, estoque e NEL sem fonte ficam em branco, com lista dos campos obrigatórios pendentes.
 
-## Dados, unidades e execução
+Os campos editáveis ficam à esquerda da tabela, e os dados de composição são de leitura. As edições são preservadas ao adicionar, remover ou voltar a selecionar ingredientes. Um limite amplo do catálogo não é recomendação nutricional de inclusão.
 
-A aplicação oferece vacas Holandesas em lactação da população do repositório e ingredientes elegíveis com composição NRC. Peso, dias em lactação e paridade vêm do arquivo de população. Produção de leite, composição do leite, ambiente e metas suplementares são hipóteses identificadas na interface. A prévia NRC usa os alimentos da demonstração. A execução registra os requisitos do conjunto efetivamente selecionado. Valores de NEL, preços, estoques e limites de inclusão devem ser preenchidos para ingredientes adicionais.
+**Carregar cenário demonstrativo validado (4 ingredientes)** lê os parâmetros publicados em `evidencias/comparacao/configuracao.json`, incluindo o fosfato bicálcico 231. São hipóteses demonstrativas identificadas, sem criação de novos preços, estoques ou valores energéticos. O botão carrega os ingredientes; animal e metas permanecem nos respectivos controles.
 
-O serviço converte os parâmetros de matéria natural para os campos esperados por `NRCFeed`. A integração existente chama `ingredient_from_feed` e `optimize_diet` (SciPy/HiGHS). A saída verificada passa à configuração em % MS do `RationManager` e retorna em kg MS/dia para `FeedInRation`, `NutritionSupplyCalculator` e `NutritionEvaluator`. O LP fixa a matéria seca calculada pelo NRC e aplica metas externas de PB, NEL e FDN. O diagnóstico nativo cobre os critérios efetivamente avaliados. Simulação diária, baixa de estoque, NASEM e outras categorias ficam fora do fluxo integrado.
+Uma execução inviável explica o conflito e orienta a revisar dados/alimentos. Nenhum alimento é acrescentado automaticamente e os mínimos NRC não são retirados.
 
-A interface mantém parâmetros editáveis e resultados por sessão. O cache guarda apenas dados serializáveis. Um lock no serviço serializa as chamadas que usam as configurações temporárias de classe e o RNG. O contexto da demonstração restaura o estado mesmo após falhas. A integração da dieta usa subclasses por chamada. As entradas originais são somente leitura e as saídas são baixadas pelo navegador em CSV, JSON ou Markdown.
+## Seleção anual
 
-## Testes
+Escolha Simulação dinâmica integrada e uma das cinco opções:
 
-```powershell
-.\.venv\Scripts\python.exe -X utf8 -m pytest tests/test_frontend.py tests/test_biophysical/test_animal/test_ration tests/test_biophysical/test_animal/test_nutrients tests/test_biophysical/test_animal/test_data_types/test_nutrition_data_structures.py -q
-```
+1. **SLSQP nativo controlado** — requisitos NRC e tetos minerais da comparação.
+2. **HiGHS híbrido ampliado** — categorias adultas suportadas, com fallback explícito conforme política.
+3. **HiGHS exclusivo** — sem fallback SLSQP; falhas interrompem a execução.
+4. **Comparação SLSQP versus HiGHS híbrido** — processos separados com as mesmas entradas.
+5. **Comparação SLSQP versus HiGHS exclusivo** — referência e exclusivo isolados; exclusivo com política fail.
+
+Configure duração 1–365, semente, meta de vacas, intervalo, ingredientes e parâmetros econômicos. O cenário usa NRC, clima de 2013 e preços demonstrativos UM/kg MS. Os resultados ficam em `output/annual_ui/<UUID>/`, sem substituir os anteriores. Política mineral padrão: `nrc2005_mtl`.
+
+O progresso mostra dias efetivamente concluídos. Consulte custos, leite, consumo, inventário, minerais totais/absorvíveis, requisitos e convergência. O seletor de dia abre o JSON com iterações, resíduos e motivos. A comparação econômica exige resultados concluídos do mesmo grupo.
+
+## Resultados anuais já calculados e cartões econômicos
+
+Em **Resultados anuais já calculados**, escolha a comparação controlada ou o histórico anterior à correção e clique **Carregar resultados anuais das evidências**. Esse caminho é somente leitura e não inicia subprocessos. Ele fica disponível sem iniciar o modo dinâmico. Resultados carregados são identificados como evidências arquivadas; novas simulações têm identificação e grupo próprios.
+
+Os cartões mostram custos RuFaS/PO-RuFaS, diferença absoluta, percentual e estratégia mais econômica, calculada a partir dos valores reais. Percentual = 100 × (RuFaS − PO) / RuFaS: pode ser positivo, negativo ou zero; com referência zero, não é definido. Não se misturam grupos históricos e novas entradas para criar uma comparação.
+
+Tabelas e séries usam nomes em português brasileiro, como RuFaS original, PO-RuFaS híbrido/exclusivo e Custo alimentar estimado. O JSON técnico conserva os identificadores originais para auditoria. A comparação estática B também mostra cartões, com ressalva de que as formulações são diferentes.
+
+## Desempenho da exibição
+
+Os resumos ficam disponíveis sem ler os diários completos. **Carregar séries diárias e detalhes desta execução** solicita essa leitura explicitamente. O cache considera caminho, modificação em nanossegundos, tamanho e dias concluídos; novas linhas invalidam a entrada. Nenhuma precisão numérica ou linha de resultado é removida.
+
+Uma medição local com três amostras do diário oficial de 365 dias (21.883.947 bytes) observou medianas de 0,8996 s na leitura/decodificação sem cache e 0,2215 s com cache; a leitura só do resumo ficou em 0,00065 s. Os objetos decodificados foram comparados e eram iguais. Esses números medem a leitura da interface, não a velocidade do solver ou uma nova simulação, e não são um benchmark universal. Logs da verificação local ficam em `output/usability_performance.json`.
+
+Uma investigação futura da simulação nova deve medir separadamente inicialização, funções nutricionais, formulações e gravação de traços antes de propor mudanças. Esta etapa não altera Jacobianos, tolerâncias, iterações, equações ou paralelismo do backend; as estratégias continuam em processos isolados como antes.
+
+Os gráficos de aprovação adulta excluem bezerros, mostrados separadamente. Na evidência oficial há 998 curral-dias adultos aprovados no HiGHS e 252 registros de bezerros não aprovados em cada estratégia. Não se declara aprovação do rebanho inteiro. [Aplicabilidade dos indicadores](../docs/po_rufas/05-restricoes.md).
+
+## Arquitetura e validação
+
+O serviço estático usa lock e restauração de configurações temporárias/RNG. A área anual inicia subprocessos com configurações e estados próprios. FeedManager executa compras e baixa; o observador não faz segunda dedução. Entradas originais e resultados históricos são preservados.
+
+Referência científica publicada: **954 testes aprovados**, incluindo AppTest com processos reais. Esta revisão de usabilidade preservou esses casos e acrescentou **15 regressões**, com **969 aprovados em 362,68 s** na suíte relevante. Os testes direcionados finais também passaram (33 casos), incluindo os detalhes históricos e os cartões da comparação estática. [Logs e XML versionados](../evidencias/frontend_final/README.md). As evidências científicas publicadas permanecem inalteradas. [Validação](../docs/po_rufas/VALIDACAO.md) · [Manual com capturas da versão publicada](../docs/po_rufas/12-manual.md) · [Reprodução isolada](../evidencias/publicacao/README.md).

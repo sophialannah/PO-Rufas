@@ -1,0 +1,25 @@
+{
+  "upstream_candidate": "d471c742eadc2e37b76545d0d0f0d10b6c9ef763",
+  "upstream_identity": "Temporal candidate preceding initial local commit; ancestry absent from local git",
+  "local_initial": "b297245960c5820c2d1d8d3d16c2cead456b3a2c",
+  "matching": 974,
+  "shared": 981,
+  "absent": [
+    ".github/workflows/combined_format_lint_test_mypy.yml",
+    "COPYING.LESSER.txt",
+    "COPYING.txt",
+    "helpful_scripts/herd_inputs_calculator/herd_inputs_calculator.py",
+    "output/output_filters/.keep",
+    "output/output_filters/_csv_all_variables.txt"
+  ],
+  "changed": [
+    "CODE_OF_CONDUCT.md",
+    "CONTRIBUTING.md",
+    "README.md",
+    "input/data/feed/NASEM_Comp_with_TDN.csv",
+    "tests/test_time.py",
+    "tests/test_util.py",
+    "tests/test_weather.py"
+  ],
+  "rufas_source_matches": true
+}

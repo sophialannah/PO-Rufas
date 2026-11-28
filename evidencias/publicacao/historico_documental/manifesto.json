@@ -1,0 +1,159 @@
+[
+  {
+    "path": "README.md",
+    "snapshot": "evidencias/publicacao/historico_documental/README.md.txt",
+    "sha256": "6567ccc7f1e1b910f9ab64b484dca8dfce78da3bc461c98767e77707d47f060f"
+  },
+  {
+    "path": "frontend/README.md",
+    "snapshot": "evidencias/publicacao/historico_documental/frontend/README.md.txt",
+    "sha256": "4f245bf9649aeb214d80a8dca66c8d033773a84c217bd2d3d455fd1fe4d998f7"
+  },
+  {
+    "path": "docs/apresentacao_projeto.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/apresentacao_projeto.md.txt",
+    "sha256": "b9b5cc28def6ffc12852c1dd6ace76520380bc668e4cd1aa7832cacdf1ff33e4"
+  },
+  {
+    "path": "docs/po_rufas/01-contextualizacao.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/01-contextualizacao.md.txt",
+    "sha256": "89b76949933a3100b3495c32e479c0a88ab53fda004627eba42469734a7da26e"
+  },
+  {
+    "path": "docs/po_rufas/02-fundamentacao.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/02-fundamentacao.md.txt",
+    "sha256": "d5900ed444bc054e972aa329eea9b3c01857b231eab0d023b61bf190d61e102b"
+  },
+  {
+    "path": "docs/po_rufas/03-dados.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/03-dados.md.txt",
+    "sha256": "399061b95a5a9d22b289033d3f1ccd6aacc28d4579e472edc30bd4cd18234488"
+  },
+  {
+    "path": "docs/po_rufas/04-modelagem.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/04-modelagem.md.txt",
+    "sha256": "efec613a77b1cccd9a74bd69fa4058671a90b2e302fbf2d438a7239958bcf696"
+  },
+  {
+    "path": "docs/po_rufas/05-restricoes.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/05-restricoes.md.txt",
+    "sha256": "0f27b73ecda8a8ad7f5da3d0eea8aeddb2f48a437eebcb40fc03fcf8533aa0b7"
+  },
+  {
+    "path": "docs/po_rufas/06-implementacao.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/06-implementacao.md.txt",
+    "sha256": "98c3075464baa035045fdd1f39a33d156087d14a173bfd3481a7e75895c185ae"
+  },
+  {
+    "path": "docs/po_rufas/07-integracao.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/07-integracao.md.txt",
+    "sha256": "775bc0e7c63198c1e7c39e86bc8c61d5964823a78126101a8fbfc5f6a3b40dc3"
+  },
+  {
+    "path": "docs/po_rufas/08-minerais.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/08-minerais.md.txt",
+    "sha256": "4bdadef6b8a57fcea7009233531236e2f8b3e99aab328316b349c8f6e3f93cbb"
+  },
+  {
+    "path": "docs/po_rufas/09-comparacao.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/09-comparacao.md.txt",
+    "sha256": "dc781c59c3bab930c049e136d6292e6720c429b68f30d0ff8d5cff57d859f71f"
+  },
+  {
+    "path": "docs/po_rufas/10-resultados.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/10-resultados.md.txt",
+    "sha256": "fdd594ba9a89ad2b564a190fe4c9e107d62f265d39de1f948f32e7a368b75fe1"
+  },
+  {
+    "path": "docs/po_rufas/11-testes.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/11-testes.md.txt",
+    "sha256": "f3830290f0f3d828e2893a0da6d416019b4d5c6bea7b3b72e14022b89c46c9bb"
+  },
+  {
+    "path": "docs/po_rufas/12-manual.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/12-manual.md.txt",
+    "sha256": "3fa746ffbc5870295628d9c5795664b4d5465ad446af3f2de5e88de4af816df9"
+  },
+  {
+    "path": "docs/po_rufas/13-limitacoes.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/13-limitacoes.md.txt",
+    "sha256": "b06f79a976e006c7f69a0797b7c1b11695549af465108505adb663ba5879428f"
+  },
+  {
+    "path": "docs/po_rufas/14-referencias.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/14-referencias.md.txt",
+    "sha256": "3ded2814c48b0db3f69cfe5b1c74f8cda9a12e112225c6384dcc9c18ad68be9b"
+  },
+  {
+    "path": "docs/po_rufas/README.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/README.md.txt",
+    "sha256": "3f37def88a4f2e7f4cf033dc20dc9fa8b5936145f4eb26f08284559024bddc97"
+  },
+  {
+    "path": "docs/po_rufas/README_ANTERIOR.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/README_ANTERIOR.md.txt",
+    "sha256": "28526ec22ad6b93e98cb4840f4c1fb411cd4521d0f13db9d52de5f4d9037106a"
+  },
+  {
+    "path": "docs/po_rufas/VALIDACAO.md",
+    "snapshot": "evidencias/publicacao/historico_documental/docs/po_rufas/VALIDACAO.md.txt",
+    "sha256": "0fbc0a381948c141baf073a3b12aa17cfb8af8234f54573e10a4160d2df282e5",
+    "publication_snapshot_sha256": "d9ad0a99945368b7daccc642c911c3c758dc768b87434cca7a35be3e80915036",
+    "publication_normalization": "Whitespace only; original document sha256 retained above"
+  },
+  {
+    "path": "apresentacao/cartoes_consulta.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/cartoes_consulta.md.txt",
+    "sha256": "65f68e323bb2d29f9e24d9fd5c7b462deb95ce1d911c98eaa48ace40fd72114e"
+  },
+  {
+    "path": "apresentacao/checklist_apresentacao.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/checklist_apresentacao.md.txt",
+    "sha256": "1c043ef0ca97ed060a68fe0c18a3aeb737172a91cd000a6e84a23c6d2056c772"
+  },
+  {
+    "path": "apresentacao/guia_demonstracao.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/guia_demonstracao.md.txt",
+    "sha256": "b7c7740c3adc6827fdbec2df29513a5197ef7d88a0ffaf5944d34c05433aab4a"
+  },
+  {
+    "path": "apresentacao/guia_demonstracao_web.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/guia_demonstracao_web.md.txt",
+    "sha256": "3f0afe6bdca43cb330f62f79ad226c9328a5d667b947cb91152c861a9a516a04"
+  },
+  {
+    "path": "apresentacao/perguntas_e_respostas.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/perguntas_e_respostas.md.txt",
+    "sha256": "878016c795362c1adee457ec600d5a9dfc7f6250bcd0b3e092f6fe34f66f1b1c"
+  },
+  {
+    "path": "apresentacao/README.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/README.md.txt",
+    "sha256": "c11a8c6c32cb65acded92e97fc089a62438f4eb55fd6ef3eff9c7752c7b2c5ef"
+  },
+  {
+    "path": "apresentacao/resultados_validados.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/resultados_validados.md.txt",
+    "sha256": "25f253997fae7b284f6540deb4c6a6f87fa6dfbdf1e2edb72490786c09ba18de"
+  },
+  {
+    "path": "apresentacao/roteiro_anderson.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/roteiro_anderson.md.txt",
+    "sha256": "153259889f5ed21f89cd46c09b097552d5ad6b89f33cba29d461275ba98bd43a"
+  },
+  {
+    "path": "apresentacao/roteiro_completo.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/roteiro_completo.md.txt",
+    "sha256": "73bc65bf934dcee241169346a5131e1e9396db4774efb2779b2f46045f31ac6c"
+  },
+  {
+    "path": "apresentacao/roteiro_sophia.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/roteiro_sophia.md.txt",
+    "sha256": "f030c6d44a1146fabd63edab9adbce66415b7b3492e43ecf78812362c72a239c"
+  },
+  {
+    "path": "apresentacao/simulacao_arguicao.md",
+    "snapshot": "evidencias/publicacao/historico_documental/apresentacao/simulacao_arguicao.md.txt",
+    "sha256": "33481d196554b2710000a062718b3a4d6c12722c687efead3b5c172966997b51"
+  }
+]

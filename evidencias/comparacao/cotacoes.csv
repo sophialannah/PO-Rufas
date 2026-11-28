@@ -1,0 +1,2 @@
+ingredient,price,unit,observation_period,publication_date,source,url,conversion_assumption,brl_per_kg_mn,brl_per_kg_dm,limitations
+Milho disponível em Goiás,54.48,R$/saca,09–13/11/2026,2026-11-17,"IFAG, Programa Apoiar",https://apoiar.sistemafaeg.org.br/milho/%F0%9F%8C%BD-destaques-semanal-do-mercado-do-milho-em-goias-09-11-a-13-11-ifag/,Saca de 60 kg MN; composição do milho 44 usada como aproximação do produto comercial,0.9079999999999999,1.0306469920544834,"Indicador ao produtor; moagem, frete, impostos e margem de compra não incluídos. Demais preços demonstrativos."

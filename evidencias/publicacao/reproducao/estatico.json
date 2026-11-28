@@ -1,0 +1,250 @@
+{
+  "animal": {
+    "body_weight_kg": 650.0,
+    "days_in_milk": 100,
+    "milk_kg_day": 30.0,
+    "milk_fat_percent": 3.8,
+    "milk_protein_percent": 3.2,
+    "requirements": {
+      "dm_min_kg": 22.545320001976965,
+      "dm_max_kg": 22.545320001976965,
+      "cp_min_kg": 3.6,
+      "nel_min_mcal": 35.0,
+      "ndf_min_fraction": 0.28,
+      "ndf_max_fraction": 0.4,
+      "mineral_min_kg": {},
+      "sources": {
+        "cp_min_kg": "Illustrative academic scenario; not NRC/NASEM dietary recommendations",
+        "nel_min_mcal": "Illustrative academic scenario; not NRC/NASEM dietary recommendations",
+        "ndf_min_fraction": "Illustrative academic scenario; not NRC/NASEM dietary recommendations",
+        "ndf_max_fraction": "Illustrative academic scenario; not NRC/NASEM dietary recommendations",
+        "mineral_min_kg": "Illustrative academic scenario; not NRC/NASEM dietary recommendations",
+        "dm_min_kg": "RuFaS NutritionRequirements.dry_matter (kg/day)",
+        "dm_max_kg": "RuFaS NutritionRequirements.dry_matter (kg/day)"
+      }
+    },
+    "source": "Illustrative animal; DMI computed by RuFaS NRC calculator"
+  },
+  "ingredients": [
+    {
+      "identifier": 1,
+      "name": "Alfafa (farinha)",
+      "price_per_kg": 1.2642,
+      "stock_kg": 166.11295681063123,
+      "dm_fraction": 0.903,
+      "nel_mcal_per_kg_dm": 1.3,
+      "cp_fraction": 0.192,
+      "ndf_fraction": 0.41600000000000004,
+      "minimum_kg_day": 0.0,
+      "maximum_kg_day": 17.718715393133998,
+      "mineral_fractions": {
+        "calcium": 0.0147,
+        "phosphorus": 0.0028000000000000004,
+        "magnesium": 0.0029,
+        "potassium": 0.023700000000000002,
+        "sodium": 0.001,
+        "chlorine": 0.006500000000000001,
+        "sulfur": 0.0026
+      },
+      "sources": {
+        "identifier": "input/data/feed/NRC_comp.csv; rufas_id=1",
+        "name": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "price_per_kg": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "stock_kg": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "dm_fraction": "input/data/feed/NRC_comp.csv; rufas_id=1",
+        "cp_fraction": "input/data/feed/NRC_comp.csv; rufas_id=1",
+        "ndf_fraction": "input/data/feed/NRC_comp.csv; rufas_id=1",
+        "minimum_kg_day": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "maximum_kg_day": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "mineral_fractions": "input/data/feed/NRC_comp.csv; rufas_id=1",
+        "nel_mcal_per_kg_dm": "Illustrative fixed NEL, Mcal/kg DM"
+      }
+    },
+    {
+      "identifier": 44,
+      "name": "Milho (moagem media)",
+      "price_per_kg": 1.5857999999999999,
+      "stock_kg": 113.50737797956869,
+      "dm_fraction": 0.8809999999999999,
+      "nel_mcal_per_kg_dm": 2.0,
+      "cp_fraction": 0.094,
+      "ndf_fraction": 0.095,
+      "minimum_kg_day": 0.0,
+      "maximum_kg_day": 11.350737797956869,
+      "mineral_fractions": {
+        "calcium": 0.0004,
+        "phosphorus": 0.003,
+        "magnesium": 0.0012,
+        "potassium": 0.0042,
+        "sodium": 0.0002,
+        "chlorine": 0.0008,
+        "sulfur": 0.001
+      },
+      "sources": {
+        "identifier": "input/data/feed/NRC_comp.csv; rufas_id=44",
+        "name": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "price_per_kg": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "stock_kg": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "dm_fraction": "input/data/feed/NRC_comp.csv; rufas_id=44",
+        "cp_fraction": "input/data/feed/NRC_comp.csv; rufas_id=44",
+        "ndf_fraction": "input/data/feed/NRC_comp.csv; rufas_id=44",
+        "minimum_kg_day": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "maximum_kg_day": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "mineral_fractions": "input/data/feed/NRC_comp.csv; rufas_id=44",
+        "nel_mcal_per_kg_dm": "Illustrative fixed NEL, Mcal/kg DM"
+      }
+    },
+    {
+      "identifier": 167,
+      "name": "Farelo de soja",
+      "price_per_kg": 2.506,
+      "stock_kg": 67.0391061452514,
+      "dm_fraction": 0.895,
+      "nel_mcal_per_kg_dm": 1.8,
+      "cp_fraction": 0.5379999999999999,
+      "ndf_fraction": 0.098,
+      "minimum_kg_day": 0.0,
+      "maximum_kg_day": 6.70391061452514,
+      "mineral_fractions": {
+        "calcium": 0.0034999999999999996,
+        "phosphorus": 0.006999999999999999,
+        "magnesium": 0.0029,
+        "potassium": 0.0241,
+        "sodium": 0.0003,
+        "chlorine": 0.0013,
+        "sulfur": 0.0039000000000000003
+      },
+      "sources": {
+        "identifier": "input/data/feed/NRC_comp.csv; rufas_id=167",
+        "name": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "price_per_kg": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "stock_kg": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "dm_fraction": "input/data/feed/NRC_comp.csv; rufas_id=167",
+        "cp_fraction": "input/data/feed/NRC_comp.csv; rufas_id=167",
+        "ndf_fraction": "input/data/feed/NRC_comp.csv; rufas_id=167",
+        "minimum_kg_day": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "maximum_kg_day": "Illustrative scenario in linear_diet_example.py; currency BRL",
+        "mineral_fractions": "input/data/feed/NRC_comp.csv; rufas_id=167",
+        "nel_mcal_per_kg_dm": "Illustrative fixed NEL, Mcal/kg DM"
+      }
+    }
+  ],
+  "period_days": 7,
+  "currency": "BRL",
+  "result": {
+    "status": "optimal",
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "quantities_kg_day": {
+      "1": 15.911918215961721,
+      "44": 9.095658745449372,
+      "167": 0.18277374103087465
+    },
+    "ration_kg_dm_day": {
+      "1": 14.368462149013435,
+      "44": 8.013275354740896,
+      "167": 0.16358249822263282
+    },
+    "costs_per_day": {
+      "1": 20.115847008618807,
+      "44": 14.423895638533613,
+      "167": 0.45803099502337186
+    },
+    "cost_per_day": 34.997773642175794,
+    "totals": {
+      "DM_kg": 22.545320001976965,
+      "CP_kg": 3.6000000000000005,
+      "NEL_Mcal": 35.0,
+      "NDF_kg": 6.754572497515793
+    },
+    "checks": [
+      {
+        "name": "DM_kg",
+        "supplied": 22.54532000197696,
+        "lower": 22.545320001976965,
+        "upper": 22.545320001976965,
+        "slack": -3.552713678800501e-15,
+        "satisfied": true
+      },
+      {
+        "name": "CP_kg",
+        "supplied": 3.6,
+        "lower": 3.6,
+        "upper": null,
+        "slack": 0.0,
+        "satisfied": true
+      },
+      {
+        "name": "NEL_Mcal",
+        "supplied": 35.0,
+        "lower": 35.0,
+        "upper": null,
+        "slack": 0.0,
+        "satisfied": true
+      },
+      {
+        "name": "NDF_min_kg_residual",
+        "supplied": 0.4418828969622424,
+        "lower": 0.0,
+        "upper": null,
+        "slack": 0.4418828969622424,
+        "satisfied": true
+      },
+      {
+        "name": "NDF_max_kg_residual",
+        "supplied": -2.263555503274993,
+        "lower": null,
+        "upper": 0.0,
+        "slack": 2.263555503274993,
+        "satisfied": true
+      },
+      {
+        "name": "inclusion_1_kg_day",
+        "supplied": 15.911918215961721,
+        "lower": 0.0,
+        "upper": 17.718715393133998,
+        "slack": 1.8067971771722764,
+        "satisfied": true
+      },
+      {
+        "name": "stock_1_kg",
+        "supplied": 111.38342751173205,
+        "lower": 0.0,
+        "upper": 166.11295681063123,
+        "slack": 54.72952929889918,
+        "satisfied": true
+      },
+      {
+        "name": "inclusion_44_kg_day",
+        "supplied": 9.095658745449372,
+        "lower": 0.0,
+        "upper": 11.350737797956869,
+        "slack": 2.2550790525074973,
+        "satisfied": true
+      },
+      {
+        "name": "stock_44_kg",
+        "supplied": 63.669611218145604,
+        "lower": 0.0,
+        "upper": 113.50737797956869,
+        "slack": 49.83776676142308,
+        "satisfied": true
+      },
+      {
+        "name": "inclusion_167_kg_day",
+        "supplied": 0.18277374103087465,
+        "lower": 0.0,
+        "upper": 6.70391061452514,
+        "slack": 0.18277374103087465,
+        "satisfied": true
+      },
+      {
+        "name": "stock_167_kg",
+        "supplied": 1.2794161872161225,
+        "lower": 0.0,
+        "upper": 67.0391061452514,
+        "slack": 1.2794161872161225,
+        "satisfied": true
+      }
+    ]
+  }
+}

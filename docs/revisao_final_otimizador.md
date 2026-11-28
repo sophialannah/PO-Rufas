@@ -1,10 +1,12 @@
-﻿# Revisão final do otimizador PO-Rufas
+> Registro de uma etapa anterior. Para o estado operacional e resultados reconferidos, consulte a [documentacao consolidada](po_rufas/README.md). Os numeros historicos deste arquivo foram preservados.
+
+# Revisão final do otimizador PO-Rufas
 
 Sophia Lannah Beatriz Ferreira de Sousa e Anderson Alberto da Costa Silva — 24/11/2026.
 
 ## Estado preservado
 
-Antes da revisão, cópia dos arquivos locais alterados, núcleo/adaptador e pasta apresentacao em `C:\Users\carne\AppData\Local\Temp\PO-Rufas-revisao-20261124-172253`. Linha de base: 435 testes aprovados. Não houve commit, push ou alteração de branch.
+Antes da revisão, cópia dos arquivos locais alterados, núcleo/adaptador e pasta apresentacao em `%USERPROFILE%\AppData\Local\Temp\PO-Rufas-revisao-20261124-172253`. Linha de base: 435 testes aprovados. Não houve commit, push ou alteração de branch.
 
 ## TDN: prova do efeito
 
